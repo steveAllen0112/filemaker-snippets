@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[app.isGo(  )
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[Win.ID, Win.Name, and Win.NewName are originally from the Window ID technique found here: https://filemakerhacks.com/2019/01/13/creating-and-using-invisible-window-ids/But I updated it to work with my `gc.set()` and `gc.get()` functions instead of creating their own global variable.]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[app.isGo(  )
 app.isPro(  )
 app.isServer(  )
 app.isWD(  )
@@ -13,7 +13,10 @@ KeysDown( theModifierKeys;ignoreCapsLock )
 os.isOSX(  )
 os.isWindows(  )
 screen.isSmall(  )
-user.hasFullAccess(  )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="37" functionArity="0" visible="True" parameters="" name="device.isAndroid"><Calculation>Get ( Device ) = 5</Calculation></CustomFunction><CustomFunction id="38" functionArity="0" visible="True" parameters="" name="device.isPad"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "iPad" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="39" functionArity="0" visible="True" parameters="" name="device.isPhone"><Calculation>	(	app.isGo
+user.hasFullAccess(  )
+Win.ID( WindowTitle )
+Win.Name( WindowID )
+Win.NewName( WindowNameOld;WindowNameNew )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="37" functionArity="0" visible="True" parameters="" name="device.isAndroid"><Calculation>Get ( Device ) = 5</Calculation></CustomFunction><CustomFunction id="38" functionArity="0" visible="True" parameters="" name="device.isPad"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "iPad" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="39" functionArity="0" visible="True" parameters="" name="device.isPhone"><Calculation>	(	app.isGo
 	and	not device.isPad
 	)
 or	Get ( Device ) = 4</Calculation></CustomFunction><CustomFunction id="40" functionArity="0" visible="True" parameters="" name="file.isServed"><Calculation>PatternCount ( Get ( HostApplicationVersion ) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="41" functionArity="1" visible="True" parameters="path" name="gc.get"><Calculation>Let ([b=""
@@ -31,4 +34,55 @@ If ( not ignoreCapsLock ; ( Mod ( Int ( activeModifierKeys / 2 ) ; 2 ) xor not P
 ( Mod ( Int ( activeModifierKeys / 4 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "ctrl" ) ) and
 ( Mod ( Int ( activeModifierKeys / 8 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "alt" ) ) and
 ( Mod ( Int ( activeModifierKeys / 16 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "command" ) )
-)</Calculation></CustomFunction><CustomFunction id="44" functionArity="0" visible="True" parameters="" name="os.isOSX"><Calculation>Get ( Device ) = 1</Calculation></CustomFunction><CustomFunction id="45" functionArity="0" visible="True" parameters="" name="os.isWindows"><Calculation>Get ( Device ) = 2</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+)</Calculation></CustomFunction><CustomFunction id="44" functionArity="0" visible="True" parameters="" name="os.isOSX"><Calculation>Get ( Device ) = 1</Calculation></CustomFunction><CustomFunction id="45" functionArity="0" visible="True" parameters="" name="os.isWindows"><Calculation>Get ( Device ) = 2</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction><CustomFunction id="24" functionArity="1" visible="True" parameters="WindowTitle" name="Win.ID"><Calculation>Bin2Dec (
+	Substitute (
+		Filter ( Get(WindowName) ; Char ( 8203 ) &amp; Char ( 65279 ) ) 
+  ; [ Char ( 8203 ) ; 0 ] ; [ Char ( 65279 ) ; 1 ]
+	)
+)
+
+
+
+/* OLD METHOD
+Let([
+~winNameID = If( IsEmpty( WindowTitle ) ; Get(WindowName) ; WindowTitle ) ;
+~winID = Filter ( ~winNameID ;  Char ( 8203 ) &amp; Char ( 65279 ) ) ;
+~idBin = Substitute ( ~winID 
+; [ Char ( 8203 ) ; 0 ]  
+; [ Char ( 65279 ) ; 1 ]
+) ;
+~id = Bin2Dec( ~idbin )
+
+];
+
+~id
+)
+*/</Calculation></CustomFunction><CustomFunction id="26" functionArity="1" visible="True" parameters="WindowID" name="Win.Name"><Calculation>Let([
+
+~winName = JSONGetElement ( $$WINDOW.JSON ; "[" &amp; WindowID &amp; "].name" ) ;
+~id = Substitute ( Dec2Bin ( WindowID  ) 
+ ; [ 0 ; Char ( 8203 ) ]
+ ; [ 1 ; Char ( 65279 ) ]
+ )
+
+];
+~winName &amp; ~id
+)</Calculation></CustomFunction><CustomFunction id="25" functionArity="2" visible="True" parameters="WindowNameOld;WindowNameNew" name="Win.NewName"><Calculation>/*
+This is designed for use with the Set Window Title script step to ensure that the $$WINDOW.JSON is updated correctly and that each window keeps it's unique invisible binary id
+*/
+
+Let([
+~nameID = If( IsEmpty( WindowNameOld ) ; Get(WindowName) ; WindowNameOld ) ;
+~windowID = Win.ID( ~nameID ) ;
+~id = Filter ( ~NameID ;  Char ( 8203 ) &amp; Char ( 65279 ) ) ;
+~newName = Substitute ( WindowNameNew ; ~id ;"" ) ;
+~newNameID =  ~newName &amp; ~id ;
+
+$$WINDOW.JSON = JSONFormatElements ( 
+JSONSetElement ( $$WINDOW.JSON 
+; [ "[" &amp; ~windowID &amp; "].name" ; ~NewName ; JSONString ] 
+))
+
+];
+~NewNameID
+)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
