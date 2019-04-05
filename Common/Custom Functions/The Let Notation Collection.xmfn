@@ -1,10 +1,182 @@
-<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3626275000</ClipTimeStamp><ClipAuthor><![CDATA[wolf]]></ClipAuthor><clipboardAsText><![CDATA[#AssignGlobal( parameters )
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3626275000</ClipTimeStamp><ClipAuthor><![CDATA[wolf]]></ClipAuthor><clipboardAsText><![CDATA[#( name;value )
+#Assign( parameters )
+#AssignGlobal( parameters )
 #AssignScriptParameters(  )
 #AssignScriptResults(  )
 #Filter( parameters;filterParameters )
 #Get( parameters;name )
 #GetNameList( parameters )
-#Remove( parameters;removeParameters )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="93" functionArity="1" visible="True" parameters="parameters" name="#AssignGlobal"><Calculation>/**
+#Remove( parameters;removeParameters )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="28" functionArity="2" visible="True" parameters="name;value" name="#"><Calculation>/**
+ * =====================================
+ * # ( name ; value )
+ *
+ * RETURNS:
+ *		An name-value pair in Let notation.
+ *
+ * PARAMETERS:
+ *		name: The name for the returned name-value pair. name can be any value
+ *		that would be a valid Let() variable name.
+ *		value: The value for the returned name-value pair.
+ *
+ * EXAMPLE:
+ *		# ( "name"; $value ) &amp; # ( "foo" ; "bar" )
+ *
+ * DEPENDENCIES: none
+ *
+ * HISTORY:
+ *		MODIFIED on 2013-12-24 by Jeremy Bante &lt;http://scr.im/jbante&gt; to return
+ *		an error if name contains a carriage return (Char ( 13 )), and removing
+ *		explicit encoding for line feeds.
+ *		MODIFIED on 2013-12-12 by John Jones &lt;john.christopher@alumni.virginia.edu&gt;
+ *		to explicitly encode line feed characters in text values.
+ *		MODIFIED on 2013-09-02 by Daniel Smith dansmith65@gmail.com to fix a
+ *		type misidentification bug.
+ *		MODIFIED on 2013-07-27 by Jeremy Bante &lt;http://scr.im/jbante&gt; to fix a
+ *		type misidentification bug.
+ *		MODIFIED on 2013-04-15 by Jeremy Bante &lt;http://scr.im/jbante&gt; to not
+ *		wrap numbers in GetAsNumber.
+ *		MODIFIED on 2013-01-14 by Daniel Smith dansmith65@gmail.com to include
+ *		trailing return on error result and accept a value of "?"
+ *		MODIFIED on 2012-12-12 by Daniel Smith dansmith65@gmail.com to preserve
+ *		data type of value
+ *		MODIFIED on 2012-12-07 by Jeremy Bante &lt;http://scr.im/jbante&gt; where an
+ *		error result could create invalid sytax for values containing a comment
+ *		close sequence.
+ *		MODIFIED on 2012-11-28 by Jeremy Bante &lt;http://scr.im/jbante&gt; to return
+ *		error feedback, and to prefix names with "$".
+ *		CREATED on 2012-11-10 by Jeremy Bante &lt;http://scr.im/jbante&gt;.
+ *
+ * REFERENCES:
+ *		https://github.com/filemakerstandards/fmpstandards/blob/master/Functions/%23Name-Value/%23.fmfn
+ * =====================================
+ */
+
+Let ( [
+	~name =	// strip leading "$$" and "$"
+		Substitute (
+			"/*start*/" &amp; name ;
+			[ "/*start*/$$" ; "" ] ;
+			[ "/*start*/$" ; "" ] ;
+			[ "/*start*/" ; "" ]
+		) ;
+	~text = GetAsText ( value ) ;
+	~number = GetAsNumber ( value ) ;
+	~validDate =
+		IsValid ( GetAsDate ( ~text ) )
+		and not IsEmpty ( ~number ) ;
+	~validTime =
+		IsValid ( GetAsTime ( ~text ) )
+		and Position ( ~text ; ":" ; 1 ; 1 ) &gt; 0
+		and not IsEmpty ( ~number ) ;
+	~value =
+		Case (
+			value = "" or value = "?" ;
+				Quote ( value ) ;
+
+			~validTime and ~validDate ;
+				"GetAsTimestamp ( " &amp; Quote ( value ) &amp; " )" ;
+
+			~validTime ;
+				"GetAsTime ( " &amp; Quote ( value ) &amp; " )" ;
+
+			~validDate ;
+				"GetAsDate ( " &amp; Quote ( value ) &amp; " )" ;
+
+			~text ≠ GetAsText ( ~number ) ;
+				Quote ( value ) ;
+
+			/* Else */
+				~number
+		) ;
+	~result =
+		"$"
+		&amp; ~name
+		&amp; " = "
+		&amp; ~value
+		&amp; " ;¶" ;
+	~testExpression =
+		"Let ( [ "
+		&amp; ~result
+		&amp; " ~ = \"\" ]; \"\" )" ;
+	~error =
+		Case (
+			IsEmpty ( ~name ) or Position ( ~name ; ¶ ; 1 ; 1 ) ≠ 0 ;
+				11 ;	// Name is not valid
+
+			not IsValidExpression ( ~testExpression ) ;
+				1200	// Generic calculation error
+		)
+];
+	If ( ~error ;	// prevent bad pairs from affecting evaluation by commenting
+		"/* Error "
+		&amp; ~error
+		&amp; " name: "
+		&amp; Quote (
+			Substitute (	// escape comment character sequences
+				name ;
+				[ "*/" ; "\*\/" ] ;
+				[ "/*" ; "\/\*" ]
+			)
+		)
+		&amp; " value: "
+		&amp; Quote (
+			Substitute (	// escape comment character sequences
+				value ;
+				[ "*/" ; "\*\/" ] ;
+				[ "/*" ; "\/\*" ]
+			)
+		)
+		&amp; " */"
+		&amp; ¶ ;
+	/* Else */
+		~result
+	)
+)</Calculation></CustomFunction><CustomFunction id="29" functionArity="1" visible="True" parameters="parameters" name="#Assign"><Calculation>/**
+ * =====================================
+ * #Assign ( parameters )
+ *
+ * PURPOSE:
+ *		Parses a Let dictionary of name-value parameters into a series of
+ *		locally scoped $variables.
+ *
+ * RETURNS:
+ *		True (1) when parameters is a valid set of name-value pairs (which
+ *		includes the empty string); False (0) otherwise.
+ *		If False (0), the error code will be saved to: $#Assign.error
+ *
+ * PARAMETERS:
+ *		parameters: A Let format dictionary, such as produced by the
+ *		# ( name ; value ) function.
+ *
+ * DEPENDENCIES: none
+ *
+ * NOTES:
+ *		Notes go here
+ *
+ * HISTORY:
+ *		MODIFIED on 2013-03-15 by Daniel Smith &lt;http://scr.im/dansmith&gt; to
+ *		update documentation to match functions actual return value.
+ *		MODIFIED on 2012-11-28 by Jeremy Bante &lt;http://scr.im/jbante&gt; to support
+ *		"$" prefix values as default.
+ *		CREATED on 2012-11-11 by Jeremy Bante &lt;http://scr.im/jbante&gt;.
+ * =====================================
+ */
+
+Let ( [
+	~error =
+		EvaluationError ( Evaluate (
+			"Let ( [¶"
+			&amp; Substitute (	// convert global variables to local variables
+				¶ &amp; parameters;
+				"¶$$";
+				"¶$"
+			)
+			&amp; "¶~ = \"\" ]; ~ )"
+		) )
+];
+	~error = 0	// indicate success or failure of Evaluate()
+	or Let ( $#Assign.error = ~error ; False )	// only runs on error
+)</Calculation></CustomFunction><CustomFunction id="93" functionArity="1" visible="True" parameters="parameters" name="#AssignGlobal"><Calculation>/**
  * =====================================
  * #AssignGlobal ( parameters )
  *
