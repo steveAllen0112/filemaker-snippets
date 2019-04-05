@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[ExtractData( XML;Attribute;Instance )
+xmlGet( _xml;_tag )
+xmlReplaceNodeValue( xml;tag;newValue )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="52" functionArity="3" visible="True" parameters="XML;Attribute;Instance" name="ExtractData"><Calculation>// ExtractData ( XML ; Attribute ; Instance )
+// Created by Andy Knasinski, NRG Software
+
+Let ( [ 
+XML_Length = Length ( XML ) ; 
+Attribute_Length = Length ( Attribute ) ; 
+Get_Instance = If ( IsEmpty ( Instance ) ; 1 ; Instance ) 
+]; 
+Case(
+IsEmpty ( XML ) or IsEmpty ( attribute ) or PatternCount ( xml ; "&lt;" &amp; attribute &amp; "&gt;" ) = 0 ; "" ;
+Middle ( XML ; Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + attribute_length + 2 ; 
+xml_length - ( xml_length - Position ( XML ; "&lt;/" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) ) - ( Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + Attribute_Length + 2 ) )
+) )</Calculation></CustomFunction><CustomFunction id="56" functionArity="2" visible="True" parameters="_xml;_tag" name="xmlGet"><Calculation>/* 
+xmlGet ( _xml ; _tag )
+
+by Fabrice Nordmann, BH&amp;A
+v4, Feb 2008
+
+generic xml tag extractor
+---
+v4 Feb 2008. Doesn't handle LayoutProperties anymore (LayoutProperties must now be passed in _xml parameter)
+v3 Dec 2007. Renamed xmlGet (was PropertyValue)
+v2.1 Aug 2007. Forces evaluation of ¶ by substitution de-substitution
+v2 May 2007
+v1 Renamed PropertyValue (was called ObjValue), and was working in a completely different way
+---
+
+READ ME (IMPORTANT)
+_xml will be parsed. This means a substract of 'XML' like code can be passed to this function.
+
+to evaluate an expression in a xml tag rather than a plain text, when xmlGet is evaluated, it must begin with "=".
+e.g :
+   "3+4"     --&gt; "3+4"
+   "=3+4"  --&gt; "7"
+
+-------------------------------------------------
+*/
+Let ([
+   _tagLength = Length ( _tag )
+ ; _tagStart = Position ( _xml ; "&lt;" &amp; _tag &amp; "&gt;" ; 1 ; 1 ) + _tagLength + 2
+ ; _tagEnd = Position ( _xml ; "&lt;/" &amp; _tag &amp; "&gt;" ; _tagStart ; 1 )
+ ; _tag = Substitute ( Middle ( _xml ; _tagStart ; _tagEnd - _tagStart ) ; ¶ ; "ïMπRößablÊsTrìNg" )
+]
+;
+Substitute ( 
+Case ( Left ( _tag ; 1 ) = "=" ;
+  Evaluate ( Replace ( _tag ; 1 ; 1 ; "" ))
+; Evaluate ( Quote ( _tag ))
+)
+; "ïMπRößablÊsTrìNg" ; ¶ )
+)
+
+// ===================================
+/*
+
+    This function is published on FileMaker Custom Functions
+    to check for updates and provide feedback and bug reports
+    please visit http://www.fmfunctions.com/fid/110
+
+    Prototype: xmlGet( _xml; _tag )
+    Function Author: Fabrice (http://www.fmfunctions.com/mid/37)
+    Last updated: 04 December 2008
+    Version: 1
+
+*/
+// ===================================</Calculation></CustomFunction><CustomFunction id="57" functionArity="3" visible="True" parameters="xml;tag;newValue" name="xmlReplaceNodeValue"><Calculation>Let ([blank=""
+;	hasInstance	= PatternCount ( tag ; "[" ) and PatternCount ( tag ; "]" )
+;	tagPieces	= Substitute ( tag ; [ "[" ; "¶" ] ; [ "]" ; "¶" ] )
+;	tagRaw		= GetValue ( tagPieces ; 1 )
+;	instance		= Case ( hasInstance ; GetValue ( tagPieces ; 2 ) ; 1 )
+;	tagOpen	= "&lt;" &amp; tagRaw &amp; "&gt;"
+;	tagClose	= Replace ( tagOpen ; 2 ; 0 ; "/" )
+;	numStart	= Position ( xml ; tagOpen ; 1 ; instance ) + Length ( tagOpen )
+;	numEnd		= Position ( xml ; tagClose ; tagClose ; 1 )
+;	output		= Replace ( xml ; numStart ; numEnd - numStart ; newValue )
+];
+output
+)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
