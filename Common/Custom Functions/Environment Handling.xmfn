@@ -9,6 +9,7 @@ device.isPhone(  )
 file.isServed(  )
 gc.get( path )
 gc.set( path;value;type )
+KeysDown( theModifierKeys;ignoreCapsLock )
 os.isOSX(  )
 os.isWindows(  )
 screen.isSmall(  )
@@ -21,4 +22,13 @@ or	Get ( Device ) = 4</Calculation></CustomFunction><CustomFunction id="40" func
 ;	err	= Case ( Left ( raw ; 1) = "?" ; "" ; raw )
 ];
 err
-)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="44" functionArity="0" visible="True" parameters="" name="os.isOSX"><Calculation>Get ( Device ) = 1</Calculation></CustomFunction><CustomFunction id="45" functionArity="0" visible="True" parameters="" name="os.isWindows"><Calculation>Get ( Device ) = 2</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="55" functionArity="2" visible="True" parameters="theModifierKeys;ignoreCapsLock" name="KeysDown"><Calculation>Let (
+activeModifierKeys = Get ( ActiveModifierKeys ) ;
+
+( ( activeModifierKeys = 0 ) xor ( theModifierKeys ≠ "" ) ) and
+( Mod ( activeModifierKeys ; 2 ) xor not PatternCount ( theModifierKeys ; "shift" ) ) and
+If ( not ignoreCapsLock ; ( Mod ( Int ( activeModifierKeys / 2 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "capslock" ) ) ; True ) and
+( Mod ( Int ( activeModifierKeys / 4 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "ctrl" ) ) and
+( Mod ( Int ( activeModifierKeys / 8 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "alt" ) ) and
+( Mod ( Int ( activeModifierKeys / 16 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "command" ) )
+)</Calculation></CustomFunction><CustomFunction id="44" functionArity="0" visible="True" parameters="" name="os.isOSX"><Calculation>Get ( Device ) = 1</Calculation></CustomFunction><CustomFunction id="45" functionArity="0" visible="True" parameters="" name="os.isWindows"><Calculation>Get ( Device ) = 2</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
