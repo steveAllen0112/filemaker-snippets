@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName><![CDATA[FileMaker Pro Advanced]]></SourceWindowName><Class>XMSS</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637298657</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[#
+# Author: Steve Allen <steven.allen@rcconsulting.com> https://github.com/user/steveAllen0112
+# Created: 
+# Purpose:
+#
+# Params: #/Let
+#
+# Returns: #/Let
+#
+Set Variable [$p; Value:#Assign ( Get ( ScriptParameter ) )]
+#]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><Step enable="True" id="89" name="# (comment)"><Text/></Step><Step enable="True" id="89" name="# (comment)"><Text> Author: Steve Allen &lt;steven.allen@rcconsulting.com&gt; https://github.com/user/steveAllen0112</Text></Step><Step enable="True" id="89" name="# (comment)"><Text> Created: </Text></Step><Step enable="True" id="89" name="# (comment)"><Text> Purpose:</Text></Step><Step enable="True" id="89" name="# (comment)"><Text/></Step><Step enable="True" id="89" name="# (comment)"><Text> Params: #/Let</Text></Step><Step enable="True" id="89" name="# (comment)"><Text/></Step><Step enable="True" id="89" name="# (comment)"><Text> Returns: #/Let</Text></Step><Step enable="True" id="89" name="# (comment)"><Text/></Step><Step enable="True" id="141" name="Set Variable"><Value><Calculation>#Assign ( Get ( ScriptParameter ) )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$p</Name></Step><Step enable="True" id="89" name="# (comment)"/></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

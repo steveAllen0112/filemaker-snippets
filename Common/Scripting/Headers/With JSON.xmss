@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName><![CDATA[FileMaker Pro Advanced]]></SourceWindowName><Class>XMSS</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637298247</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[#.
+# Author: Steve Allen <steven.allen@rcconsulting.com> https://github.com/user/steveAllen0112
+# Created: 
+#.
+# Purpose:
+# Params: JSON
+#    TODO: Document JSON Structure for incoming Parameters
+#. 
+# Returns: JSON
+#    TODO: Document JSON Structure(s) for outgoing Results
+#.
+#
+Set Variable [$p; Value:Get ( ScriptParameter )]
+#
+#TODO: Parse JSON Parameters to Variables
+Set Variable [$j; Value:JSONGetElement ( $p ; "" )]
+#]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><Step enable="True" id="89" name="# (comment)"><Text>.</Text></Step><Step enable="True" id="89" name="# (comment)"><Text> Author: Steve Allen &lt;steven.allen@rcconsulting.com&gt; https://github.com/user/steveAllen0112</Text></Step><Step enable="True" id="89" name="# (comment)"><Text> Created: </Text></Step><Step enable="True" id="89" name="# (comment)"><Text>.</Text></Step><Step enable="True" id="89" name="# (comment)"><Text> Purpose:</Text></Step><Step enable="True" id="89" name="# (comment)"><Text> Params: JSON</Text></Step><Step enable="True" id="89" name="# (comment)"><Text>    TODO: Document JSON Structure for incoming Parameters</Text></Step><Step enable="True" id="89" name="# (comment)"><Text>. </Text></Step><Step enable="True" id="89" name="# (comment)"><Text> Returns: JSON</Text></Step><Step enable="True" id="89" name="# (comment)"><Text>    TODO: Document JSON Structure(s) for outgoing Results</Text></Step><Step enable="True" id="89" name="# (comment)"><Text>.</Text></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="141" name="Set Variable"><Value><Calculation>Get ( ScriptParameter )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$p</Name></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="89" name="# (comment)"><Text>TODO: Parse JSON Parameters to Variables</Text></Step><Step enable="True" id="141" name="Set Variable"><Value><Calculation>JSONGetElement ( $p ; "" )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$j</Name></Step><Step enable="True" id="89" name="# (comment)"/></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

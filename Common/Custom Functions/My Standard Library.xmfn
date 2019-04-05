@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[#( name;value )
+#Assign( parameters )
+AddValue( lst;value )
+app.isGo(  )
+app.isPro(  )
+app.isServer(  )
+app.isWD(  )
+app.isWPE(  )
+Bin2Dec( binary )
+CustomList( Start;End;Function )
+Dec2Bin( decimal )
+DeleteValue( lst;value )
+device.isAndroid(  )
+device.isPad(  )
+device.isPhone(  )
+ExtractData( XML;Attribute;Instance )
+file.isServed(  )
+FilterValues.diff( A;B )
+FilterValues.diff.sub( A;B;i )
+gc.get( path )
+gc.set( path;value;type )
+KeysDown( theModifierKeys;ignoreCapsLock )
+os.isOSX(  )
+os.isWindows(  )
+ParseFieldName( field;desired )
+Patternize( direction;pattern;replaceChar;value;pad? )
+PositionValues( text;searchValue;start;occurrence )
+screen.isSmall(  )
+ToggleValue( lst;value )
+user.hasFullAccess(  )
+Win.ID( WindowTitle )
+Win.Name( WindowID )
+Win.NewName( WindowNameOld;WindowNameNew )
+xmlGet( _xml;_tag )
+xmlReplaceNodeValue( xml;tag;newValue )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="28" functionArity="2" visible="True" parameters="name;value" name="#"><Calculation>/**
+ * =====================================
+ * # ( name ; value )
+ *
+ * RETURNS:
+ *		An name-value pair in Let notation.
+ *
+ * PARAMETERS:
+ *		name: The name for the returned name-value pair. name can be any value
+ *		that would be a valid Let() variable name.
+ *		value: The value for the returned name-value pair.
+ *
+ * EXAMPLE:
+ *		# ( "name"; $value ) &amp; # ( "foo" ; "bar" )
+ *
+ * DEPENDENCIES: none
+ *
+ * HISTORY:
+ *		MODIFIED on 2013-12-24 by Jeremy Bante &lt;http://scr.im/jbante&gt; to return
+ *		an error if name contains a carriage return (Char ( 13 )), and removing
+ *		explicit encoding for line feeds.
+ *		MODIFIED on 2013-12-12 by John Jones &lt;john.christopher@alumni.virginia.edu&gt;
+ *		to explicitly encode line feed characters in text values.
+ *		MODIFIED on 2013-09-02 by Daniel Smith dansmith65@gmail.com to fix a
+ *		type misidentification bug.
+ *		MODIFIED on 2013-07-27 by Jeremy Bante &lt;http://scr.im/jbante&gt; to fix a
+ *		type misidentification bug.
+ *		MODIFIED on 2013-04-15 by Jeremy Bante &lt;http://scr.im/jbante&gt; to not
+ *		wrap numbers in GetAsNumber.
+ *		MODIFIED on 2013-01-14 by Daniel Smith dansmith65@gmail.com to include
+ *		trailing return on error result and accept a value of "?"
+ *		MODIFIED on 2012-12-12 by Daniel Smith dansmith65@gmail.com to preserve
+ *		data type of value
+ *		MODIFIED on 2012-12-07 by Jeremy Bante &lt;http://scr.im/jbante&gt; where an
+ *		error result could create invalid sytax for values containing a comment
+ *		close sequence.
+ *		MODIFIED on 2012-11-28 by Jeremy Bante &lt;http://scr.im/jbante&gt; to return
+ *		error feedback, and to prefix names with "$".
+ *		CREATED on 2012-11-10 by Jeremy Bante &lt;http://scr.im/jbante&gt;.
+ *
+ * REFERENCES:
+ *		https://github.com/filemakerstandards/fmpstandards/blob/master/Functions/%23Name-Value/%23.fmfn
+ * =====================================
+ */
+
+Let ( [
+	~name =	// strip leading "$$" and "$"
+		Substitute (
+			"/*start*/" &amp; name ;
+			[ "/*start*/$$" ; "" ] ;
+			[ "/*start*/$" ; "" ] ;
+			[ "/*start*/" ; "" ]
+		) ;
+	~text = GetAsText ( value ) ;
+	~number = GetAsNumber ( value ) ;
+	~validDate =
+		IsValid ( GetAsDate ( ~text ) )
+		and not IsEmpty ( ~number ) ;
+	~validTime =
+		IsValid ( GetAsTime ( ~text ) )
+		and Position ( ~text ; ":" ; 1 ; 1 ) &gt; 0
+		and not IsEmpty ( ~number ) ;
+	~value =
+		Case (
+			value = "" or value = "?" ;
+				Quote ( value ) ;
+
+			~validTime and ~validDate ;
+				"GetAsTimestamp ( " &amp; Quote ( value ) &amp; " )" ;
+
+			~validTime ;
+				"GetAsTime ( " &amp; Quote ( value ) &amp; " )" ;
+
+			~validDate ;
+				"GetAsDate ( " &amp; Quote ( value ) &amp; " )" ;
+
+			~text ≠ GetAsText ( ~number ) ;
+				Quote ( value ) ;
+
+			/* Else */
+				~number
+		) ;
+	~result =
+		"$"
+		&amp; ~name
+		&amp; " = "
+		&amp; ~value
+		&amp; " ;¶" ;
+	~testExpression =
+		"Let ( [ "
+		&amp; ~result
+		&amp; " ~ = \"\" ]; \"\" )" ;
+	~error =
+		Case (
+			IsEmpty ( ~name ) or Position ( ~name ; ¶ ; 1 ; 1 ) ≠ 0 ;
+				11 ;	// Name is not valid
+
+			not IsValidExpression ( ~testExpression ) ;
+				1200	// Generic calculation error
+		)
+];
+	If ( ~error ;	// prevent bad pairs from affecting evaluation by commenting
+		"/* Error "
+		&amp; ~error
+		&amp; " name: "
+		&amp; Quote (
+			Substitute (	// escape comment character sequences
+				name ;
+				[ "*/" ; "\*\/" ] ;
+				[ "/*" ; "\/\*" ]
+			)
+		)
+		&amp; " value: "
+		&amp; Quote (
+			Substitute (	// escape comment character sequences
+				value ;
+				[ "*/" ; "\*\/" ] ;
+				[ "/*" ; "\/\*" ]
+			)
+		)
+		&amp; " */"
+		&amp; ¶ ;
+	/* Else */
+		~result
+	)
+)</Calculation></CustomFunction><CustomFunction id="29" functionArity="1" visible="True" parameters="parameters" name="#Assign"><Calculation>/**
+ * =====================================
+ * #Assign ( parameters )
+ *
+ * PURPOSE:
+ *		Parses a Let dictionary of name-value parameters into a series of
+ *		locally scoped $variables.
+ *
+ * RETURNS:
+ *		True (1) when parameters is a valid set of name-value pairs (which
+ *		includes the empty string); False (0) otherwise.
+ *		If False (0), the error code will be saved to: $#Assign.error
+ *
+ * PARAMETERS:
+ *		parameters: A Let format dictionary, such as produced by the
+ *		# ( name ; value ) function.
+ *
+ * DEPENDENCIES: none
+ *
+ * NOTES:
+ *		Notes go here
+ *
+ * HISTORY:
+ *		MODIFIED on 2013-03-15 by Daniel Smith &lt;http://scr.im/dansmith&gt; to
+ *		update documentation to match functions actual return value.
+ *		MODIFIED on 2012-11-28 by Jeremy Bante &lt;http://scr.im/jbante&gt; to support
+ *		"$" prefix values as default.
+ *		CREATED on 2012-11-11 by Jeremy Bante &lt;http://scr.im/jbante&gt;.
+ * =====================================
+ */
+
+Let ( [
+	~error =
+		EvaluationError ( Evaluate (
+			"Let ( [¶"
+			&amp; Substitute (	// convert global variables to local variables
+				¶ &amp; parameters;
+				"¶$$";
+				"¶$"
+			)
+			&amp; "¶~ = \"\" ]; ~ )"
+		) )
+];
+	~error = 0	// indicate success or failure of Evaluate()
+	or Let ( $#Assign.error = ~error ; False )	// only runs on error
+)</Calculation></CustomFunction><CustomFunction id="30" functionArity="2" visible="True" parameters="lst;value" name="AddValue"><Calculation>Case (
+not	ValueCount ( FilterValues ( lst ; value ) )
+;	List ( lst ; value )
+)</Calculation></CustomFunction><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="23" functionArity="1" visible="True" parameters="binary" name="Bin2Dec"><Calculation>Let ( [
+		power = Length ( binary ) - 1 ;
+		bin = Left ( binary ; 1 ) ;
+		dec = If ( bin ; 2 ^ power ; 0 ) ;
+		dec2 = If ( power &gt; 0 ; Bin2Dec ( Right ( binary ; power ) ) ; 0 )
+	] ;
+	dec + dec2
+)</Calculation></CustomFunction><CustomFunction id="4" functionArity="3" visible="True" parameters="Start;End;Function" name="CustomList"><Calculation>/*       Special Thanks to Ugo Di Luca - Grazie Mille, pour l'aiguillage qu'il m'a fait prendre,
+                          Thank you for all his comments and his notice  ®  Ugo Di Luca 
+===========================================================
+
+//   Author: Agnès Barouh - filemaker@tictac.fr
+
+//   CustomList ( Start ; End ; Function )  v_4.8
+// [please, do not used "CLNum" in your calculation with Let() ]
+//   Objectives and examples  :
+
+- Build any list based on all Native or Custom Functions involving a 'Number' value as a parameter, such as :
+Left(), Middle(), GetValue(), GetRepetitionNumber (),  GetNthRecord(), GetLayoutObjectAttribute () ...
+ex : - CustomList ( 1 ; Get ( FoundCount ) ; "GetNthRecord ( FirstName ; [n] )" ) 
+will return James¶Henry¶Susan if your foundset has 3 records.
+
+- Build any range based on Dates, Times, TimeStamps, and obviously Numbers
+ex : CustomList ( 1 ; 5 ; "GetAsDate ( StartingDate ) + [n]" )
+will return a range of 5 dates starting from the specified StartingDate
+
+The 'Function' Parameter is nothing else than a litteral calculation expression. 
+Therefore, CustomList allows for any filtering or parsing process based on any condition you may need.
+ex : CustomList ( 10 ; 100 ; "Let ( [ Value = GetValue ( MyList ; [n] ) ] ; Case ( PatternCount ( Value ; "X" ) ; Value ))" )
+will parse any value containing a "X" in  the 'MyList' chain, in between the 10th and the 100th values.
+
+See the 'Under the Hood' part at the end of the function to fully understand the process of this function
+
+--------------------------------
+/* MAJOR UPDATE */  Updated July'08
+/* UPDATE */  Updated August'10 for adapte to FileMakerGo
+/* UPDATE */  Updated November'11 for adapte to FileMakerServer
+/* UPDATE */  Updated November'12 for adapte to FileMaker IWP
+
+
+--------------------------------
+
+CustomList is based on a totally new algorithm, and is now volontarily bridled to a maximum range of 500,000 values, where the first version was technically limited to a max of 18,700 values.
+Previous version still available here : http://www.briandunning.com/cf/747
+
+The new CustomList() is faster and still is NOT recursive.
+The arguments are unchanged which makes it compatible with all your previous developments involving CustomList().
+
+For Developper ease, the new CustomList() includes a debugging mode.
+find the "*****DEBUGGING MODE*****" tag in the formula below to switch mode.
+When debug is set to 1, any error will be returned with its appropriate explanatory code, else the result will be set to "?"
+-------------------------------- */
+
+// ----------- FORMULA STARTS HERE -----------
+
+Case (
+           /*This function will not evaluate if Invalid parameters were passed for Start and End.*/
+
+            IsEmpty ( Start ) or IsEmpty ( End ) or End &lt; 1 or Start &lt; 1; "";
+          
+            Let ( [
+                         Start =  GetAsNumber ( Start );
+                         End =   GetAsNumber ( End );
+                         Diff = End - Start + 1;
+                         V =  Case ( Left ( Get ( ApplicationVersion ) ; 2 ) = "Go" ; 1 ; Left ( Get ( ApplicationVersion ) ; 2 ) = "Se" ; 2 ; Left ( Get ( ApplicationVersion ) ; 2 ) = "We" ; 3 ; 0 ) ;
+                         PL = Choose ( V ; 1700  ; 400 ; 300 ; 900 ) ;
+
+                         /*Check for a range higher than 500,000 values  ( max 150000 values for FmGo and 120000 for FmS and 250000 for IWP ).
+                          For FMPro/Adv, CustomList() is volontarily restrained to 500 000 but you can but you can go beyond.*/
+
+                         End =   Case ( ( Diff &gt; Choose ( V ; 500000  ; 150000 ; 120000 ; 250000 ) ) or ( End &lt; Start ) or IsEmpty ( Start ) or IsEmpty ( End ); "Error"; End );
+                         $null = "\"\"";
+
+                         /*CustomList has its own recursion model. As CustomList may be involved into the "function" argument, 
+                         each CustomList expression used is passed to a repeating variable for evaluation*/
+
+                         iter = Let ( $CLExeCount = $CLExeCount + 1 ; $CLExeCount &amp; PatternCount ( Function ; "CustomList" ) + 1 ) ;
+                         $CLn[ iter ]  = Start - 1;
+
+                         Calc = Case ( Diff ≥ ( PL - 10 ) ; ( PL / 10 )  ; Floor ( Diff / 10 ) + 1 );
+
+                         /*Here starts the "magic" of the Substitutions and the whole mechanism.
+                         CustomList() is set to evaluate stacks of 1,700 values at a time ( 400 for FileMakerGo), which is the 
+                         current limit of FileMaker internal Evaluate function */
+
+                         First = Substitute ( ( 10 ^ Calc ) - 1; 9; "__________" ) ;  
+                         X = Floor ( Diff / PL );
+                         $CLRemainder[ iter ]  = Diff - ( X * PL );
+
+                         /*When the "Function" argument is left empty, CustomList() will return a numeric list based on the range defined */
+
+                         FunctionR = Case ( IsEmpty ( Function ); "CLNum"; Substitute ( Function; ["[n]"; "CLNum"] ; [¶ ; ""] ) );
+
+                         /*Each repeating variable content is parsed in order to get our String ready for the last evaluation - Special care is made for
+                         French users here, please substitute the "definir" below with your local translation of the "Let" function if you're not using an english
+                         version. The use of "Let ([" is recommanded anyway */
+
+                         $CLExecute[ iter ] = Case ( Left ( Substitute ( Lower ( Function ); ["definir"; "Let" ]; [" "; ""]; ["¶"; ""]); 5 ) = "Let([";
+                                            Substitute (  First ; [ "_";  "Let([$CLn[" &amp; iter &amp; "]=$CLn[" &amp; iter &amp; "]+1;CLNum=$CLn[" &amp; iter &amp; "];" &amp;
+                                            Replace ( FunctionR; 1; Position ( FunctionR; "["; 1; 1 ); "" ) &amp; "&amp;\¶&amp;¶"] );
+                                            Substitute ( First ; [ "_";  "Let([$CLn[" &amp; iter &amp; "]=$CLn[" &amp; iter &amp; "]+1;CLNum=$CLn[" &amp; iter &amp; "]];" &amp; FunctionR &amp; ")&amp;\¶&amp;¶"] ) );
+
+                         /*Final compilation starts here. The reminder part above each 1,700 values is treated now. */
+  
+                          Final = Case ( X &gt; 0; Substitute ( ( 10 ^ X ) - 1; 9; "Evaluate ( $CLExecute[" &amp; iter &amp; "] &amp; $null ) &amp; " ) ) &amp;
+                                      "Evaluate( LeftValues ( $CLExecute[" &amp; iter &amp; "] ; $CLRemainder[" &amp; iter &amp; "]  ) &amp; $null ) &amp; " &amp; $null;
+
+                         /*The Final variable can now be evaluated to get our List*/
+
+                          Result  =   Case ( End &lt;&gt; "Error"; Substitute ( "#^#" &amp; Evaluate  ( Final ) &amp; "#^#";
+                                           [ "#^#|#^#"; "¶" ]; [ "¶"; "¶#^#" ]; [ "#^#¶"; "" ]; [ "¶#^#"; "¶" ]; [ "¶#^#"; "" ]; [ "#^#"; "" ] ) ) ;
+                          $CLExecute[ iter ]  = "" 
+
+// ----------- FUNCTION RESULT BELOW -----------
+            ];
+/*CustomList returns either the valid result, or an error formatted according to the debugging mode chosen above*/
+
+     Case (
+          ( Length ( Result ) and ( Result = Filter ( Result; "?" ))) or End =  "Error";
+          Let ([
+                    /*****DEBUGGING MODE*****/   // Case Debug = 1, returned error "[error_CL], Number, Name and Calculation error" ,if Debug  &lt;&gt; 1, returned error is "?"
+                    Debug = "1";
+                    Write = Substitute ( Function; "[n]"; 1 ); NumError = EvaluationError ( Evaluate ( Write ) );
+                    Error = "[" &amp; NumError &amp; "] " &amp; "Unlisted error | Unknown error, check calculation or check \"Start\" and \"End\" ¶102 | Field is missing¶103 | Relationship is missing¶106 | Table is missing¶113 | Function is missing¶1204 | Number, text constant, field name or \"(\" expected¶1205 | Comment is not terminated with \"*/\"¶1206 | Text constant must end with a quotation mark¶1207 | Unbalanced parenthesis¶1208 | Operator or function missing or \"(\" not expected¶1211 | List usage is not allowed in this function¶1212 | An operator (for example, +, -, *,;) is expected here¶1215 | This parameter is an invalid Get function parameter";
+                    Pos = ValueCount ( Left ( Error; Position ( Error; NumError &amp; " "; 1; 1 ) ) )
+     ];
+          Case ( Debug = 1; "[Error_CL]  | Return error : " &amp; GetValue ( Error; Case ( Pos = 0; 1; Pos ) ) &amp; ¶ &amp; TextStyleAdd ( "Calculation ( for [n] = 1 ) : "; Bold ) &amp; Write; "?" ));
+  Result ))
+)
+
+// ----------- UNDER THE HOOD -----------
+
+/* Not very much afterwards...
+Basically, CustomList() does two things :
+1/ Transform your formula in a litteral chain :
+
+CustomList ( 1; 4; "GetNthRecord ( Field ; [n])")
+therefore becomes
+"Let ([ CLNum = 1 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 2 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 3 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 4 ] ; GetNthRecord ( Field ; CLNum ))"
+
+2/ Evaluates this chain.
+
+Interrested in the mechanism ?
+My advice then : dissect this function by escaping the 'Result' and placing one of the numerous intermediary variables available.
+Special attention should be paid to the 'First' Variable, everything starts from there !
+*/</Calculation></CustomFunction><CustomFunction id="3" functionArity="1" visible="True" parameters="decimal" name="Dec2Bin"><Calculation>If (
+	decimal ≤ 1 ;
+	decimal ;
+	Let ( [
+			Bin = Mod ( decimal ; 2 ) ;
+			Bin2 = Dec2Bin ( Floor ( decimal / 2 ) )
+		] ;
+		Bin2 &amp; Bin
+	)
+)</Calculation></CustomFunction><CustomFunction id="36" functionArity="2" visible="True" parameters="lst;value" name="DeleteValue"><Calculation>Let ([
+	sub	= Substitute (
+			"¶" &amp; lst &amp; "¶"
+		; [ "¶" &amp; value &amp; "¶" ; "¶" ]
+		)
+];
+Replace (
+	Replace (
+		sub
+	; 0 ; 1 ; "" )
+; Length ( sub ) - 1 ; 1 ; "" )
+)</Calculation></CustomFunction><CustomFunction id="37" functionArity="0" visible="True" parameters="" name="device.isAndroid"><Calculation>Get ( Device ) = 5</Calculation></CustomFunction><CustomFunction id="38" functionArity="0" visible="True" parameters="" name="device.isPad"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "iPad" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="39" functionArity="0" visible="True" parameters="" name="device.isPhone"><Calculation>	(	app.isGo
+	and	not device.isPad
+	)
+or	Get ( Device ) = 4</Calculation></CustomFunction><CustomFunction id="52" functionArity="3" visible="True" parameters="XML;Attribute;Instance" name="ExtractData"><Calculation>// ExtractData ( XML ; Attribute ; Instance )
+// Created by Andy Knasinski, NRG Software
+
+Let ( [ 
+XML_Length = Length ( XML ) ; 
+Attribute_Length = Length ( Attribute ) ; 
+Get_Instance = If ( IsEmpty ( Instance ) ; 1 ; Instance ) 
+]; 
+Case(
+IsEmpty ( XML ) or IsEmpty ( attribute ) or PatternCount ( xml ; "&lt;" &amp; attribute &amp; "&gt;" ) = 0 ; "" ;
+Middle ( XML ; Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + attribute_length + 2 ; 
+xml_length - ( xml_length - Position ( XML ; "&lt;/" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) ) - ( Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + Attribute_Length + 2 ) )
+) )</Calculation></CustomFunction><CustomFunction id="40" functionArity="0" visible="True" parameters="" name="file.isServed"><Calculation>PatternCount ( Get ( HostApplicationVersion ) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="53" functionArity="2" visible="True" parameters="A;B" name="FilterValues.diff"><Calculation>//all A not in B
+FilterValues.diff.sub ( A ; B ; ValueCount ( A ) )</Calculation></CustomFunction><CustomFunction id="54" functionArity="3" visible="True" parameters="A;B;i" name="FilterValues.diff.sub"><Calculation>Let ([
+	this = GetValue ( A ; i )
+;	out = Case ( not ValueCount ( FilterValues ( this ; B ) ) ; this ; "" )
+];
+	Case ( i ; List ( FilterValues.diff.sub ( A ; B ; i - 1 ) ; out ) ; out )
+)</Calculation></CustomFunction><CustomFunction id="41" functionArity="1" visible="True" parameters="path" name="gc.get"><Calculation>Let ([b=""
+;	raw	= JSONGetElement ( $$_globalConfig ; path )
+
+;	err	= Case ( Left ( raw ; 1) = "?" ; "" ; raw )
+];
+err
+)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="55" functionArity="2" visible="True" parameters="theModifierKeys;ignoreCapsLock" name="KeysDown"><Calculation>Let (
+activeModifierKeys = Get ( ActiveModifierKeys ) ;
+
+( ( activeModifierKeys = 0 ) xor ( theModifierKeys ≠ "" ) ) and
+( Mod ( activeModifierKeys ; 2 ) xor not PatternCount ( theModifierKeys ; "shift" ) ) and
+If ( not ignoreCapsLock ; ( Mod ( Int ( activeModifierKeys / 2 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "capslock" ) ) ; True ) and
+( Mod ( Int ( activeModifierKeys / 4 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "ctrl" ) ) and
+( Mod ( Int ( activeModifierKeys / 8 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "alt" ) ) and
+( Mod ( Int ( activeModifierKeys / 16 ) ; 2 ) xor not PatternCount ( theModifierKeys ; "command" ) )
+)</Calculation></CustomFunction><CustomFunction id="44" functionArity="0" visible="True" parameters="" name="os.isOSX"><Calculation>Get ( Device ) = 1</Calculation></CustomFunction><CustomFunction id="45" functionArity="0" visible="True" parameters="" name="os.isWindows"><Calculation>Get ( Device ) = 2</Calculation></CustomFunction><CustomFunction id="46" functionArity="2" visible="True" parameters="field;desired" name="ParseFieldName"><Calculation>Let ([
+	fieldName		= Substitute ( GetFieldName ( field ) ; "::" ; "¶" )
+;	tableAvailable	= ValueCount ( fieldName ) &gt; 1
+;	output		=
+		Case (
+			desired = "table"
+		and	tableAvailable
+		;	GetValue ( fieldname ; 1 )
+		;	desired = "field"
+		;		GetValue ( fieldName ; 1 + tableAvailable )
+		;	""
+		)
+];
+	Case ( $_parseFieldName.config.return.noQuotes ; output ; Quote ( output ) )
+)</Calculation></CustomFunction><CustomFunction id="47" functionArity="5" visible="True" parameters="direction;pattern;replaceChar;value;pad?" name="Patternize"><Calculation>Let ([
+	rtl		= Lower ( direction ) = "rtl"
+;	prl		= Length ( pattern ) - 1
+;	patternChar	= Middle ( pattern ; 1 + prl*rtl; 1 )
+;	patternRemains	= Middle ( pattern ; 2-1*rtl ; prl )
+
+;	useValueChar	= not IsEmpty ( Filter ( replaceChar ; patternChar ) )
+;	vrl		= Length ( value ) - useValueChar
+;	valueChar	= Middle ( value ; 1 + vrl*rtl ; 1 )
+;	valueRemains	= Middle ( value ; 1+1*useValueChar-1*rtl ; vrl )
+
+;	thisChar		= Case (
+				useValueChar
+			;		valueChar
+			;	patternChar
+			)
+];
+	Case ( not rtl ; thisChar ) &amp; 
+		Case (
+			prl and vrl
+		;		Patternize (
+					direction
+				;	patternRemains
+				;	replaceChar
+				;	valueRemains
+				;	pad?
+				)
+		;	vrl and pad?
+		;		valueRemains
+		;	prl and pad?
+		;		patternRemains
+		)
+	&amp; Case ( rtl ; thisChar )
+)</Calculation></CustomFunction><CustomFunction id="48" functionArity="4" visible="True" parameters="text;searchValue;start;occurrence" name="PositionValues"><Calculation>Let ( adjustedText = "¶"  &amp; text &amp; "¶" ;
+
+If (
+Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) = 0 ; 0 ;
+ValueCount ( Left ( text ; (Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) - 1) + Length ( searchValue ) ) )
+)
+)</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="lst;value" name="ToggleValue"><Calculation>Case (
+	ValueCount ( FilterValues ( lst ; value ) )
+;		DeleteValue ( lst ; value )
+;	List ( lst ; value )
+)</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction><CustomFunction id="24" functionArity="1" visible="True" parameters="WindowTitle" name="Win.ID"><Calculation>Bin2Dec (
+	Substitute (
+		Filter ( Get(WindowName) ; Char ( 8203 ) &amp; Char ( 65279 ) ) 
+  ; [ Char ( 8203 ) ; 0 ] ; [ Char ( 65279 ) ; 1 ]
+	)
+)
+
+
+
+/* OLD METHOD
+Let([
+~winNameID = If( IsEmpty( WindowTitle ) ; Get(WindowName) ; WindowTitle ) ;
+~winID = Filter ( ~winNameID ;  Char ( 8203 ) &amp; Char ( 65279 ) ) ;
+~idBin = Substitute ( ~winID 
+; [ Char ( 8203 ) ; 0 ]  
+; [ Char ( 65279 ) ; 1 ]
+) ;
+~id = Bin2Dec( ~idbin )
+
+];
+
+~id
+)
+*/</Calculation></CustomFunction><CustomFunction id="26" functionArity="1" visible="True" parameters="WindowID" name="Win.Name"><Calculation>Let([
+
+~winName = JSONGetElement ( $$WINDOW.JSON ; "[" &amp; WindowID &amp; "].name" ) ;
+~id = Substitute ( Dec2Bin ( WindowID  ) 
+ ; [ 0 ; Char ( 8203 ) ]
+ ; [ 1 ; Char ( 65279 ) ]
+ )
+
+];
+~winName &amp; ~id
+)</Calculation></CustomFunction><CustomFunction id="25" functionArity="2" visible="True" parameters="WindowNameOld;WindowNameNew" name="Win.NewName"><Calculation>/*
+This is designed for use with the Set Window Title script step to ensure that the $$WINDOW.JSON is updated correctly and that each window keeps it's unique invisible binary id
+*/
+
+Let([
+~nameID = If( IsEmpty( WindowNameOld ) ; Get(WindowName) ; WindowNameOld ) ;
+~windowID = Win.ID( ~nameID ) ;
+~id = Filter ( ~NameID ;  Char ( 8203 ) &amp; Char ( 65279 ) ) ;
+~newName = Substitute ( WindowNameNew ; ~id ;"" ) ;
+~newNameID =  ~newName &amp; ~id ;
+
+$$WINDOW.JSON = JSONFormatElements ( 
+JSONSetElement ( $$WINDOW.JSON 
+; [ "[" &amp; ~windowID &amp; "].name" ; ~NewName ; JSONString ] 
+))
+
+];
+~NewNameID
+)</Calculation></CustomFunction><CustomFunction id="56" functionArity="2" visible="True" parameters="_xml;_tag" name="xmlGet"><Calculation>/* 
+xmlGet ( _xml ; _tag )
+
+by Fabrice Nordmann, BH&amp;A
+v4, Feb 2008
+
+generic xml tag extractor
+---
+v4 Feb 2008. Doesn't handle LayoutProperties anymore (LayoutProperties must now be passed in _xml parameter)
+v3 Dec 2007. Renamed xmlGet (was PropertyValue)
+v2.1 Aug 2007. Forces evaluation of ¶ by substitution de-substitution
+v2 May 2007
+v1 Renamed PropertyValue (was called ObjValue), and was working in a completely different way
+---
+
+READ ME (IMPORTANT)
+_xml will be parsed. This means a substract of 'XML' like code can be passed to this function.
+
+to evaluate an expression in a xml tag rather than a plain text, when xmlGet is evaluated, it must begin with "=".
+e.g :
+   "3+4"     --&gt; "3+4"
+   "=3+4"  --&gt; "7"
+
+-------------------------------------------------
+*/
+Let ([
+   _tagLength = Length ( _tag )
+ ; _tagStart = Position ( _xml ; "&lt;" &amp; _tag &amp; "&gt;" ; 1 ; 1 ) + _tagLength + 2
+ ; _tagEnd = Position ( _xml ; "&lt;/" &amp; _tag &amp; "&gt;" ; _tagStart ; 1 )
+ ; _tag = Substitute ( Middle ( _xml ; _tagStart ; _tagEnd - _tagStart ) ; ¶ ; "ïMπRößablÊsTrìNg" )
+]
+;
+Substitute ( 
+Case ( Left ( _tag ; 1 ) = "=" ;
+  Evaluate ( Replace ( _tag ; 1 ; 1 ; "" ))
+; Evaluate ( Quote ( _tag ))
+)
+; "ïMπRößablÊsTrìNg" ; ¶ )
+)
+
+// ===================================
+/*
+
+    This function is published on FileMaker Custom Functions
+    to check for updates and provide feedback and bug reports
+    please visit http://www.fmfunctions.com/fid/110
+
+    Prototype: xmlGet( _xml; _tag )
+    Function Author: Fabrice (http://www.fmfunctions.com/mid/37)
+    Last updated: 04 December 2008
+    Version: 1
+
+*/
+// ===================================</Calculation></CustomFunction><CustomFunction id="57" functionArity="3" visible="True" parameters="xml;tag;newValue" name="xmlReplaceNodeValue"><Calculation>Let ([blank=""
+;	hasInstance	= PatternCount ( tag ; "[" ) and PatternCount ( tag ; "]" )
+;	tagPieces	= Substitute ( tag ; [ "[" ; "¶" ] ; [ "]" ; "¶" ] )
+;	tagRaw		= GetValue ( tagPieces ; 1 )
+;	instance		= Case ( hasInstance ; GetValue ( tagPieces ; 2 ) ; 1 )
+;	tagOpen	= "&lt;" &amp; tagRaw &amp; "&gt;"
+;	tagClose	= Replace ( tagOpen ; 2 ; 0 ; "/" )
+;	numStart	= Position ( xml ; tagOpen ; 1 ; instance ) + Length ( tagOpen )
+;	numEnd		= Position ( xml ; tagClose ; tagClose ; 1 )
+;	output		= Replace ( xml ; numStart ; numEnd - numStart ; newValue )
+];
+output
+)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

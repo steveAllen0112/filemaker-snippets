@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName><![CDATA[FileMaker Pro Advanced]]></SourceWindowName><Class>XMSS</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637299414</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[#TODO: set pre-loop conditions
+Loop
+	#TODO: set every loop initial conditions
+	#
+	Pause/Resume Script [Indefinitely]
+	Set Variable [$r; Value:Get ( ScriptResult )]
+	#
+	Set Variable [$action; Value:Lower ( JSONGetElement ( $r ; "action" ) )]
+	#
+	Exit Loop If [$action = "cancel"]
+	#
+	If [0]
+	Else If [$action = "continue"]
+		#TODO: Set up after-continue actions
+		Exit Loop If [True]
+	End If
+	#
+End Loop
+#TODO: Set post-loop conditions
+#
+If [0]
+	#TODO: set up after loop conditional actions
+Else If [$action = "cancel"]
+Else If [$action <> "cancel"]
+Else If [$action = "continue"]
+End If
+#TODO: set up after loop unconditional actions
+#]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><Step enable="True" id="89" name="# (comment)"><Text>TODO: set pre-loop conditions</Text></Step><Step enable="True" id="71" name="Loop"/><Step enable="True" id="89" name="# (comment)"><Text>TODO: set every loop initial conditions</Text></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="62" name="Pause/Resume Script"><PauseTime value="Indefinitely"/></Step><Step enable="True" id="141" name="Set Variable"><Value><Calculation>Get ( ScriptResult )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$r</Name></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="141" name="Set Variable"><Value><Calculation>Lower ( JSONGetElement ( $r ; "action" ) )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$action</Name></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="72" name="Exit Loop If"><Calculation>$action = "cancel"</Calculation></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="68" name="If"><Calculation>0</Calculation></Step><Step enable="True" id="125" name="Else If"><Calculation>$action = "continue"</Calculation></Step><Step enable="True" id="89" name="# (comment)"><Text>TODO: Set up after-continue actions</Text></Step><Step enable="True" id="72" name="Exit Loop If"><Calculation>True</Calculation></Step><Step enable="True" id="70" name="End If"/><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="73" name="End Loop"/><Step enable="True" id="89" name="# (comment)"><Text>TODO: Set post-loop conditions</Text></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="68" name="If"><Calculation>0</Calculation></Step><Step enable="True" id="89" name="# (comment)"><Text>TODO: set up after loop conditional actions</Text></Step><Step enable="True" id="125" name="Else If"><Calculation>$action = "cancel"</Calculation></Step><Step enable="True" id="125" name="Else If"><Calculation>$action &lt;&gt; "cancel"</Calculation></Step><Step enable="True" id="125" name="Else If"><Calculation>$action = "continue"</Calculation></Step><Step enable="True" id="70" name="End If"/><Step enable="True" id="89" name="# (comment)"><Text>TODO: set up after loop unconditional actions</Text></Step><Step enable="True" id="89" name="# (comment)"/></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

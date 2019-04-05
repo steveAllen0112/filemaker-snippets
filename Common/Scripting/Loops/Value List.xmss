@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[Replace $vlist with ${yourVariableNameHere} before Setting to clipboard.]]></Comment><SourceWindowName><![CDATA[FileMaker Pro Advanced]]></SourceWindowName><Class>XMSS</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637297179</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[Set Variable [$vlist]
+Set Variable [$i; Value:0]
+Set Variable [$vlist.size; Value:ValueCount ( $vlist )]
+#
+Loop
+	Set Variable [$i; Value:$i + 1]
+	Exit Loop If [$i > $vlist.size]
+	#
+	Set Variable [$vlist.item; Value:GetValue ( $vlist ; $i )]
+	#
+End Loop]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><Step enable="True" id="141" name="Set Variable"><Repetition><Calculation>1</Calculation></Repetition><Name>$vlist</Name></Step><Step enable="True" id="141" name="Set Variable"><Value><Calculation>0</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$i</Name></Step><Step enable="True" id="141" name="Set Variable"><Value><Calculation>ValueCount ( $vlist )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$vlist.size</Name></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="71" name="Loop"/><Step enable="True" id="141" name="Set Variable"><Value><Calculation>$i + 1</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$i</Name></Step><Step enable="True" id="72" name="Exit Loop If"><Calculation>$i &gt; $vlist.size</Calculation></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="141" name="Set Variable"><Value><Calculation>GetValue ( $vlist ; $i )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$vlist.item</Name></Step><Step enable="True" id="89" name="# (comment)"/><Step enable="True" id="73" name="End Loop"/></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
