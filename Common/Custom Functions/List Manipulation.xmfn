@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[AddValue( lst;value )
+CustomList( Start;End;Function )
+DeleteValue( lst;value )
+FilterValues.diff( A;B )
+FilterValues.diff.sub( A;B;i )
+PositionValues( text;searchValue;start;occurrence )
+ToggleValue( lst;value )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="30" functionArity="2" visible="True" parameters="lst;value" name="AddValue"><Calculation>Case (
+not	ValueCount ( FilterValues ( lst ; value ) )
+;	List ( lst ; value )
+)</Calculation></CustomFunction><CustomFunction id="4" functionArity="3" visible="True" parameters="Start;End;Function" name="CustomList"><Calculation>/*       Special Thanks to Ugo Di Luca - Grazie Mille, pour l'aiguillage qu'il m'a fait prendre,
+                          Thank you for all his comments and his notice  ®  Ugo Di Luca 
+===========================================================
+
+//   Author: Agnès Barouh - filemaker@tictac.fr
+
+//   CustomList ( Start ; End ; Function )  v_4.8
+// [please, do not used "CLNum" in your calculation with Let() ]
+//   Objectives and examples  :
+
+- Build any list based on all Native or Custom Functions involving a 'Number' value as a parameter, such as :
+Left(), Middle(), GetValue(), GetRepetitionNumber (),  GetNthRecord(), GetLayoutObjectAttribute () ...
+ex : - CustomList ( 1 ; Get ( FoundCount ) ; "GetNthRecord ( FirstName ; [n] )" ) 
+will return James¶Henry¶Susan if your foundset has 3 records.
+
+- Build any range based on Dates, Times, TimeStamps, and obviously Numbers
+ex : CustomList ( 1 ; 5 ; "GetAsDate ( StartingDate ) + [n]" )
+will return a range of 5 dates starting from the specified StartingDate
+
+The 'Function' Parameter is nothing else than a litteral calculation expression. 
+Therefore, CustomList allows for any filtering or parsing process based on any condition you may need.
+ex : CustomList ( 10 ; 100 ; "Let ( [ Value = GetValue ( MyList ; [n] ) ] ; Case ( PatternCount ( Value ; "X" ) ; Value ))" )
+will parse any value containing a "X" in  the 'MyList' chain, in between the 10th and the 100th values.
+
+See the 'Under the Hood' part at the end of the function to fully understand the process of this function
+
+--------------------------------
+/* MAJOR UPDATE */  Updated July'08
+/* UPDATE */  Updated August'10 for adapte to FileMakerGo
+/* UPDATE */  Updated November'11 for adapte to FileMakerServer
+/* UPDATE */  Updated November'12 for adapte to FileMaker IWP
+
+
+--------------------------------
+
+CustomList is based on a totally new algorithm, and is now volontarily bridled to a maximum range of 500,000 values, where the first version was technically limited to a max of 18,700 values.
+Previous version still available here : http://www.briandunning.com/cf/747
+
+The new CustomList() is faster and still is NOT recursive.
+The arguments are unchanged which makes it compatible with all your previous developments involving CustomList().
+
+For Developper ease, the new CustomList() includes a debugging mode.
+find the "*****DEBUGGING MODE*****" tag in the formula below to switch mode.
+When debug is set to 1, any error will be returned with its appropriate explanatory code, else the result will be set to "?"
+-------------------------------- */
+
+// ----------- FORMULA STARTS HERE -----------
+
+Case (
+           /*This function will not evaluate if Invalid parameters were passed for Start and End.*/
+
+            IsEmpty ( Start ) or IsEmpty ( End ) or End &lt; 1 or Start &lt; 1; "";
+          
+            Let ( [
+                         Start =  GetAsNumber ( Start );
+                         End =   GetAsNumber ( End );
+                         Diff = End - Start + 1;
+                         V =  Case ( Left ( Get ( ApplicationVersion ) ; 2 ) = "Go" ; 1 ; Left ( Get ( ApplicationVersion ) ; 2 ) = "Se" ; 2 ; Left ( Get ( ApplicationVersion ) ; 2 ) = "We" ; 3 ; 0 ) ;
+                         PL = Choose ( V ; 1700  ; 400 ; 300 ; 900 ) ;
+
+                         /*Check for a range higher than 500,000 values  ( max 150000 values for FmGo and 120000 for FmS and 250000 for IWP ).
+                          For FMPro/Adv, CustomList() is volontarily restrained to 500 000 but you can but you can go beyond.*/
+
+                         End =   Case ( ( Diff &gt; Choose ( V ; 500000  ; 150000 ; 120000 ; 250000 ) ) or ( End &lt; Start ) or IsEmpty ( Start ) or IsEmpty ( End ); "Error"; End );
+                         $null = "\"\"";
+
+                         /*CustomList has its own recursion model. As CustomList may be involved into the "function" argument, 
+                         each CustomList expression used is passed to a repeating variable for evaluation*/
+
+                         iter = Let ( $CLExeCount = $CLExeCount + 1 ; $CLExeCount &amp; PatternCount ( Function ; "CustomList" ) + 1 ) ;
+                         $CLn[ iter ]  = Start - 1;
+
+                         Calc = Case ( Diff ≥ ( PL - 10 ) ; ( PL / 10 )  ; Floor ( Diff / 10 ) + 1 );
+
+                         /*Here starts the "magic" of the Substitutions and the whole mechanism.
+                         CustomList() is set to evaluate stacks of 1,700 values at a time ( 400 for FileMakerGo), which is the 
+                         current limit of FileMaker internal Evaluate function */
+
+                         First = Substitute ( ( 10 ^ Calc ) - 1; 9; "__________" ) ;  
+                         X = Floor ( Diff / PL );
+                         $CLRemainder[ iter ]  = Diff - ( X * PL );
+
+                         /*When the "Function" argument is left empty, CustomList() will return a numeric list based on the range defined */
+
+                         FunctionR = Case ( IsEmpty ( Function ); "CLNum"; Substitute ( Function; ["[n]"; "CLNum"] ; [¶ ; ""] ) );
+
+                         /*Each repeating variable content is parsed in order to get our String ready for the last evaluation - Special care is made for
+                         French users here, please substitute the "definir" below with your local translation of the "Let" function if you're not using an english
+                         version. The use of "Let ([" is recommanded anyway */
+
+                         $CLExecute[ iter ] = Case ( Left ( Substitute ( Lower ( Function ); ["definir"; "Let" ]; [" "; ""]; ["¶"; ""]); 5 ) = "Let([";
+                                            Substitute (  First ; [ "_";  "Let([$CLn[" &amp; iter &amp; "]=$CLn[" &amp; iter &amp; "]+1;CLNum=$CLn[" &amp; iter &amp; "];" &amp;
+                                            Replace ( FunctionR; 1; Position ( FunctionR; "["; 1; 1 ); "" ) &amp; "&amp;\¶&amp;¶"] );
+                                            Substitute ( First ; [ "_";  "Let([$CLn[" &amp; iter &amp; "]=$CLn[" &amp; iter &amp; "]+1;CLNum=$CLn[" &amp; iter &amp; "]];" &amp; FunctionR &amp; ")&amp;\¶&amp;¶"] ) );
+
+                         /*Final compilation starts here. The reminder part above each 1,700 values is treated now. */
+  
+                          Final = Case ( X &gt; 0; Substitute ( ( 10 ^ X ) - 1; 9; "Evaluate ( $CLExecute[" &amp; iter &amp; "] &amp; $null ) &amp; " ) ) &amp;
+                                      "Evaluate( LeftValues ( $CLExecute[" &amp; iter &amp; "] ; $CLRemainder[" &amp; iter &amp; "]  ) &amp; $null ) &amp; " &amp; $null;
+
+                         /*The Final variable can now be evaluated to get our List*/
+
+                          Result  =   Case ( End &lt;&gt; "Error"; Substitute ( "#^#" &amp; Evaluate  ( Final ) &amp; "#^#";
+                                           [ "#^#|#^#"; "¶" ]; [ "¶"; "¶#^#" ]; [ "#^#¶"; "" ]; [ "¶#^#"; "¶" ]; [ "¶#^#"; "" ]; [ "#^#"; "" ] ) ) ;
+                          $CLExecute[ iter ]  = "" 
+
+// ----------- FUNCTION RESULT BELOW -----------
+            ];
+/*CustomList returns either the valid result, or an error formatted according to the debugging mode chosen above*/
+
+     Case (
+          ( Length ( Result ) and ( Result = Filter ( Result; "?" ))) or End =  "Error";
+          Let ([
+                    /*****DEBUGGING MODE*****/   // Case Debug = 1, returned error "[error_CL], Number, Name and Calculation error" ,if Debug  &lt;&gt; 1, returned error is "?"
+                    Debug = "1";
+                    Write = Substitute ( Function; "[n]"; 1 ); NumError = EvaluationError ( Evaluate ( Write ) );
+                    Error = "[" &amp; NumError &amp; "] " &amp; "Unlisted error | Unknown error, check calculation or check \"Start\" and \"End\" ¶102 | Field is missing¶103 | Relationship is missing¶106 | Table is missing¶113 | Function is missing¶1204 | Number, text constant, field name or \"(\" expected¶1205 | Comment is not terminated with \"*/\"¶1206 | Text constant must end with a quotation mark¶1207 | Unbalanced parenthesis¶1208 | Operator or function missing or \"(\" not expected¶1211 | List usage is not allowed in this function¶1212 | An operator (for example, +, -, *,;) is expected here¶1215 | This parameter is an invalid Get function parameter";
+                    Pos = ValueCount ( Left ( Error; Position ( Error; NumError &amp; " "; 1; 1 ) ) )
+     ];
+          Case ( Debug = 1; "[Error_CL]  | Return error : " &amp; GetValue ( Error; Case ( Pos = 0; 1; Pos ) ) &amp; ¶ &amp; TextStyleAdd ( "Calculation ( for [n] = 1 ) : "; Bold ) &amp; Write; "?" ));
+  Result ))
+)
+
+// ----------- UNDER THE HOOD -----------
+
+/* Not very much afterwards...
+Basically, CustomList() does two things :
+1/ Transform your formula in a litteral chain :
+
+CustomList ( 1; 4; "GetNthRecord ( Field ; [n])")
+therefore becomes
+"Let ([ CLNum = 1 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 2 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 3 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 4 ] ; GetNthRecord ( Field ; CLNum ))"
+
+2/ Evaluates this chain.
+
+Interrested in the mechanism ?
+My advice then : dissect this function by escaping the 'Result' and placing one of the numerous intermediary variables available.
+Special attention should be paid to the 'First' Variable, everything starts from there !
+*/</Calculation></CustomFunction><CustomFunction id="36" functionArity="2" visible="True" parameters="lst;value" name="DeleteValue"><Calculation>Let ([
+	sub	= Substitute (
+			"¶" &amp; lst &amp; "¶"
+		; [ "¶" &amp; value &amp; "¶" ; "¶" ]
+		)
+];
+Replace (
+	Replace (
+		sub
+	; 0 ; 1 ; "" )
+; Length ( sub ) - 1 ; 1 ; "" )
+)</Calculation></CustomFunction><CustomFunction id="53" functionArity="2" visible="True" parameters="A;B" name="FilterValues.diff"><Calculation>//all A not in B
+FilterValues.diff.sub ( A ; B ; ValueCount ( A ) )</Calculation></CustomFunction><CustomFunction id="54" functionArity="3" visible="True" parameters="A;B;i" name="FilterValues.diff.sub"><Calculation>Let ([
+	this = GetValue ( A ; i )
+;	out = Case ( not ValueCount ( FilterValues ( this ; B ) ) ; this ; "" )
+];
+	Case ( i ; List ( FilterValues.diff.sub ( A ; B ; i - 1 ) ; out ) ; out )
+)</Calculation></CustomFunction><CustomFunction id="48" functionArity="4" visible="True" parameters="text;searchValue;start;occurrence" name="PositionValues"><Calculation>Let ( adjustedText = "¶"  &amp; text &amp; "¶" ;
+
+If (
+Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) = 0 ; 0 ;
+ValueCount ( Left ( text ; (Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) - 1) + Length ( searchValue ) ) )
+)
+)</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="lst;value" name="ToggleValue"><Calculation>Case (
+	ValueCount ( FilterValues ( lst ; value ) )
+;		DeleteValue ( lst ; value )
+;	List ( lst ; value )
+)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
