@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[app.isGo(  )
+app.isPro(  )
+app.isServer(  )
+app.isWD(  )
+app.isWPE(  )
+device.isAndroid(  )
+device.isPad(  )
+device.isPhone(  )
+file.isServed(  )
+gc.get( path )
+gc.set( path;value;type )
+os.isOSX(  )
+os.isWindows(  )
+screen.isSmall(  )
+user.hasFullAccess(  )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="37" functionArity="0" visible="True" parameters="" name="device.isAndroid"><Calculation>Get ( Device ) = 5</Calculation></CustomFunction><CustomFunction id="38" functionArity="0" visible="True" parameters="" name="device.isPad"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "iPad" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="39" functionArity="0" visible="True" parameters="" name="device.isPhone"><Calculation>	(	app.isGo
+	and	not device.isPad
+	)
+or	Get ( Device ) = 4</Calculation></CustomFunction><CustomFunction id="40" functionArity="0" visible="True" parameters="" name="file.isServed"><Calculation>PatternCount ( Get ( HostApplicationVersion ) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="41" functionArity="1" visible="True" parameters="path" name="gc.get"><Calculation>Let ([b=""
+;	raw	= JSONGetElement ( $$_globalConfig ; path )
+
+;	err	= Case ( Left ( raw ; 1) = "?" ; "" ; raw )
+];
+err
+)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="44" functionArity="0" visible="True" parameters="" name="os.isOSX"><Calculation>Get ( Device ) = 1</Calculation></CustomFunction><CustomFunction id="45" functionArity="0" visible="True" parameters="" name="os.isWindows"><Calculation>Get ( Device ) = 2</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
