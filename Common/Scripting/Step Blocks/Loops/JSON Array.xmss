@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[Replace $vlist with ${yourVariableNameHere} before Setting to clipboard.]]></Comment><SourceWindowName><![CDATA[FileMaker Pro Advanced]]></SourceWindowName><Class>XMSS</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637297179</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[####
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[Before Set to Clipboard:1) Replace $jarray.item with your item variable name.2) Replace $jarray with your array variable name.3) Replace $i with your iterator variable name.]]></Comment><SourceWindowName><![CDATA[FileMaker Pro Advanced]]></SourceWindowName><Class>XMSS</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637297179</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[####
 # Loop Over JSON Array contained in $jarray
 #   TODO: Why?
 ####
