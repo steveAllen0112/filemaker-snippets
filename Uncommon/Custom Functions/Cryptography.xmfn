@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[ChaosDecrypt( cipherText;key )
+ChaosEncrypt( text;key )
+ChaosHash( text;hashLength )
+MD5( words;len )
+MD5Hash( data )
+MD5_calc( a;b;c;d;x;i )
+MD5_cmn( q;a;b;x;s;t )
+MD5_ff( a;b;c;d;x;s;t )
+MD5_gg( a;b;c;d;x;s;t )
+MD5_hh( a;b;c;d;x;s;t )
+MD5_ii( a;b;c;d;x;s;t )
+MD5_str2values( text )
+MD5_values2hex( number )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="53" functionArity="2" visible="True" parameters="cipherText;key" name="ChaosDecrypt"><Calculation>/**
+ * =====================================
+ * ChaosDecrypt ( cipherText ; key )
+ *
+ * WARNING:
+ * Different versions of the ChaosEncrypt and ChaosDecrypt functions are
+ * unlikely to be compatible.
+ *
+ * PURPOSE:
+ * Uses chaotic permutations of the key to create an decrypted version of
+ * cipherText that was created by the ChaosEncrypt() function. This function
+ * uses a psuedo-chaotic stream cipher algorithm adapted to the constraints of
+ * FileMaker custom functions.
+ *
+ * PARAMETERS:
+ * cipherText: The text string to decrypt
+ * key: The key to used to encrypt cipherText
+ *
+ * RETURNS:
+ * A decrypted version of cipherText.
+ *
+ * NOTES:
+ * This function has not been subjected to rigorous cryptanalysis, and the
+ * author does not warranty the security of encrypted text.
+ *
+ * This is a recursive custom function, and hence is limited in the maximum
+ * combined length of text and key that it can decrypt.
+ *
+ * HISTORY:
+ * MODIFIED on 2011-01-23 by Jeremy Bante to account for composite
+ * characters.
+ * MODIFIED on 2011-01-14 by Jeremy Bante to use a different map and
+ * systematically perturbed orbits.
+ * MODIFIED on 2011-01-09 by Jeremy Bante to use a different chaotic
+ * map that results in greater diffusion and faster calculation.
+ * MODIFIED on 2011-01-05 by Jeremy Bante to use a different chaotic
+ * map when transforming the key.
+ * CREATED on 2011-01-04 by Jeremy Bante of The Support Group.
+ *
+ * REFERENCES:
+ * ChaosDecrypt function: http://www.briandunning.com/cf/1259
+ * ChaosEncrypt function: http://www.briandunning.com/cf/1258
+ * ChaosHash function: http://www.briandunning.com/cf/1261
+ * =====================================
+ */
+ 
+Case (
+	/*First call to function; initialize variables*/
+	not $~step;
+	Let ( [
+		$~keyLength = Length ( key );
+		$~priorByte = 32749; //greatest prime &lt; 2^15
+		$~step = 1
+	];
+		ChaosDecrypt ( cipherText ; key )
+	);
+
+	/*Step 1, convert key to numbers and scramble first round*/
+	$~step = 1;
+	Let ( [
+		//extract next byte from key, accounting for composite characters
+		~keyByte = Code ( Left ( key ; 1 ) );
+		~extraByte = Left ( ~keyByte ; Length ( ~keyByte ) - 5 );
+		~keyByte = Mod ( Right ( ~keyByte ; 5 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//add new value to list
+		$~key = List ( ~keyByte ; $~key );
+		$~priorByte = ~keyByte;
+		
+		//continue until whole key is processed
+		~keyLength = Length ( key );
+		$~step = If ( ~keyLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosDecrypt (
+			cipherText;
+			Char ( ~extraByte ) &amp; Right ( key ; ~keyLength - 1 )
+		)
+	);
+	
+	/*Step 2, apply key to text*/
+	$~step = 2;
+	Let ( [
+		~keyByte = Mod ( GetValue ( $~key ; 1 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//extract next byte from cipherText, accounting for composite characters
+		~cipherByte = Code ( Left ( cipherText ; 1 ) );
+		~extraByte = Left ( ~cipherByte ; Length ( ~cipherByte ) - 5 );
+		~cipherByte = Right ( ~cipherByte ; 5 );
+		
+		//apply key to text
+		//additive complement under 2^16 is analogous to XOR in binary encryption
+		~plainByte = 65535 - Mod ( ~cipherByte + ~keyByte ; 65535 );
+		$~plainText = $~plainText &amp; Char ( ~plainByte );
+		
+		//rotate the key
+		$~priorByte = ~cipherByte;
+		$~key =
+			Substitute (
+				List ( RightValues ( $~key ; $~keyLength - 1 ) ; ~keyByte );
+				"¶¶";
+				"¶"
+			);
+
+		//continue until whole text is encrypted
+		~textLength = Length ( cipherText );
+		$~step = If ( ~textLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosDecrypt (
+			Char ( ~extraByte ) &amp; Right ( cipherText ; ~textLength - 1 );
+			""
+		)
+	);
+	
+	/*Step 3, clean-up and return result*/
+	$~step = 3;
+	Let ( [
+		~plainText = $~plainText;
+		
+		//purge variables
+		$~key = "";
+		$~keyLength = "";
+		$~plainText = "";
+		$~priorByte = "";
+		$~step = ""
+	];
+		~plainText
+	)
+)</Calculation></CustomFunction><CustomFunction id="54" functionArity="2" visible="True" parameters="text;key" name="ChaosEncrypt"><Calculation>/**
+ * =====================================
+ * ChaosEncrypt ( text ; key )
+ *
+ * WARNING:
+ * Different versions of the ChaosEncrypt and ChaosDecrypt functions are
+ * unlikely to be compatible.
+ *
+ * PURPOSE:
+ * Uses chaotic permutations of key to create an encrypted version of text that
+ * is extremely difficult to retrieve without the original key. This function
+ * uses a pseudo-chaotic stream cipher algorithm adapted to the constraints of
+ * FileMaker custom functions.
+ *
+ * PARAMETERS:
+ * text: The text string to encrypt
+ * key: The key to use to encrypt text
+ *
+ * RETURNS:
+ * An encrypted version of text.
+ *
+ * NOTES:
+ * This function has not been subjected to rigorous cryptanalysis, and the
+ * author does not warranty the security of encrypted text.
+ *
+ * This is a recursive custom function, and hence is limited in the maximum
+ * combined length of text and key that it can decrypt.
+ *
+ * HISTORY:
+ * MODIFIED on 2011-01-23 by Jeremy Bante to account for composite
+ * characters.
+ * MODIFIED on 2011-01-14 by Jeremy Bante to use a different map and
+ * systematically perturbed orbits.
+ * MODIFIED on 2011-01-09 by Jeremy Bante to use a different chaotic
+ * map that results in greater diffusion and faster calculation.
+ * MODIFIED on 2011-01-05 by Jeremy Bante to use a different chaotic
+ * map when transforming the key.
+ * CREATED on 2011-01-04 by Jeremy Bante of The Support Group.
+ *
+ * REFERENCES:
+ * ChaosDecrypt function: http://www.briandunning.com/cf/1259
+ * ChaosEncrypt function: http://www.briandunning.com/cf/1258
+ * ChaosHash function: http://www.briandunning.com/cf/1261
+ * =====================================
+ */
+
+Case (
+	/*First call to function; initialize variables*/
+	not $~step;
+	Let ( [
+		$~keyLength = Length ( key );
+		$~priorByte = 32749; //greatest prime &lt; 2^15
+		$~step = 1
+	];
+		ChaosEncrypt ( text ; key )
+	);
+
+	/*Step 1, convert key to numbers and scramble first round*/
+	$~step = 1;
+	Let ( [
+		//extract next byte from key, accounting for composite characters
+		~keyByte = Code ( Left ( key ; 1 ) );
+		~extraByte = Left ( ~keyByte ; Length ( ~keyByte ) - 5 );
+		~keyByte = Mod ( Right ( ~keyByte ; 5 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//add new value to list
+		$~key = List ( ~keyByte ; $~key );
+		$~priorByte = ~keyByte;
+		
+		//continue until whole key is processed
+		~keyLength = Length ( key );
+		$~step = If ( ~keyLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosEncrypt (
+			text;
+			Char ( ~extraByte ) &amp; Right ( key ; ~keyLength - 1 )
+		)
+	);
+	
+	/*Step 2, apply key to text*/
+	$~step = 2;
+	Let ( [
+		~keyByte = Mod ( GetValue ( $~key ; 1 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//extract next byte from text, accounting for composite characters
+		~textByte = Code ( Left ( text ; 1 ) );
+		~extraByte = Left ( ~textByte ; Length ( ~textByte ) - 5 );
+		~textByte = Right ( ~textByte ; 5 );
+
+		//apply key to text
+		//additive complement under 2^16 - 1 is analogous to XOR in binary encryption
+		~textByte = 65535 - Mod ( ~textByte + ~keyByte ; 65535 );
+		$~cipherText = $~cipherText &amp; Char ( ~textByte );
+		
+		//rotate the key
+		$~priorByte = ~textByte;
+		$~key =
+			Substitute (
+				List ( RightValues ( $~key ; $~keyLength - 1 ) ; ~keyByte );
+				"¶¶";
+				"¶"
+			);
+
+		//continue until whole text is encrypted
+		~textLength = Length ( text );
+		$~step = If ( ~textLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosEncrypt (
+			Char ( ~extraByte ) &amp; Right ( text ; ~textLength - 1 );
+			""
+		)
+	);
+	
+	/*Step 3, clean-up and return result*/
+	$~step = 3;
+	Let ( [
+		~cipherText = $~cipherText;
+		
+		//purge variables
+		$~cipherText = "";
+		$~key = "";
+		$~keyLength = "";
+		$~priorByte = "";
+		$~step = ""
+	];
+		~cipherText
+	)
+)</Calculation></CustomFunction><CustomFunction id="52" functionArity="2" visible="True" parameters="text;hashLength" name="ChaosHash"><Calculation>/**
+ * =====================================
+ * ChaosHash ( text ; hashLength )
+ *
+ * WARNING:
+ * Different versions of this function are unlikely to calculate the same
+ * results.
+ *
+ * PURPOSE:
+ * Creates a hash of the text parameter via a pseudo-chaotic process adapted to
+ * the constraints of FileMaker custom functions.
+ *
+ * PARAMETERS:
+ * text: The text string to encrypt
+ * key: The key to use to encrypt text
+ *
+ * RETURNS:
+ * An encrypted version of text.
+ *
+ * NOTES:
+ * This function has not been subjected to rigorous cryptanalysis, and the
+ * author does not warranty the security or collision resistance of results.
+ *
+ * This is a recursive custom function, and hence is limited in the maximum
+ * length of text that it can process.
+ *
+ * HISTORY:
+ * MODIFIED on 2011-01-23 by Jeremy Bante to account for composite
+ * characters
+ * MODIFIED on 2011-01-14 by Jeremy Bante to use a different map and
+ * systematically perturbed orbits.
+ * MODIFIED on 2011-01-09 by Jeremy Bante to use a different chaotic
+ * map that results in greater diffusion and faster calculation.
+ * CREATED on 2011-01-05 by Jeremy Bante of The Support Group.
+ *
+ * REFERENCES:
+ * ChaosDecrypt function: http://www.briandunning.com/cf/1259
+ * ChaosEncrypt function: http://www.briandunning.com/cf/1258
+ * ChaosHash function: http://www.briandunning.com/cf/1261
+ * =====================================
+ */
+
+Case (
+	/*First call to function, initialize variables*/
+	not $~step;
+	Let ( [
+		$~alternator = 0;
+		$~i = 1;
+		$~j = 1;
+		$~k = 1;
+		$~priorByte = 32749; //greatest prime &lt; 2^15
+		$~textLength = Length ( text );
+		$~step = 1
+	];
+		ChaosHash ( text ; hashLength )
+	);
+
+	/*Step 1, Parse text into cipher key*/
+	$~step = 1;
+	Let ( [
+		//Convert text to numbers, accounting for composite characters
+		~textByte = 
+			If ( $~textLength ≥ $~i;
+				Code ( Middle ( text ; $~i ; 1 ) );
+				/*else*/ $~alternator //augment $~text as needed
+			);
+		~extraByte = Left ( ~textByte ; Length ( ~textByte ) - 5 );
+		~textByte = Right ( ~textByte ; 5 );
+		$~textLength =
+			If ( $~textLength ≥ $~i;
+				$~textLength;
+				/*else*/ $~textLength + 1
+			);
+		$~alternator =
+			If ( $~textLength ≥ $~i;
+				$~alternator;
+				/*else*/ not $~alternator
+			);
+		$~text = List ( $~text ; ~textByte );
+		
+		~keyByte = Mod ( ~textByte + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+
+		//add new key value to list
+		$~key = List ( ~keyByte ; $~key );
+		$~priorByte = ~keyByte;
+
+		//continue until whole $~text is processed
+		$~step =
+			If ( $~textLength &gt; $~i or $~textLength &lt; hashLength;
+				$~step;
+				/*else*/ $~step + 1
+			);
+		$~i = $~i + 1
+	];
+		ChaosHash ( Char ( ~extraByte ) &amp; text ; hashLength )
+	);
+
+	/*Step 2, Apply $~key to $~text*/
+	$~step = 2;
+	Let ( [
+		~keyByte = Mod ( GetValue ( $~key ; 1 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//apply key to text
+		//additive complement under 2^16 is analogous to XOR in binary encryption
+		~textByte = MiddleValues ( $~text ; $~j ; 1 );
+		~textByte = 65535 - Mod ( ~textByte + ~keyByte ; 65535 );
+		$~hash = $~hash &amp; Char ( ~textByte );
+		
+		//rotate the key
+		$~priorByte = ~textByte;
+		$~key = List ( RightValues ( $~key ; $~i - 2 ) ; ~keyByte );
+
+		//continue until whole text is encrypted
+		$~step = If ( hashLength &gt; $~j ; $~step ; /*else*/ $~step + 1 );
+		$~j = $~j + 1
+	];
+		ChaosHash ( "" ; hashLength )
+	);
+
+	/*Step 3, Clean-up, and return result*/
+	$~step = 3;
+	Let ( [
+		~hash = $~hash;
+
+		//purge variables
+		$~alternator = "";
+		$~i = "";
+		$~j = "";
+		$~hash = "";
+		$~key = "";
+		$~priorByte = "";
+		$~step = "";
+		$~text = "";
+		$~textLength = ""
+	];
+		~hash
+	);
+)</Calculation></CustomFunction><CustomFunction id="64" functionArity="2" visible="True" parameters="words;len" name="MD5"><Calculation>/*// MD5 ( words; len )
+//
+// Calculate the MD5 of an array (value-list) of little-endian words.
+//
+// Parameters:
+// words = Return-delimited value list of little-endian words
+// len = Bit-length of array
+//
+// Return Value:
+// Calculated MD5
+//
+Let(
+ [
+  // append padding
+  cnt = ValueCount( words );
+  ilast = BitwiseSHR( len; 5 ) + 1;
+  word = If( ilast ≤ cnt; GetValue( words; ilast ); 0 );
+  ilen = BitwiseSHL( BitwiseSHR( len + 64; 9 ); 4 ) + 14;
+  x = LeftValues( words; ilast - 1 ) &amp; BitwiseOR( word; BitwiseSHL( 128; Mod( len; 32 ) ) ) &amp; "¶" &amp; RepeatedValue( "0"; ilen - ilast ) &amp; len &amp; "¶0"
+ ];
+ MD5_calc( 1732584193; 2^32-271733879; 2^32-1732584194; 271733878; x; 1 )
+)*/</Calculation></CustomFunction><CustomFunction id="73" functionArity="1" visible="True" parameters="data" name="MD5Hash"><Calculation>// MD5Hash ( data )
+//
+// Calculate MD5 hash value for a provided string.
+//
+// Parameters:
+// data = String to calculate hash value for
+//
+// Return Value:
+// Calculated MD5 hash
+//
+Let(
+ hash = MD5( MD5_str2values( data ); Length( data ) * 8 );
+ Left( MD5_values2hex( GetValue( hash; 1 ) ) &amp; "00000000"; 8 ) &amp;
+ Left( MD5_values2hex( GetValue( hash; 2 ) ) &amp; "00000000"; 8 ) &amp;
+ Left( MD5_values2hex( GetValue( hash; 3 ) ) &amp; "00000000"; 8 ) &amp;
+ Left( MD5_values2hex( GetValue( hash; 4 ) ) &amp; "00000000"; 8 )
+)</Calculation></CustomFunction><CustomFunction id="65" functionArity="6" visible="True" parameters="a;b;c;d;x;i" name="MD5_calc"><Calculation>// MD5_calc ( a; b; c; d; x; i )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// i = For internal use only
+//
+// Return Value:
+// 
+//
+Let(
+ len = ValueCount( x );
+ If(
+  i ≤ len;
+  Let(
+   [
+    a1 = MD5_ff( a; b; c; d; GetValue( x; i + 0 ); 7; 2^32 - 680876936 );
+    d1 = MD5_ff( d; a1; b; c; GetValue( x; i + 1 ); 12; 2^32 - 389564586 );
+    c1 = MD5_ff( c; d1; a1; b; GetValue( x; i + 2 ); 17; 606105819 );
+    b1 = MD5_ff( b; c1; d1; a1; GetValue( x; i + 3 ); 22; 2^32 - 1044525330 );
+    a2 = MD5_ff( a1; b1; c1; d1; GetValue( x; i + 4 ); 7; 2^32 - 176418897 );
+    d2 = MD5_ff( d1; a2; b1; c1; GetValue( x; i + 5 ); 12; 1200080426 );
+    c2 = MD5_ff( c1; d2; a2; b1; GetValue( x; i + 6 ); 17; 2^32 - 1473231341 );
+    b2 = MD5_ff( b1; c2; d2; a2; GetValue( x; i + 7 ); 22; 2^32 - 45705983 );
+    a3 = MD5_ff( a2; b2; c2; d2; GetValue( x; i + 8 ); 7; 1770035416 );
+    d3 = MD5_ff( d2; a3; b2; c2; GetValue( x; i + 9 ); 12; 2^32 - 1958414417 );
+    c3 = MD5_ff( c2; d3; a3; b2; GetValue( x; i + 10 ); 17; 2^32 - 42063 );
+    b3 = MD5_ff( b2; c3; d3; a3; GetValue( x; i + 11 ); 22; 2^32 - 1990404162 );
+    a4 = MD5_ff( a3; b3; c3; d3; GetValue( x; i + 12 ); 7; 1804603682 );
+    d4 = MD5_ff( d3; a4; b3; c3; GetValue( x; i + 13 ); 12; 2^32 - 40341101 );
+    c4 = MD5_ff( c3; d4; a4; b3; GetValue( x; i + 14 ); 17; 2^32 - 1502002290 );
+    b4 = MD5_ff( b3; c4; d4; a4; GetValue( x; i + 15 ); 22; 1236535329 );
+
+    a5 = MD5_gg( a4; b4; c4; d4; GetValue( x; i + 1 ); 5; 2^32 - 165796510 );
+    d5 = MD5_gg( d4; a5; b4; c4; GetValue( x; i + 6 ); 9; 2^32 - 1069501632 );
+    c5 = MD5_gg( c4; d5; a5; b4; GetValue( x; i + 11 ); 14; 643717713 );
+    b5 = MD5_gg( b4; c5; d5; a5; GetValue( x; i + 0 ); 20; 2^32 - 373897302 );
+    a6 = MD5_gg( a5; b5; c5; d5; GetValue( x; i + 5 ); 5; 2^32 - 701558691 );
+    d6 = MD5_gg( d5; a6; b5; c5; GetValue( x; i + 10 ); 9; 38016083 );
+    c6 = MD5_gg( c5; d6; a6; b5; GetValue( x; i + 15 ); 14; 2^32 - 660478335 );
+    b6 = MD5_gg( b5; c6; d6; a6; GetValue( x; i + 4 ); 20; 2^32 - 405537848 );
+    a7 = MD5_gg( a6; b6; c6; d6; GetValue( x; i + 9 ); 5; 568446438 );
+    d7 = MD5_gg( d6; a7; b6; c6; GetValue( x; i + 14 ); 9; 2^32 - 1019803690 );
+    c7 = MD5_gg( c6; d7; a7; b6; GetValue( x; i + 3 ); 14; 2^32 - 187363961 );
+    b7 = MD5_gg( b6; c7; d7; a7; GetValue( x; i + 8 ); 20; 1163531501 );
+    a8 = MD5_gg( a7; b7; c7; d7; GetValue( x; i + 13 ); 5; 2^32 - 1444681467 );
+    d8 = MD5_gg( d7; a8; b7; c7; GetValue( x; i + 2 ); 9; 2^32 - 51403784 );
+    c8 = MD5_gg( c7; d8; a8; b7; GetValue( x; i + 7 ); 14; 1735328473 );
+    b8 = MD5_gg( b7; c8; d8; a8; GetValue( x; i + 12 ); 20; 2^32 - 1926607734 );
+
+    a9 = MD5_hh( a8; b8; c8; d8; GetValue( x; i + 5 ); 4; 2^32 - 378558 );
+    d9 = MD5_hh( d8; a9; b8; c8; GetValue( x; i + 8 ); 11; 2^32 - 2022574463 );
+    c9 = MD5_hh( c8; d9; a9; b8; GetValue( x; i + 11 ); 16; 1839030562 );
+    b9 = MD5_hh( b8; c9; d9; a9; GetValue( x; i + 14 ); 23; 2^32 - 35309556 );
+    aa = MD5_hh( a9; b9; c9; d9; GetValue( x; i + 1 ); 4; 2^32 - 1530992060 );
+    da = MD5_hh( d9; aa; b9; c9; GetValue( x; i + 4 ); 11; 1272893353 );
+    ca = MD5_hh( c9; da; aa; b9; GetValue( x; i + 7 ); 16; 2^32 - 155497632 );
+    ba = MD5_hh( b9; ca; da; aa; GetValue( x; i + 10 ); 23; 2^32 - 1094730640 );
+    ab = MD5_hh( aa; ba; ca; da; GetValue( x; i + 13 ); 4; 681279174 );
+    db = MD5_hh( da; ab; ba; ca; GetValue( x; i + 0 ); 11; 2^32 - 358537222 );
+    cb = MD5_hh( ca; db; ab; ba; GetValue( x; i + 3 ); 16; 2^32 - 722521979 );
+    bb = MD5_hh( ba; cb; db; ab; GetValue( x; i + 6 ); 23; 76029189 );
+    ac = MD5_hh( ab; bb; cb; db; GetValue( x; i + 9 ); 4; 2^32 - 640364487 );
+    dc = MD5_hh( db; ac; bb; cb; GetValue( x; i + 12 ); 11; 2^32 - 421815835 );
+    cc = MD5_hh( cb; dc; ac; bb; GetValue( x; i + 15 ); 16; 530742520 );
+    bc = MD5_hh( bb; cc; dc; ac; GetValue( x; i + 2 ); 23; 2^32 - 995338651 );
+
+    ad = MD5_ii( ac; bc; cc; dc; GetValue( x; i + 0 ); 6; 2^32 - 198630844 );
+    dd = MD5_ii( dc; ad; bc; cc; GetValue( x; i + 7 ); 10; 1126891415 );
+    cd = MD5_ii( cc; dd; ad; bc; GetValue( x; i + 14 ); 15; 2^32 - 1416354905 );
+    bd = MD5_ii( bc; cd; dd; ad; GetValue( x; i + 5 ); 21; 2^32 - 57434055 );
+    ae = MD5_ii( ad; bd; cd; dd; GetValue( x; i + 12 ); 6; 1700485571 );
+    de = MD5_ii( dd; ae; bd; cd; GetValue( x; i + 3 ); 10; 2^32 - 1894986606 );
+    ce = MD5_ii( cd; de; ae; bd; GetValue( x; i + 10 ); 15; 2^32 - 1051523 );
+    be = MD5_ii( bd; ce; de; ae; GetValue( x; i + 1 ); 21; 2^32 - 2054922799 );
+    af = MD5_ii( ae; be; ce; de; GetValue( x; i + 8 ); 6; 1873313359 );
+    df = MD5_ii( de; af; be; ce; GetValue( x; i + 15 ); 10; 2^32 - 30611744 );
+    cf = MD5_ii( ce; df; af; be; GetValue( x; i + 6 ); 15; 2^32 - 1560198380 );
+    bf = MD5_ii( be; cf; df; af; GetValue( x; i + 13 ); 21; 1309151649 );
+    ag = MD5_ii( af; bf; cf; df; GetValue( x; i + 4 ); 6; 2^32 - 145523070 );
+    dg = MD5_ii( df; ag; bf; cf; GetValue( x; i + 11 ); 10; 2^32 - 1120210379 );
+    cg = MD5_ii( cf; dg; ag; bf; GetValue( x; i + 2 ); 15; 718787259 );
+    bg = MD5_ii( bf; cg; dg; ag; GetValue( x; i + 9 ); 21; 2^32 - 343485551 )
+   ];
+
+   MD5_calc( Add32( ag; a ); Add32( bg; b ); Add32( cg; c ); Add32( dg; d ); x; i + 16 )
+  );
+
+  a &amp; "¶" &amp; b &amp; "¶" &amp; c &amp; "¶" &amp; d
+ )
+)</Calculation></CustomFunction><CustomFunction id="66" functionArity="6" visible="True" parameters="q;a;b;x;s;t" name="MD5_cmn"><Calculation>// MD5_cmn ( q; a; b; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// q = For internal use only
+// a = For internal use only
+// b = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// For internal use only
+//
+Add32( BitwiseROL( Add32( Add32( a; q ); Add32( x; t ) ); s ); b )</Calculation></CustomFunction><CustomFunction id="67" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_ff"><Calculation>// MD5_ff ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseOR( BitwiseAND( b; c ); BitwiseAND( BitwiseNOT( b ); d ) ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="68" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_gg"><Calculation>// MD5_gg ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseOR( BitwiseAND( b; d ); BitwiseAND( c; BitwiseNOT( d ) ) ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="69" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_hh"><Calculation>// MD5_hh ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseXOR( BitwiseXOR( b; c ); d ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="70" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_ii"><Calculation>// MD5_ii ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseXOR( c; BitwiseOR( b; BitwiseNOT( d ) ) ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="71" functionArity="1" visible="True" parameters="text" name="MD5_str2values"><Calculation>// MD5_str2values ( text )
+//
+// Convert a string to an array (value-list) of little-endian words.
+// Non-printable 7-bit characters and 8-bit characters are treated as ~ (0x7E) characters.
+//
+// Parameters:
+// text = String to convert
+//
+// Return Value:
+// Return-delimited list of little-endian word values
+//
+Let(
+ len = Length( text );
+ If(
+  len &gt; 0;
+  BitwiseOR(
+   AsciiCode( Middle( text; 1; 1 ) );
+   If(
+    len &gt; 1;
+    BitwiseOR(
+     BitwiseSHL( AsciiCode( Middle( text; 2; 1 ) ); 8 );
+     If(
+      len &gt; 2;
+      BitwiseOR(
+       BitwiseSHL( AsciiCode( Middle( text; 3; 1 ) ); 16 );
+       If(
+        len &gt; 3;
+        BitwiseSHL( AsciiCode( Middle( text; 4; 1 ) ); 24 );
+        0
+       )
+      )
+     )
+    )
+   )
+  )
+ ) &amp;
+ If(
+  len &gt; 4;
+  "¶" &amp; MD5_str2values( Right( text; Length( text ) - 4 ) )
+ )
+)</Calculation></CustomFunction><CustomFunction id="72" functionArity="1" visible="True" parameters="number" name="MD5_values2hex"><Calculation>// MD5_values2hex ( number )
+//
+// Convert decimal value to little-endian hex value (without trailing 00 bytes)
+//
+// Parameters:
+// number = Decimal value to convert
+//
+// Return Value:
+// Little-endian hex value (without trailing 00 bytes)
+//
+If(
+ number ≠ 0;
+ Choose( Mod( Int( number / 16 ); 16 ); "0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "a"; "b"; "c"; "d"; "e"; "f" ) &amp;
+ Choose( Mod( number; 16 ); "0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "a"; "b"; "c"; "d"; "e"; "f" ) &amp;
+ MD5_values2hex( Int( number / 256 ) )
+)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

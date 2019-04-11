@@ -21,7 +21,8 @@ SQLDate_to_FMPDate( _Date )
 WeekofFiscalYear( TheDate;StartingDay;StartMonth;StartDay )
 WeekRange( s;e )
 YearMonthYear( startDate;endDate;fontSize;separator;red;green;blue )
-YearRange( s;e )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="4" functionArity="1" visible="True" parameters="dt" name="calfirstofwk"><Calculation>dt - DayOfWeek ( dt ) + 1</Calculation></CustomFunction><CustomFunction id="55" functionArity="1" visible="True" parameters="theDate" name="DateQuarterBegin"><Calculation>//NAME: DateQuarterBegin
+YearRange( s;e )
+GetWorkDays( StartDate;DueDate )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="4" functionArity="1" visible="True" parameters="dt" name="calfirstofwk"><Calculation>dt - DayOfWeek ( dt ) + 1</Calculation></CustomFunction><CustomFunction id="55" functionArity="1" visible="True" parameters="theDate" name="DateQuarterBegin"><Calculation>//NAME: DateQuarterBegin
 //PURPOSE: Pass any date and get the quarter start date based on input date.
 //PARAMETER: theDate
 //INCLUDES OTHER CUSTOM FUNCTIONS: No
@@ -460,4 +461,25 @@ Let	(
 	)</Calculation></CustomFunction><CustomFunction id="12" functionArity="2" visible="True" parameters="s;e" name="YearRange"><Calculation>Case ( s&lt; e ; 
 GetAsText(s) &amp; "¶" &amp; YearRange ( Date ( Month ( s ) ; Day ( s ) ; Year ( s )+1 ); e);
 If(Year( s ) = Year ( e );GetAsText(e);"")
-)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+)</Calculation></CustomFunction><CustomFunction id="118" functionArity="2" visible="True" parameters="StartDate;DueDate" name="GetWorkDays"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Returns the amount of business days between two dates (ignoring weekends Saturday-Sunday).
+
+
+*************************************************************************************************/
+
+Int 	( ( DueDate - StartDate ) / 7 ) * 5 
+
++ 
+
+Case 	( 
+		DayOfWeek ( DueDate ) &lt; DayOfWeek ( StartDate ) ; 
+		Min ( 5 ; DayOfWeek ( DueDate ) - 1 ) + Max ( 0 ; 6 - DayOfWeek ( StartDate ) ) ;
+
+		DayOfWeek ( StartDate ) &lt; 7 ; 
+		Min ( 6 ; DayOfWeek ( DueDate ) ) - DayOfWeek ( StartDate ) ; 
+
+		0 
+		) + 1</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
