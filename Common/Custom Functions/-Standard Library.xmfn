@@ -29,6 +29,7 @@ ParseFieldName( field;desired )
 Patternize( direction;pattern;replaceChar;value;pad? )
 PositionValues( text;searchValue;start;occurrence )
 screen.isSmall(  )
+TAB(  )
 ToggleValue( lst;value )
 user.hasFullAccess(  )
 Win.get( id;path )
@@ -479,7 +480,7 @@ If (
 Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) = 0 ; 0 ;
 ValueCount ( Left ( text ; (Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) - 1) + Length ( searchValue ) ) )
 )
-)</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="lst;value" name="ToggleValue"><Calculation>Case (
+)</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="9" functionArity="0" visible="True" parameters="" name="TAB"><Calculation>Char ( 9 )</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="lst;value" name="ToggleValue"><Calculation>Case (
 	ValueCount ( FilterValues ( lst ; value ) )
 ;		DeleteValue ( lst ; value )
 ;	List ( lst ; value )
