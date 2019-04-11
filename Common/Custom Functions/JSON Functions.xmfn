@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[JSON.array.appendKey( array )
+JSON.array.count( array )
+JSON.array.toList( array )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+;	indices = JSONListKeys ( array ; "" )
+;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
+];
+next
+)</Calculation></CustomFunction><CustomFunction id="58" functionArity="1" visible="True" parameters="array" name="JSON.array.count"><Calculation>Case ( IsEmpty ( array ) ; 0 ; Let ([b=""
+
+;	keys	= JSONListKeys ( array ; "" )
+;	cnt	= Case ( Left ( keys ; 1 ) = "?" ; 0 ; ValueCount ( keys ) )
+	
+];
+cnt
+))</Calculation></CustomFunction><CustomFunction id="61" functionArity="1" visible="True" parameters="array" name="JSON.array.toList"><Calculation>Case ( array = "[]" or Left ( array ; 1 ) = "?" ; "" ; JSONListValues ( array ; "" ) )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

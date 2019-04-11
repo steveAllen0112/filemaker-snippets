@@ -19,6 +19,9 @@ FilterValues.diff( A;B )
 FilterValues.diff.sub( A;B;i )
 gc.get( path )
 gc.set( path;value;type )
+JSON.array.appendKey( array )
+JSON.array.count( array )
+JSON.array.toList( array )
 KeysDown( theModifierKeys;ignoreCapsLock )
 os.isOSX(  )
 os.isWindows(  )
@@ -402,7 +405,19 @@ FilterValues.diff.sub ( A ; B ; ValueCount ( A ) )</Calculation></CustomFunction
 ;	err	= Case ( Left ( raw ; 1) = "?" ; "" ; raw )
 ];
 err
-)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="55" functionArity="2" visible="True" parameters="theModifierKeys;ignoreCapsLock" name="KeysDown"><Calculation>Let (
+)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+;	indices = JSONListKeys ( array ; "" )
+;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
+];
+next
+)</Calculation></CustomFunction><CustomFunction id="58" functionArity="1" visible="True" parameters="array" name="JSON.array.count"><Calculation>Case ( IsEmpty ( array ) ; 0 ; Let ([b=""
+
+;	keys	= JSONListKeys ( array ; "" )
+;	cnt	= Case ( Left ( keys ; 1 ) = "?" ; 0 ; ValueCount ( keys ) )
+	
+];
+cnt
+))</Calculation></CustomFunction><CustomFunction id="61" functionArity="1" visible="True" parameters="array" name="JSON.array.toList"><Calculation>Case ( array = "[]" or Left ( array ; 1 ) = "?" ; "" ; JSONListValues ( array ; "" ) )</Calculation></CustomFunction><CustomFunction id="55" functionArity="2" visible="True" parameters="theModifierKeys;ignoreCapsLock" name="KeysDown"><Calculation>Let (
 activeModifierKeys = Get ( ActiveModifierKeys ) ;
 
 ( ( activeModifierKeys = 0 ) xor ( theModifierKeys ≠ "" ) ) and
