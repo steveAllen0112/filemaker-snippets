@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[Time_Clock( Start;Stop;Lunch_Start;Lunch_Stop;Override;Option )
+Difference( Start;Stop;Override )
+ElapsedTime( TStampBegin;TStampEnd;Format )
+Round_Time(  )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="170" functionArity="6" visible="True" parameters="Start;Stop;Lunch_Start;Lunch_Stop;Override;Option" name="Time_Clock"><Calculation>Let ( [
+/*
+PARAMETERS
+*/
+~start= Start;
+~stop =  Stop ; 
+~Lunch_start = Lunch_Start ; 
+~Lunch_Stop = Lunch_Stop ;
+~override = Override ; 
+~option = Option ; 
+
+/////////////////////////////////////////////////
+
+		// Primary Time
+~hour =Hour ( ~stop - ~start)  ;
+~minute = Minute (~stop - ~start) ;
+~end_time = 
+		(
+		Hour ( Get (CurrentTime) - ~start) + 
+		Minute (Get (CurrentTime) - ~start)  
+		/60
+		) ;
+
+~calc = ~hour + ~minute / 60 ;
+~difference = Round (~calc ; 2 ) ;
+
+		// Lunch Time
+			~Lunch_hour = Hour ( ~Lunch_stop - ~Lunch_start)  ;
+			~Lunch_minute = Minute (~Lunch_stop - ~Lunch_start) ;
+			~Lunch_end_time = (Hour ( Get (CurrentTime) - ~Lunch_start) + Minute (Get (CurrentTime) - ~Lunch_start)  /60) ;
+	~Lunch_calc = 
+			Case (
+				IsEmpty ( ~lunch_start ) or IsEmpty ( ~lunch_stop ) ; 0 ;
+				~Lunch_hour + ~Lunch_minute / 60 
+				) ;
+	~Lunch_difference = Round (~Lunch_calc ; 2 ) ;
+
+/*
+			||	Regular Calc Option	|| 		
+*/
+			~result =  Case ( 
+						not IsEmpty (~Override) ; ~Override ; 
+						IsEmpty (~stop) ; ~end_time ; 
+						~calc ≤ 0 ; ~calc+ 24 ;  
+						~calc  
+							) 
+							- ~Lunch_calc ;
+
+
+///////////////////////////// Rounded Option \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+~rounded = 
+			Let ( [ 
+						~round = ~difference - (Round ( ~difference/.25 ; 0) * .25) ;
+						~test = 
+							Case (
+							~round &lt; .125 ; "-" ; 
+							"+" 
+								) ; 
+						~resultA = 
+							Case ( 
+							~test = "-" ; ~difference - ~round ; 
+							~difference + ~round
+								)] ; 
+					~resultA 
+				) ;
+///////////////////////////// ----------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+~resultRounded =  
+			Case ( 
+			not IsEmpty (~Override) ; ~Override ; 
+			IsEmpty (~stop) ; ~end_time ; 
+			~calc ≤ 0 ; ~calc+ 24 ;  
+			~rounded  
+				) 
+				- ~Lunch_calc]; 
+
+///////////////////////////// RESULT \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+		//    ||  | Result |  ||    \\
+
+	Case(
+		~option = "R" ; ~resultRounded;
+		~result
+		)
+)</Calculation></CustomFunction><CustomFunction id="108" functionArity="3" visible="True" parameters="Start;Stop;Override" name="Difference"><Calculation>Let ( [
+~hour =Hour ( Stop - Start)  ;
+~minute = Minute (Stop - Start) ;
+~end_time = (Hour ( Get (CurrentTime) - Start) + Minute (Get (CurrentTime) - Start)  /60) ;
+
+~calc = ~hour + ~minute / 60 ;
+~difference = Round (~calc ; 2 ) ;
+~rounded = 
+               Let ( [ 
+                       ~round = ~difference - (Round ( ~difference/.25 ; 0) * .25) ;
+                       ~test = Case (~round &lt; .125 ; "-" ; "+" ) ; 
+                       ~resultA = Case ( ~test = "-" ; ~difference - ~round ; ~difference + ~round)
+                        ] ; ~resultA ) ;
+
+~resultB =  Case ( not IsEmpty (Override) ; Override ; IsEmpty (Stop) ; ~end_time ; ~calc ≤ 0 ; ~calc+ 24 ;  ~rounded  ) 
+] ; ~resultB )</Calculation></CustomFunction><CustomFunction id="78" functionArity="3" visible="True" parameters="TStampBegin;TStampEnd;Format" name="ElapsedTime"><Calculation>// Input must be TimeStamp fields not strings. Format is a string
+//ElapsedTime ( TStampBegin; TStampEnd; Format )
+Let ( [
+ElapsedSeconds = TStampEnd - TStampBegin ;
+Days = Int ( ElapsedSeconds / 86400 ) ; 
+Hours = Int ( ( ElapsedSeconds - ( Days*86400 ) ) / 3600 ) ;
+Minutes = Int ( ( ElapsedSeconds - ( ( Days * 86400 ) + ( Hours * 3600 ) ) ) / 60 );
+Seconds = Int ( ElapsedSeconds - ( ( Days * 86400 ) + ( Hours * 3600 ) + (Minutes * 60 ) ) ) ;
+ElapsedDays = ElapsedSeconds / 86400 ;
+ElapsedHours = ElapsedSeconds / 3600 ;
+ElapsedMinutes = ElapsedSeconds / 60
+
+
+] ;
+
+Case ( 
+
+Format = "Seconds" ; 
+// Result is in number or time format
+ElapsedSeconds ;
+
+Format = "Minutes" ; 
+// Result is a string
+ElapsedMinutes &amp; " minutes" ;
+
+Format = "Hours" ; 
+// Result is a string
+ElapsedHours &amp; " hours" ;
+
+Format = "Days" ; 
+// Result is a string
+ElapsedDays  &amp; " days" ;
+
+
+Format  = "String" ;
+// Result is a string
+If ( Days = 1 ; Days &amp;  " day, " ; Days &amp; " days, " ) &amp; If ( Hours = 1 ; Hours &amp; " hour, " ; Hours &amp; " hours, " ) &amp; 
+If ( Minutes = 1 ; Minutes &amp; " minute, " ; Minutes &amp; " minutes, " ) &amp; If ( Seconds = 1 ; Seconds &amp; " second, " ; Seconds &amp; " seconds." )
+
+)
+)</Calculation></CustomFunction><CustomFunction id="107" functionArity="0" visible="True" parameters="" name="Round_Time"/></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

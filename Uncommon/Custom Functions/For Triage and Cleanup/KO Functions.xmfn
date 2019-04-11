@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3626275000</ClipTimeStamp><ClipAuthor><![CDATA[wolf]]></ClipAuthor><clipboardAsText><![CDATA[AbsolutePaddingZeroes( number;digits )
 Add32( x;y )
 AddPrefixSuffixToList( theList;prefix;suffix )
-Time_Clock( Start;Stop;Lunch_Start;Lunch_Stop;Override;Option )
 AddRemoveListItems( theList;theValues )
 SQLFieldName( fieldRef )
 SQLTableName( fieldRef )
@@ -30,10 +29,7 @@ Currency( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
 Currency Format( Amount;CCode;Lead;Trail;ShowDecimal;RedNegative )
 CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
 CustomList( Start;End;Function )
-DeduplicateList( input;output )
-Difference( Start;Stop;Override )
 Drop_Down( field;L )
-ElapsedTime( TStampBegin;TStampEnd;Format )
 Error_Capture_List( Input_Variable )
 ErrorToEnglish( ErrorNum )
 ExplodedKey( txt )
@@ -109,7 +105,6 @@ ProgressBarPercentage( percentage;divisor;fill )
 Range( start;end )
 RemoveDuplicates( Text )
 Repeat( text;repeatCount )
-Round_Time(  )
 scBaseUrl(  )
 ScriptOptionalParameterList( scriptNameToParse )
 ScriptRequiredParameterList( scriptNameToParse )
@@ -168,91 +163,6 @@ Let ( aValue = GetValue ( theList ; 1 ) ;
        RightValues ( theList ; ValueCount ( theList ) - 1 ) ;
        prefix; suffix )
 	)
-)</Calculation></CustomFunction><CustomFunction id="170" functionArity="6" visible="True" parameters="Start;Stop;Lunch_Start;Lunch_Stop;Override;Option" name="Time_Clock"><Calculation>Let ( [
-/*
-PARAMETERS
-*/
-~start= Start;
-~stop =  Stop ; 
-~Lunch_start = Lunch_Start ; 
-~Lunch_Stop = Lunch_Stop ;
-~override = Override ; 
-~option = Option ; 
-
-/////////////////////////////////////////////////
-
-		// Primary Time
-~hour =Hour ( ~stop - ~start)  ;
-~minute = Minute (~stop - ~start) ;
-~end_time = 
-		(
-		Hour ( Get (CurrentTime) - ~start) + 
-		Minute (Get (CurrentTime) - ~start)  
-		/60
-		) ;
-
-~calc = ~hour + ~minute / 60 ;
-~difference = Round (~calc ; 2 ) ;
-
-		// Lunch Time
-			~Lunch_hour = Hour ( ~Lunch_stop - ~Lunch_start)  ;
-			~Lunch_minute = Minute (~Lunch_stop - ~Lunch_start) ;
-			~Lunch_end_time = (Hour ( Get (CurrentTime) - ~Lunch_start) + Minute (Get (CurrentTime) - ~Lunch_start)  /60) ;
-	~Lunch_calc = 
-			Case (
-				IsEmpty ( ~lunch_start ) or IsEmpty ( ~lunch_stop ) ; 0 ;
-				~Lunch_hour + ~Lunch_minute / 60 
-				) ;
-	~Lunch_difference = Round (~Lunch_calc ; 2 ) ;
-
-/*
-			||	Regular Calc Option	|| 		
-*/
-			~result =  Case ( 
-						not IsEmpty (~Override) ; ~Override ; 
-						IsEmpty (~stop) ; ~end_time ; 
-						~calc ≤ 0 ; ~calc+ 24 ;  
-						~calc  
-							) 
-							- ~Lunch_calc ;
-
-
-///////////////////////////// Rounded Option \\\\\\\\\\\\\\\\\\\\\\\\\\\\
-~rounded = 
-			Let ( [ 
-						~round = ~difference - (Round ( ~difference/.25 ; 0) * .25) ;
-						~test = 
-							Case (
-							~round &lt; .125 ; "-" ; 
-							"+" 
-								) ; 
-						~resultA = 
-							Case ( 
-							~test = "-" ; ~difference - ~round ; 
-							~difference + ~round
-								)] ; 
-					~resultA 
-				) ;
-///////////////////////////// ----------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-
-~resultRounded =  
-			Case ( 
-			not IsEmpty (~Override) ; ~Override ; 
-			IsEmpty (~stop) ; ~end_time ; 
-			~calc ≤ 0 ; ~calc+ 24 ;  
-			~rounded  
-				) 
-				- ~Lunch_calc]; 
-
-///////////////////////////// RESULT \\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-		//    ||  | Result |  ||    \\
-
-	Case(
-		~option = "R" ; ~resultRounded;
-		~result
-		)
 )</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="theList;theValues" name="AddRemoveListItems"><Calculation>/*
 AddRemoveListItems (theList; theValues)
 Adapted from function by: David Head, uLearnIT
@@ -1493,51 +1403,7 @@ Let ([ CLNum = 4 ] ; GetNthRecord ( Field ; CLNum ))"
 Interrested in the mechanism ?
 My advice then : dissect this function by escaping the 'Result' and placing one of the numerous intermediary variables available.
 Special attention should be paid to the 'First' Variable, everything starts from there !
-*/</Calculation></CustomFunction><CustomFunction id="164" functionArity="2" visible="True" parameters="input;output" name="DeduplicateList"><Calculation>Let ( 
-
-[
-
-this = GetValue ( input ; 1 ) ;
-input = Case ( 
-  Length ( this ) &gt; 0 ;
-  Right ( input ; Length ( input ) - Length ( this ) - 1 ) ;
-  input
-) ;
-output = Case ( 
-  IsEmpty ( output ) ;
-  this ;
-  PatternCount ( ¶ &amp; output &amp; ¶ ; ¶ &amp; this &amp; ¶ ) = 0 ;
-  output &amp; ¶ &amp; this ;
-  output
-) ;
-result = Case ( 
-  Length ( input ) &gt; 0 ;
-  DeduplicateList ( input ; output ) ;
-  output
-)
-
-]
-
-;
-
-result
-
-)</Calculation></CustomFunction><CustomFunction id="108" functionArity="3" visible="True" parameters="Start;Stop;Override" name="Difference"><Calculation>Let ( [
-~hour =Hour ( Stop - Start)  ;
-~minute = Minute (Stop - Start) ;
-~end_time = (Hour ( Get (CurrentTime) - Start) + Minute (Get (CurrentTime) - Start)  /60) ;
-
-~calc = ~hour + ~minute / 60 ;
-~difference = Round (~calc ; 2 ) ;
-~rounded = 
-               Let ( [ 
-                       ~round = ~difference - (Round ( ~difference/.25 ; 0) * .25) ;
-                       ~test = Case (~round &lt; .125 ; "-" ; "+" ) ; 
-                       ~resultA = Case ( ~test = "-" ; ~difference - ~round ; ~difference + ~round)
-                        ] ; ~resultA ) ;
-
-~resultB =  Case ( not IsEmpty (Override) ; Override ; IsEmpty (Stop) ; ~end_time ; ~calc ≤ 0 ; ~calc+ 24 ;  ~rounded  ) 
-] ; ~resultB )</Calculation></CustomFunction><CustomFunction id="96" functionArity="2" visible="True" parameters="field;L" name="Drop_Down"><Calculation>Case  ( 
+*/</Calculation></CustomFunction><CustomFunction id="96" functionArity="2" visible="True" parameters="field;L" name="Drop_Down"><Calculation>Case  ( 
 
 //set Value if Not in the list
 PatternCount (  L ; field) = 0 ; List ( L ; field) ;
@@ -1555,47 +1421,7 @@ Substitute ( L ; ¶ &amp; Field; "" )
  )
 
 // L must be set in a Global Variable so that thr Field knows what thr current values are
-// field is the pop up menu</Calculation></CustomFunction><CustomFunction id="78" functionArity="3" visible="True" parameters="TStampBegin;TStampEnd;Format" name="ElapsedTime"><Calculation>// Input must be TimeStamp fields not strings. Format is a string
-//ElapsedTime ( TStampBegin; TStampEnd; Format )
-Let ( [
-ElapsedSeconds = TStampEnd - TStampBegin ;
-Days = Int ( ElapsedSeconds / 86400 ) ; 
-Hours = Int ( ( ElapsedSeconds - ( Days*86400 ) ) / 3600 ) ;
-Minutes = Int ( ( ElapsedSeconds - ( ( Days * 86400 ) + ( Hours * 3600 ) ) ) / 60 );
-Seconds = Int ( ElapsedSeconds - ( ( Days * 86400 ) + ( Hours * 3600 ) + (Minutes * 60 ) ) ) ;
-ElapsedDays = ElapsedSeconds / 86400 ;
-ElapsedHours = ElapsedSeconds / 3600 ;
-ElapsedMinutes = ElapsedSeconds / 60
-
-
-] ;
-
-Case ( 
-
-Format = "Seconds" ; 
-// Result is in number or time format
-ElapsedSeconds ;
-
-Format = "Minutes" ; 
-// Result is a string
-ElapsedMinutes &amp; " minutes" ;
-
-Format = "Hours" ; 
-// Result is a string
-ElapsedHours &amp; " hours" ;
-
-Format = "Days" ; 
-// Result is a string
-ElapsedDays  &amp; " days" ;
-
-
-Format  = "String" ;
-// Result is a string
-If ( Days = 1 ; Days &amp;  " day, " ; Days &amp; " days, " ) &amp; If ( Hours = 1 ; Hours &amp; " hour, " ; Hours &amp; " hours, " ) &amp; 
-If ( Minutes = 1 ; Minutes &amp; " minute, " ; Minutes &amp; " minutes, " ) &amp; If ( Seconds = 1 ; Seconds &amp; " second, " ; Seconds &amp; " seconds." )
-
-)
-)</Calculation></CustomFunction><CustomFunction id="159" functionArity="1" visible="True" parameters="Input_Variable" name="Error_Capture_List"><Calculation>// Error List
+// field is the pop up menu</Calculation></CustomFunction><CustomFunction id="159" functionArity="1" visible="True" parameters="Input_Variable" name="Error_Capture_List"><Calculation>// Error List
 // Lists captured Errors that arn't 0 
 
 Let ( [
@@ -3664,7 +3490,7 @@ Substitute ( 10 ^ repeatCount - 1 ; 9 ; text )
 
 
 // The recursive way...
-// Case ( repeatCount &gt; 0 ; text &amp; Repeat ( text ; repeatCount - 1 ) ) </Calculation></CustomFunction><CustomFunction id="107" functionArity="0" visible="True" parameters="" name="Round_Time"/><CustomFunction id="2" functionArity="0" visible="True" parameters="" name="scBaseUrl"><Calculation>"http://IP_Address or DNS_Name/SuperContainer/Files"</Calculation></CustomFunction><CustomFunction id="148" functionArity="1" visible="True" parameters="scriptNameToParse" name="ScriptOptionalParameterList"><Calculation>/**
+// Case ( repeatCount &gt; 0 ; text &amp; Repeat ( text ; repeatCount - 1 ) ) </Calculation></CustomFunction><CustomFunction id="2" functionArity="0" visible="True" parameters="" name="scBaseUrl"><Calculation>"http://IP_Address or DNS_Name/SuperContainer/Files"</Calculation></CustomFunction><CustomFunction id="148" functionArity="1" visible="True" parameters="scriptNameToParse" name="ScriptOptionalParameterList"><Calculation>/**
  * =====================================
  * ScriptOptionalParameterList ( scriptNameToParse )
  *
