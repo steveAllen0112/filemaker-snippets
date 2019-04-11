@@ -9,7 +9,6 @@ CombineValues( list1;list2 )
 MonthEnd( StartDate;Months )
 DayNametoDayOfWeek( theDayName )
 CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
-DeduplicateList( input;output )
 fnPhone( text )
 GetMap( webViewerName;zoom;address1;address2;city;state;postalCode;country )
 GetWorkDays( StartDate;DueDate )
@@ -475,35 +474,6 @@ Let (
 
     Case(RedNegative and Amount &lt; 0; TextColor ( xFormat ; RGB ( 150 ; 0 ; 0 ) ); xFormat)
 
-
-)</Calculation></CustomFunction><CustomFunction id="46" functionArity="2" visible="True" parameters="input;output" name="DeduplicateList"><Calculation>Let ( 
-
-[
-
-this = GetValue ( input ; 1 ) ;
-input = Case ( 
-  Length ( this ) &gt; 0 ;
-  Right ( input ; Length ( input ) - Length ( this ) - 1 ) ;
-  input
-) ;
-output = Case ( 
-  IsEmpty ( output ) ;
-  this ;
-  PatternCount ( ¶ &amp; output &amp; ¶ ; ¶ &amp; this &amp; ¶ ) = 0 ;
-  output &amp; ¶ &amp; this ;
-  output
-) ;
-result = Case ( 
-  Length ( input ) &gt; 0 ;
-  DeduplicateList ( input ; output ) ;
-  output
-)
-
-]
-
-;
-
-result
 
 )</Calculation></CustomFunction><CustomFunction id="11" functionArity="1" visible="True" parameters="text" name="fnPhone"><Calculation>// fnPhone(text)
 // depending on phone # length, will format accordingly
