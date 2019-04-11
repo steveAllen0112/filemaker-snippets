@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[Acronym( text )
 RandomKey( characters ; size )
-AbrivState( StateAbbrev )
 CenterWindow in Window vert horiz( dimension )
 Color( Text )
 CombineValues( list1;list2 )
 CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
 fnPhone( text )
-GetMap( webViewerName;zoom;address1;address2;city;state;postalCode;country )
-GoogleMapJS( Title;Longitude;Latitude;Zoom;Type;Markers )
-GoogleMapMarkerJS( Latitude;Longitude;Title;Message;Icon;Counter )
-ListValuesMap( Field;recmax;lat;lng )
-MapAddressWeb( address1;address2;city;state;postalCode;country )
 numberFormat( Number;DecimalPrecision;ThousandSeparator )
 ParseParameters( origText;whichParam )
 ProgressBarNumber( number;numberOfRepetitions;fill )
 ProgressBarPercentage( percentage;divisor;fill )
 roundfifty( number )
 roundhundred( number )
-CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
 fmpurl( user;pass;host;file;script;param;variables )
 Sumlist( numlist )
 SummaryList( startpos;listtosum )
@@ -73,133 +66,7 @@ Characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" or
 Karsten Risseeuw, kursiv-software.com
 June 30th, 2016
 
-*/</Calculation></CustomFunction><CustomFunction id="117" functionArity="1" visible="True" parameters="StateAbbrev" name="AbrivState"><Calculation>Case ( StateAbbrev= "Alabama" ; "AL" ;
-
-StateAbbrev=  "Alaska" ;"AK" ;
-
-StateAbbrev=  "Arizona" ;"AZ" ;
-
-StateAbbrev= "Arkansas" ; "AR" ; 
-
-StateAbbrev= "California" ;  "CA" ;
-
-StateAbbrev= "Colorado" ;  "CO" ;
-
-StateAbbrev= "Connecticut" ;  "CT" ;
-
-StateAbbrev= "Delaware" ;  "DE" ;
-
-StateAbbrev= "Florida" ; "FL" ;
-
-StateAbbrev= "Georgia" ;  "GA" ;
-
-StateAbbrev= "Hawaii" ;  "HI" ;
-
-StateAbbrev= "Idaho" ;  "ID" ;
-
-StateAbbrev= "Illinois" ;  "IL" ;
-
-StateAbbrev= "Indiana" ;  "IN" ;
-
-StateAbbrev= "Iowa" ;  "IA" ;
-
-StateAbbrev= "Kansas" ;  "KS" ;
-
-StateAbbrev= "Kentucky" ;  "KY" ;
-
-StateAbbrev= "Louisiana" ;  "LA" ;
-
-StateAbbrev= "Maine" ;  "ME" ;
-
-StateAbbrev= "Maryland" ;  "MD" ;
-
-StateAbbrev= "Massachusetts" ;  "MA" ;
-
-StateAbbrev= "Michigan" ;  "MI" ;
-
-StateAbbrev= "Minnesota" ;  "MN" ;
-
-StateAbbrev= "Mississippi" ;  "MS" ;
-
-StateAbbrev= "Missouri" ;  "MO" ;
-
-StateAbbrev= "Montana" ;  "MT" ;
-
-StateAbbrev= "Nebraska" ;  "NE" ;
-
-StateAbbrev= "Nevada" ;  "NV" ;
-
-StateAbbrev= "New Hampshire" ;  "NH" ;
-
-StateAbbrev= "New Jersey" ;  "NJ" ;
-
-StateAbbrev= "New Mexico" ;  "NM" ;
-
-StateAbbrev= "New York" ;  "NY" ;
-
-StateAbbrev= "North Carolina" ;  "NC" ;
-
-StateAbbrev= "North Dakota" ;  "ND" ;
-
-StateAbbrev= "Ohio" ;  "OH" ;
-
-StateAbbrev= "Oklahoma" ; "OK" ;
-
-StateAbbrev= "Oregon" ;  "OR" ;
-
-StateAbbrev= "Pennsylvania" ;  "PA" ;
-
-StateAbbrev= "Rhode Island" ; "RI" ;
-
-StateAbbrev= "South Carolina" ;  "SC" ;
-
-StateAbbrev= "South Dakota" ;  "SD" ;
-
-StateAbbrev= "Tennessee" ; "TN" ;
-
-StateAbbrev= "Texas" ;  "TX" ;
-
-StateAbbrev= "Utah" ;  "UT" ;
-
-StateAbbrev= "Vermont" ; "VT" ;
-
-StateAbbrev= "Virginia" ;  "VA" ;
-
-StateAbbrev= "Washington" ;  "WA" ;
-
-StateAbbrev= "West Virginia" ; "WV" ;
-
-StateAbbrev= "Wisconsin" ;  "WI" ;
-
-StateAbbrev="Wyoming" ; "WY" ;
-
-StateAbbrev="Alberta" ; "AB" ;
-
-StateAbbrev="British Columbia" ; "BC" ;
-
-StateAbbrev="Manitoba" ; "MB" ;
-
-StateAbbrev="New Brunswick" ; "WY" ;
-
-StateAbbrev="Newfoundland and Labrador" ; "NL" ;
-
-StateAbbrev="Nova Scotia" ; "NS" ;
-
-StateAbbrev="Northwest Territories" ; "NT" ;
-
-StateAbbrev="Nunavut" ; "NU" ;
-
-StateAbbrev="Ontario" ; "ON" ;
-
-StateAbbrev="Prince Edward Island" ; "PE" ;
-
-StateAbbrev="Quebec" ; "QC" ;
-
-StateAbbrev="Saskatchewan" ; "SK" ;
-
-StateAbbrev="District of Columbia" ; "DC" ;
-
- StateAbbrev)</Calculation></CustomFunction><CustomFunction id="21" functionArity="1" visible="True" parameters="dimension" name="CenterWindow in Window vert horiz"><Calculation>//USE CUSTOM FUNCTION "WINDOW INFO" WITH IS
+*/</Calculation></CustomFunction><CustomFunction id="21" functionArity="1" visible="True" parameters="dimension" name="CenterWindow in Window vert horiz"><Calculation>//USE CUSTOM FUNCTION "WINDOW INFO" WITH IS
 //CenterWindow in Window vert horiz
 Let(
 [
@@ -431,179 +298,7 @@ Case (Length(pnum) = 7 ; Left(pnum;3) &amp; "-" &amp; Right(pnum;4) ;
    (Length(pnum) &gt; 11 and Left(pnum;1) = "1") ; "1+(" &amp; Middle(pnum;2;3) &amp; ") " &amp; Middle(pnum;5;3) &amp; "-" &amp; Middle(pnum;8;4) &amp; " x" &amp; Right(pnum;(Length(pnum)-11)) ;
    Length(pnum) &gt; 10; "(" &amp; Left(pnum;3) &amp; ")" &amp; Middle(pnum;4;3) &amp; "-" &amp; Middle(pnum;7;4) &amp; " x" &amp; Right(pnum;(Length(pnum)-10)) ;
    pnum ) 
-)</Calculation></CustomFunction><CustomFunction id="30" functionArity="8" visible="True" parameters="webViewerName;zoom;address1;address2;city;state;postalCode;country" name="GetMap"><Calculation>Let 	( 
-	[
-	address = 	List 	(
-					address1 ; 
-					address2 ; 
-					city ; 
-					state ; 
-					postalCode ; 
-					country 
-					) ; 
-
-	URL = 		Substitute ( address ; ¶ ; "+" ) ; 
-	size = 		GetLayoutObjectAttribute ( webViewerName ; "width" ) &amp; "x" &amp; GetLayoutObjectAttribute ( webViewerName ; "height" ) ;
-	zoom =		Case (
-					not IsEmpty ( address1 &amp; address2 ) ; 14 ; 
-					PatternCount ( address ; city ) ; 7 ; 
-					PatternCount ( address ; state ) ; 4 ; 
-					PatternCount ( address ; country ) ; 3 
-					)
-	] ;
-
-	"http://maps.google.com/maps/api/staticmap?center=" 
-			&amp; URL &amp; 
-				"&amp;zoom=" &amp; zoom &amp;
-					"&amp;markers=" 
-						&amp; URL &amp; 
-							"&amp;size=" 
-								&amp; size &amp; 
-									"&amp;maptype=roadmap" &amp; 
-										"&amp;sensor=false"
-	)</Calculation></CustomFunction><CustomFunction id="13" functionArity="6" visible="True" parameters="Title;Longitude;Latitude;Zoom;Type;Markers" name="GoogleMapJS"><Calculation>// GoogleMapJS ( Title, Longitude; Latitude; Zoom; Type, Markers )
-Let ([
-  Title = Substitute ( Title ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
-];
-"data:text/html," &amp; "
-&lt;!DOCTYPE html&gt;¶
-&lt;html&gt;¶
-  &lt;head&gt;¶
-    &lt;meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\"&gt;¶
-    &lt;meta charset=\"utf-8\"&gt;¶
-    &lt;title&gt;" &amp; Title &amp; "&lt;/title&gt;¶
-&lt;link href=\"http://code.google.com/apis/maps/documentation/javascript/examples/default.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;¶
-    &lt;script src=\"https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false\"&gt;&lt;/script&gt;¶
-    &lt;script&gt;¶
-      function initialize() {¶
-        var myLatlng = new google.maps.LatLng(" &amp; Latitude &amp; "," &amp; Longitude &amp; ");¶
-        var mapOptions = {¶
-          zoom: " &amp; Zoom &amp; ",¶
-          center: myLatlng,¶
-          mapTypeId: google.maps.MapTypeId." &amp; If ( IsEmpty ( Type ); "ROADMAP" ; Type ) &amp; "¶
-        }¶
-¶
-        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);¶" &amp;
-Markers
-&amp;"      }¶
-¶
-    &lt;/script&gt;¶
-  &lt;/head&gt;¶
-  &lt;body onload=\"initialize()\"&gt;¶
-    &lt;div id=\"map-canvas\"&gt;&lt;/div&gt;¶
-  &lt;/body&gt;¶
-&lt;/html&gt;¶
-")</Calculation></CustomFunction><CustomFunction id="12" functionArity="6" visible="True" parameters="Latitude;Longitude;Title;Message;Icon;Counter" name="GoogleMapMarkerJS"><Calculation>// GoogleMapMarkerJS ( Latitude ; Longitude ; Title ; Message ; Icon ; Counter )
-Let ([
-  Title = Substitute ( Title ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
-; Message = Substitute ( Message ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
-];
-"
-    var myLatlng" &amp; Counter &amp; " = new google.maps.LatLng( " &amp; Latitude &amp; " , " &amp; Longitude &amp; " );¶
-¶
-    var contentString" &amp; Counter &amp; " = '&lt;div id=\"content\"&gt;'+¶
-        '&lt;div id=\"siteNotice\"&gt;'+¶
-        '&lt;/div&gt;'+¶
-        '&lt;h3 id=\"firstHeading\" class=\"firstHeading\"&gt;" &amp; Title &amp; "&lt;/h3&gt;'+¶
-        '&lt;div id=\"bodyContent\"&gt;'+¶
-        '&lt;p&gt;" &amp; Substitute ( Message ; "¶" ; "&lt;br /&gt;" ) &amp; "&lt;/p&gt;' +¶
-        '&lt;/div&gt;'+¶
-        '&lt;/div&gt;';¶
-¶
-    var infowindow" &amp; Counter &amp; " = new google.maps.InfoWindow({¶
-        content: contentString" &amp; Counter &amp; "¶
-    });¶
-¶
-" &amp; If ( not IsEmpty ( Icon ) ; "    var image = '" &amp; Icon &amp; "';¶" ) &amp; "
-¶
-    var marker" &amp; Counter &amp; " = new google.maps.Marker({¶
-        position: myLatlng" &amp; Counter &amp; ",¶
-        map: map,¶
-        title: '" &amp; Title &amp; "',¶
-" &amp; If ( not IsEmpty ( Icon ) ; "        icon: image¶ " ) &amp; "
-    });¶
-    google.maps.event.addDomListener(marker" &amp; Counter &amp; ", 'click', function() {¶
-      infowindow" &amp; Counter &amp; ".open(map,marker" &amp; Counter &amp; ");¶
-    });¶
-")</Calculation></CustomFunction><CustomFunction id="19" functionArity="4" visible="True" parameters="Field;recmax;lat;lng" name="ListValuesMap"><Calculation>Let (
-[
-
-
-
-$$ListValues_max_count= Case(
-						Get ( FoundCount ) &lt; recmax;
-						Get ( FoundCount );
-
-						recmax &lt; 1;
-						Get ( FoundCount );
-
-						recmax
-							);
-
-$$ListValues_total_count = Case (
-							IsEmpty ( $$ListValues_total_count ) ; 
-							$$ListValues_max_count ;
-				
-							$$ListValues_total_count 
-							) ;
-
-$$ListValues_current_count = Case ( 
-							IsEmpty ( $$ListValues_current_count ) ;
-							1 ; 
-		
-							$$ListValues_current_count + 1 
-							) ;
-
-latc = GetNthRecord ( lat ; $$ListValues_current_count );
-
-lngc = GetNthRecord ( lng ; $$ListValues_current_count );
-
-name = GetNthRecord ( Field ; $$ListValues_current_count );
-
-$$ListValues_value =
-	Case (
-		not IsEmpty ( latc ) and not IsEmpty ( lngc );	
-	
-		Case (
-			ValueCount ( $$ListValues_value );		
-			$$ListValues_value &amp; "¶"
-			) &amp; name;
-
-		 $$ListValues_value
-	);
-
-$$ListValues_total_count= If( not IsEmpty ( latc ) and not IsEmpty ( lngc );$$ListValues_total_count;$$ListValues_total_count+1)
-
-] ;
-
-
-Case (
-// If $$ListValues_current_count is not reach to $$ListValues_total_count, call this function recursively.
-
-$$ListValues_current_count  &lt; $$ListValues_total_count;
-ListValuesMap ( Field;$$ListValues_max_count; lat; lng ) ;
-
-// Otherwise, clean up $$variable and return result.
-Let (
-[
-result = $$ListValues_value;
-$$ListValues_max_count ="";
-$$ListValues_total_count = "" ;
-$$ListValues_current_count = "" ;
-$$ListValues_value = ""
-] ;
-result
-) // Let
-) // Case
-
-) // Let</Calculation></CustomFunction><CustomFunction id="29" functionArity="6" visible="True" parameters="address1;address2;city;state;postalCode;country" name="MapAddressWeb"><Calculation>"http://local.google.com/maps?" &amp; "q=" 
-	&amp; 
-		If ( not IsEmpty ( address1 ) ; address1 ; "" )  &amp;  
-		If ( not IsEmpty ( address2 ) ; ", " &amp; address2 ; "" )  &amp; 
-		If ( not IsEmpty ( city ) ; ", " &amp; city ; "" )  &amp;  
-		If ( not IsEmpty ( state ) ; ", " &amp; state ; "" )  &amp;  
-		If ( not IsEmpty ( postalCode ) 	; ", " &amp; postalCode ; "" )  &amp; 
-		If ( not IsEmpty ( country ) ; ", " &amp;  country ; "" )</Calculation></CustomFunction><CustomFunction id="47" functionArity="3" visible="True" parameters="Number;DecimalPrecision;ThousandSeparator" name="numberFormat"><Calculation>// NumberFormat ( Number ; DecimalPrecision ; ThousandSeparator ) v3.1
+)</Calculation></CustomFunction><CustomFunction id="47" functionArity="3" visible="True" parameters="Number;DecimalPrecision;ThousandSeparator" name="numberFormat"><Calculation>// NumberFormat ( Number ; DecimalPrecision ; ThousandSeparator ) v3.1
 
                /*
               to format numbers
@@ -673,48 +368,7 @@ Extend ( fill ) ;
 			;GetAsNumber (~l &amp; ~round)
 			;~round = 100
 			;GetAsNumber(~l &amp; "00") +100
-			;	~round ))</Calculation></CustomFunction><CustomFunction id="49" functionArity="1" visible="True" parameters="number" name="roundhundred"><Calculation>Ceiling ( number  * 10^-2 ) * 10^2</Calculation></CustomFunction><CustomFunction id="53" functionArity="6" visible="True" parameters="Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative" name="CurrencyAsText"><Calculation>// Currency (Amount, CurrencyCode, Lead, Trail, ShowDecimal, RedNegative )
-//
-// This custom function takes the following parameters:
-//
-// Amount - The currency amount to display
-// CurrencyCode - (Optional) The currency code i.e. US, AU, GBP
-// Lead - The leading currency symbol i.e. $
-// Trail - The trailing currency symbol i.e. $
-// ShowDecimal - Rounding ... the number of decimals
-// RedNegative - 1 or 0, shows negative values in red.
-//
-// Tony Tanevski, Hi-Voltage
-// http://www.hi-voltage.com.au
-
-
-
-Let ( 
-
-[
-    xNeg = Case(Amount &lt; 0; 1);
-    xAmt = Abs(Round ( Amount ; Case(ShowDecimal; 2; 0) )) ;
-    xInt = Int ( xAmt ) ;
-    xLen = Length ( xInt ) ;
-    xDec = If ( xAmt &lt;&gt; xInt ; Left ( xAmt - xInt &amp; "000" ; 3 ) ; ".00" );
-
-    xFormat = CurrencyCode &amp; Case(CurrencyCode &lt;&gt; ""; " ") &amp; Case(xNeg; "-") &amp; Lead &amp;
-                       Case (
-                           xLen=9 ; Left(xInt;3) &amp;","&amp; Middle(xInt;4;3) &amp;","&amp; Right(xInt;3) ;
-                           xLen=8 ; Left(xInt;2) &amp;","&amp; Middle(xInt;3;3) &amp;","&amp; Right(xInt;3) ;
-                           xLen=7 ; Left(xInt;1) &amp;","&amp; Middle(xInt;2;3) &amp;","&amp; Right(xInt;3) ;
-                           xLen=6 ; Left(xInt;3) &amp;","&amp; Right(xInt;3) ;
-                           xLen=5 ; Left(xInt;2) &amp;","&amp; Right(xInt;3) ;
-                           xLen=4 ; Left(xInt;1) &amp;","&amp; Right(xInt;3) ;
-                           xInt 
-                       ) &amp; Case(ShowDecimal; xDec) &amp; Trail
-
-] ;
-
-    Case(RedNegative and Amount &lt; 0; TextColor ( xFormat ; RGB ( 150 ; 0 ; 0 ) ); xFormat)
-
-
-)</Calculation></CustomFunction><CustomFunction id="118" functionArity="7" visible="True" parameters="user;pass;host;file;script;param;variables" name="fmpurl"><Calculation>/***************************************************************************************************
+			;	~round ))</Calculation></CustomFunction><CustomFunction id="49" functionArity="1" visible="True" parameters="number" name="roundhundred"><Calculation>Ceiling ( number  * 10^-2 ) * 10^2</Calculation></CustomFunction><CustomFunction id="118" functionArity="7" visible="True" parameters="user;pass;host;file;script;param;variables" name="fmpurl"><Calculation>/***************************************************************************************************
  * fmpurl ( user ; pass ; host ; file ; script ; param ; variables )
  *
  * RETURNS:
