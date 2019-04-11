@@ -1,0 +1,4665 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3626275000</ClipTimeStamp><ClipAuthor><![CDATA[wolf]]></ClipAuthor><clipboardAsText><![CDATA[AbsolutePaddingZeroes( number;digits )
+Add32( x;y )
+AddPrefixSuffixToList( theList;prefix;suffix )
+Time_Clock( Start;Stop;Lunch_Start;Lunch_Stop;Override;Option )
+Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
+AddRemoveListItems( theList;theValues )
+Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
+AGE( BirthDate )
+Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
+SQLFieldName( fieldRef )
+SQLTableName( fieldRef )
+AppointmentDateRange( s;e;t )
+AsciiCode( ch )
+BitwiseAND( x;y )
+BitwiseNOT( x )
+GetValue_ListItems_Sorted( VL_List_Name;Value )
+BitwiseOR( x;y )
+BitwiseROL( x;bits )
+BitwiseSHL( x;bits )
+BitwiseSHR( x;bits )
+BitwiseXOR( x;y )
+Bytes(  )
+ByteSizeContainer( container )
+ccFormat( text )
+CenterWindow( dimension )
+CenterWindow in Window vert horiz( dimension )
+ChaosDecrypt( cipherText;key )
+ChaosEncrypt( text;key )
+ChaosHash( text;hashLength )
+Concatenate_Lists_Into_Strings( Output;Separator;Input_List )
+Concatenate_Lists_Into_Strings_Translate( Separator;Input_List )
+Concatenate_Text_String( Output;Input_List )
+CreditCardName( CreditCardNumber )
+Currency( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
+Currency Format( Amount;CCode;Lead;Trail;ShowDecimal;RedNegative )
+CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
+CustomList( Start;End;Function )
+dateformatzeros( date_field )
+DateRange( StartDate;EndDate;RangeLimit )
+DeduplicateList( input;output )
+DateRangeConditWeekends( StartDate;EndDate;Weekend )
+DayRange( s;e )
+Difference( Start;Stop;Override )
+Drop_Down( field;L )
+ElapsedTime( TStampBegin;TStampEnd;Format )
+Error_Capture_List( Input_Variable )
+ErrorToEnglish( ErrorNum )
+ExplodedKey( txt )
+ExplodedString( Field )
+ExtractData( XML;Attribute;Instance )
+FileMakerVersionNumber(  )
+FilePathToURL( FMFilePath )
+FilterValuesByExpression( theList;expression )
+FirstDayThisWeek( StartDay )
+FM_Name_ID( _Name_ID;_TLFSV;_fileName;_layoutName )
+FM_Name_ID_Field( _Name_ID )
+FM_Name_ID_Layout( _Name_ID )
+FM_Name_ID_Script( _Name_ID )
+FM_Name_ID_Table( _Name_ID )
+FM_Name_ID_ValueList( _Name_ID )
+FMPDate_to_SQLDate( text )
+fnPhone( text )
+FoundList( Field;Start )
+GetAllChars( text;numberOfChars )
+GetAlphaChar( parameter;additionalChar1;additionalChar2;additionalChar3 )
+GetFieldName2( field )
+GetFieldNameOnly( field;inQuotes )
+GetFieldsAsXML( theFields )
+GetFieldTableNameOnly( field;inQuotes )
+GetLayoutID( layout )
+GetLayoutObjectNames( type;nameStartsWith;enclosedBy;isFrontPanel;nameOfFile;nameOfLayout )
+getLine( value;list1 )
+GetMap( webViewerName;zoom;address1;address2;city;state;postalCode;country )
+GetNumericChar( parameter;additionalChar1;additionalChar2;additionalChar3 )
+GetParameterValue( valueNumber )
+GetValues( vlist;start;stop )
+GetWorkDays( StartDate;DueDate )
+GetXMLNode( XML;XPath )
+GoogleMapJS( Title;Longitude;Latitude;Zoom;Type;Markers )
+GoogleMapMarkerJS( Latitude;Longitude;Title;Message;Icon;Counter )
+Highlight_Field( field;search )
+Interactivate( _container )
+json_list( value;result;json_category_subcategory;json_name )
+KeyIs( name )
+List_Builder( Input_List;Limit )
+List_Counter( Value_List;field )
+List_Counter_Directional( Value_List;field;Direction )
+List_Repalce_value( L;Value_Replace )
+ListIndex( alist;string;matchcase )
+ListValuesMap( Field;recmax;lat;lng )
+Luhn( number )
+LuhnDoubleEven( makeEven )
+LuhnProduct( doubleEven )
+MaxValue( lst;value )
+MD5( words;len )
+MD5_calc( a;b;c;d;x;i )
+MD5_cmn( q;a;b;x;s;t )
+MD5_ff( a;b;c;d;x;s;t )
+MD5_gg( a;b;c;d;x;s;t )
+MD5_hh( a;b;c;d;x;s;t )
+MD5_ii( a;b;c;d;x;s;t )
+MD5_str2values( text )
+MD5_values2hex( number )
+MD5Hash( data )
+MergeValues( listA;listB )
+MinimizeLargeNumber( field )
+MinValue( lst;value )
+MonthRange( s;e )
+numberInwords( NumberIn;Currency;DecimalCurr )
+Parsing text with dilmiter( text;num;dilm )
+parsSQL( text;dilm;lvalue;num )
+Percent Display( number )
+PhoneMask( Number )
+phpArrayValue( array;key;pos )
+Portal_Power( Search;Search_list;Sub_categories;Category_filter;Header;Sub_categories_list )
+Portal_Range_Filter( Search;Min_input;Max_Input;Reference;Date_Field )
+Portal_Search_List( Search;Target )
+PortalFilter( searchField;field1;field2;field3;exclusionExpression )
+ProgressBarPercentage( percentage;divisor;fill )
+Range( start;end )
+RemoveDuplicates( Text )
+Repeat( text;repeatCount )
+Round_Time(  )
+scBaseUrl(  )
+ScriptOptionalParameterList( scriptNameToParse )
+ScriptRequiredParameterList( scriptNameToParse )
+SetLocalVariable( name;dynamic;value )
+SortableList( textList;skipPrefixes )
+SQLDate_to_FMPDate( _Date )
+SqlInsertNull( text )
+SSN_Number( number )
+State_Abbrev( StateAbbrev )
+SUMLIST( lst )
+Supertrim( text )
+Timeframe( startDate;endDate )
+TrimPHPTags( PHPCode )
+Value_Counter( Value_List;field )
+VerifyVariablesNotEmpty( nameList )
+VisiblePortalRows( aField;aPortal )
+WeekofFiscalYear( TheDate;StartingDay;StartMonth;StartDay )
+WeekRange( s;e )
+WindowInfo(  )
+WindowNamesAll( dbNames;wdNames;excludeCurrentWindow )
+WordBits( word;numberOfChars )
+WordCode( text;positionStart )
+YearMonthYear( startDate;endDate;fontSize;separator;red;green;blue )
+YearRange( s;e )
+HTML_Last_Row_Border( Target_Field;Tag;Row_1;Last_Row_Class;Target_Tag_or_Class )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="32" functionArity="2" visible="True" parameters="number;digits" name="AbsolutePaddingZeroes"><Calculation>//AbsolutePaddingZeroes
+//nubmber
+//digits
+
+Right( "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" &amp; number; digits )</Calculation></CustomFunction><CustomFunction id="55" functionArity="2" visible="True" parameters="x;y" name="Add32"><Calculation>// Add32 ( x; y )
+//
+// Add two integers, wrapping at 2^32.
+//
+// Parameters:
+// x = 32-bit integer operand #1
+// y = 32-bit integer operand #2
+//
+// Return Value:
+// 32-bit result of sum of operand #1 and operand #2
+//
+Mod( x + y; 2 ^ 32 )</Calculation></CustomFunction><CustomFunction id="75" functionArity="3" visible="True" parameters="theList;prefix;suffix" name="AddPrefixSuffixToList"><Calculation>// Description:
+// AddPrefixSuffixToList ( theList ; prefix ; suffix )
+// A recursive function that takes a list of values and adds a prefix and suffix
+
+// Written by Andy Knasinski
+// www.nrgsoft.com
+
+// sample
+// AddPrefixSuffixToList ( "value1¶value2" ; "&lt;value&gt;" ; "&lt;/value&gt;" )
+// would return an XML string for all values in a field
+
+
+If ( IsEmpty ( theList );
+theList;
+
+Let ( aValue = GetValue ( theList ; 1 ) ;
+	prefix &amp;
+    aValue &amp;
+    suffix &amp;
+    If ( ValueCount ( theList ) &gt; 1 ; "¶" ; ""  ) &amp;
+    AddPrefixSuffixToList (
+       RightValues ( theList ; ValueCount ( theList ) - 1 ) ;
+       prefix; suffix )
+	)
+)</Calculation></CustomFunction><CustomFunction id="170" functionArity="6" visible="True" parameters="Start;Stop;Lunch_Start;Lunch_Stop;Override;Option" name="Time_Clock"><Calculation>Let ( [
+/*
+PARAMETERS
+*/
+~start= Start;
+~stop =  Stop ; 
+~Lunch_start = Lunch_Start ; 
+~Lunch_Stop = Lunch_Stop ;
+~override = Override ; 
+~option = Option ; 
+
+/////////////////////////////////////////////////
+
+		// Primary Time
+~hour =Hour ( ~stop - ~start)  ;
+~minute = Minute (~stop - ~start) ;
+~end_time = 
+		(
+		Hour ( Get (CurrentTime) - ~start) + 
+		Minute (Get (CurrentTime) - ~start)  
+		/60
+		) ;
+
+~calc = ~hour + ~minute / 60 ;
+~difference = Round (~calc ; 2 ) ;
+
+		// Lunch Time
+			~Lunch_hour = Hour ( ~Lunch_stop - ~Lunch_start)  ;
+			~Lunch_minute = Minute (~Lunch_stop - ~Lunch_start) ;
+			~Lunch_end_time = (Hour ( Get (CurrentTime) - ~Lunch_start) + Minute (Get (CurrentTime) - ~Lunch_start)  /60) ;
+	~Lunch_calc = 
+			Case (
+				IsEmpty ( ~lunch_start ) or IsEmpty ( ~lunch_stop ) ; 0 ;
+				~Lunch_hour + ~Lunch_minute / 60 
+				) ;
+	~Lunch_difference = Round (~Lunch_calc ; 2 ) ;
+
+/*
+			||	Regular Calc Option	|| 		
+*/
+			~result =  Case ( 
+						not IsEmpty (~Override) ; ~Override ; 
+						IsEmpty (~stop) ; ~end_time ; 
+						~calc ≤ 0 ; ~calc+ 24 ;  
+						~calc  
+							) 
+							- ~Lunch_calc ;
+
+
+///////////////////////////// Rounded Option \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+~rounded = 
+			Let ( [ 
+						~round = ~difference - (Round ( ~difference/.25 ; 0) * .25) ;
+						~test = 
+							Case (
+							~round &lt; .125 ; "-" ; 
+							"+" 
+								) ; 
+						~resultA = 
+							Case ( 
+							~test = "-" ; ~difference - ~round ; 
+							~difference + ~round
+								)] ; 
+					~resultA 
+				) ;
+///////////////////////////// ----------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+~resultRounded =  
+			Case ( 
+			not IsEmpty (~Override) ; ~Override ; 
+			IsEmpty (~stop) ; ~end_time ; 
+			~calc ≤ 0 ; ~calc+ 24 ;  
+			~rounded  
+				) 
+				- ~Lunch_calc]; 
+
+///////////////////////////// RESULT \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+		//    ||  | Result |  ||    \\
+
+	Case(
+		~option = "R" ; ~resultRounded;
+		~result
+		)
+)</Calculation></CustomFunction><CustomFunction id="168" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
+
+				Find Date Range 1 Year - 1 year based on Hire Date
+Inputs: 
+Selected Year 
+Hire Date 
+
+How it works: 
+Seleted Year is evaluated against the hire date to idenitfy if a year spanning last year to a future date is correct or a current date to a date next year. 
+
+Example (1) Previous to Current: 
+Hire Date = 2/1/2018
+Selected Year = 2018
+Current Date = 1/5/2019
+Output = 
+2/1/2018 - 2/1/2019
+
+Example (2) Current to Next: 
+Hire Date = 2/1/2018
+Selected Year = 2019
+Current Date = 3/5/2019
+Output = 
+2/1/2019 - 2/1/2020
+
+*/
+
+
+
+
+Let ( [
+/////////////////////// ------ Prep------ ///////////////////////
+
+//		Current Date Values
+~Current_date = GetAsDate ( Get ( CurrentDate ) ); 
+~current_month = Month ( ~Current_date ) ;
+~Selected_Year = Selected_Year ;
+
+//		Hire Date Values
+~hire_date = Hire_Date ;
+~hire_month = Month ( ~hire_date ) ;
+
+~hire_Month_Day = ~hire_month &amp;"/"&amp; Day ( ~hire_date ) ; 
+
+/////////////////////// ------ START------ ///////////////////////
+
+~Test = If ( GetAsDate ( ~hire_Month_Day ) &gt; ~Current_date ; 1 ; 0 ) ;
+
+$Range_date_start = GetAsDate (
+					Case ( ~test = 1 ;
+						 ~hire_Month_Day &amp; "/" &amp; (~Selected_Year -1) ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year) 
+							); 
+
+$Range_date_end = GetAsDate (
+					Case ( ~test = 1 ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year + 1) 
+							); 
+
+~result = Case ( IsValid ( $Range_date_start ) and IsValid ( $Range_date_end ) ; 1 ; 0 )  ];
+
+~result 
+//&amp;¶&amp; $Range_date_start &amp; " - " &amp; $Range_date_end
+	 )</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="theList;theValues" name="AddRemoveListItems"><Calculation>/*
+AddRemoveListItems (theList; theValues)
+Adapted from function by: David Head, uLearnIT
+theList: standard return separated list
+theValues: text
+
+This function will add an item to a list if it does not already exist; 
+otherwise the item is removed from the list
+
+Always removes empty lines from list, 
+including leading/trailing returns
+
+Simply remove empty lines from list:
+AddRemoveListItems ( theList; "") 
+
+Recursive: theValues can be a list of values
+Each will be processed in sequence
+
+By Bruce Robertson 6/19/10
+V 1.01
+*/
+
+Let ([
+LV = ValueCount( theValues);
+thisValue= GetValue( theValues; 1);
+moreValues = MiddleValues( theValues ; 2; ValueCount( theValues));
+novalue = IsEmpty ( FilterValues ( theList ; thisValue ) );
+newList = Substitute( theList;  ["¶¶¶"; "¶"] ; ["¶¶"; "¶"] ) ;
+listminusvalue = Substitute( "¶¶" &amp; newList &amp; "¶¶"; [¶ &amp; thisValue &amp; ¶ ; ¶ ] ; ["¶¶¶"; ""] ; ["¶¶"; ""] ) ;
+listplusvalue = Substitute( List ( newList ; thisValue ); ["¶¶"; "¶"] );
+result = Case ( novalue ; listplusvalue ; listminusvalue );
+
+LNR = Length( result );
+TR = Right( result; 1) = "¶";
+LR = Left ( result; 1) = "¶";
+result = Middle ( result; 1+ LR; LNR - TR - LR )
+];
+
+Case( 
+LV &lt; 2 ; result; 
+AddRemoveListItems( result; moreValues)
+)
+)</Calculation></CustomFunction><CustomFunction id="169" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
+
+				Find Date Range 1 Year - 1 year based on Hire Date
+Inputs: 
+Selected Year 
+Hire Date 
+
+How it works: 
+Seleted Year is evaluated against the hire date to idenitfy if a year spanning last year to a future date is correct or a current date to a date next year. 
+
+Example (1) Previous to Current: 
+Hire Date = 2/1/2018
+Selected Year = 2018
+Current Date = 1/5/2019
+Output = 
+2/1/2018 - 2/1/2019
+
+Example (2) Current to Next: 
+Hire Date = 2/1/2018
+Selected Year = 2019
+Current Date = 3/5/2019
+Output = 
+2/1/2019 - 2/1/2020
+
+*/
+
+
+
+
+Let ( [
+/////////////////////// ------ Prep------ ///////////////////////
+
+//		Current Date Values
+~Current_date = GetAsDate ( Get ( CurrentDate ) ); 
+~current_month = Month ( ~Current_date ) ;
+~Selected_Year = Selected_Year ;
+
+//		Hire Date Values
+~hire_date = Hire_Date ;
+~hire_month = Month ( ~hire_date ) ;
+
+~hire_Month_Day = ~hire_month &amp;"/"&amp; Day ( ~hire_date ) ; 
+
+/////////////////////// ------ START------ ///////////////////////
+
+~Test = If ( GetAsDate ( ~hire_Month_Day ) &gt; ~Current_date ; 1 ; 0 ) ;
+
+$Range_date_start = GetAsDate (
+					Case ( ~test = 1 ;
+						 ~hire_Month_Day &amp; "/" &amp; (~Selected_Year -1) ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year) 
+							); 
+
+$Range_date_end = GetAsDate (
+					Case ( ~test = 1 ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year + 1) 
+							); 
+
+~result = Case ( IsValid ( $Range_date_start ) and IsValid ( $Range_date_end ) ; 1 ; 0 )  ];
+
+~result 
+//&amp;¶&amp; $Range_date_start &amp; " - " &amp; $Range_date_end
+	 )</Calculation></CustomFunction><CustomFunction id="34" functionArity="1" visible="True" parameters="BirthDate" name="AGE"><Calculation>Year (Get(CurrentDate)) - 
+Year (BirthDate) - 
+( 
+Get (CurrentDate) &lt; Date ( 
+Month (BirthDate); 
+Day (BirthDate); 
+Year (Get(CurrentDate))
+) 
+)</Calculation></CustomFunction><CustomFunction id="167" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
+
+				Find Date Range 1 Year - 1 year based on Hire Date
+Inputs: 
+Selected Year 
+Hire Date 
+
+How it works: 
+Seleted Year is evaluated against the hire date to idenitfy if a year spanning last year to a future date is correct or a current date to a date next year. 
+
+Example (1) Previous to Current: 
+Hire Date = 2/1/2018
+Selected Year = 2018
+Current Date = 1/5/2019
+Output = 
+2/1/2018 - 2/1/2019
+
+Example (2) Current to Next: 
+Hire Date = 2/1/2018
+Selected Year = 2019
+Current Date = 3/5/2019
+Output = 
+2/1/2019 - 2/1/2020
+
+*/
+
+
+
+
+Let ( [
+/////////////////////// ------ Prep------ ///////////////////////
+
+//		Current Date Values
+~Current_date = GetAsDate ( Get ( CurrentDate ) ); 
+~current_month = Month ( ~Current_date ) ;
+~Selected_Year = Selected_Year ;
+
+//		Hire Date Values
+~hire_date = Hire_Date ;
+~hire_month = Month ( ~hire_date ) ;
+
+~hire_Month_Day = ~hire_month &amp;"/"&amp; Day ( ~hire_date ) ; 
+
+/////////////////////// ------ START------ ///////////////////////
+
+~Test = If ( GetAsDate ( ~hire_Month_Day ) &gt; ~Current_date ; 1 ; 0 ) ;
+
+$Range_date_start = GetAsDate (
+					Case ( ~test = 1 ;
+						 ~hire_Month_Day &amp; "/" &amp; (~Selected_Year -1) ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year) 
+							); 
+
+$Range_date_end = GetAsDate (
+					Case ( ~test = 1 ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year ;
+						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year + 1) 
+							); 
+
+~result = Case ( IsValid ( $Range_date_start ) and IsValid ( $Range_date_end ) ; 1 ; 0 )  ];
+
+~result 
+//&amp;¶&amp; $Range_date_start &amp; " - " &amp; $Range_date_end
+	 )</Calculation></CustomFunction><CustomFunction id="165" functionArity="1" visible="True" parameters="fieldRef" name="SQLFieldName"><Calculation>/**
+ * =====================================
+ * FieldName ( fieldRef )
+ *
+ * PURPOSE:
+ *		Convenience function for working with
+ *		abstracted field references within code.
+ *		
+ * RETURNS:
+ *		(string) name of just the field portion from a field reference
+ *		
+ * PARAMETERS:
+ *		fieldRef = Absolute field reference
+ *
+ * EXAMPLES:
+ *		TableName ( FunctionalArea » Tablename::fieldName ) = "FunctionalArea » Tablename"
+ *
+ * DEPENDENCIES:
+ *		none
+ *
+ * NOTES:
+ *		This is simply a helper function to avoid having excessive amounts of
+ *		similar code wtihin a FileMaker solution.
+ *
+ * HISTORY:
+ *		MODIFIED on 2012-05-11 by matt@filemakermagazine.com - added
+ *
+ * REFERENCES:
+ *		(see TableName custom function)
+ * =====================================
+ */
+
+Quote ( GetValue ( Substitute ( GetFieldName ( fieldRef ) ; "::" ; ¶ ) ; 2 ) )</Calculation></CustomFunction><CustomFunction id="166" functionArity="1" visible="True" parameters="fieldRef" name="SQLTableName"><Calculation>/**
+ * =====================================
+ * TableName ( fieldRef )
+ *
+ * PURPOSE:
+ *		Convenience function for working with
+ *		abstracted table references within code.
+ *		
+ * RETURNS:
+ *		(string) name of just the table portion from a field reference
+ *		
+ * PARAMETERS:
+ *		fieldRef = Absolute field reference
+ *
+ * EXAMPLES:
+ *		TableName ( FunctionalArea » Tablename::fieldName ) = "FunctionalArea » Tablename"
+ *
+ * DEPENDENCIES:
+ *		none
+ *
+ * NOTES:
+ *		This is simply a helper function to avoid having excessive amounts of
+ *		similar code wtihin a FileMaker solution.
+ *
+ * HISTORY:
+ *		MODIFIED on 2012-05-11 by matt@filemakermagazine.com - added
+ *
+ * REFERENCES:
+ *		(see FieldName custom function)
+ * =====================================
+ */
+
+Quote ( GetValue ( Substitute ( GetFieldName ( fieldRef ) ; "::" ; ¶ ) ; 1 ) )</Calculation></CustomFunction><CustomFunction id="14" functionArity="3" visible="True" parameters="s;e;t" name="AppointmentDateRange"><Calculation>Case(
+
+t ="Daily";
+Case ( s &lt; e ; GetAsText( s ) &amp; "¶" &amp; AppointmentDateRange (s+1; e; t) ; GetAsText ( e ) );
+
+t="Weekly";
+Case ( s &lt; e ; 
+GetAsText(s) &amp; "¶" &amp; AppointmentDateRange ( s+7;e; t);
+If(Mod((s - e);7) = 0; GetAsText(e);""));
+
+t="Monthly";
+Case ( s&lt; e ; 
+GetAsText(s) &amp; "¶" &amp; AppointmentDateRange ( Date ( Month ( s )+1 ; Day ( s ) ; Year ( s ) );e; t);
+If(Day ( s ) = Day ( e );GetAsText(e);""));
+
+t="Yearly";
+Case ( s&lt; e ; 
+GetAsText(s) &amp; "¶" &amp; AppointmentDateRange ( Date ( Month ( s ) ; Day ( s ) ; Year ( s )+1 );e; t);
+If(Year( s ) = Year ( e );GetAsText(e);""));
+
+""
+)</Calculation></CustomFunction><CustomFunction id="56" functionArity="1" visible="True" parameters="ch" name="AsciiCode"><Calculation>// AsciiCode ( ch )
+//
+// Return ASCII code for printable 7-bit characters.
+// Control and 8-bit characters are treated as ~ (0x7E).
+//
+// Parameters:
+// ch = 7-bit ASCII character
+//
+// Return Value:
+// ASCII code of character.
+//
+Let(
+ pos = Position( Substitute( " !\"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"; ch; "===" ); "==="; 1; 1 );
+ If(
+  pos &gt; 0;
+  pos + 31;
+  127
+ )
+)</Calculation></CustomFunction><CustomFunction id="57" functionArity="2" visible="True" parameters="x;y" name="BitwiseAND"><Calculation>// BitwiseAND ( x; y )
+//
+// Performs the logical AND on each pair of corresponding bits within two values.
+//
+// Parameters:
+// x = Integer operand #1
+// y = Integer operand #2
+//
+// Return Value:
+// Result of bitwise AND operation.
+//
+If(
+ x = 0 or y = 0;
+ 0;
+ BitwiseAND( Int( x / 2 ); Int( y / 2 ) ) * 2 + If( Mod( x; 2 ) and Mod( y; 2 ); 1; 0 )
+)</Calculation></CustomFunction><CustomFunction id="58" functionArity="1" visible="True" parameters="x" name="BitwiseNOT"><Calculation>// BitwiseNOT ( x )
+//
+// Performs logical negation on each bit within a 32-bit value.
+//
+// Parameters:
+// x = 32-bit integer operand
+//
+// Return Value:
+// 32-bit result of bitwise negation operation.
+//
+BitwiseXOR( x; 2^32 - 1 )</Calculation></CustomFunction><CustomFunction id="171" functionArity="2" visible="True" parameters="VL_List_Name;Value" name="GetValue_ListItems_Sorted"><Calculation>/*
+
+INSTRUCTIONS
+ValueList Name MUST have the underlying ID Number in the name
+Example: List_Name||ID:20||
+Value List ID = 20 
+
+How it work 
+First the Function will look for the Value List Name by ID
+If the resulting List has the number in the Name (USE #)
+
+Else the Value List Name will be used 
+If Values &gt; 0 this will be used 
+
+Else Result = "List Not Found" 
+
+
+Inputs
+Value List Name (# in Name) 
+Value (Desired Value in List) 
+
+Output 
+Value in Value List 
+or 
+List Not Found
+
+BONUS Feature 
+Enter Value = "" 
+Result = Value List 
+
+
+*/
+
+
+
+Let ( [
+~VL_Name_Input = VL_List_Name ;
+~Value = Value ; 
+~VL_Number = GetAsNumber ( ~VL_Name_Input ) ;
+~Value_List_Name = FM_Name_ID ( ~VL_Number ; "v" ; "" ; "" ) ;
+~Value_List1 = ValueListItems ( Get ( FileName ) ; ~Value_List_Name ) ;
+~Value_List2 = ValueListItems ( Get ( FileName ) ; ~VL_Name_Input ) ;
+~Value_List =	SortValues ( 
+					Case ( 
+						GetAsNumber ( ~Value_List_Name ) = ~VL_Number ;
+						~Value_List1 ;
+						ValueCount ( ~Value_List2 ) &gt; 0 ;
+						~Value_List2 ;
+						"List Not Found" 
+				 		)
+					) ;
+~result = Case (
+			IsEmpty (~Value) ; ~Value_List ;
+			GetValue ( ~Value_List ; ~Value ) 
+			) ];
+	~result 
+	)
+
+
+//////////////////////////////////////////
+// Creaed by: Kristian Olsen (RCC) - 2019 //
+/////////////////////////////////////////
+</Calculation></CustomFunction><CustomFunction id="59" functionArity="2" visible="True" parameters="x;y" name="BitwiseOR"><Calculation>// BitwiseOR ( x; y )
+//
+// Performs the logical OR on each pair of corresponding bits within two values.
+//
+// Parameters:
+// x = Integer operand #1
+// y = Integer operand #2
+//
+// Return Value:
+// Result of bitwise OR operation.
+//
+If(
+ x = 0 or y = 0;
+ x + y;
+ BitwiseOR( Int( x / 2 ); Int( y / 2 ) ) * 2 + If( Mod( x; 2 ) or Mod( y; 2 ); 1; 0 )
+)</Calculation></CustomFunction><CustomFunction id="60" functionArity="2" visible="True" parameters="x;bits" name="BitwiseROL"><Calculation>// BitwiseROL ( x; bits )
+//
+// Performs circular shift left of each bit within a 32-bit value. Bits that move past the left end reappear at the right end.
+//
+// Parameters:
+// x = Integer operand to be rotated
+// bits = Number of positions to rotate value
+//
+// Return Value:
+// Result of bitwise rotation operation
+//
+Mod( BitwiseOR( BitwiseSHL( x; bits ); BitwiseSHR( x; 32 - bits ) ); 2^32 )</Calculation></CustomFunction><CustomFunction id="61" functionArity="2" visible="True" parameters="x;bits" name="BitwiseSHL"><Calculation>// BitwiseSHL ( x; bits )
+//
+// Performs logical shift left of each bit within a 32-bit value. Bits that move past the left end disappear. This operation is equivalent to multiplying by a power of 2.
+//
+// Parameters:
+// x = Integer operand to be shifted
+// bits = Number of positions to shift value
+//
+// Return Value:
+// 32-bit result of bitwise shift operation
+//
+Mod( x * 2^bits; 2^32 )</Calculation></CustomFunction><CustomFunction id="62" functionArity="2" visible="True" parameters="x;bits" name="BitwiseSHR"><Calculation>// BitwiseSHR ( x; bits )
+//
+// Performs logical shift right of each bit within a value. Bits that move past the right end disappear. This operation is equivalent to dividing by a power of 2.
+//
+// Parameters:
+// x = Integer operand to be shifted
+// bits = Number of positions to shift value
+//
+// Return Value:
+// Result of bitwise shift operation
+//
+Int( x / 2^bits )</Calculation></CustomFunction><CustomFunction id="63" functionArity="2" visible="True" parameters="x;y" name="BitwiseXOR"><Calculation>// BitwiseXOR ( x; y )
+//
+// Performs the logical exclusive OR on each pair of corresponding bits within two values.
+//
+// Parameters:
+// x = Integer operand #1
+// y = Integer operand #2
+//
+// Return Value:
+// Result of bitwise exclusive OR operation.
+//
+If(
+ x = y;
+ 0;
+ BitwiseXOR( Int( x / 2 ); Int( y / 2 ) ) * 2 + If( Mod( x; 2 ) ≠ Mod( y; 2 ); 1; 0 )
+)</Calculation></CustomFunction><CustomFunction id="110" functionArity="0" visible="True" parameters="" name="Bytes"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Converts Current FileMaker file size in Bytes to KB/MB/GB/TB.
+
+
+*************************************************************************************************/
+
+Let 	( 
+	[ 
+	fileSize = Get ( FileSize ) ; 
+
+	kiloByte = Round ( fileSize / 1024 ; 2 ) &amp; " KB" ; 
+	megaByte = Round ( fileSize / 1048576 ; 2 ) &amp; " MB" ; 
+	gigaByte = Round ( filesize / 1073741824 ; 2 ) &amp; " GB" ; 
+	teraByte = Round ( filesize / 1099511627776 ; 2 ) &amp; " TB"
+	] ; 
+
+	
+	Case	( 
+		fileSize &lt; 1024 ; fileSize ; 
+		fileSize &lt; 1048576 ; kiloByte ; 
+		filesize &lt; 1073741824 ; megaByte ; 
+		filesize &lt; 1099511627776 ; gigaByte ; 
+		teraByte
+		) 
+			
+
+	)</Calculation></CustomFunction><CustomFunction id="111" functionArity="1" visible="True" parameters="container" name="ByteSizeContainer"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+
+Let 	( 
+	[ 
+	fileSize = GetContainerAttribute ( container ; "filesize" ) ; 
+
+	kiloByte = Round ( fileSize / 1024 ; 2 ) &amp; " KB" ; 
+	megaByte = Round ( fileSize / 1048576 ; 2 ) &amp; " MB" ; 
+	gigaByte = Round ( filesize / 1073741824 ; 2 ) &amp; " GB" ; 
+	teraByte = Round ( filesize / 1099511627776 ; 2 ) &amp; " TB"
+	] ; 
+
+	
+	Case	( 
+		fileSize &lt; 1024 ; fileSize ; 
+		fileSize &lt; 1048576 ; kiloByte ; 
+		filesize &lt; 1073741824 ; megaByte ; 
+		filesize &lt; 1099511627776 ; gigaByte ; 
+		teraByte
+		) 
+			
+
+	)</Calculation></CustomFunction><CustomFunction id="89" functionArity="1" visible="True" parameters="text" name="ccFormat"><Calculation>Let (
+	pnum = Substitute( text; [ " "; "" ]; [ "("; ""]; [ ")"; ""]; [ "-"; ""]; [ "."; ""]; [ "x"; ""] ) ;
+	Left(pnum;4) &amp; "-" &amp; Middle(pnum; 5;4) &amp; "-" &amp; Middle(pnum;9;4) &amp; "-" &amp; Right(pnum;4))</Calculation></CustomFunction><CustomFunction id="13" functionArity="1" visible="True" parameters="dimension" name="CenterWindow"><Calculation>//CenterWindow
+//dimension
+Let(
+[
+_vertical = PatternCount ( dimension ; "vert" );
+_horizontal = PatternCount ( dimension ; "horiz" )
+
+];
+
+Case( _vertical;
+               (Get ( WindowDesktopHeight )  / 2) - (Get ( WindowHeight ) / 2);
+          _horizontal;
+               (Get ( WindowDesktopWidth )  / 2) - (Get ( WindowWidth ) / 2)
+    )
+)</Calculation></CustomFunction><CustomFunction id="35" functionArity="1" visible="True" parameters="dimension" name="CenterWindow in Window vert horiz"><Calculation>//USE CUSTOM FUNCTION "WINDOW INFO" WITH IS
+//CenterWindow in Window vert horiz
+Let(
+[
+_vertical = PatternCount ( dimension ; "vert" );
+_horizontal = PatternCount ( dimension ; "horiz" )
+
+];
+
+Case( _vertical;
+             (($$window_height - Get ( WindowHeight ))/2) + $$window_top;
+          _horizontal;
+              (($$window_width - Get ( WindowWidth ))/2) + $$window_left
+    )
+)</Calculation></CustomFunction><CustomFunction id="53" functionArity="2" visible="True" parameters="cipherText;key" name="ChaosDecrypt"><Calculation>/**
+ * =====================================
+ * ChaosDecrypt ( cipherText ; key )
+ *
+ * WARNING:
+ * Different versions of the ChaosEncrypt and ChaosDecrypt functions are
+ * unlikely to be compatible.
+ *
+ * PURPOSE:
+ * Uses chaotic permutations of the key to create an decrypted version of
+ * cipherText that was created by the ChaosEncrypt() function. This function
+ * uses a psuedo-chaotic stream cipher algorithm adapted to the constraints of
+ * FileMaker custom functions.
+ *
+ * PARAMETERS:
+ * cipherText: The text string to decrypt
+ * key: The key to used to encrypt cipherText
+ *
+ * RETURNS:
+ * A decrypted version of cipherText.
+ *
+ * NOTES:
+ * This function has not been subjected to rigorous cryptanalysis, and the
+ * author does not warranty the security of encrypted text.
+ *
+ * This is a recursive custom function, and hence is limited in the maximum
+ * combined length of text and key that it can decrypt.
+ *
+ * HISTORY:
+ * MODIFIED on 2011-01-23 by Jeremy Bante to account for composite
+ * characters.
+ * MODIFIED on 2011-01-14 by Jeremy Bante to use a different map and
+ * systematically perturbed orbits.
+ * MODIFIED on 2011-01-09 by Jeremy Bante to use a different chaotic
+ * map that results in greater diffusion and faster calculation.
+ * MODIFIED on 2011-01-05 by Jeremy Bante to use a different chaotic
+ * map when transforming the key.
+ * CREATED on 2011-01-04 by Jeremy Bante of The Support Group.
+ *
+ * REFERENCES:
+ * ChaosDecrypt function: http://www.briandunning.com/cf/1259
+ * ChaosEncrypt function: http://www.briandunning.com/cf/1258
+ * ChaosHash function: http://www.briandunning.com/cf/1261
+ * =====================================
+ */
+ 
+Case (
+	/*First call to function; initialize variables*/
+	not $~step;
+	Let ( [
+		$~keyLength = Length ( key );
+		$~priorByte = 32749; //greatest prime &lt; 2^15
+		$~step = 1
+	];
+		ChaosDecrypt ( cipherText ; key )
+	);
+
+	/*Step 1, convert key to numbers and scramble first round*/
+	$~step = 1;
+	Let ( [
+		//extract next byte from key, accounting for composite characters
+		~keyByte = Code ( Left ( key ; 1 ) );
+		~extraByte = Left ( ~keyByte ; Length ( ~keyByte ) - 5 );
+		~keyByte = Mod ( Right ( ~keyByte ; 5 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//add new value to list
+		$~key = List ( ~keyByte ; $~key );
+		$~priorByte = ~keyByte;
+		
+		//continue until whole key is processed
+		~keyLength = Length ( key );
+		$~step = If ( ~keyLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosDecrypt (
+			cipherText;
+			Char ( ~extraByte ) &amp; Right ( key ; ~keyLength - 1 )
+		)
+	);
+	
+	/*Step 2, apply key to text*/
+	$~step = 2;
+	Let ( [
+		~keyByte = Mod ( GetValue ( $~key ; 1 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//extract next byte from cipherText, accounting for composite characters
+		~cipherByte = Code ( Left ( cipherText ; 1 ) );
+		~extraByte = Left ( ~cipherByte ; Length ( ~cipherByte ) - 5 );
+		~cipherByte = Right ( ~cipherByte ; 5 );
+		
+		//apply key to text
+		//additive complement under 2^16 is analogous to XOR in binary encryption
+		~plainByte = 65535 - Mod ( ~cipherByte + ~keyByte ; 65535 );
+		$~plainText = $~plainText &amp; Char ( ~plainByte );
+		
+		//rotate the key
+		$~priorByte = ~cipherByte;
+		$~key =
+			Substitute (
+				List ( RightValues ( $~key ; $~keyLength - 1 ) ; ~keyByte );
+				"¶¶";
+				"¶"
+			);
+
+		//continue until whole text is encrypted
+		~textLength = Length ( cipherText );
+		$~step = If ( ~textLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosDecrypt (
+			Char ( ~extraByte ) &amp; Right ( cipherText ; ~textLength - 1 );
+			""
+		)
+	);
+	
+	/*Step 3, clean-up and return result*/
+	$~step = 3;
+	Let ( [
+		~plainText = $~plainText;
+		
+		//purge variables
+		$~key = "";
+		$~keyLength = "";
+		$~plainText = "";
+		$~priorByte = "";
+		$~step = ""
+	];
+		~plainText
+	)
+)</Calculation></CustomFunction><CustomFunction id="54" functionArity="2" visible="True" parameters="text;key" name="ChaosEncrypt"><Calculation>/**
+ * =====================================
+ * ChaosEncrypt ( text ; key )
+ *
+ * WARNING:
+ * Different versions of the ChaosEncrypt and ChaosDecrypt functions are
+ * unlikely to be compatible.
+ *
+ * PURPOSE:
+ * Uses chaotic permutations of key to create an encrypted version of text that
+ * is extremely difficult to retrieve without the original key. This function
+ * uses a pseudo-chaotic stream cipher algorithm adapted to the constraints of
+ * FileMaker custom functions.
+ *
+ * PARAMETERS:
+ * text: The text string to encrypt
+ * key: The key to use to encrypt text
+ *
+ * RETURNS:
+ * An encrypted version of text.
+ *
+ * NOTES:
+ * This function has not been subjected to rigorous cryptanalysis, and the
+ * author does not warranty the security of encrypted text.
+ *
+ * This is a recursive custom function, and hence is limited in the maximum
+ * combined length of text and key that it can decrypt.
+ *
+ * HISTORY:
+ * MODIFIED on 2011-01-23 by Jeremy Bante to account for composite
+ * characters.
+ * MODIFIED on 2011-01-14 by Jeremy Bante to use a different map and
+ * systematically perturbed orbits.
+ * MODIFIED on 2011-01-09 by Jeremy Bante to use a different chaotic
+ * map that results in greater diffusion and faster calculation.
+ * MODIFIED on 2011-01-05 by Jeremy Bante to use a different chaotic
+ * map when transforming the key.
+ * CREATED on 2011-01-04 by Jeremy Bante of The Support Group.
+ *
+ * REFERENCES:
+ * ChaosDecrypt function: http://www.briandunning.com/cf/1259
+ * ChaosEncrypt function: http://www.briandunning.com/cf/1258
+ * ChaosHash function: http://www.briandunning.com/cf/1261
+ * =====================================
+ */
+
+Case (
+	/*First call to function; initialize variables*/
+	not $~step;
+	Let ( [
+		$~keyLength = Length ( key );
+		$~priorByte = 32749; //greatest prime &lt; 2^15
+		$~step = 1
+	];
+		ChaosEncrypt ( text ; key )
+	);
+
+	/*Step 1, convert key to numbers and scramble first round*/
+	$~step = 1;
+	Let ( [
+		//extract next byte from key, accounting for composite characters
+		~keyByte = Code ( Left ( key ; 1 ) );
+		~extraByte = Left ( ~keyByte ; Length ( ~keyByte ) - 5 );
+		~keyByte = Mod ( Right ( ~keyByte ; 5 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//add new value to list
+		$~key = List ( ~keyByte ; $~key );
+		$~priorByte = ~keyByte;
+		
+		//continue until whole key is processed
+		~keyLength = Length ( key );
+		$~step = If ( ~keyLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosEncrypt (
+			text;
+			Char ( ~extraByte ) &amp; Right ( key ; ~keyLength - 1 )
+		)
+	);
+	
+	/*Step 2, apply key to text*/
+	$~step = 2;
+	Let ( [
+		~keyByte = Mod ( GetValue ( $~key ; 1 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//extract next byte from text, accounting for composite characters
+		~textByte = Code ( Left ( text ; 1 ) );
+		~extraByte = Left ( ~textByte ; Length ( ~textByte ) - 5 );
+		~textByte = Right ( ~textByte ; 5 );
+
+		//apply key to text
+		//additive complement under 2^16 - 1 is analogous to XOR in binary encryption
+		~textByte = 65535 - Mod ( ~textByte + ~keyByte ; 65535 );
+		$~cipherText = $~cipherText &amp; Char ( ~textByte );
+		
+		//rotate the key
+		$~priorByte = ~textByte;
+		$~key =
+			Substitute (
+				List ( RightValues ( $~key ; $~keyLength - 1 ) ; ~keyByte );
+				"¶¶";
+				"¶"
+			);
+
+		//continue until whole text is encrypted
+		~textLength = Length ( text );
+		$~step = If ( ~textLength &gt; 1 ; $~step ; /*else*/ $~step + 1 )
+	];
+		ChaosEncrypt (
+			Char ( ~extraByte ) &amp; Right ( text ; ~textLength - 1 );
+			""
+		)
+	);
+	
+	/*Step 3, clean-up and return result*/
+	$~step = 3;
+	Let ( [
+		~cipherText = $~cipherText;
+		
+		//purge variables
+		$~cipherText = "";
+		$~key = "";
+		$~keyLength = "";
+		$~priorByte = "";
+		$~step = ""
+	];
+		~cipherText
+	)
+)</Calculation></CustomFunction><CustomFunction id="52" functionArity="2" visible="True" parameters="text;hashLength" name="ChaosHash"><Calculation>/**
+ * =====================================
+ * ChaosHash ( text ; hashLength )
+ *
+ * WARNING:
+ * Different versions of this function are unlikely to calculate the same
+ * results.
+ *
+ * PURPOSE:
+ * Creates a hash of the text parameter via a pseudo-chaotic process adapted to
+ * the constraints of FileMaker custom functions.
+ *
+ * PARAMETERS:
+ * text: The text string to encrypt
+ * key: The key to use to encrypt text
+ *
+ * RETURNS:
+ * An encrypted version of text.
+ *
+ * NOTES:
+ * This function has not been subjected to rigorous cryptanalysis, and the
+ * author does not warranty the security or collision resistance of results.
+ *
+ * This is a recursive custom function, and hence is limited in the maximum
+ * length of text that it can process.
+ *
+ * HISTORY:
+ * MODIFIED on 2011-01-23 by Jeremy Bante to account for composite
+ * characters
+ * MODIFIED on 2011-01-14 by Jeremy Bante to use a different map and
+ * systematically perturbed orbits.
+ * MODIFIED on 2011-01-09 by Jeremy Bante to use a different chaotic
+ * map that results in greater diffusion and faster calculation.
+ * CREATED on 2011-01-05 by Jeremy Bante of The Support Group.
+ *
+ * REFERENCES:
+ * ChaosDecrypt function: http://www.briandunning.com/cf/1259
+ * ChaosEncrypt function: http://www.briandunning.com/cf/1258
+ * ChaosHash function: http://www.briandunning.com/cf/1261
+ * =====================================
+ */
+
+Case (
+	/*First call to function, initialize variables*/
+	not $~step;
+	Let ( [
+		$~alternator = 0;
+		$~i = 1;
+		$~j = 1;
+		$~k = 1;
+		$~priorByte = 32749; //greatest prime &lt; 2^15
+		$~textLength = Length ( text );
+		$~step = 1
+	];
+		ChaosHash ( text ; hashLength )
+	);
+
+	/*Step 1, Parse text into cipher key*/
+	$~step = 1;
+	Let ( [
+		//Convert text to numbers, accounting for composite characters
+		~textByte = 
+			If ( $~textLength ≥ $~i;
+				Code ( Middle ( text ; $~i ; 1 ) );
+				/*else*/ $~alternator //augment $~text as needed
+			);
+		~extraByte = Left ( ~textByte ; Length ( ~textByte ) - 5 );
+		~textByte = Right ( ~textByte ; 5 );
+		$~textLength =
+			If ( $~textLength ≥ $~i;
+				$~textLength;
+				/*else*/ $~textLength + 1
+			);
+		$~alternator =
+			If ( $~textLength ≥ $~i;
+				$~alternator;
+				/*else*/ not $~alternator
+			);
+		$~text = List ( $~text ; ~textByte );
+		
+		~keyByte = Mod ( ~textByte + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+
+		//add new key value to list
+		$~key = List ( ~keyByte ; $~key );
+		$~priorByte = ~keyByte;
+
+		//continue until whole $~text is processed
+		$~step =
+			If ( $~textLength &gt; $~i or $~textLength &lt; hashLength;
+				$~step;
+				/*else*/ $~step + 1
+			);
+		$~i = $~i + 1
+	];
+		ChaosHash ( Char ( ~extraByte ) &amp; text ; hashLength )
+	);
+
+	/*Step 2, Apply $~key to $~text*/
+	$~step = 2;
+	Let ( [
+		~keyByte = Mod ( GetValue ( $~key ; 1 ) + $~priorByte ; 65535 );
+		
+		//iterate ~keyByte through the map 8x, perturb 4th orbits
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1; 65535 );
+		
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) ; 65535 );
+		~keyByte = Mod ( 4099 * ( 65535 - ~keyByte ) + 1 ; 65535 ) + 1;
+		
+		//apply key to text
+		//additive complement under 2^16 is analogous to XOR in binary encryption
+		~textByte = MiddleValues ( $~text ; $~j ; 1 );
+		~textByte = 65535 - Mod ( ~textByte + ~keyByte ; 65535 );
+		$~hash = $~hash &amp; Char ( ~textByte );
+		
+		//rotate the key
+		$~priorByte = ~textByte;
+		$~key = List ( RightValues ( $~key ; $~i - 2 ) ; ~keyByte );
+
+		//continue until whole text is encrypted
+		$~step = If ( hashLength &gt; $~j ; $~step ; /*else*/ $~step + 1 );
+		$~j = $~j + 1
+	];
+		ChaosHash ( "" ; hashLength )
+	);
+
+	/*Step 3, Clean-up, and return result*/
+	$~step = 3;
+	Let ( [
+		~hash = $~hash;
+
+		//purge variables
+		$~alternator = "";
+		$~i = "";
+		$~j = "";
+		$~hash = "";
+		$~key = "";
+		$~priorByte = "";
+		$~step = "";
+		$~text = "";
+		$~textLength = ""
+	];
+		~hash
+	);
+)</Calculation></CustomFunction><CustomFunction id="157" functionArity="3" visible="True" parameters="Output;Separator;Input_List" name="Concatenate_Lists_Into_Strings"><Calculation>// Input: Input List (In Text) and OutPut (Empty) and N_record and N_value
+
+Let ( [
+$$FX_Counter = If ( IsEmpty ( Output) ; 1 ; $$FX_Counter + 1 ) ; 
+$$N_Record = If ( IsEmpty ( Output) ; 1 ; $$N_Record ) ;
+$$N_Value = If ( IsEmpty ( Output) ; 1 ; $$N_Value ) ;
+~N_record = $$N_Record ;
+~N_value = $$N_Value + 1 ; 
+
+	~input_list = Input_List ;
+		~field_list = Substitute ( ~input_list ;[ ";" ; ¶ ] ; [ " " ; ""] ) ; 
+		~field = GetField ( GetValue ( ~field_list ; ~N_value  ) )  ; 
+
+~max_value = ValueCount ( ~field_list ) + 1 ; 
+~result = Case (
+			~n_value = ~max_value ; Output &amp;¶ ; 
+			GetNthRecord ( ~field  ; ~n_record )  = "?" ; 
+			Output &amp;¶  ; GetNthRecord ( ~field  ; ~n_record ) &amp; " "  ) ;
+~stop = PatternCount ( Right ( ~result ; 2 ) ; ¶ ) = 2 ;
+
+$$N_Record = If (~n_value = ~max_value ; $$N_Record + 1 ; $$N_Record) ;
+$$N_Value = If (~n_value = ~max_value ; 0 ; $$N_Value + 1) 
+
+] ;
+ Case ( 
+	$$FX_Counter = 49999 ; "Maximum Limit: " &amp; $$FX_Counter &amp; " Recursions" &amp;¶ &amp; Output &amp;  
+		Let ( [ $$FX_Counter = "";  $$N_Record = "";  $$N_Value = ""  ]; "" )  ;
+	~stop = 1 ; Output ; 
+	~n_value = ~max_value ;  Concatenate_Lists_Into_Strings ( ~result ; Separator ; Input_List ) ;  
+						Concatenate_Lists_Into_Strings ( Output  &amp; GetNthRecord ( ~field  ; ~n_record ) &amp; Separator  ; Separator ; Input_List   ) 
+ ) 
+)</Calculation></CustomFunction><CustomFunction id="158" functionArity="2" visible="True" parameters="Separator;Input_List" name="Concatenate_Lists_Into_Strings_Translate"><Calculation>// Input: Input List (In Text) and Separator is what will separate the groups of text strings (¶) 
+// Requires Concatenate_Lists_Into_Strings Custom Function 
+
+Let ( [
+~list = Concatenate_Lists_Into_Strings ( "" ; "|" ; Input_List ) ; 
+~result = Substitute ( ~list ; "|" ; Separator ) 
+	]; 
+		~result
+		)</Calculation></CustomFunction><CustomFunction id="154" functionArity="2" visible="True" parameters="Output;Input_List" name="Concatenate_Text_String"><Calculation>/*// Builds Asset Report by building a Text String of the Asset's related WO Information: Date, Problem, Corrective Action 
+
+Let ( [  
+// Input Replacment
+~report_input = Output ; 
+
+// Counter and Limit
+$$count_f = If (IsEmpty ( ~report_input)  ; 1 ; $$count_f + 1 ) ;
+~stop = Sum (T40b_equipment_PROJECT||id_equipment|WO||::id_constant) ;
+
+~input = GetValue ( Input_List ; $$count_f ) ; 
+
+// Report String
+~Output = 
+		Output &amp;
+				Let ( [
+					~value1 = GetValue (  ~input ; 1 ) ;  
+					~value2 = GetValue (  ~input ; 2 ) ; 
+					~value3 = GetValue (  ~input ; 3 ) ; 
+					~result = 
+							Substitute ( "*" ;
+								[ "*" ; ~value1 ] ; 
+								[~value1 ; ~value1 &amp; ~value2 ] ; 
+								[ ~value1 &amp; ~value2 ; ~value1 &amp; " " &amp; ~value2 &amp; " " &amp; ~value3 ]  )
+ 					] ; ~result )
+				&amp;¶
+
+
+] ;  Case ( 
+		$$count_f ≥ ~stop ; ~Output  ; Asset_Report_Builder ( ~Output  ) 
+		)
+    )
+
+//GetNthRecord ( fieldName ; recordNumber )*/</Calculation></CustomFunction><CustomFunction id="30" functionArity="1" visible="True" parameters="CreditCardNumber" name="CreditCardName"><Calculation>/*
+
+This is a Custom Function implementation of Brian Dunning's Card Validator
+
+It requires that the 3 Luhn functions are available in the file.
+
+*/
+
+Let ( [
+
+justNumbers = Filter( CreditCardNumber ; "0123456789" ) ; // remove any non-numeric characters
+
+valid = Luhn ( justNumbers ) ] ; // end let variable definition
+
+// begin calculation
+
+If ( valid  and Length( justNumbers ) &gt;= 15 and Length( justNumbers ) &lt;= 16 ; 
+
+Case(
+GetAsNumber(Left(justNumbers;6)) &gt;= 413733  and GetAsNumber(Left(justNumbers;6)) &lt;= 413737; "Visa Debit / Delta";
+Left(justNumbers;4) = "4462"; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 453978  and GetAsNumber(Left(justNumbers;6)) &lt;= 453979; "Visa Debit / Delta";
+Left(justNumbers;6) = "454313"; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 454432  and GetAsNumber(Left(justNumbers;6)) &lt;= 454435; "Visa Debit / Delta";
+Left(justNumbers;6) = "454742"; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 456725  and GetAsNumber(Left(justNumbers;6)) &lt;= 456745; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 465830  and GetAsNumber(Left(justNumbers;6)) &lt;= 465879; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 465901  and GetAsNumber(Left(justNumbers;6)) &lt;= 465950; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 484409  and GetAsNumber(Left(justNumbers;6)) &lt;= 484410; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 490960  and GetAsNumber(Left(justNumbers;6)) &lt;= 490979; "Visa Debit / Delta";
+GetAsNumber(Left(justNumbers;6)) &gt;= 492181  and GetAsNumber(Left(justNumbers;6)) &lt;= 492182; "Visa Debit / Delta";
+Left(justNumbers;6) = "498824"; "Visa Debit / Delta";
+
+Left(justNumbers;6) = "450875"; "Visa Electron";
+GetAsNumber(Left(justNumbers;6)) &gt;= 484406  and GetAsNumber(Left(justNumbers;6)) &lt;= 484408; "Visa Electron";
+GetAsNumber(Left(justNumbers;6)) &gt;= 484411  and GetAsNumber(Left(justNumbers;6)) &lt;= 484455; "Visa Electron";
+GetAsNumber(Left(justNumbers;6)) &gt;= 491730  and GetAsNumber(Left(justNumbers;6)) &lt;= 491759; "Visa Electron";
+Left(justNumbers;6) = "491880"; "Visa Electron";
+
+GetAsNumber(Left(justNumbers;6)) &gt;= 405501  and GetAsNumber(Left(justNumbers;6)) &lt;= 405504; "Visa Purchasing";
+GetAsNumber(Left(justNumbers;6)) &gt;= 405550  and GetAsNumber(Left(justNumbers;6)) &lt;= 405554; "Visa Purchasing";
+Left(justNumbers;6) = "415928"; "Visa Purchasing";
+GetAsNumber(Left(justNumbers;6)) &gt;= 424604  and GetAsNumber(Left(justNumbers;6)) &lt;= 424605; "Visa Purchasing";
+Left(justNumbers;6) = "427533"; "Visa Purchasing";
+Left(justNumbers;4) = "4288"; "Visa Purchasing";
+Left(justNumbers;6) = "443085"; "Visa Purchasing";
+GetAsNumber(Left(justNumbers;4)) &gt;= 4484  and GetAsNumber(Left(justNumbers;4)) &lt;= 4486; "Visa Purchasing";
+Left(justNumbers;4) = "4715"; "Visa Purchasing";
+Left(justNumbers;4) = "4716"; "Visa Purchasing";
+Left(justNumbers;4) = "4804"; "Visa Purchasing";
+
+GetAsNumber(Left(justNumbers;6)) &gt;= 490302  and GetAsNumber(Left(justNumbers;6)) &lt;= 490309; "Switch";
+GetAsNumber(Left(justNumbers;6)) &gt;= 490335  and GetAsNumber(Left(justNumbers;6)) &lt;= 490339; "Switch";
+GetAsNumber(Left(justNumbers;6)) &gt;= 491101  and GetAsNumber(Left(justNumbers;6)) &lt;= 491102; "Switch";
+GetAsNumber(Left(justNumbers;6)) &gt;= 491174  and GetAsNumber(Left(justNumbers;6)) &lt;= 491182; "Switch";
+Left(justNumbers;4) = "4936"; "Switch";
+Left(justNumbers;6) = "564182"; "Switch";
+GetAsNumber(Left(justNumbers;6)) &gt;= 633300  and GetAsNumber(Left(justNumbers;6)) &lt;= 633349; "Switch";
+Left(justNumbers;4) = "6759"; "Switch";
+
+GetAsNumber(Left(justNumbers;6)) &gt;= 633450  and GetAsNumber(Left(justNumbers;6)) &lt;= 633499; "Solo";
+Left(justNumbers;4) = "6767"; "Solo";
+
+Left(justNumbers;2) ="50"; "Maestro";
+GetAsNumber(Left(justNumbers;2)) &gt;= 56  and GetAsNumber(Left(justNumbers;2)) &lt;= 58; "Maestro";
+Left(justNumbers;1) ="6"; "Maestro";
+
+GetAsNumber(Left(justNumbers;2)) &gt;= 51  and GetAsNumber(Left(justNumbers;2)) &lt;= 55; "MasterCard";
+
+Left(justNumbers;2) ="34"; "American Express";
+Left(justNumbers;2) ="37"; "American Express";
+
+GetAsNumber(Left(justNumbers;3)) &gt;= 300  and GetAsNumber(Left(justNumbers;3)) &lt;= 305; "Diners Club";
+Left(justNumbers;2) ="36"; "Diners Club";
+Left(justNumbers;2) ="38"; "Diners Club";
+
+Left(justNumbers;1) ="3"; "JCB";
+Left(justNumbers;4) ="2131"; "JCB";
+Left(justNumbers;4) ="1800"; "JCB";
+
+Left(justNumbers;1) ="4"; "Visa";
+
+
+Left(justNumbers;4) ="6011"; "Discover";
+
+
+"?" // unknown card
+) // end case
+ ; "Invalid Card Number" ) // end if
+) // end let</Calculation></CustomFunction><CustomFunction id="95" functionArity="6" visible="True" parameters="Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative" name="Currency"><Calculation>// Currency (Amount, CurrencyCode, Lead, Trail, ShowDecimal, RedNegative )
+//
+// This custom function takes the following parameters:
+//
+// Amount - The currency amount to display
+// CurrencyCode - (Optional) The currency code i.e. US, AU, GBP
+// Lead - The leading currency symbol i.e. $
+// Trail - The trailing currency symbol i.e. $
+// ShowDecimal - Rounding ... the number of decimals
+// RedNegative - 1 or 0, shows negative values in red.
+//
+// Tony Tanevski, Hi-Voltage
+// http://www.hi-voltage.com.au
+
+
+
+Let ( 
+
+[
+    xNeg = Case(Amount &lt; 0; 1);
+    xAmt = Abs(Round ( Amount ; Case(ShowDecimal; 2; 0) )) ;
+    xInt = Int ( xAmt ) ;
+    xLen = Length ( xInt ) ;
+    xDec = If ( xAmt &lt;&gt; xInt ; Left ( xAmt - xInt &amp; "000" ; 3 ) ; ".00" );
+
+    xFormat = CurrencyCode &amp; Case(CurrencyCode &lt;&gt; ""; " ") &amp; Case(xNeg; "-") &amp; Lead &amp;
+                       Case (
+                           xLen=9 ; Left(xInt;3) &amp;","&amp; Middle(xInt;4;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=8 ; Left(xInt;2) &amp;","&amp; Middle(xInt;3;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=7 ; Left(xInt;1) &amp;","&amp; Middle(xInt;2;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=6 ; Left(xInt;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=5 ; Left(xInt;2) &amp;","&amp; Right(xInt;3) ;
+                           xLen=4 ; Left(xInt;1) &amp;","&amp; Right(xInt;3) ;
+                           xInt 
+                       ) &amp; Case(ShowDecimal; xDec) &amp; Trail
+
+] ;
+
+    Case(RedNegative and Amount &lt; 0; TextColor ( xFormat ; RGB ( 150 ; 0 ; 0 ) ); xFormat)
+
+
+)</Calculation></CustomFunction><CustomFunction id="21" functionArity="6" visible="True" parameters="Amount;CCode;Lead;Trail;ShowDecimal;RedNegative" name="Currency Format"><Calculation>// Currency (Amount, Code, Lead, Trail, ShowDecimal, RedNegative )
+//
+// This custom function takes the following parameters:
+//
+// Amount - The currency amount to display
+// CCode - (Optional) The currency code i.e. US.
+// Lead - The leading currency symbol i.e. $
+// Trail - The trailing currency symbol i.e. $
+// ShowDecimal - Rounding ... the number of decimals
+// RedNegative - 1 or 0, shows negative values in red.
+
+
+
+Let ( 
+
+[
+    xNeg = Case(Amount &lt; 0; 1);
+    xAmt = Abs(Round ( Amount ; Case(ShowDecimal; 2; 0) )) ;
+    xInt = Int ( xAmt ) ;
+    xLen = Length ( xInt ) ;
+    xDec = If ( xAmt &lt;&gt; xInt ; Left ( xAmt - xInt &amp; "000" ; 3 ) ; ".00" );
+
+    xFormat = CCode &amp; Case(Ccode &lt;&gt; ""; " ") &amp; Case(xNeg; "-") &amp; Lead &amp;
+                       Case (
+                           xLen=9 ; Left(xInt;3) &amp;","&amp; Middle(xInt;4;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=8 ; Left(xInt;2) &amp;","&amp; Middle(xInt;3;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=7 ; Left(xInt;1) &amp;","&amp; Middle(xInt;2;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=6 ; Left(xInt;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=5 ; Left(xInt;2) &amp;","&amp; Right(xInt;3) ;
+                           xLen=4 ; Left(xInt;1) &amp;","&amp; Right(xInt;3) ;
+                           xInt 
+                       ) &amp; Case(ShowDecimal; xDec) &amp; Trail
+
+] ;
+
+    Case(RedNegative and Amount &lt; 0; TextColor ( xFormat ; RGB ( 150 ; 0 ; 0 ) ); xFormat)
+
+
+)</Calculation></CustomFunction><CustomFunction id="163" functionArity="6" visible="True" parameters="Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative" name="CurrencyAsText"><Calculation>// Currency (Amount, CurrencyCode, Lead, Trail, ShowDecimal, RedNegative )
+//
+// This custom function takes the following parameters:
+//
+// Amount - The currency amount to display
+// CurrencyCode - (Optional) The currency code i.e. US, AU, GBP
+// Lead - The leading currency symbol i.e. $
+// Trail - The trailing currency symbol i.e. $
+// ShowDecimal - Rounding ... the number of decimals
+// RedNegative - 1 or 0, shows negative values in red.
+//
+// Tony Tanevski, Hi-Voltage
+// http://www.hi-voltage.com.au
+
+
+
+Let ( 
+
+[
+    xNeg = Case(Amount &lt; 0; 1);
+    xAmt = Abs(Round ( Amount ; Case(ShowDecimal; 2; 0) )) ;
+    xInt = Int ( xAmt ) ;
+    xLen = Length ( xInt ) ;
+    xDec = If ( xAmt &lt;&gt; xInt ; Left ( xAmt - xInt &amp; "000" ; 3 ) ; ".00" );
+
+    xFormat = CurrencyCode &amp; Case(CurrencyCode &lt;&gt; ""; " ") &amp; Case(xNeg; "-") &amp; Lead &amp;
+                       Case (
+                           xLen=9 ; Left(xInt;3) &amp;","&amp; Middle(xInt;4;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=8 ; Left(xInt;2) &amp;","&amp; Middle(xInt;3;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=7 ; Left(xInt;1) &amp;","&amp; Middle(xInt;2;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=6 ; Left(xInt;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=5 ; Left(xInt;2) &amp;","&amp; Right(xInt;3) ;
+                           xLen=4 ; Left(xInt;1) &amp;","&amp; Right(xInt;3) ;
+                           xInt 
+                       ) &amp; Case(ShowDecimal; xDec) &amp; Trail
+
+] ;
+
+    Case(RedNegative and Amount &lt; 0; TextColor ( xFormat ; RGB ( 150 ; 0 ; 0 ) ); xFormat)
+
+
+)</Calculation></CustomFunction><CustomFunction id="47" functionArity="3" visible="True" parameters="Start;End;Function" name="CustomList"><Calculation>/*       Special Thanks to Ugo Di Luca - Grazie Mille, pour l'aiguillage qu'il m'a fait prendre,
+                          Thank you for all his comments and his notice  ®  Ugo Di Luca 
+===========================================================
+
+//   Author: Agnès Barouh - filemaker@tictac.fr
+
+//   CustomList ( Start ; End ; Function )  v_4.8
+// [please, do not used "CLNum" in your calculation with Let() ]
+//   Objectives and examples  :
+
+- Build any list based on all Native or Custom Functions involving a 'Number' value as a parameter, such as :
+Left(), Middle(), GetValue(), GetRepetitionNumber (),  GetNthRecord(), GetLayoutObjectAttribute () ...
+ex : - CustomList ( 1 ; Get ( FoundCount ) ; "GetNthRecord ( FirstName ; [n] )" ) 
+will return James¶Henry¶Susan if your foundset has 3 records.
+
+- Build any range based on Dates, Times, TimeStamps, and obviously Numbers
+ex : CustomList ( 1 ; 5 ; "GetAsDate ( StartingDate ) + [n]" )
+will return a range of 5 dates starting from the specified StartingDate
+
+The 'Function' Parameter is nothing else than a litteral calculation expression. 
+Therefore, CustomList allows for any filtering or parsing process based on any condition you may need.
+ex : CustomList ( 10 ; 100 ; "Let ( [ Value = GetValue ( MyList ; [n] ) ] ; Case ( PatternCount ( Value ; "X" ) ; Value ))" )
+will parse any value containing a "X" in  the 'MyList' chain, in between the 10th and the 100th values.
+
+See the 'Under the Hood' part at the end of the function to fully understand the process of this function
+
+--------------------------------
+/* MAJOR UPDATE */  Updated July'08
+/* UPDATE */  Updated August'10 for adapte to FileMakerGo
+/* UPDATE */  Updated November'11 for adapte to FileMakerServer
+/* UPDATE */  Updated November'12 for adapte to FileMaker IWP
+
+
+--------------------------------
+
+CustomList is based on a totally new algorithm, and is now volontarily bridled to a maximum range of 500,000 values, where the first version was technically limited to a max of 18,700 values.
+Previous version still available here : http://www.briandunning.com/cf/747
+
+The new CustomList() is faster and still is NOT recursive.
+The arguments are unchanged which makes it compatible with all your previous developments involving CustomList().
+
+For Developper ease, the new CustomList() includes a debugging mode.
+find the "*****DEBUGGING MODE*****" tag in the formula below to switch mode.
+When debug is set to 1, any error will be returned with its appropriate explanatory code, else the result will be set to "?"
+-------------------------------- */
+
+// ----------- FORMULA STARTS HERE -----------
+
+Case (
+           /*This function will not evaluate if Invalid parameters were passed for Start and End.*/
+
+            IsEmpty ( Start ) or IsEmpty ( End ) or End &lt; 1 or Start &lt; 1; "";
+          
+            Let ( [
+                         Start =  GetAsNumber ( Start );
+                         End =   GetAsNumber ( End );
+                         Diff = End - Start + 1;
+                         V =  Case ( Left ( Get ( ApplicationVersion ) ; 2 ) = "Go" ; 1 ; Left ( Get ( ApplicationVersion ) ; 2 ) = "Se" ; 2 ; Left ( Get ( ApplicationVersion ) ; 2 ) = "We" ; 3 ; 0 ) ;
+                         PL = Choose ( V ; 1700  ; 400 ; 300 ; 900 ) ;
+
+                         /*Check for a range higher than 500,000 values  ( max 150000 values for FmGo and 120000 for FmS and 250000 for IWP ).
+                          For FMPro/Adv, CustomList() is volontarily restrained to 500 000 but you can but you can go beyond.*/
+
+                         End =   Case ( ( Diff &gt; Choose ( V ; 500000  ; 150000 ; 120000 ; 250000 ) ) or ( End &lt; Start ) or IsEmpty ( Start ) or IsEmpty ( End ); "Error"; End );
+                         $null = "\"\"";
+
+                         /*CustomList has its own recursion model. As CustomList may be involved into the "function" argument, 
+                         each CustomList expression used is passed to a repeating variable for evaluation*/
+
+                         iter = Let ( $CLExeCount = $CLExeCount + 1 ; $CLExeCount &amp; PatternCount ( Function ; "CustomList" ) + 1 ) ;
+                         $CLn[ iter ]  = Start - 1;
+
+                         Calc = Case ( Diff ≥ ( PL - 10 ) ; ( PL / 10 )  ; Floor ( Diff / 10 ) + 1 );
+
+                         /*Here starts the "magic" of the Substitutions and the whole mechanism.
+                         CustomList() is set to evaluate stacks of 1,700 values at a time ( 400 for FileMakerGo), which is the 
+                         current limit of FileMaker internal Evaluate function */
+
+                         First = Substitute ( ( 10 ^ Calc ) - 1; 9; "__________" ) ;  
+                         X = Floor ( Diff / PL );
+                         $CLRemainder[ iter ]  = Diff - ( X * PL );
+
+                         /*When the "Function" argument is left empty, CustomList() will return a numeric list based on the range defined */
+
+                         FunctionR = Case ( IsEmpty ( Function ); "CLNum"; Substitute ( Function; ["[n]"; "CLNum"] ; [¶ ; ""] ) );
+
+                         /*Each repeating variable content is parsed in order to get our String ready for the last evaluation - Special care is made for
+                         French users here, please substitute the "definir" below with your local translation of the "Let" function if you're not using an english
+                         version. The use of "Let ([" is recommanded anyway */
+
+                         $CLExecute[ iter ] = Case ( Left ( Substitute ( Lower ( Function ); ["definir"; "Let" ]; [" "; ""]; ["¶"; ""]); 5 ) = "Let([";
+                                            Substitute (  First ; [ "_";  "Let([$CLn[" &amp; iter &amp; "]=$CLn[" &amp; iter &amp; "]+1;CLNum=$CLn[" &amp; iter &amp; "];" &amp;
+                                            Replace ( FunctionR; 1; Position ( FunctionR; "["; 1; 1 ); "" ) &amp; "&amp;\¶&amp;¶"] );
+                                            Substitute ( First ; [ "_";  "Let([$CLn[" &amp; iter &amp; "]=$CLn[" &amp; iter &amp; "]+1;CLNum=$CLn[" &amp; iter &amp; "]];" &amp; FunctionR &amp; ")&amp;\¶&amp;¶"] ) );
+
+                         /*Final compilation starts here. The reminder part above each 1,700 values is treated now. */
+  
+                          Final = Case ( X &gt; 0; Substitute ( ( 10 ^ X ) - 1; 9; "Evaluate ( $CLExecute[" &amp; iter &amp; "] &amp; $null ) &amp; " ) ) &amp;
+                                      "Evaluate( LeftValues ( $CLExecute[" &amp; iter &amp; "] ; $CLRemainder[" &amp; iter &amp; "]  ) &amp; $null ) &amp; " &amp; $null;
+
+                         /*The Final variable can now be evaluated to get our List*/
+
+                          Result  =   Case ( End &lt;&gt; "Error"; Substitute ( "#^#" &amp; Evaluate  ( Final ) &amp; "#^#";
+                                           [ "#^#|#^#"; "¶" ]; [ "¶"; "¶#^#" ]; [ "#^#¶"; "" ]; [ "¶#^#"; "¶" ]; [ "¶#^#"; "" ]; [ "#^#"; "" ] ) ) ;
+                          $CLExecute[ iter ]  = "" 
+
+// ----------- FUNCTION RESULT BELOW -----------
+            ];
+/*CustomList returns either the valid result, or an error formatted according to the debugging mode chosen above*/
+
+     Case (
+          ( Length ( Result ) and ( Result = Filter ( Result; "?" ))) or End =  "Error";
+          Let ([
+                    /*****DEBUGGING MODE*****/   // Case Debug = 1, returned error "[error_CL], Number, Name and Calculation error" ,if Debug  &lt;&gt; 1, returned error is "?"
+                    Debug = "1";
+                    Write = Substitute ( Function; "[n]"; 1 ); NumError = EvaluationError ( Evaluate ( Write ) );
+                    Error = "[" &amp; NumError &amp; "] " &amp; "Unlisted error | Unknown error, check calculation or check \"Start\" and \"End\" ¶102 | Field is missing¶103 | Relationship is missing¶106 | Table is missing¶113 | Function is missing¶1204 | Number, text constant, field name or \"(\" expected¶1205 | Comment is not terminated with \"*/\"¶1206 | Text constant must end with a quotation mark¶1207 | Unbalanced parenthesis¶1208 | Operator or function missing or \"(\" not expected¶1211 | List usage is not allowed in this function¶1212 | An operator (for example, +, -, *,;) is expected here¶1215 | This parameter is an invalid Get function parameter";
+                    Pos = ValueCount ( Left ( Error; Position ( Error; NumError &amp; " "; 1; 1 ) ) )
+     ];
+          Case ( Debug = 1; "[Error_CL]  | Return error : " &amp; GetValue ( Error; Case ( Pos = 0; 1; Pos ) ) &amp; ¶ &amp; TextStyleAdd ( "Calculation ( for [n] = 1 ) : "; Bold ) &amp; Write; "?" ));
+  Result ))
+)
+
+// ----------- UNDER THE HOOD -----------
+
+/* Not very much afterwards...
+Basically, CustomList() does two things :
+1/ Transform your formula in a litteral chain :
+
+CustomList ( 1; 4; "GetNthRecord ( Field ; [n])")
+therefore becomes
+"Let ([ CLNum = 1 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 2 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 3 ] ; GetNthRecord ( Field ; CLNum )) &amp; ¶ &amp;
+Let ([ CLNum = 4 ] ; GetNthRecord ( Field ; CLNum ))"
+
+2/ Evaluates this chain.
+
+Interrested in the mechanism ?
+My advice then : dissect this function by escaping the 'Result' and placing one of the numerous intermediary variables available.
+Special attention should be paid to the 'First' Variable, everything starts from there !
+*/</Calculation></CustomFunction><CustomFunction id="20" functionArity="1" visible="True" parameters="date_field" name="dateformatzeros"><Calculation>//dateformatzeros
+//date_field
+Let(
+[
+d = GetAsText(date_field);
+mm = If( PatternCount ( Left(d;2) ; "/" );"0" &amp; Left(d;1);Left(d;2));
+dd = If(PatternCount ( Middle ( d ; Position ( d ; "/" ; 1 ; 1 )+1 ; 2 ) ; "/" );"0" &amp; Middle ( d ; Position ( d ; "/" ; 1 ; 1 )+1 ; 1 );Middle ( d ; Position ( d ; "/" ; 1 ; 1 )+1 ; 2 ));
+yyyy = Right(d;4)
+];
+If(IsEmpty(d);"";mm &amp; "/" &amp; dd &amp; "/" &amp; yyyy)
+)</Calculation></CustomFunction><CustomFunction id="8" functionArity="3" visible="True" parameters="StartDate;EndDate;RangeLimit" name="DateRange"><Calculation>Case( 
+
+IsEmpty ( StartDate ) or IsEmpty ( EndDate ) ; "Please fill in both fields." ;
+
+StartDate &gt; EndDate ; "Start date must be earlier than end date." ; 
+
+( EndDate - StartDate ) &gt; ( RangeLimit * 365 ) ; "Date range has exceeded the limit of " &amp; RangeLimit &amp; " years." ;
+
+Case ( EndDate &gt; StartDate ; 
+
+DateRange ( StartDate; EndDate - 1; RangeLimit) &amp; "¶" &amp; EndDate ; EndDate
+
+))</Calculation></CustomFunction><CustomFunction id="164" functionArity="2" visible="True" parameters="input;output" name="DeduplicateList"><Calculation>Let ( 
+
+[
+
+this = GetValue ( input ; 1 ) ;
+input = Case ( 
+  Length ( this ) &gt; 0 ;
+  Right ( input ; Length ( input ) - Length ( this ) - 1 ) ;
+  input
+) ;
+output = Case ( 
+  IsEmpty ( output ) ;
+  this ;
+  PatternCount ( ¶ &amp; output &amp; ¶ ; ¶ &amp; this &amp; ¶ ) = 0 ;
+  output &amp; ¶ &amp; this ;
+  output
+) ;
+result = Case ( 
+  Length ( input ) &gt; 0 ;
+  DeduplicateList ( input ; output ) ;
+  output
+)
+
+]
+
+;
+
+result
+
+)</Calculation></CustomFunction><CustomFunction id="24" functionArity="3" visible="True" parameters="StartDate;EndDate;Weekend" name="DateRangeConditWeekends"><Calculation>/*Comments to linkwitz_riley-form@yahoo.es
+Weekend values are: 0 to omit weekends or 1 to include them. */
+
+Case ( StartDate &gt; EndDate ; "EndDate must be later than StartDate" ; 
+Case ( EndDate &gt; StartDate and not IsEmpty ( StartDate ) and not IsEmpty ( EndDate ); 
+DateRangeConditWeekends ( StartDate ; EndDate - 1 ; Weekend ) ) &amp; 
+Case ( Weekend = 0 ; Case ( DayOfWeek ( EndDate ) ≠ 1 and DayOfWeek ( EndDate ) ≠ 7 ; EndDate &amp; "¶" ) ; Weekend = 1 ; EndDate &amp; "¶" ) )</Calculation></CustomFunction><CustomFunction id="9" functionArity="2" visible="True" parameters="s;e" name="DayRange"><Calculation>Case ( s &lt; e ; GetAsText( s ) &amp; "¶" &amp; DayRange (s+1 ; e ) ; GetAsText ( e ) )</Calculation></CustomFunction><CustomFunction id="108" functionArity="3" visible="True" parameters="Start;Stop;Override" name="Difference"><Calculation>Let ( [
+~hour =Hour ( Stop - Start)  ;
+~minute = Minute (Stop - Start) ;
+~end_time = (Hour ( Get (CurrentTime) - Start) + Minute (Get (CurrentTime) - Start)  /60) ;
+
+~calc = ~hour + ~minute / 60 ;
+~difference = Round (~calc ; 2 ) ;
+~rounded = 
+               Let ( [ 
+                       ~round = ~difference - (Round ( ~difference/.25 ; 0) * .25) ;
+                       ~test = Case (~round &lt; .125 ; "-" ; "+" ) ; 
+                       ~resultA = Case ( ~test = "-" ; ~difference - ~round ; ~difference + ~round)
+                        ] ; ~resultA ) ;
+
+~resultB =  Case ( not IsEmpty (Override) ; Override ; IsEmpty (Stop) ; ~end_time ; ~calc ≤ 0 ; ~calc+ 24 ;  ~rounded  ) 
+] ; ~resultB )</Calculation></CustomFunction><CustomFunction id="96" functionArity="2" visible="True" parameters="field;L" name="Drop_Down"><Calculation>Case  ( 
+
+//set Value if Not in the list
+PatternCount (  L ; field) = 0 ; List ( L ; field) ;
+
+//Else Remove Value 
+ValueCount ( L ) = 1 ;
+Substitute ( L ; field; "" ) ;
+
+PatternCount ( GetValue ( L ; 1 ) ; field ) ; 
+Substitute ( L ; Field &amp; ¶ ; "" ) ;
+
+Substitute ( L ; ¶ &amp; Field; "" )
+
+
+ )
+
+// L must be set in a Global Variable so that thr Field knows what thr current values are
+// field is the pop up menu</Calculation></CustomFunction><CustomFunction id="78" functionArity="3" visible="True" parameters="TStampBegin;TStampEnd;Format" name="ElapsedTime"><Calculation>// Input must be TimeStamp fields not strings. Format is a string
+//ElapsedTime ( TStampBegin; TStampEnd; Format )
+Let ( [
+ElapsedSeconds = TStampEnd - TStampBegin ;
+Days = Int ( ElapsedSeconds / 86400 ) ; 
+Hours = Int ( ( ElapsedSeconds - ( Days*86400 ) ) / 3600 ) ;
+Minutes = Int ( ( ElapsedSeconds - ( ( Days * 86400 ) + ( Hours * 3600 ) ) ) / 60 );
+Seconds = Int ( ElapsedSeconds - ( ( Days * 86400 ) + ( Hours * 3600 ) + (Minutes * 60 ) ) ) ;
+ElapsedDays = ElapsedSeconds / 86400 ;
+ElapsedHours = ElapsedSeconds / 3600 ;
+ElapsedMinutes = ElapsedSeconds / 60
+
+
+] ;
+
+Case ( 
+
+Format = "Seconds" ; 
+// Result is in number or time format
+ElapsedSeconds ;
+
+Format = "Minutes" ; 
+// Result is a string
+ElapsedMinutes &amp; " minutes" ;
+
+Format = "Hours" ; 
+// Result is a string
+ElapsedHours &amp; " hours" ;
+
+Format = "Days" ; 
+// Result is a string
+ElapsedDays  &amp; " days" ;
+
+
+Format  = "String" ;
+// Result is a string
+If ( Days = 1 ; Days &amp;  " day, " ; Days &amp; " days, " ) &amp; If ( Hours = 1 ; Hours &amp; " hour, " ; Hours &amp; " hours, " ) &amp; 
+If ( Minutes = 1 ; Minutes &amp; " minute, " ; Minutes &amp; " minutes, " ) &amp; If ( Seconds = 1 ; Seconds &amp; " second, " ; Seconds &amp; " seconds." )
+
+)
+)</Calculation></CustomFunction><CustomFunction id="159" functionArity="1" visible="True" parameters="Input_Variable" name="Error_Capture_List"><Calculation>// Error List
+// Lists captured Errors that arn't 0 
+
+Let ( [
+~input = Input_Variable; 
+~last_error = Get ( LastError ); 
+~list = List ( ~input ; ~last_error );
+~result = Case ( ~last_error ≠ 0 ; ~list ; ~input  )
+
+];
+~result 
+	)</Calculation></CustomFunction><CustomFunction id="151" functionArity="1" visible="True" parameters="ErrorNum" name="ErrorToEnglish"><Calculation>// ErrorToEnglish ( ErrorNum )
+// returns descriptions for codes from FileMaker help text (see http://www.filemaker.com/help/html/error_codes.html#1027502)
+
+// The differences between FileMaker v10 and v11 error codes are:
+// v11 no longer has: ErrorNum = 513; "Record must have a value in some field to be created";
+// v11 now has: ErrorNum = 825; "File is not authorized to reference the protected file";
+// v11 now has: ErrorNum = 959; "Custom Web Publishing technology disabled";
+
+Case(
+ErrorNum = -1; "Unknown error"; 
+ErrorNum = 0; "No error"; 
+ErrorNum = 1; "User canceled action"; 
+ErrorNum = 2; "Memory error"; 
+ErrorNum = 3; "Command is unavailable (for example, wrong operating system, wrong mode, etc.)"; 
+ErrorNum = 4; "Command is unknown"; 
+ErrorNum = 5; "Command is invalid (for example, a Set Field script step does not have a calculation specified)"; 
+ErrorNum = 6; "File is read-only"; 
+ErrorNum = 7; "Running out of memory"; 
+ErrorNum = 8; "Empty result"; 
+ErrorNum = 9; "Insufficient privileges"; 
+ErrorNum = 10; "Requested data is missing"; 
+ErrorNum = 11; "Name is not valid"; 
+ErrorNum = 12; "Name already exists"; 
+ErrorNum = 13; "File or object is in use"; 
+ErrorNum = 14; "Out of range"; 
+ErrorNum = 15; "Can't divide by zero"; 
+ErrorNum = 16; "Operation failed, request retry (for example, a user query)"; 
+ErrorNum = 17; "Attempt to convert foreign character set to UTF-16 failed"; 
+ErrorNum = 18; "Client must provide account information to proceed"; 
+ErrorNum = 19; "String contains characters other than A-Z, a-z, 0-9 (ASCII)"; 
+ErrorNum = 20; "Command/operation canceled by triggered script"; 
+ErrorNum = 100; "File is missing"; 
+ErrorNum = 101; "Record is missing"; 
+ErrorNum = 102; "Field is missing"; 
+ErrorNum = 103; "Relationship is missing"; 
+ErrorNum = 104; "Script is missing"; 
+ErrorNum = 105; "Layout is missing"; 
+ErrorNum = 106; "Table is missing"; 
+ErrorNum = 107; "Index is missing"; 
+ErrorNum = 108; "Value list is missing"; 
+ErrorNum = 109; "Privilege set is missing"; 
+ErrorNum = 110; "Related tables are missing"; 
+ErrorNum = 111; "Field repetition is invalid"; 
+ErrorNum = 112; "Window is missing"; 
+ErrorNum = 113; "Function is missing"; 
+ErrorNum = 114; "File reference is missing"; 
+ErrorNum = 115; "Specified menu set is not present"; 
+ErrorNum = 116; "Specified layout object is not present"; 
+ErrorNum = 117; "Specified data source is not present"; 
+ErrorNum = 130; "Files are damaged or missing and must be reinstalled"; 
+ErrorNum = 131; "Language pack files are missing (such as template files)"; 
+ErrorNum = 200; "Record access is denied"; 
+ErrorNum = 201; "Field cannot be modified"; 
+ErrorNum = 202; "Field access is denied"; 
+ErrorNum = 203; "No records in file to print, or password doesn't allow print access"; 
+ErrorNum = 204; "No access to field(s) in sort order"; 
+ErrorNum = 205; "User does not have access privileges to create new records; import will overwrite existing data"; 
+ErrorNum = 206; "User does not have password change privileges, or file is not modifiable"; 
+ErrorNum = 207; "User does not have sufficient privileges to change database schema, or file is not modifiable"; 
+ErrorNum = 208; "Password does not contain enough characters"; 
+ErrorNum = 209; "New password must be different from existing one"; 
+ErrorNum = 210; "User account is inactive"; 
+ErrorNum = 211; "Password has expired"; 
+ErrorNum = 212; "Invalid user account and/or password; please try again"; 
+ErrorNum = 213; "User account and/or password does not exist"; 
+ErrorNum = 214; "Too many login attempts"; 
+ErrorNum = 215; "Administrator privileges cannot be duplicated"; 
+ErrorNum = 216; "Guest account cannot be duplicated"; 
+ErrorNum = 217; "User does not have sufficient privileges to modify administrator account"; 
+ErrorNum = 300; "File is locked or in use"; 
+ErrorNum = 301; "Record is in use by another user"; 
+ErrorNum = 302; "Table is in use by another user"; 
+ErrorNum = 303; "Database schema is in use by another user"; 
+ErrorNum = 304; "Layout is in use by another user"; 
+ErrorNum = 306; "Record modification ID does not match"; 
+ErrorNum = 400; "Find criteria are empty"; 
+ErrorNum = 401; "No records match the request"; 
+ErrorNum = 402; "Selected field is not a match field for a lookup"; 
+ErrorNum = 403; "Exceeding maximum record limit for trial version of FileMaker Pro"; 
+ErrorNum = 404; "Sort order is invalid"; 
+ErrorNum = 405; "Number of records specified exceeds number of records that can be omitted"; 
+ErrorNum = 406; "Replace/Reserialize criteria are invalid"; 
+ErrorNum = 407; "One or both match fields are missing (invalid relationship)"; 
+ErrorNum = 408; "Specified field has inappropriate data type for this operation"; 
+ErrorNum = 409; "Import order is invalid"; 
+ErrorNum = 410; "Export order is invalid"; 
+ErrorNum = 412; "Wrong version of FileMaker Pro used to recover file"; 
+ErrorNum = 413; "Specified field has inappropriate field type"; 
+ErrorNum = 414; "Layout cannot display the result"; 
+ErrorNum = 415; "One or more required related records are not available"; 
+ErrorNum = 416; "Primary key required from data source table"; 
+ErrorNum = 417; "Database is not supported for ODBC operations"; 
+ErrorNum = 500; "Date value does not meet validation entry options"; 
+ErrorNum = 501; "Time value does not meet validation entry options"; 
+ErrorNum = 502; "Number value does not meet validation entry options"; 
+ErrorNum = 503; "Value in field is not within the range specified in validation entry options"; 
+ErrorNum = 504; "Value in field is not unique as required in validation entry options"; 
+ErrorNum = 505; "Value in field is not an existing value in the database file as required in validation entry options"; 
+ErrorNum = 506; "Value in field is not listed on the value list specified in validation entry option"; 
+ErrorNum = 507; "Value in field failed calculation test of validation entry option"; 
+ErrorNum = 508; "Invalid value entered in Find mode"; 
+ErrorNum = 509; "Field requires a valid value"; 
+ErrorNum = 510; "Related value is empty or unavailable"; 
+ErrorNum = 511; "Value in field exceeds maximum number of allowed characters"; 
+ErrorNum = 512; "Record was already modified by another user"; 
+ErrorNum = 513; "Record must have a value in some field to be created"; 
+ErrorNum = 600; "Print error has occurred"; 
+ErrorNum = 601; "Combined header and footer exceed one page"; 
+ErrorNum = 602; "Body doesn't fit on a page for current column setup"; 
+ErrorNum = 603; "Print connection lost"; 
+ErrorNum = 700; "File is of the wrong file type for import"; 
+ErrorNum = 706; "EPSF file has no preview image"; 
+ErrorNum = 707; "Graphic translator cannot be found"; 
+ErrorNum = 708; "Can't import the file or need color monitor support to import file"; 
+ErrorNum = 709; "QuickTime movie import failed"; 
+ErrorNum = 710; "Unable to update QuickTime reference because the database file is read-only"; 
+ErrorNum = 711; "Import translator cannot be found"; 
+ErrorNum = 714; "Password privileges do not allow the operation"; 
+ErrorNum = 715; "Specified Excel worksheet or named range is missing"; 
+ErrorNum = 716; "A SQL query using DELETE, INSERT, or UPDATE is not allowed for ODBC import"; 
+ErrorNum = 717; "There is not enough XML/XSL information to proceed with the import or export"; 
+ErrorNum = 718; "Error in parsing XML file (from Xerces)"; 
+ErrorNum = 719; "Error in transforming XML using XSL (from Xalan)"; 
+ErrorNum = 720; "Error when exporting; intended format does not support repeating fields"; 
+ErrorNum = 721; "Unknown error occurred in the parser or the transformer"; 
+ErrorNum = 722; "Cannot import data into a file that has no fields"; 
+ErrorNum = 723; "You do not have permission to add records to or modify records in the target table"; 
+ErrorNum = 724; "You do not have permission to add records to the target table"; 
+ErrorNum = 725; "You do not have permission to modify records in the target table"; 
+ErrorNum = 726; "There are more records in the import file than in the target table; not all records were imported"; 
+ErrorNum = 727; "There are more records in the target table than in the import file; not all records were updated"; 
+ErrorNum = 729; "Errors occurred during import; records could not be imported"; 
+ErrorNum = 730; "Unsupported Excel version (convert file to Excel 7.0 (Excel 95), 97, 2000, XP, or 2007 format and try again)"; 
+ErrorNum = 731; "The file you are importing from contains no data"; 
+ErrorNum = 732; "This file cannot be inserted because it contains other files"; 
+ErrorNum = 733; "A table cannot be imported into itself"; 
+ErrorNum = 734; "This file type cannot be displayed as a picture"; 
+ErrorNum = 735; "This file type cannot be displayed as a picture; it will be inserted and displayed as a file"; 
+ErrorNum = 736; "Too much data to export to this format; it will be truncated"; 
+ErrorNum = 737; "Bento collection or library is missing; data cannot be imported"; 
+ErrorNum = 800; "Unable to create file on disk"; 
+ErrorNum = 801; "Unable to create temporary file on System disk"; 
+ErrorNum = 802; "Unable to open file"; 
+ErrorNum = 803; "File is single user or host cannot be found"; 
+ErrorNum = 804; "File cannot be opened as read-only in its current state"; 
+ErrorNum = 805; "File is damaged; use Recover command"; 
+ErrorNum = 806; "File cannot be opened with this version of FileMaker Pro"; 
+ErrorNum = 807; "File is not a FileMaker Pro file or is severely damaged"; 
+ErrorNum = 808; "Cannot open file because access privileges are damaged"; 
+ErrorNum = 809; "Disk/volume is full"; 
+ErrorNum = 810; "Disk/volume is locked"; 
+ErrorNum = 811; "Temporary file cannot be opened as FileMaker Pro file"; 
+ErrorNum = 813; "Record Synchronization error on network"; 
+ErrorNum = 814; "File(s) cannot be opened because maximum number is open"; 
+ErrorNum = 815; "Couldn't open lookup file"; 
+ErrorNum = 816; "Unable to convert file"; 
+ErrorNum = 817; "Unable to open file because it does not belong to this solution"; 
+ErrorNum = 819; "Cannot save a local copy of a remote file"; 
+ErrorNum = 820; "File is in the process of being closed"; 
+ErrorNum = 821; "Host forced a disconnect"; 
+ErrorNum = 822; "FMI files not found; reinstall missing files"; 
+ErrorNum = 823; "Cannot set file to single-user, guests are connected"; 
+ErrorNum = 824; "File is damaged or not a FileMaker file"; 
+ErrorNum = 825; "File is not authorized to reference the protected file";
+ErrorNum = 900; "General spelling engine error"; 
+ErrorNum = 901; "Main spelling dictionary not installed"; 
+ErrorNum = 902; "Could not launch the Help system"; 
+ErrorNum = 903; "Command cannot be used in a shared file"; 
+ErrorNum = 905; "No active field selected; command can only be used if there is an active field"; 
+ErrorNum = 906; "Current file must be shared in order to use this command"; 
+ErrorNum = 920; "Can’t initialize the spelling engine"; 
+ErrorNum = 921; "User dictionary cannot be loaded for editing"; 
+ErrorNum = 922; "User dictionary cannot be found"; 
+ErrorNum = 923; "User dictionary is read-only"; 
+ErrorNum = 951; "An unexpected error occurred (web-published databases only)"; 
+ErrorNum = 954; "Unsupported XML grammar (web-published databases only)"; 
+ErrorNum = 955; "No database name (web-published databases only)"; 
+ErrorNum = 956; "Maximum number of database sessions exceeded (web-published databases only)"; 
+ErrorNum = 957; "Conflicting commands (web-published databases only)"; 
+ErrorNum = 958; "Parameter missing (web-published databases only)"; 
+ErrorNum = 959; "Custom Web Publishing technology disabled";
+ErrorNum = 1200; "Generic calculation error"; 
+ErrorNum = 1201; "Too few parameters in the function"; 
+ErrorNum = 1202; "Too many parameters in the function"; 
+ErrorNum = 1203; "Unexpected end of calculation"; 
+ErrorNum = 1204; "Number, text constant, field name or \"(\" expected"; 
+ErrorNum = 1205; "Comment is not terminated with \"*/\""; 
+ErrorNum = 1206; "Text constant must end with a quotation mark"; 
+ErrorNum = 1207; "Unbalanced parenthesis"; 
+ErrorNum = 1208; "Operator missing, function not found or \"(\" not expected"; 
+ErrorNum = 1209; "Name (such as field name or layout name) is missing"; 
+ErrorNum = 1210; "Plug-in function has already been registered"; 
+ErrorNum = 1211; "List usage is not allowed in this function"; 
+ErrorNum = 1212; "An operator (for example, +, -, *) is expected here"; 
+ErrorNum = 1213; "This variable has already been defined in the Let function"; 
+ErrorNum = 1214; "AVERAGE, COUNT, EXTEND, GETREPETITION, MAX, MIN, NPV, STDEV, SUM and GETSUMMARY: expression found where a field alone is needed"; 
+ErrorNum = 1215; "This parameter is an invalid Get function parameter"; 
+ErrorNum = 1216; "Only Summary fields allowed as first argument in GETSUMMARY"; 
+ErrorNum = 1217; "Break field is invalid"; 
+ErrorNum = 1218; "Cannot evaluate the number"; 
+ErrorNum = 1219; "A field cannot be used in its own formula"; 
+ErrorNum = 1220; "Field type must be normal or calculated"; 
+ErrorNum = 1221; "Data type must be number, date, time, or timestamp"; 
+ErrorNum = 1222; "Calculation cannot be stored"; 
+ErrorNum = 1223; "The function is not implemented"; 
+ErrorNum = 1224; "The function is not defined"; 
+ErrorNum = 1225; "The function is not supported in this context"; 
+ErrorNum = 1300; "The specified name can’t be used"; 
+ErrorNum = 1400; "ODBC driver initialization failed; make sure the ODBC drivers are properly installed"; 
+ErrorNum = 1401; "Failed to allocate environment (ODBC)"; 
+ErrorNum = 1402; "Failed to free environment (ODBC)"; 
+ErrorNum = 1403; "Failed to disconnect (ODBC)"; 
+ErrorNum = 1404; "Failed to allocate connection (ODBC)"; 
+ErrorNum = 1405; "Failed to free connection (ODBC)"; 
+ErrorNum = 1406; "Failed check for SQL API (ODBC)"; 
+ErrorNum = 1407; "Failed to allocate statement (ODBC)"; 
+ErrorNum = 1408; "Extended error (ODBC)"; 
+ErrorNum = 1409; "Error (ODBC)"; 
+ErrorNum = 1413; "Failed communication link (ODBC)"; 
+ErrorNum = 1450; "Action requires PHP privilege extension (web-published databases only)"; 
+ErrorNum = 1451; "Action requires that current file be remote"; 
+ErrorNum = 1501; "SMTP authentication failed"; 
+ErrorNum = 1502; "Connection refused by SMTP server"; 
+ErrorNum = 1503; "Error with SSL"; 
+ErrorNum = 1504; "SMTP server requires the connection to be encrypted"; 
+ErrorNum = 1505; "Specified authentication is not supported by SMTP server"; 
+ErrorNum = 1506; "Email(s) could not be sent successfully"; 
+ErrorNum = 1507; "Unable to log in to the SMTP server"
+)</Calculation></CustomFunction><CustomFunction id="5" functionArity="1" visible="True" parameters="txt" name="ExplodedKey"><Calculation>//ExplodedKey
+//txt
+
+If( 
+  Length(txt)&gt;1; 
+  ExplodedKey(Left(txt;Length(txt)-1)) &amp; ¶ &amp; txt; 
+  txt 
+  )</Calculation></CustomFunction><CustomFunction id="6" functionArity="1" visible="True" parameters="Field" name="ExplodedString"><Calculation>//ExplodedString
+//Field
+
+Let( 
+ [FieldName = Left ( Field &amp; " "; Position ( Field ; " "; 1 ; 1 ) - 1 ); 
+ Counter = PatternCount ( Field ; " " )]; 
+
+ Case( 
+      Counter = 0 ; "" ; 
+      Counter &gt; 30 ; "ERROR: too many fields" ; 
+      ExplodedKey ( FieldName ) &amp; "¶" &amp; 
+      ExplodedString (Substitute ( Field &amp; " " ; FieldName &amp; " " ; "" )
+ ) 
+ )
+ )</Calculation></CustomFunction><CustomFunction id="137" functionArity="3" visible="True" parameters="XML;Attribute;Instance" name="ExtractData"><Calculation>// ExtractData ( XML ; Attribute ; Instance )
+Let ( [ 
+XML_Length = Length ( XML ) ; 
+Attribute_Length = Length ( Attribute ) ; 
+Get_Instance = If ( IsEmpty ( Instance ) ; 1 ; Instance ) 
+]; 
+Case(
+IsEmpty ( XML ) or IsEmpty ( attribute ) or PatternCount ( xml ; "&lt;" &amp; attribute &amp; "&gt;" ) = 0 ; "" ;
+Substitute ( 
+	Middle ( XML ; Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + attribute_length + 2 ; xml_length - ( xml_length - Position ( XML ; "&lt;/" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) ) - ( Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + Attribute_Length + 2 ) );
+	["&amp;amp;";"&amp;"];
+	["&amp;lt;";"&lt;"];
+	["&amp;gt;";"&gt;"];
+	["&amp;quot;";"\""];
+	["&amp;apos;";"'"]
+)
+) )</Calculation></CustomFunction><CustomFunction id="112" functionArity="0" visible="True" parameters="" name="FileMakerVersionNumber"><Calculation>Let ( 
+	[
+	applicationVersion = Get ( ApplicationVersion ) ; 
+	startPosition = Position ( applicationVersion ; " " ; 1 ; 1 )  ; 
+	endPosition = Position ( applicationVersion ; "." ; startPosition ; 1 ) ; 
+	numberOfCharacters = Length ( applicationVersion ) - endPosition ; 
+	versionNumber = Middle ( applicationVersion ; startPosition + 1 ; numberOfCharacters - 1 )
+	] ; 
+
+	versionNumber
+
+	)</Calculation></CustomFunction><CustomFunction id="81" functionArity="1" visible="True" parameters="FMFilePath" name="FilePathToURL"><Calculation>/*
+Convert from FileMaker filepath to URL
+
+
+FilePathToURL ( FMFilePath )
+
+Useful for using the result from Get(FilePath) and Get(TemporaryPath) in an Open URL or Web Viewer
+
+Examples (from / to):
+
+	Case A:  OS X, FileVault protected home folder, normal folder, network folder, e.g. ‘Hard Drive’
+		file:/Hard Drive/Desktop/fold &amp; er/filepath.fp7
+		file:///Volumes/Hard Drive/Desktop/fold &amp; er/filepath.fp7
+		Note Open URL fails for FileVault protected volumes under OS Ⅹ 10.4
+
+	Case B:  Windows, UNC volume
+		file://comp/share/fold &amp; er/filepath.fp7
+		file:\\comp\share\fold &amp; er\filepath.fp7
+
+	Case C:  Windows, drive letter, e.g. ‘C’
+		file:/C:/Documents and Settings/Administrator/My Documents/fold &amp; er/filepath.fp7
+		file:///C:/Documents and Settings/Administrator/My Documents/fold &amp; er/filepath.fp7
+
+	Case X:  OS Ⅹ, Get(TemporaryPath)
+		/Amphe/private/var/tmp/folders/501/TemporaryItems/FileMaker/
+		file:///Volumes/Amphe/private/var/tmp/folders/501/TemporaryItems/FileMaker/
+
+	Case Y:  Windows, Get(TemporaryPath)
+		/C:/Documents and Settings/Administrator/Local Settings/Temp/
+		file:///C:/Documents and Settings/Administrator/Local Settings/Temp/
+
+Author:
+	2006-11-07 Tom Robinson &lt;http://www.tomrobinson.co.nz/&gt;
+
+Change History:
+	2007-02-15 Tom Robinson
+		Fix when running under OS Ⅹ Intel
+	2007-05-03 Tom Robinson
+		Add UNC drive support
+		Don’t encode spaces, web viewer seems to want them raw
+	2008-08-12 Tom Robinson
+		Add support for Get(TemporaryPath) because FMI made that different from the others
+*/
+
+Case(
+	Left(FMFilePath;1)="/" and Abs(Get(SystemPlatform))=1;  /* (case x) */
+		"file:///Volumes"&amp;FMFilePath;
+	Left(FMFilePath;1)="/" and Get(SystemPlatform)=-2;  /* (case y) */
+		"file://"&amp;FMFilePath;
+	Abs(Get(SystemPlatform))=1;  /* -1=PPC Mac, 1=Intel Mac (undocumented) */
+		"file:///Volumes/"&amp;Right(FMFilePath;Length(FMFilePath)-6);  /* (case a) */
+	Get(SystemPlatform)=-2 and Left(fmfilepath;7)="file://";  /* Windows UNC drive */
+		"file:\\\\"&amp;Substitute(Right(FMFilePath;Length(FMFilePath)-7);"/";"\\")  /* (case b) */
+	;  /* Anything else */
+		"file:///"&amp;Right(FMFilePath;Length(FMFilePath)-6))  /* (case c) */</Calculation></CustomFunction><CustomFunction id="129" functionArity="2" visible="True" parameters="theList;expression" name="FilterValuesByExpression"><Calculation>/*
+
+NAME:       FilterValuesByExpression
+PURPOSE:  Filters the values of a list based on a Filemaker expression
+NOTES:  if the expression is applied to each value in the List and if it evalutes to true then the Item is return.  Expressions can use "item" to refer to the List Item
+AUTHOR: Todd Geist, todd@geistinteractive.com
+HISTORY: 
+    Version 1.0 9/27/2013
+
+EXAMPLES:
+
+// get all values that begin with the letter a
+FilterValuesByExpression ( List("a" ; "bee"; "see" ; "apple") ; "Left(item ;1) = \"a\" " )
+//  -&gt; a¶apple
+
+// get all values that contain "ee"
+FilterValuesByExpression ( List("a" ; "bee"; "see" ; "apple") ; " PatternCount( item ; \"ee\" )" )
+//  -&gt; bee¶see
+
+*/
+
+
+Let(
+[
+expression = Case( IsEmpty( expression ); 0 ; expression );
+left = " Let( [ item =\"";
+right = "\" ]; If( " &amp; expression &amp; " ; item ) );" ;
+
+let = 
+"List(¶"  &amp; 
+left &amp; 
+Substitute(theList &amp; "¶" ; "¶" ; right &amp; "¶" &amp; left) &amp; 
+right
+&amp; "¶)"
+
+
+
+];
+
+Evaluate( let )
+
+)</Calculation></CustomFunction><CustomFunction id="79" functionArity="1" visible="True" parameters="StartDay" name="FirstDayThisWeek"><Calculation>/*FirstDayThisWeek ( StartDay )
+
+ FirstDayThisWeek ( StartDay )
+
+StartDay is 1 for Sunday, 2 for Monday, etc.*/
+
+Get ( CurrentDate ) - ( DayOfWeek ( Get ( CurrentDate ) ) - StartDay )</Calculation></CustomFunction><CustomFunction id="131" functionArity="4" visible="True" parameters="_Name_ID;_TLFSV;_fileName;_layoutName" name="FM_Name_ID"><Calculation>/* FM_Name_ID ( _Name_ID ; _TLFSV ; _fileName ; _layoutName )
+
+Fabrice Nordmann
+
+http://www.1-more-thing.com
+
+
+Avoids hard-coding in FileMaker by using IDs instead of names
+
+Full documentation here : http://www.1-more-thing.com/FileMaker-Avoid-Hard-coding.html
+
+v.1.7, Dec 2010
+Accepts table parameters such as FM_Name_ID ( table::field ; "T" ; "" ; "" )
+v.1.6, Mar 2009
+Accepts field parameters such as FM_Name_ID ( 1065234::24 ; "F" ; "" ; "" )
+v.1.5.2, Feb 2009
+Removes the repetition number if a fieldname with a repetition number is passed ( field[n]). Does not handle field names with [ anymore.
+v.1.5.1, Dec 2008
+Documentation update (thanks to Kevin Frank's comment)
+v.1.5, Oct 2008
+Documentation error fix
+Returns an empty result if item not found
+v.1.4, Aug 2008
+Bug fix (major) : could return erroneous result if an item ID was found in another ID.
+v.1.3, July 2008
+A field ID can be obtained by passing its full name (with table occurrence) in _Name_ID and leaving _layoutName empty
+e.g. FM_Name_ID ( "myTable::myField" ; "F" ; "" ; "" )
+v.1.2, June 2008
+Doesn't require PositionValue
+v.1, May 2008
+Requires: PositionValue ( _text ; _searchValue ; _start ; _occurrence )
+
+if _Name_ID is an ID, returns the name
+if _Name_ID is a name, returns the ID
+
+_Name_ID is the name or the ID of a Table occurrence, a layout, or a field, a script or a value list
+_TLFSV can be set to "Table", "Layout", "Field", "Script", or "ValueList". Or only the first character (T,L,F,S,V)
+_fileName is optional (empty means current file)
+_layoutName is valid only if _TLFSV contains "Field". Empty means current layout (or the field table occurrence, read the note below). The layout should be tied to the table occurrence of the field.
+
+Note: for fields (_TLFSV = "F"), if you use the full field name (table::fieldname) AND an empty _layoutName parameter, the function will assume you are referring not to current layout but to the table occurrence found in the _TLFSV.
+
+Note: since FileMaker 10 and the GetFieldName function, this function is almost useless with a F (field) parameter. It remains valid for other items.
+
+*/
+
+
+
+Let ([ 
+
+    // _fileName is optional
+    _fileName = Case ( IsEmpty ( _fileName ) ; Get ( FileName ) ; _fileName ) ;
+    _layoutName = Case ( IsEmpty ( _layoutName ) ; Case ( PatternCount ( _Name_ID ; "::" ) ; GetValue ( Substitute ( _Name_ID ; "::" ; ¶ ) ; 1 ) ; Get ( LayoutName )) ; _layoutName ) ;
+    _layoutName = Case ( Int ( _layoutName ) = _layoutName and Length ( _layoutName ) = 7 ; FM_Name_ID ( _layoutName ; "T" ; _fileName ; "" ) ; _layoutName ) ;
+    _p = _Name_ID ;
+
+    _t = Left ( _TLFSV ; 1 ) ;     // allow _TLFSV to be only the first character (T,L,F,S,V)
+    _t = Case ( _t = "T" ; "Table" ; _t = "L" ; "Layout" ; _t = "F" ; "Field" ; _t = "S" ; "Script" ; _t = "V" ; "ValueList" ) ;
+    _p = Case ( _t = "Field" and PatternCount ( _p ; "[" ) ; Left ( _p ; Position ( _p ; "[" ; 10000 ; -1 ) -1 ) ; _p ) ; // remove the repetition number
+    _p = Case ( _t = "Field" and PatternCount ( _p ; "::" ) ; Replace ( _p ; 1 ; Position ( _p ; "::" ; 1 ; 1 ) + 1 ; "" ) ; _p ) ; // for fields, do not take TO
+    _p = Case ( _t = "Table" and PatternCount ( _p ; "::" ) ; Replace ( _p ; Position ( _p ; "::" ; 1 ; 1 ) ; 99999 ; "" ) ; _p ) ; // for TO, do not take field name
+    _endOfString = "( \"" &amp; _fileName &amp; "\"" &amp; Case ( _t = "field" ; "; \"" &amp; _layoutName &amp; "\"" ) &amp; ")" ;
+    _names = Evaluate ( _t &amp; "Names" &amp; _endOfString ) ;
+    _ids = Evaluate ( _t &amp; "IDs" &amp; _endOfString )
+];
+
+Case ( _p = GetAsNumber ( _p ) ;
+
+    // ID -&gt; Name
+    Case ( not IsEmpty ( FilterValues ( _p ; _ids )) ;
+        GetValue ( _names ; Let ([ _text = _ids ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    ) ; 
+
+// Name -&gt; ID
+    Case ( not IsEmpty ( FilterValues ( _p ; _names )) ;
+        GetValue ( _ids ; Let ([ _text = _names ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    )
+
+)
+)
+
+// ===================================
+/*
+
+    This function is published on FileMaker Custom Functions
+    to check for updates and provide feedback and bug reports
+    please visit http://www.fmfunctions.com/fid/82
+
+    Prototype: FM_Name_ID( _Name_ID; _TLFSV; _fileName; _layoutName )
+    Function Author: Fabrice (http://www.fmfunctions.com/mid/37)
+    Last updated: 21 April 2011
+    Version: 2.10
+
+*/
+// ===================================</Calculation></CustomFunction><CustomFunction id="132" functionArity="1" visible="True" parameters="_Name_ID" name="FM_Name_ID_Field"><Calculation>/* FM_Name_ID_Field ( _Name_ID )
+
+if _Name_ID is an ID, returns the name
+if _Name_ID is a name, returns the ID
+
+Author: Fabrice Nordmann
+Minor Changes: Kevin Frank (created generic CFs for each object type)
+
+Note: since FileMaker 10 and the GetFieldName function, this function is almost useless for fields. It remains valid for other items.
+
+*/
+
+Let ([
+
+    _fileName = Get ( FileName ) ; 
+    _p = _Name_ID ;
+    _names = FieldNames ( _fileName ; Get ( LayoutTableName ) ) ; 
+    _ids = FieldIDs ( _fileName ; Get ( LayoutTableName ) ) 
+];
+
+Case ( _p = GetAsNumber ( _p ) ;
+
+    // ID -&gt; Name
+    Case ( not IsEmpty ( FilterValues ( _p ; _ids )) ;
+        GetValue ( _names ; Let ([ _text = _ids ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    ) ;
+
+// Name -&gt; ID
+    Case ( not IsEmpty ( FilterValues ( _p ; _names )) ;
+        GetValue ( _ids ; Let ([ _text = _names ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    )
+
+)
+)</Calculation></CustomFunction><CustomFunction id="133" functionArity="1" visible="True" parameters="_Name_ID" name="FM_Name_ID_Layout"><Calculation>/* FM_Name_ID_Layout ( _Name_ID )
+
+if _Name_ID is an ID, returns the name
+if _Name_ID is a name, returns the ID
+
+Author: Fabrice Nordmann
+Minor Changes: Kevin Frank (created generic CFs for each object type)
+
+
+*/
+
+Let ([
+
+    _fileName = Get ( FileName ) ; 
+    _p = _Name_ID ;
+    _names = LayoutNames ( _fileName ) ; 
+    _ids = LayoutIDs ( _fileName ) 
+];
+
+Case ( _p = GetAsNumber ( _p ) ;
+
+    // ID -&gt; Name
+    Case ( not IsEmpty ( FilterValues ( _p ; _ids )) ;
+        GetValue ( _names ; Let ([ _text = _ids ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    ) ;
+
+// Name -&gt; ID
+    Case ( not IsEmpty ( FilterValues ( _p ; _names )) ;
+        GetValue ( _ids ; Let ([ _text = _names ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    )
+
+)
+)</Calculation></CustomFunction><CustomFunction id="134" functionArity="1" visible="True" parameters="_Name_ID" name="FM_Name_ID_Script"><Calculation>/* FM_Name_ID_Script ( _Name_ID )
+
+if _Name_ID is an ID, returns the name
+if _Name_ID is a name, returns the ID
+
+Author: Fabrice Nordmann
+Minor Changes: Kevin Frank (created generic CFs for each object type)
+
+*/
+
+Let ([
+
+    _fileName = Get ( FileName ) ; 
+    _p = _Name_ID ;
+    _names = ScriptNames ( _fileName ) ; 
+    _ids = ScriptIDs ( _fileName ) 
+];
+
+Case ( _p = GetAsNumber ( _p ) ;
+
+    // ID -&gt; Name
+    Case ( not IsEmpty ( FilterValues ( _p ; _ids )) ;
+        GetValue ( _names ; Let ([ _text = _ids ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    ) ;
+
+// Name -&gt; ID
+    Case ( not IsEmpty ( FilterValues ( _p ; _names )) ;
+        GetValue ( _ids ; Let ([ _text = _names ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    )
+
+)
+)</Calculation></CustomFunction><CustomFunction id="135" functionArity="1" visible="True" parameters="_Name_ID" name="FM_Name_ID_Table"><Calculation>/* FM_Name_ID_Table ( _Name_ID )
+
+if _Name_ID is an ID, returns the name
+if _Name_ID is a name, returns the ID
+
+Author: Fabrice Nordmann
+Minor Changes: Kevin Frank (created generic CFs for each object type)
+
+
+*/
+
+Let ([
+
+    _fileName = Get ( FileName ) ; 
+    _p = _Name_ID ;
+    _names = TableNames ( _fileName ) ; 
+    _ids = TableIDs ( _fileName ) 
+];
+
+Case ( _p = GetAsNumber ( _p ) ;
+
+    // ID -&gt; Name
+    Case ( not IsEmpty ( FilterValues ( _p ; _ids )) ;
+        GetValue ( _names ; Let ([ _text = _ids ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    ) ;
+
+// Name -&gt; ID
+    Case ( not IsEmpty ( FilterValues ( _p ; _names )) ;
+        GetValue ( _ids ; Let ([ _text = _names ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    )
+
+)
+)</Calculation></CustomFunction><CustomFunction id="136" functionArity="1" visible="True" parameters="_Name_ID" name="FM_Name_ID_ValueList"><Calculation>/* FM_Name_ID_ValueList ( _Name_ID )
+
+if _Name_ID is an ID, returns the name
+if _Name_ID is a name, returns the ID
+
+Author: Fabrice Nordmann
+Minor Changes: Kevin Frank (created generic CFs for each object type)
+
+
+*/
+
+Let ([
+
+    _fileName = Get ( FileName ) ; 
+    _p = _Name_ID ;
+    _names = ValueListNames ( _fileName ) ; 
+    _ids = ValueListIDs ( _fileName ) 
+];
+
+Case ( _p = GetAsNumber ( _p ) ;
+
+    // ID -&gt; Name
+    Case ( not IsEmpty ( FilterValues ( _p ; _ids )) ;
+        GetValue ( _names ; Let ([ _text = _ids ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    ) ;
+
+// Name -&gt; ID
+    Case ( not IsEmpty ( FilterValues ( _p ; _names )) ;
+        GetValue ( _ids ; Let ([ _text = _names ; _item = _p ; _adj = ¶ &amp; _text &amp; ¶ ] ; PatternCount ( Left ( _adj ; Position ( _adj ; ¶ &amp; _item &amp; ¶ ; 1 ; 1 ) + 1 ) ; ¶ )))
+    )
+
+)
+)</Calculation></CustomFunction><CustomFunction id="83" functionArity="1" visible="True" parameters="text" name="FMPDate_to_SQLDate"><Calculation>
+
+Let ( [ 
+	t1 = text ; 
+	t2 = Substitute ( t1 ; "/" ; ¶ ) ;
+
+	dd = GetValue ( t2 ; 1 ) ;
+	mm = GetValue ( t2 ; 2 ) ;
+	yyyy = GetValue ( t2 ; 3 ) ;
+	sep = "-"
+
+] ; 
+
+yyyy &amp; sep &amp; mm &amp; sep &amp; dd
+
+) // Let</Calculation></CustomFunction><CustomFunction id="90" functionArity="1" visible="True" parameters="text" name="fnPhone"><Calculation>// fnPhone(text)
+// depending on phone # length, will format accordingly
+// Timothy Trimble, www.timothytrimble.info
+
+Let (pnum = Substitute( text; [ " "; "" ]; [ "("; ""]; [ ")"; ""]; [ "-"; ""]; [ "."; ""]; [ "x"; ""] ) ;
+Case (Length(pnum) = 7 ; Left(pnum;3) &amp; "-" &amp; Right(pnum;4) ;
+   Length(pnum) = 10 ; "(" &amp; Left(pnum;3) &amp; ")" &amp; Middle(pnum; 4;3) &amp; "-" &amp; Right(pnum;4) ;
+   (Length(pnum) = 11 and Left(pnum;1) = "1") ; "1+(" &amp; Middle(pnum;2;3) &amp; ")" &amp; Middle(pnum;5;3) &amp; "-" &amp; Right(pnum;4) ;
+   (Length(pnum) &gt; 11 and Left(pnum;1) = "1") ; "1+(" &amp; Middle(pnum;2;3) &amp; ")" &amp; Middle(pnum;5;3) &amp; "-" &amp; Middle(pnum;8;4) &amp; " x" &amp; Right(pnum;(Length(pnum)-11)) ;
+   Length(pnum) &gt; 10; "(" &amp; Left(pnum;3) &amp; ")" &amp; Middle(pnum;4;3) &amp; "-" &amp; Middle(pnum;7;4) &amp; " x" &amp; Right(pnum;(Length(pnum)-10)) ;
+   pnum ) 
+)</Calculation></CustomFunction><CustomFunction id="156" functionArity="2" visible="True" parameters="Field;Start" name="FoundList"><Calculation>// start should always be set to 1
+
+GetNthRecord ( field ; start ) &amp;
+Case (
+start &lt; Get ( FoundCount ) ;
+"¶" &amp; FoundList ( field ; start + 1 )
+)</Calculation></CustomFunction><CustomFunction id="128" functionArity="2" visible="True" parameters="text;numberOfChars" name="GetAllChars"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+
+Case	(
+	IsEmpty ( text ) ; "" ; // If field empty don't start
+	
+	numberOfChars ≤ Length ( text ) ; 
+	List ( Middle ( text ; 1 ; numberOfChars ) ; GetAllChars ( text; numberOfChars + 1 ) ) ; // Explode text]
+
+	GetAllChars ( Right ( text; Length ( text ) - 1  ) ; 1 ) // Tail Recursive
+	)</Calculation></CustomFunction><CustomFunction id="113" functionArity="4" visible="True" parameters="parameter;additionalChar1;additionalChar2;additionalChar3" name="GetAlphaChar"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	This works in combination with the scripts"Trigger | OnObjectKeystroke | Prevent Characters [Parameter]"
+
+	The calcualtion bellow demonstrates how to prevent a set of alphabetical characters to be entered into a field.
+	The technique is based on getting the ASCII code corresponding to a character.
+	See Help &gt; Function List &gt; Code for additional info.
+	You can add additional character codes as well as setting a range of codes.
+	This is particularly practical for allowing "/" for date fields, or "." for number fields with decimal.
+	The additional character is sent to the calcualtion via Script Parameter.
+
+	Notes:
+	It is important to allow keys as backspace, tab and both enter and carriage return
+	to prevent blocking deletion and tab order navigation.
+
+*************************************************************************************************/
+
+Let 	(
+	[
+	codeKeystroke = Code ( Get ( TriggerKeystroke ) ) ; // Get trigger keystroke ASCII code ; 
+	scriptParameterChar1 = Code ( parameter ) ; // Get char from script parameter1
+	scriptParameterChar2 = Code ( additionalChar1 ) ; // Get char from script parameter2
+	scriptParameterChar3 = Code ( additionalChar2 ) ; // Get char from script parameter3
+	scriptParameterChar4 = Code ( additionalChar3 ) ; // Get char from script parameter4
+
+	specialChar1 = 8 ; // Special char 8 = [backspace]
+	specialChar2 = 9 ; // Special char 9 = [tab]
+	specialChar3 = 10 ; // Special char 10 = [enter]
+	specialChar4 = 13 ; // Special char 13 = [carriage return]
+	specialChar6 = scriptParameterChar1 ;  // Additional special char on script parameter
+	specialChar7 = scriptParameterChar2 ; // Additional special char 1
+	specialChar8 = scriptParameterChar3 ; // Additional special char 3
+	specialChar9 = scriptParameterChar4 // Mulitple special chars can be added following the same pattern
+	] ; 
+	
+	Case	( 
+		codeKeystroke = specialChar1 ; 0 ; // Allow [backspace] 
+		codeKeystroke = specialChar2 ; 0 ; // Allow [tab] 
+		codeKeystroke = specialChar3 ; 0 ; // Allow [enter] 
+		codeKeystroke = specialChar4 ; 0 ; // Allow [carriage return] 
+		codeKeystroke = specialChar6 ; 0 ; // Allow additional special char 
+		codeKeystroke = specialChar7 ; 0 ; // Allow additional special char 
+		codeKeystroke = specialChar8 ; 0 ; // Allow additional special char 
+		codeKeystroke = specialChar9 ; 0 ; // Allow additional special char 
+		codeKeystroke &gt; 64 and codeKeystroke &lt; 91 ; 0 ; // Allow numeric chars from A to Z Upper
+		codeKeystroke &gt; 96 and codeKeystroke &lt; 123 ; 0 ; // Allow numeric chars from A to Z Lower
+		codeKeystroke &gt; 47 and codeKeystroke &lt; 58 ; 0 ; // Allow numeric chars from 0 to 9
+		codeKeystroke &gt; 27 and codeKeystroke &lt; 32 ; 0 ; // Allow numeric chars from Arrows (Left, Up, Right, Down)
+		1
+		) 
+		// The result of the calcualtion is Boolean:
+		// 	0 = No Errors (False) -&gt; Valid Char
+		// 	1 = Error (True) -&gt; Invalid Char
+
+	)</Calculation></CustomFunction><CustomFunction id="114" functionArity="1" visible="True" parameters="field" name="GetFieldName2"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+Let	( 
+	[ 
+	text = GetFieldName ( field ) ; 
+	start = Position ( text ; "::" ; 1 ; 1 ) + 2 ; 
+	fieldName = Middle ( text ; start ; 99999999999 )
+	] ; 
+
+
+	fieldName
+
+	)</Calculation></CustomFunction><CustomFunction id="138" functionArity="2" visible="True" parameters="field;inQuotes" name="GetFieldNameOnly"><Calculation>Let ( 
+~field = GetValue ( Substitute ( GetFieldName ( field ) ; ":" ; "¶" ) ; 3 ) ;
+If ( inQuotes ; Quote ( ~field ) ; ~field )
+)</Calculation></CustomFunction><CustomFunction id="139" functionArity="1" visible="True" parameters="theFields" name="GetFieldsAsXML"><Calculation>// Description:
+// GetFieldsAsXML ( theFields )
+// A recursive function that takes a list of field names
+// and returns an XML string with the field values
+// note that alphanumeric field names should be used in order to produce valid XML
+
+// Written by Andy Knasinski
+// www.nrgsoft.com
+
+// sample
+// GetFieldsAsXML ( FieldNames ( Get ( FileName ) ; Get ( LayoutName ) ) )
+// would return an XML string for all fields on the current layout
+
+
+If ( IsEmpty ( theFields );
+theFields;
+
+Let ([attribute = GetValue ( theFields ; 1 );xmlString = Substitute(
+GetField  (attribute);
+["|";" "]; /* pipe */
+[" ";" "]; /* shift-space */
+["&amp;";"&amp;amp;"];
+["&lt;";"&amp;lt;"];
+["&gt;";"&amp;gt;"];
+["\"";"&amp;quot;"];
+["'";"&amp;apos;"]
+)] ;
+	"&lt;" &amp; attribute &amp;"&gt;" &amp;
+    xmlString &amp;
+    "&lt;/" &amp; attribute &amp; "&gt;" &amp;
+    If ( ValueCount ( theFields ) &gt; 1 ; "¶" ; ""  ) &amp;
+    GetFieldsAsXML (
+       RightValues ( theFields ; ValueCount ( theFields ) - 1 )
+        )
+	)
+)</Calculation></CustomFunction><CustomFunction id="140" functionArity="2" visible="True" parameters="field;inQuotes" name="GetFieldTableNameOnly"><Calculation>Let ( 
+~field = GetValue ( Substitute ( GetFieldName ( field ) ; ":" ; "¶" ) ; 1 ) ;
+If ( inQuotes ; Quote ( ~field ) ; ~field )
+)</Calculation></CustomFunction><CustomFunction id="17" functionArity="1" visible="True" parameters="layout" name="GetLayoutID"><Calculation>/*  copyright Ulf Carlsson, ulf.carlsson@studentlitteratur.se, free to use if this row is here
+
+Use: Gets the Layout-ID of current layout if parameter layout="current" or of the layout which name is in parameter layout
+
+Function name: GetLayoutID
+
+Parameter: layout     If layout="current"  is current layout used, otherwise should "layout" contain the name of wich layout ID you want
+
+*/
+
+Let ( [
+	// use "current" layout or the layoutname that is coming from the "layout"-parameter
+	theLayout = If ( layout ="current" ; Get ( LayoutName ) ; layout );            
+
+	// Get all the layout names (is a list)
+	theLayoutNames = LayoutNames ( Get ( FileName ) );
+	
+	// Count all ¶ from the start to where the layout name are and add 1
+	currentLayoutPosition =  PatternCount (                                                 
+								Middle ( theLayoutNames ; 1 ;                  
+								Position ( theLayoutNames ; theLayout ; 1 ; 1 ) ) ;
+                                "¶" ) + 1 ;
+
+	// Get all the layout IDs (is a list)
+	layoutIDs = LayoutIDs ( Get ( FileName ) ) ;
+	
+	// Count how many layouts there is
+	numberOfLayouts = Get ( LayoutCount ) ;                      
+ 
+   
+	// Get the the ID from the list
+	layoutID = Case (                                                                                   
+				// If first value in the list, do this
+					currentLayoutPosition = 1 ; LeftWords ( layoutIDs ; 1 ) ;   
+
+				// if not first or last item in the list, do this
+					currentLayoutPosition &lt; numberOfLayouts ; 
+                                                             Middle ( layoutIDs ;
+							              Position ( layoutIDs ; "¶" ; 1 ; currentLayoutPosition -1 ) ; 
+								     Position ( layoutIDs ; "¶" ; 1 ; currentLayoutPosition ) - Position ( layoutIDs ; "¶" ; 1 ; currentLayoutPosition -1 ) ) ;
+                                                                                                             
+				// If last item in the list, do this
+					Middle ( layoutIDs ;                                                               
+						     Position ( layoutIDs ; "¶" ; 1 ; currentLayoutPosition -1 ) ; 
+						     Length ( layoutIDs ) )
+                      )
+];
+ 
+   GetAsNumber ( layoutID )
+)</Calculation></CustomFunction><CustomFunction id="130" functionArity="6" visible="True" parameters="type;nameStartsWith;enclosedBy;isFrontPanel;nameOfFile;nameOfLayout" name="GetLayoutObjectNames"><Calculation>/*#
+#
+#    GetLayoutObjectNames
+#
+#    Allows you to get back only the LayoutObjects you are interested in.
+#    All Parameters are optional
+#
+#
+#   Author: Todd Geist, todd@geistinteractive.com
+#   History: 11/10/2013 - first private release
+#*/
+
+
+
+Let(
+[
+
+
+
+nameOfFile = If ( IsEmpty( nameOfFile ) ; Get (FileName) ; nameOfFile ) ;
+nameOfLayout = If (   IsEmpty( nameOfLayout ) ;  Get (LayoutName) ; nameOfLayout ); 
+
+objectNames = 
+      Substitute(
+         LayoutObjectNames (nameOfFile ; nameOfLayout );
+         [ "&lt;¶" ; "" ] ;  [ "&gt;¶" ; "" ] ; [ "&gt;" ; "" ] ; [ "&lt;" ; "" ] 
+);
+objectNames =  
+   Substitute(   
+    Char(30)  &amp; objectNames     ;
+
+     ["¶" ; Char(30) &amp;"¶" &amp; Char(30)  ] ;
+     [Char(30) &amp; Char(30) &amp; "¶" ; ""] ;
+     [Char(30) ; ""]
+  );
+
+
+exp =   Case(  not IsEmpty( nameStartsWith ) ;   "Position( item ; " &amp; Quote( nameStartsWith ) &amp; "; 1;1) = 1 " ; 1 );
+
+exp = exp &amp; 
+Case(
+   not IsEmpty( type ) ; " and GetLayoutObjectAttribute ( item ; \"objectType\")="  &amp; Quote(type)
+   ; ""
+)    &amp; 
+
+Case(
+   not IsEmpty( enclosedBy ) ; " and GetLayoutObjectAttribute ( item ; \"enclosingObject\")="  &amp; Quote(enclosedBy)
+   ; ""
+)  
+ &amp; 
+
+Case( 
+    IsEmpty( isFrontPanel ) or RightWords( type; 1) &lt;&gt; "panel" ; "" ;
+    isFrontPanel ; " and GetLayoutObjectAttribute ( item ; \"isFrontPanel\") " ; 
+    " and not GetLayoutObjectAttribute ( item ; \"isFrontPanel\") "
+)  
+
+
+];
+
+
+
+//   -----------------------------START FilterValuesByExptression
+Let(
+[
+theList =  objectNames;
+expression = exp ;
+
+
+left = " Let( [ item =\"";
+right = "\" ]; If( " &amp; expression &amp; " ; item ) );" ;
+
+let = 
+"List(¶"  &amp; 
+left &amp; 
+Substitute(theList &amp; "¶" ; "¶" ; right &amp; "¶" &amp; left) &amp; 
+right
+&amp; "¶)"
+
+
+
+];
+
+Evaluate( let )
+
+)
+// -------------------------------  END FilterValuesByExptression
+
+
+)</Calculation></CustomFunction><CustomFunction id="31" functionArity="2" visible="True" parameters="value;list1" name="getLine"><Calculation>/* 
+created by Tim Brown of Antidote Solutions
+2009-01-17
+
+returns the line number of a value from a list using a paragraph return as the line delineator
+ */
+
+Let([
+v = value;
+p = Position(List1; v; 1;1);
+l = Left(List1; p)
+];
+Case(
+p = 0; "does not exist";
+PatternCount( l ; "¶") + 1
+)
+)</Calculation></CustomFunction><CustomFunction id="115" functionArity="8" visible="True" parameters="webViewerName;zoom;address1;address2;city;state;postalCode;country" name="GetMap"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+
+Let 	( 
+	[
+	address = 	List 	(
+					address1 ; 
+					address2 ; 
+					city ; 
+					state ; 
+					postalCode ; 
+					country 
+					) ; 
+
+	URL = 		Substitute ( address ; ¶ ; "+" ) ; 
+	size = 		GetLayoutObjectAttribute ( webViewerName ; "width" ) &amp; "x" &amp; GetLayoutObjectAttribute ( webViewerName ; "height" ) ;
+	zoom =		zoom
+	] ;
+
+	"http://maps.google.com/maps/api/staticmap?center=" 
+			&amp; URL &amp; 
+				"&amp;zoom=" &amp; zoom &amp;
+					"&amp;markers=" 
+						&amp; URL &amp; 
+							"&amp;size=" 
+								&amp; size &amp; 
+									"&amp;maptype=roadmap" &amp; 
+										"&amp;sensor=false"
+	)</Calculation></CustomFunction><CustomFunction id="116" functionArity="4" visible="True" parameters="parameter;additionalChar1;additionalChar2;additionalChar3" name="GetNumericChar"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	This works in combination with the scripts"Trigger | OnObjectKeystroke | Prevent Characters [Parameter]"
+
+	The calcualtion bellow demonstrates how to prevent a set of numerical characters to be entered into a field.
+	The technique is based on getting the ASCII code corresponding to a character.
+	See Help &gt; Function List &gt; Code for additional info.
+	You can add additional character codes as well as setting a range of codes.
+	This is particularly practical for allowing "/" for date fields, or "." for number fields with decimal.
+	The additional character is sent to the calcualtion via Script Parameter.
+
+	Notes:
+	It is important to allow keys as backspace, tab and both enter and carriage return
+	to prevent blocking deletion and tab order navigation.
+
+*************************************************************************************************/
+
+Let 	(
+	[
+	codeKeystroke = Code ( Get ( TriggerKeystroke ) ) ; // Get trigger keystroke ASCII code ; 
+	scriptParameterChar1 = Code ( parameter ) ; // Get char from script parameter1
+	scriptParameterChar2 = Code ( additionalChar1 ) ; // Get char from script parameter2
+	scriptParameterChar3 = Code ( additionalChar2 ) ; // Get char from script parameter3
+	scriptParameterChar4 = Code ( additionalChar3 ) ; // Get char from script parameter4
+
+	specialChar1 = 8 ; // Special char 8 = [backspace]
+	specialChar2 = 9 ; // Special char 9 = [tab]
+	specialChar3 = 10 ; // Special char 10 = [enter]
+	specialChar4 = 13 ; // Special char 13 = [carriage return]
+	specialChar6 = scriptParameterChar1 ;  // Additional special char on script parameter
+	specialChar7 = scriptParameterChar2 ; // Additional special char 1
+	specialChar8 = scriptParameterChar3 ; // Additional special char 3
+	specialChar9 = scriptParameterChar4 // Mulitple special chars can be added following the same pattern
+	] ; 
+	
+	Case	( 
+		codeKeystroke = specialChar1 ; 0 ; // Allow [backspace] 
+		codeKeystroke = specialChar2 ; 0 ; // Allow [tab] 
+		codeKeystroke = specialChar3 ; 0 ; // Allow [enter] 
+		codeKeystroke = specialChar4 ; 0 ; // Allow [carriage return] 
+		codeKeystroke = specialChar6 ; 0 ; // Allow additional special char 
+		codeKeystroke = specialChar7 ; 0 ; // Allow additional special char 
+		codeKeystroke = specialChar8 ; 0 ; // Allow additional special char 
+		codeKeystroke = specialChar9 ; 0 ; // Allow additional special char 
+		codeKeystroke &gt; 47 and codeKeystroke &lt; 58 ; 0 ; // Allow numeric chars from 0 to 9
+		codeKeystroke &gt; 27 and codeKeystroke &lt; 32 ; 0 ; // Allow numeric chars from Arrows (Left, Up, Right, Down)
+		1
+		) 
+		// The result of the calcualtion is Boolean:
+		// 	0 = No Errors (False) -&gt; Valid Char
+		// 	1 = Error (True) -&gt; Invalid Char
+
+	)</Calculation></CustomFunction><CustomFunction id="117" functionArity="1" visible="True" parameters="valueNumber" name="GetParameterValue"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+GetValue ( Get ( ScriptParameter ) ; valueNumber )</Calculation></CustomFunction><CustomFunction id="77" functionArity="3" visible="True" parameters="vlist;start;stop" name="GetValues"><Calculation>//GetValues ( vlist ; start ; stop )
+If( stop &lt; start or IsEmpty( vlist ) or IsEmpty ( start ) or IsEmpty( stop ); "BAD INPUT";
+
+GetValue( vlist ; start ) &amp; If( start &lt; stop; ¶ &amp; GetValues( vlist; start + 1; stop ) )
+
+)</Calculation></CustomFunction><CustomFunction id="118" functionArity="2" visible="True" parameters="StartDate;DueDate" name="GetWorkDays"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Returns the amount of business days between two dates (ignoring weekends Saturday-Sunday).
+
+
+*************************************************************************************************/
+
+Int 	( ( DueDate - StartDate ) / 7 ) * 5 
+
++ 
+
+Case 	( 
+		DayOfWeek ( DueDate ) &lt; DayOfWeek ( StartDate ) ; 
+		Min ( 5 ; DayOfWeek ( DueDate ) - 1 ) + Max ( 0 ; 6 - DayOfWeek ( StartDate ) ) ;
+
+		DayOfWeek ( StartDate ) &lt; 7 ; 
+		Min ( 6 ; DayOfWeek ( DueDate ) ) - DayOfWeek ( StartDate ) ; 
+
+		0 
+		) + 1</Calculation></CustomFunction><CustomFunction id="141" functionArity="2" visible="True" parameters="XML;XPath" name="GetXMLNode"><Calculation>// GetXMLNode ( XML ; XPath )
+// Requires ExtractData ( XML ; Attribute ; Instance ) 
+// ExtractData can be found at http://www.briandunning.com/cf/1 
+// Thanks to Andy Knasinski of NRG Software for the great base function!
+
+// *** Parameter Description ***
+// XML - vanilla xml imput without attributes
+// XPath - basic XPath like syntax consiting of
+//   a series of xml nodes formatted as follows:
+//   /nodeName[instanceNumber]  
+
+Evaluate ( Substitute ( Filter ( XPath ; "/" ) ; "/" ; "ExtractData ( " ) &amp; "\"" &amp; XML &amp; "\"" &amp; Substitute ( XPath ; [ "/" ; ";\"" ] ; [ "[" ; "\";" ] ;  [ "]" ; ")" ] ) )
+
+
+/****************************************************************
+Nonrecursive, this function simply creates multiple nested instances of ExtractData in a calculation string and then evaluates it to get the data.
+
+*************************  EXAMPLE USE ***************************
+XMLfield is set to:
+&lt;class&gt;&lt;teacher&gt;&lt;name&gt;Kelly&lt;/name&gt;&lt;/teacher&gt;&lt;students&gt;&lt;student&gt;&lt;name&gt;Bill&lt;/name&gt;&lt;age&gt;15&lt;/age&gt;&lt;/student&gt;&lt;student&gt;&lt;name&gt;Sue&lt;/name&gt;&lt;age&gt;16&lt;/age&gt;&lt;/student&gt;&lt;/students&gt;&lt;/class&gt;
+
+GetXMLNode ( XMLfield ; "/class[1]/teacher[1]/name[1]" ) &amp; "¶" &amp; 
+GetXMLNode ( XMLfield ; "/class[1]/students[1]/student[2]/age[1]" ) &amp; "¶" &amp; 
+GetXMLNode ( XMLfield ; "/class[1]/students[1]/student[1]" )
+
+Will produce the following:
+Kelly
+16
+&lt;name&gt;Bill&lt;/name&gt;&lt;age&gt;15&lt;/age&gt;
+
+****************************************************************
+****************************************************************/</Calculation></CustomFunction><CustomFunction id="44" functionArity="6" visible="True" parameters="Title;Longitude;Latitude;Zoom;Type;Markers" name="GoogleMapJS"><Calculation>// GoogleMapJS ( Title, Longitude; Latitude; Zoom; Type, Markers )
+Let ([
+  Title = Substitute ( Title ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
+];
+"data:text/html," &amp; "
+&lt;!DOCTYPE html&gt;¶
+&lt;html&gt;¶
+  &lt;head&gt;¶
+    &lt;meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\"&gt;¶
+    &lt;meta charset=\"utf-8\"&gt;¶
+    &lt;title&gt;" &amp; Title &amp; "&lt;/title&gt;¶
+&lt;link href=\"http://code.google.com/apis/maps/documentation/javascript/examples/default.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;¶
+    &lt;script src=\"https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false\"&gt;&lt;/script&gt;¶
+    &lt;script&gt;¶
+      function initialize() {¶
+        var myLatlng = new google.maps.LatLng(" &amp; Latitude &amp; "," &amp; Longitude &amp; ");¶
+        var mapOptions = {¶
+          zoom: " &amp; Zoom &amp; ",¶
+          center: myLatlng,¶
+          mapTypeId: google.maps.MapTypeId." &amp; If ( IsEmpty ( Type ); "ROADMAP" ; Type ) &amp; "¶
+        }¶
+¶
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);¶" &amp;
+Markers
+&amp;"      }¶
+¶
+    &lt;/script&gt;¶
+  &lt;/head&gt;¶
+  &lt;body onload=\"initialize()\"&gt;¶
+    &lt;div id=\"map-canvas\"&gt;&lt;/div&gt;¶
+  &lt;/body&gt;¶
+&lt;/html&gt;¶
+")</Calculation></CustomFunction><CustomFunction id="45" functionArity="6" visible="True" parameters="Latitude;Longitude;Title;Message;Icon;Counter" name="GoogleMapMarkerJS"><Calculation>// GoogleMapMarkerJS ( Latitude ; Longitude ; Title ; Message ; Icon ; Counter )
+Let ([
+  Title = Substitute ( Title ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
+; Message = Substitute ( Message ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
+];
+"
+    var myLatlng" &amp; Counter &amp; " = new google.maps.LatLng( " &amp; Latitude &amp; " , " &amp; Longitude &amp; " );¶
+¶
+    var contentString" &amp; Counter &amp; " = '&lt;div id=\"content\"&gt;'+¶
+        '&lt;div id=\"siteNotice\"&gt;'+¶
+        '&lt;/div&gt;'+¶
+        '&lt;h3 id=\"firstHeading\" class=\"firstHeading\"&gt;" &amp; Title &amp; "&lt;/h3&gt;'+¶
+        '&lt;div id=\"bodyContent\"&gt;'+¶
+        '&lt;p&gt;" &amp; Substitute ( Message ; "¶" ; "&lt;br /&gt;" ) &amp; "&lt;/p&gt;' +¶
+        '&lt;/div&gt;'+¶
+        '&lt;/div&gt;';¶
+¶
+    var infowindow" &amp; Counter &amp; " = new google.maps.InfoWindow({¶
+        content: contentString" &amp; Counter &amp; "¶
+    });¶
+¶
+" &amp; If ( not IsEmpty ( Icon ) ; "    var image = '" &amp; Icon &amp; "';¶" ) &amp; "
+¶
+    var marker" &amp; Counter &amp; " = new google.maps.Marker({¶
+        position: myLatlng" &amp; Counter &amp; ",¶
+        map: map,¶
+        title: '" &amp; Title &amp; "',¶
+" &amp; If ( not IsEmpty ( Icon ) ; "        icon: image¶ " ) &amp; "
+    });¶
+    google.maps.event.addDomListener(marker" &amp; Counter &amp; ", 'click', function() {¶
+      infowindow" &amp; Counter &amp; ".open(map,marker" &amp; Counter &amp; ");¶
+    });¶
+")</Calculation></CustomFunction><CustomFunction id="15" functionArity="2" visible="True" parameters="field;search" name="Highlight_Field"><Calculation>Let (
+[
+
+_field = field ;
+_search = search ;
+_searchLen = Length ( _search ) ;
+_fieldStart = Left ( _field ; _searchLen ) ;
+_fieldEnd = Right ( _field ; Length ( _field ) - _searchLen )
+];
+
+If ( Left ( _field ; _searchLen ) = _search ; 
+	TextColor ( TextStyleAdd ( _fieldStart ; Bold ); RGB ( 0 ; 0 ; 255 ) ) &amp; _fieldEnd ;
+	_field
+)
+
+)</Calculation></CustomFunction><CustomFunction id="87" functionArity="1" visible="True" parameters="_container" name="Interactivate"><Calculation>Base64Decode ( Base64Encode ( _container ) ; GetContainerAttribute ( _Container ; "FileName" ) )</Calculation></CustomFunction><CustomFunction id="109" functionArity="4" visible="True" parameters="value;result;json_category_subcategory;json_name" name="json_list"><Calculation>Let ( [
+
+        ~count =  ValueCount (value) ;
+	~name = json_category_subcategory &amp; "[" &amp; ~count &amp; "]" &amp; json_name ;
+	~json_element = JSONGetElement ( result ; ~name) ;
+        ~json_list = List (value ; ~json_element) 
+	];
+	Case (
+		not IsEmpty (~json_element)  ; json_list (  ~json_list ; result ; json_category_subcategory ; json_name )  ;  ~json_list	)
+)</Calculation></CustomFunction><CustomFunction id="76" functionArity="1" visible="True" parameters="name" name="KeyIs"><Calculation>// KeyIs
+// name
+
+Let(
+   keyCode = Code( Get ( TriggerKeystroke ) );
+
+   Case(
+      // arrow keys
+      name = "arrow"; keyCode &gt;= 28 and keyCode &lt;= 31;
+      name = "left"; keyCode = 28;
+      name = "up"; keyCode = 29;
+      name = "right"; keycode = 30;
+      name = "down"; keycode = 31;
+
+      // editing keys
+      name = "tab"; keyCode = 9;
+      name = "return"; keyCode = 13;
+      name = "enter"; keyCode = 10;
+
+      // classes
+      name = "upper"; keyCode &gt;= 65 and keyCode &lt;= 90;
+      name = "lower"; keyCode &gt;= 97 and keyCode &lt;= 122;
+      name = "letter"; KeyIs("upper") or KeyIs("lower");
+      name = "number"; keyCode &gt;= 48 and keyCode &lt;= 57;
+
+      // fall back on false
+      False
+   )
+)</Calculation></CustomFunction><CustomFunction id="160" functionArity="2" visible="True" parameters="Input_List;Limit" name="List_Builder"><Calculation>// List builder
+// Enter a List and a Limit Condition
+// Will end at last value in List if less than the Limit Condition 
+
+Let ( [
+~input_list = Input_List ; 
+~Limit= Limit ;
+~max = ValueCount ( ~input_list) ;
+~stop = Case ( ~max &lt; limit ; ~max ; ~limit) ; 
+~counter = ValueCount ( $$Output_List ) + 1;
+~next_value = GetValue ( ~input_List  ; ~counter );
+$$Output_List = List ($$Output_List ; ~next_Value);
+~result = $$Output_List
+
+
+]; 
+Let ( 
+$$Output = If ( ~counter ≥ ~stop ; "" ; $$Output_List)
+;
+Case ( ~counter ≥ ~stop ; ~Result ;List_Builder (~input_list ; ~stop ))
+	)
+		)</Calculation></CustomFunction><CustomFunction id="98" functionArity="2" visible="True" parameters="Value_List;field" name="List_Counter"><Calculation>//Counts through a value list and restarts at end
+
+
+Let ( [
+~List = Value_List ; 
+~Current = field ;
+~Position = ValueCount ( Left( ¶ &amp; ~List &amp; ¶ ; Position ( ¶ &amp; ~List ; ¶ &amp;  ~Current ; 1 ; 1 ) ) ) ;
+~First = GetValue ( ~List; 1 ) ; 
+~Last =  GetValue ( ~List; ValueCount (~List) )
+] ;
+Case ( 
+~current = ~last ; ~First ; 
+GetValue ( ~List ; ~Position+1 )
+ ))
+
+//Value List needs to be a list 
+//field is the field that will store current value</Calculation></CustomFunction><CustomFunction id="161" functionArity="3" visible="True" parameters="Value_List;field;Direction" name="List_Counter_Directional"><Calculation>//Selects the next or Previous Value in a list
+//Direction: 
+//		FWD = 1 ; 
+//		BCKWD = -1 
+
+
+Let ( [
+~List = Value_List ; 
+~Current = field ;
+~Position = ValueCount ( Left( ¶ &amp; ~List &amp; ¶ ; Position ( ¶ &amp; ~List ; ¶ &amp;  ~Current ; 1 ; 1 ) ) ) ;
+~First = GetValue ( ~List; 1 ) ; 
+~Last =  GetValue ( ~List; ValueCount (~List) )
+] ;
+Case ( 
+~current = ~last ; ~First ; 
+GetValue ( ~List ; ~Position + Direction )
+ ))
+
+//Value List needs to be a list 
+//field is the field that will store current value</Calculation></CustomFunction><CustomFunction id="153" functionArity="2" visible="True" parameters="L;Value_Replace" name="List_Repalce_value"><Calculation>// List of Information = L 
+// Value you are looking to replace = Value_Replace 
+// (must be a uniqe value to the list) 
+
+Let ([
+~List = L ; 
+~replace = Value_Replace ; 
+
+~sub1 = Substitute ( ~list ; ~replace &amp; ¶  ; "" ) ;
+~sub2 = Substitute ( ~list ;  ~replace   ; "" ) ;
+~sub3 = Substitute ( ~list ; ¶ &amp; ~replace ; "" ) ;
+
+~Result = Case ( GetValue ( ~list ; 1 ) = ~replace ; ~sub1 ; GetValue ( ~List ; ValueCount ( ~List ) ) = ~replace ; ~sub2 ; ~sub3 ) 
+
+
+] ; ~Result )</Calculation></CustomFunction><CustomFunction id="88" functionArity="3" visible="True" parameters="alist;string;matchcase" name="ListIndex"><Calculation>/*-------------------------------------------------------
+Searches a Return delimited list 'list' for the occurrance
+of the given value.
+Returns the 1-based indexnumber if found, 0 if value
+is not in the list.
+
+Syntax: ListIndex ( list ; string ; matchcase )
+In: alist - the return delimited list to search
+     string - the string to look for in the item
+     matchcase - if True, the list is searched Case Sensitive
+                         if False, a Case Insensitive search is performed
+
+Return type: Number 
+
+ListIndex ( "John¶Paul¶George¶Ringo" ; "ringo" ; False ) --&gt; 4
+ListIndex ( "John¶Paul¶George¶Ringo" ; "ringo" ; True )  --&gt; 0
+
+Theo Ros
+----------------------------------------------------------*/
+
+Let ( [ lst = If ( Left ( alist ; 1 ) &lt;&gt; "¶" ; "¶" &amp; alist ; alist ) &amp; "¶" ;
+          pos = If ( matchcase ;                                       // do a Case Sensitive PatternCount
+            Let( [ marker = "%!Case!%" ;                        // use a highly unlikely string
+                      find = marker &amp; string ;                         // combine into new search string
+                      lst = Substitute ( lst ; string ; find ) ] ;  // redefine the list 
+
+                    // now we search for the combined string 
+                    Position ( lst ; find ; 1 ; 1 )
+                    ) ;
+                 // do a normal case Insensitive PatternCount
+                 Position ( lst ; string ; 1 ; 1 ) ) ] ;
+  If ( pos ; PatternCount ( Left ( lst ;  pos ) ; "¶" ) ; 0 )
+)</Calculation></CustomFunction><CustomFunction id="46" functionArity="4" visible="True" parameters="Field;recmax;lat;lng" name="ListValuesMap"><Calculation>/*
+ListValues ( Field )
+*/
+
+Let (
+[
+
+
+
+$$ListValues_max_count= If(recmax &lt; 1;Get ( FoundCount );recmax);
+
+$$ListValues_total_count = Case ( IsEmpty ( $$ListValues_total_count ) ; $$ListValues_max_count ; $$ListValues_total_count ) ;
+
+$$ListValues_current_count = Case ( IsEmpty ( $$ListValues_current_count ) ; 1 ; $$ListValues_current_count + 1 ) ;
+
+latc = GetNthRecord ( lat ; $$ListValues_current_count );
+
+lngc = GetNthRecord ( lng ; $$ListValues_current_count );
+
+name = GetNthRecord ( Field ; $$ListValues_current_count );
+
+$$ListValues_value =
+	Case (
+		not IsEmpty ( latc ) and not IsEmpty ( lngc );	
+	
+		Case (
+			ValueCount ( $$ListValues_value );		
+			$$ListValues_value &amp; "¶") &amp; name;
+
+		 $$ListValues_value
+	)
+
+] ;
+
+
+Case (
+// If $$ListValues_current_count is not reach to $$ListValues_total_count, call this function recursively.
+
+$$ListValues_current_count &lt; $$ListValues_total_count;
+ListValuesMap ( Field;$$ListValues_max_count; lat; lng ) ;
+
+// Otherwise, clean up $$variable and return result.
+Let (
+[
+result = $$ListValues_value;
+$$ListValues_max_count ="";
+$$ListValues_total_count = "" ;
+$$ListValues_current_count = "" ;
+$$ListValues_value = ""
+] ;
+result
+) // Let
+) // Case
+
+) // Let</Calculation></CustomFunction><CustomFunction id="29" functionArity="1" visible="True" parameters="number" name="Luhn"><Calculation>/* 
+
+The Luhn Mod-10 algorithm is used to validate ( check for input errors ) of many credit cards and Canadian Social Security numbers.
+
+This is a custom function implementation of the method used by Brian dunning in his Card Validator example.
+
+The functions LuhnDoubleEven and LuhnProduct are required for it to operate and must me defined prior to
+defining this function.
+
+ */
+
+
+Let( [ 
+
+justNumbers = Filter( number ; "0123456789" ) ; // remove any non-numeric characters
+
+oddOrEvenLength = Mod(Length(justNumbers) ; 2) ; // odd length numbers return 1, even length numbers return 0
+
+makeEven = Case(OddorEvenLength = 1; "0" ; "") &amp; justNumbers ; // adds 0 to the front of any odd length number to make it even
+
+doubleEven = LuhnDoubleEven ( makeEven ) ; // doubles every 2nd number
+
+product = LuhnProduct ( doubleEven ) ; // Adds all the numbers together
+
+valid = Case( Mod( product ; 10 ) = 0 ; 1 ; 0 ) // The number is valid if it is exactly divisible by 10
+
+] ; // close let variable definition
+
+valid // return result 
+
+) // close let</Calculation></CustomFunction><CustomFunction id="27" functionArity="1" visible="True" parameters="makeEven" name="LuhnDoubleEven"><Calculation>/* 
+A component of the Luhn function.
+
+
+Take the number string supplied by Luhn and double every even position character of the original number.
+Adding 0 to the front of odd length number strings adjusted the original number for this to work.
+*/
+
+If ( Length ( makeEven )  &gt; 1 ; 2 * Middle(makeEven ; 1; 1) &amp; Middle(makeEven ; 2; 1) &amp; LuhnDoubleEven ( Right ( makeEven; Length ( makeEven ) - 2 ) )
+ ; "" )</Calculation></CustomFunction><CustomFunction id="28" functionArity="1" visible="True" parameters="doubleEven" name="LuhnProduct"><Calculation>/*
+A component of the Luhn function.
+
+Add all the numbers together
+
+*/
+
+If ( Length ( doubleEven )  &gt; 0 ; 
+
+Middle(doubleEven ; 1; 1) + Middle(doubleEven ; 2; 1) + LuhnProduct ( Right ( doubleEven ; Length ( doubleEven )  - 2 )  )
+
+ ; "" )</Calculation></CustomFunction><CustomFunction id="43" functionArity="2" visible="True" parameters="lst;value" name="MaxValue"><Calculation>/* --------------------------------------------------------------------------------
+Returns the largest value in the lst
+
+Syntax: MaxValue ( lst ; value )
+In: lst   - the return delimited lst to search
+    value - the value currently compared
+
+Return type: Text 
+
+MaxValue ( "apple¶grape¶banana" ; "" )  --&gt; "grape"
+
+Always start the function off with parameter 'value' = ""
+
+Theo Ros
+* updated augustus 9, 2010: changed parameter name "list" to "lst"
+   thanks to Dwayne Wright
+-------------------------------------------------------------------------------- */
+
+If ( ValueCount ( lst ) ; 
+  Let ( [ next = Substitute ( LeftValues ( lst ; 1 ) ; "¶" ; "" ) ;
+            current = Substitute ( value ; "¶" ; "" ) ;
+            rest = MiddleValues ( lst ; 2 ; 9999999999 ) ;
+            high = Case ( IsEmpty ( current ) ; next ;
+                       next &gt; current ; next ; current ) ] ; 
+    If ( ValueCount ( rest ) ; MaxValue ( rest ; high ) ; high )
+  )
+)</Calculation></CustomFunction><CustomFunction id="64" functionArity="2" visible="True" parameters="words;len" name="MD5"><Calculation>/*// MD5 ( words; len )
+//
+// Calculate the MD5 of an array (value-list) of little-endian words.
+//
+// Parameters:
+// words = Return-delimited value list of little-endian words
+// len = Bit-length of array
+//
+// Return Value:
+// Calculated MD5
+//
+Let(
+ [
+  // append padding
+  cnt = ValueCount( words );
+  ilast = BitwiseSHR( len; 5 ) + 1;
+  word = If( ilast ≤ cnt; GetValue( words; ilast ); 0 );
+  ilen = BitwiseSHL( BitwiseSHR( len + 64; 9 ); 4 ) + 14;
+  x = LeftValues( words; ilast - 1 ) &amp; BitwiseOR( word; BitwiseSHL( 128; Mod( len; 32 ) ) ) &amp; "¶" &amp; RepeatedValue( "0"; ilen - ilast ) &amp; len &amp; "¶0"
+ ];
+ MD5_calc( 1732584193; 2^32-271733879; 2^32-1732584194; 271733878; x; 1 )
+)*/</Calculation></CustomFunction><CustomFunction id="65" functionArity="6" visible="True" parameters="a;b;c;d;x;i" name="MD5_calc"><Calculation>// MD5_calc ( a; b; c; d; x; i )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// i = For internal use only
+//
+// Return Value:
+// 
+//
+Let(
+ len = ValueCount( x );
+ If(
+  i ≤ len;
+  Let(
+   [
+    a1 = MD5_ff( a; b; c; d; GetValue( x; i + 0 ); 7; 2^32 - 680876936 );
+    d1 = MD5_ff( d; a1; b; c; GetValue( x; i + 1 ); 12; 2^32 - 389564586 );
+    c1 = MD5_ff( c; d1; a1; b; GetValue( x; i + 2 ); 17; 606105819 );
+    b1 = MD5_ff( b; c1; d1; a1; GetValue( x; i + 3 ); 22; 2^32 - 1044525330 );
+    a2 = MD5_ff( a1; b1; c1; d1; GetValue( x; i + 4 ); 7; 2^32 - 176418897 );
+    d2 = MD5_ff( d1; a2; b1; c1; GetValue( x; i + 5 ); 12; 1200080426 );
+    c2 = MD5_ff( c1; d2; a2; b1; GetValue( x; i + 6 ); 17; 2^32 - 1473231341 );
+    b2 = MD5_ff( b1; c2; d2; a2; GetValue( x; i + 7 ); 22; 2^32 - 45705983 );
+    a3 = MD5_ff( a2; b2; c2; d2; GetValue( x; i + 8 ); 7; 1770035416 );
+    d3 = MD5_ff( d2; a3; b2; c2; GetValue( x; i + 9 ); 12; 2^32 - 1958414417 );
+    c3 = MD5_ff( c2; d3; a3; b2; GetValue( x; i + 10 ); 17; 2^32 - 42063 );
+    b3 = MD5_ff( b2; c3; d3; a3; GetValue( x; i + 11 ); 22; 2^32 - 1990404162 );
+    a4 = MD5_ff( a3; b3; c3; d3; GetValue( x; i + 12 ); 7; 1804603682 );
+    d4 = MD5_ff( d3; a4; b3; c3; GetValue( x; i + 13 ); 12; 2^32 - 40341101 );
+    c4 = MD5_ff( c3; d4; a4; b3; GetValue( x; i + 14 ); 17; 2^32 - 1502002290 );
+    b4 = MD5_ff( b3; c4; d4; a4; GetValue( x; i + 15 ); 22; 1236535329 );
+
+    a5 = MD5_gg( a4; b4; c4; d4; GetValue( x; i + 1 ); 5; 2^32 - 165796510 );
+    d5 = MD5_gg( d4; a5; b4; c4; GetValue( x; i + 6 ); 9; 2^32 - 1069501632 );
+    c5 = MD5_gg( c4; d5; a5; b4; GetValue( x; i + 11 ); 14; 643717713 );
+    b5 = MD5_gg( b4; c5; d5; a5; GetValue( x; i + 0 ); 20; 2^32 - 373897302 );
+    a6 = MD5_gg( a5; b5; c5; d5; GetValue( x; i + 5 ); 5; 2^32 - 701558691 );
+    d6 = MD5_gg( d5; a6; b5; c5; GetValue( x; i + 10 ); 9; 38016083 );
+    c6 = MD5_gg( c5; d6; a6; b5; GetValue( x; i + 15 ); 14; 2^32 - 660478335 );
+    b6 = MD5_gg( b5; c6; d6; a6; GetValue( x; i + 4 ); 20; 2^32 - 405537848 );
+    a7 = MD5_gg( a6; b6; c6; d6; GetValue( x; i + 9 ); 5; 568446438 );
+    d7 = MD5_gg( d6; a7; b6; c6; GetValue( x; i + 14 ); 9; 2^32 - 1019803690 );
+    c7 = MD5_gg( c6; d7; a7; b6; GetValue( x; i + 3 ); 14; 2^32 - 187363961 );
+    b7 = MD5_gg( b6; c7; d7; a7; GetValue( x; i + 8 ); 20; 1163531501 );
+    a8 = MD5_gg( a7; b7; c7; d7; GetValue( x; i + 13 ); 5; 2^32 - 1444681467 );
+    d8 = MD5_gg( d7; a8; b7; c7; GetValue( x; i + 2 ); 9; 2^32 - 51403784 );
+    c8 = MD5_gg( c7; d8; a8; b7; GetValue( x; i + 7 ); 14; 1735328473 );
+    b8 = MD5_gg( b7; c8; d8; a8; GetValue( x; i + 12 ); 20; 2^32 - 1926607734 );
+
+    a9 = MD5_hh( a8; b8; c8; d8; GetValue( x; i + 5 ); 4; 2^32 - 378558 );
+    d9 = MD5_hh( d8; a9; b8; c8; GetValue( x; i + 8 ); 11; 2^32 - 2022574463 );
+    c9 = MD5_hh( c8; d9; a9; b8; GetValue( x; i + 11 ); 16; 1839030562 );
+    b9 = MD5_hh( b8; c9; d9; a9; GetValue( x; i + 14 ); 23; 2^32 - 35309556 );
+    aa = MD5_hh( a9; b9; c9; d9; GetValue( x; i + 1 ); 4; 2^32 - 1530992060 );
+    da = MD5_hh( d9; aa; b9; c9; GetValue( x; i + 4 ); 11; 1272893353 );
+    ca = MD5_hh( c9; da; aa; b9; GetValue( x; i + 7 ); 16; 2^32 - 155497632 );
+    ba = MD5_hh( b9; ca; da; aa; GetValue( x; i + 10 ); 23; 2^32 - 1094730640 );
+    ab = MD5_hh( aa; ba; ca; da; GetValue( x; i + 13 ); 4; 681279174 );
+    db = MD5_hh( da; ab; ba; ca; GetValue( x; i + 0 ); 11; 2^32 - 358537222 );
+    cb = MD5_hh( ca; db; ab; ba; GetValue( x; i + 3 ); 16; 2^32 - 722521979 );
+    bb = MD5_hh( ba; cb; db; ab; GetValue( x; i + 6 ); 23; 76029189 );
+    ac = MD5_hh( ab; bb; cb; db; GetValue( x; i + 9 ); 4; 2^32 - 640364487 );
+    dc = MD5_hh( db; ac; bb; cb; GetValue( x; i + 12 ); 11; 2^32 - 421815835 );
+    cc = MD5_hh( cb; dc; ac; bb; GetValue( x; i + 15 ); 16; 530742520 );
+    bc = MD5_hh( bb; cc; dc; ac; GetValue( x; i + 2 ); 23; 2^32 - 995338651 );
+
+    ad = MD5_ii( ac; bc; cc; dc; GetValue( x; i + 0 ); 6; 2^32 - 198630844 );
+    dd = MD5_ii( dc; ad; bc; cc; GetValue( x; i + 7 ); 10; 1126891415 );
+    cd = MD5_ii( cc; dd; ad; bc; GetValue( x; i + 14 ); 15; 2^32 - 1416354905 );
+    bd = MD5_ii( bc; cd; dd; ad; GetValue( x; i + 5 ); 21; 2^32 - 57434055 );
+    ae = MD5_ii( ad; bd; cd; dd; GetValue( x; i + 12 ); 6; 1700485571 );
+    de = MD5_ii( dd; ae; bd; cd; GetValue( x; i + 3 ); 10; 2^32 - 1894986606 );
+    ce = MD5_ii( cd; de; ae; bd; GetValue( x; i + 10 ); 15; 2^32 - 1051523 );
+    be = MD5_ii( bd; ce; de; ae; GetValue( x; i + 1 ); 21; 2^32 - 2054922799 );
+    af = MD5_ii( ae; be; ce; de; GetValue( x; i + 8 ); 6; 1873313359 );
+    df = MD5_ii( de; af; be; ce; GetValue( x; i + 15 ); 10; 2^32 - 30611744 );
+    cf = MD5_ii( ce; df; af; be; GetValue( x; i + 6 ); 15; 2^32 - 1560198380 );
+    bf = MD5_ii( be; cf; df; af; GetValue( x; i + 13 ); 21; 1309151649 );
+    ag = MD5_ii( af; bf; cf; df; GetValue( x; i + 4 ); 6; 2^32 - 145523070 );
+    dg = MD5_ii( df; ag; bf; cf; GetValue( x; i + 11 ); 10; 2^32 - 1120210379 );
+    cg = MD5_ii( cf; dg; ag; bf; GetValue( x; i + 2 ); 15; 718787259 );
+    bg = MD5_ii( bf; cg; dg; ag; GetValue( x; i + 9 ); 21; 2^32 - 343485551 )
+   ];
+
+   MD5_calc( Add32( ag; a ); Add32( bg; b ); Add32( cg; c ); Add32( dg; d ); x; i + 16 )
+  );
+
+  a &amp; "¶" &amp; b &amp; "¶" &amp; c &amp; "¶" &amp; d
+ )
+)</Calculation></CustomFunction><CustomFunction id="66" functionArity="6" visible="True" parameters="q;a;b;x;s;t" name="MD5_cmn"><Calculation>// MD5_cmn ( q; a; b; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// q = For internal use only
+// a = For internal use only
+// b = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// For internal use only
+//
+Add32( BitwiseROL( Add32( Add32( a; q ); Add32( x; t ) ); s ); b )</Calculation></CustomFunction><CustomFunction id="67" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_ff"><Calculation>// MD5_ff ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseOR( BitwiseAND( b; c ); BitwiseAND( BitwiseNOT( b ); d ) ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="68" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_gg"><Calculation>// MD5_gg ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseOR( BitwiseAND( b; d ); BitwiseAND( c; BitwiseNOT( d ) ) ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="69" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_hh"><Calculation>// MD5_hh ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseXOR( BitwiseXOR( b; c ); d ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="70" functionArity="7" visible="True" parameters="a;b;c;d;x;s;t" name="MD5_ii"><Calculation>// MD5_ii ( a; b; c; d; x; s; t )
+//
+// For internal use only - internal helper function for MD5 calculations.
+//
+// Parameters:
+// a = For internal use only
+// b = For internal use only
+// c = For internal use only
+// d = For internal use only
+// x = For internal use only
+// s = For internal use only
+// t = For internal use only
+//
+// Return Value:
+// 
+//
+MD5_cmn( BitwiseXOR( c; BitwiseOR( b; BitwiseNOT( d ) ) ); a; b; x; s; t )</Calculation></CustomFunction><CustomFunction id="71" functionArity="1" visible="True" parameters="text" name="MD5_str2values"><Calculation>// MD5_str2values ( text )
+//
+// Convert a string to an array (value-list) of little-endian words.
+// Non-printable 7-bit characters and 8-bit characters are treated as ~ (0x7E) characters.
+//
+// Parameters:
+// text = String to convert
+//
+// Return Value:
+// Return-delimited list of little-endian word values
+//
+Let(
+ len = Length( text );
+ If(
+  len &gt; 0;
+  BitwiseOR(
+   AsciiCode( Middle( text; 1; 1 ) );
+   If(
+    len &gt; 1;
+    BitwiseOR(
+     BitwiseSHL( AsciiCode( Middle( text; 2; 1 ) ); 8 );
+     If(
+      len &gt; 2;
+      BitwiseOR(
+       BitwiseSHL( AsciiCode( Middle( text; 3; 1 ) ); 16 );
+       If(
+        len &gt; 3;
+        BitwiseSHL( AsciiCode( Middle( text; 4; 1 ) ); 24 );
+        0
+       )
+      )
+     )
+    )
+   )
+  )
+ ) &amp;
+ If(
+  len &gt; 4;
+  "¶" &amp; MD5_str2values( Right( text; Length( text ) - 4 ) )
+ )
+)</Calculation></CustomFunction><CustomFunction id="72" functionArity="1" visible="True" parameters="number" name="MD5_values2hex"><Calculation>// MD5_values2hex ( number )
+//
+// Convert decimal value to little-endian hex value (without trailing 00 bytes)
+//
+// Parameters:
+// number = Decimal value to convert
+//
+// Return Value:
+// Little-endian hex value (without trailing 00 bytes)
+//
+If(
+ number ≠ 0;
+ Choose( Mod( Int( number / 16 ); 16 ); "0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "a"; "b"; "c"; "d"; "e"; "f" ) &amp;
+ Choose( Mod( number; 16 ); "0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "a"; "b"; "c"; "d"; "e"; "f" ) &amp;
+ MD5_values2hex( Int( number / 256 ) )
+)</Calculation></CustomFunction><CustomFunction id="73" functionArity="1" visible="True" parameters="data" name="MD5Hash"><Calculation>// MD5Hash ( data )
+//
+// Calculate MD5 hash value for a provided string.
+//
+// Parameters:
+// data = String to calculate hash value for
+//
+// Return Value:
+// Calculated MD5 hash
+//
+Let(
+ hash = MD5( MD5_str2values( data ); Length( data ) * 8 );
+ Left( MD5_values2hex( GetValue( hash; 1 ) ) &amp; "00000000"; 8 ) &amp;
+ Left( MD5_values2hex( GetValue( hash; 2 ) ) &amp; "00000000"; 8 ) &amp;
+ Left( MD5_values2hex( GetValue( hash; 3 ) ) &amp; "00000000"; 8 ) &amp;
+ Left( MD5_values2hex( GetValue( hash; 4 ) ) &amp; "00000000"; 8 )
+)</Calculation></CustomFunction><CustomFunction id="22" functionArity="2" visible="True" parameters="listA;listB" name="MergeValues"><Calculation>// merges 2 value lists
+//MergeValues
+//listA
+//listB
+Case ( 
+not ValueCount ( listA ) ; listB ; 
+not ValueCount ( listB ) ; listA ; 
+Let ( 
+ [
+ compValue = Substitute ( LeftValues ( listB ; 1 ) ; "¶"  ; "") ; 
+ listA = listA &amp; If ( not PatternCount ( listA ; compValue ) ; "¶" &amp; compValue ) ;
+ listB = MiddleValues ( listB ; 2 ; ValueCount ( listB ) - 1 ) 
+ ] ;
+ MergeValues ( listA ; listB ) 
+ ) 
+)</Calculation></CustomFunction><CustomFunction id="119" functionArity="1" visible="True" parameters="field" name="MinimizeLargeNumber"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+	
+	Converts long amounts into short version.
+	1.000 = 1k
+	1.000.000 = 1M
+	1.000.000.000 = 1B
+
+*************************************************************************************************/
+
+Let 	(
+	[ 
+	number = GetAsNumber ( Filter ( field ; "1234567890" ) ) ; 
+	result = Case	( 
+					number &lt; 1000 ; number ; 
+					number &lt; 1000000 ; Round ( number / 1000 ; 2 ) &amp; "k" ;
+					number &lt; 1000000000 ; Round ( number / 1000000 ; 2 ) &amp; "M" ; 
+					number &lt; 1000000000000 ; Round ( number / 1000000000 ; 2 ) &amp; "B" ; 
+					"~"
+					)
+	] ; 
+	
+	"$" &amp; result
+
+	)</Calculation></CustomFunction><CustomFunction id="38" functionArity="2" visible="True" parameters="lst;value" name="MinValue"><Calculation>/* --------------------------------------------------------------------------------MinValue ( lst ; value )
+Returns the smallest value in the lst
+
+Syntax: MinValue ( lst ; value )
+In: lst   - the return delimited lst to search
+    value - the value currently compared
+
+Return type: Text 
+
+MinValue ( "apple¶grape¶banana" ; "" )  --&gt; "apple"
+
+Always start the function off with parameter 'value' = ""
+
+Theo Ros
+* updated augustus 9, 2010: changed parameter name "list" to "lst"
+  thanks to Dwayne Wright
+-------------------------------------------------------------------------------- */
+
+If ( ValueCount ( lst ) ; 
+  Let ( [ next = Substitute ( LeftValues ( lst ; 1 ) ; "¶" ; "" ) ;
+            current = Substitute ( value ; "¶" ; "" ) ;
+            rest = MiddleValues ( lst ; 2 ; 9999999999 ) ;
+            low = Case ( IsEmpty ( current ) ; next ;
+                      next &lt; current ; next ; current ) ] ; 
+    If ( ValueCount ( rest ) ; MinValue ( rest ; low ) ; low )
+  )
+)</Calculation></CustomFunction><CustomFunction id="11" functionArity="2" visible="True" parameters="s;e" name="MonthRange"><Calculation>Case ( s&lt; e ; 
+GetAsText(s) &amp; "¶" &amp; MonthRange ( Date ( Month ( s )+1 ; Day ( s ) ; Year ( s ) ); e);
+If(Day ( s ) = Day ( e );GetAsText(e);"")
+)</Calculation></CustomFunction><CustomFunction id="4" functionArity="3" visible="True" parameters="NumberIn;Currency;DecimalCurr" name="numberInwords"><Calculation>Case(NumberIn = 0; ""; 
+
+Let ( [
+FullNumber = GetAsNumber( numberin ); 
+Number = Int( FullNumber ); 
+len = If ( Number = 0 ; 0 ; Int(Log(Number)) + 1 )
+] ; 
+Case(len &gt; 15; 
+  "Out of Range"; 
+Currency = "EvalOnly"; 
+   Let([
+    Hundred = Left(number; 1); 
+    TensOnes = Right(number; 2); 
+    TONum = GetAsNumber(TensOnes); 
+    Tens = Left(TensOnes; 1); 
+    Ones = If( TONum &lt; 20; TensOnes; Right(TensOnes; 1))
+  ];
+  Case(len = 3; 
+    Choose(hundred; ""; "One"; "Two"; "Three"; "Four "; "Five"; "Six"; "Seven"; "Eight"; "Nine") &amp; " Hundred" &amp; Case(TONum≠0;" "))
+  &amp; Case(TONum &gt; 19; 
+    Choose(tens; ""; ""; "Twenty"; "Thirty"; "Forty"; "Fifty"; "Sixty"; "Seventy"; "Eighty"; "Ninety") &amp; Case(Ones ≠ 0; " ")) 
+  &amp; Choose(ones; ""; "One"; "Two"; "Three"; "Four "; "Five"; "Six"; "Seven"; "Eight"; "Nine"; "Ten"; "Eleven"; "Twelve"; "Thirteen"; "Fourteen"; "Fifteen"; "Sixteen"; "Seventeen"; "Eighteen"; "Nineteen")
+);
+
+  Case(len &gt;3; 
+    Let([
+      UseLeft = Choose(Mod(len;  3);3; 1; 2); 
+      NewLen= 10 ^ (len - UseLeft); 
+      ThisValue = Div(number; NewLen); 
+      NewValue = Number - ThisValue * NewLen
+    ]; 
+    numberInwords ( ThisValue; "EvalOnly"; "None" ) &amp; " " &amp; Choose( Div(len - 1; 3); ""; "Thousand"; "Million"; "Billion"; "Trillion" ) &amp; Case(NewValue ≠ 0;" " &amp; numberInwords(NewValue; ""; "None"))
+    ); 
+  len = 0; "Zero" ;
+  numberInwords(Number; "EvalOnly"; "None")) &amp; Case(currency ≠ ""; " " &amp; Currency)
+  &amp;  Case(DecimalCurr ≠ "None"; " and " 
+    &amp; Let(
+      Decimal = Int(100 * (fullnumber - number)); 
+    If(Decimal = 0; "Zero"; numberInwords(Decimal; "EvalOnly"; "None"))) &amp; " " &amp; DecimalCurr))
+))</Calculation></CustomFunction><CustomFunction id="39" functionArity="3" visible="True" parameters="text;num;dilm" name="Parsing text with dilmiter"><Calculation>Let(
+[
+
+text = text;
+searchString = dilm;
+num = num;
+en =(num+1);
+
+start =Position ( text ;dilm;1; num)+1; // advance by 1 to get the start of the next value
+n = Position ( text ; dilm; 1;en) // advance by 1 to get the edn of the next value
+
+];
+
+Middle ( text ; start; n - start)
+
+)</Calculation></CustomFunction><CustomFunction id="40" functionArity="4" visible="True" parameters="text;dilm;lvalue;num" name="parsSQL"><Calculation>/*
+text: is the returned data from the SQL statment.
+dilm: is the dilmiter you used between fields
+lvalue: is the row value providing you use a ¶ to seperate rows
+num: is the field value you want out of the row you selected with the lvalue pram.
+pars SQL
+text
+dilm
+lvalue
+num
+*/
+
+Let(
+[
+
+
+text = GetValue(text;lvalue);
+text = Substitute ( text ; dilm ; "¶" )
+
+
+
+];
+GetValue(text;num)
+
+)</Calculation></CustomFunction><CustomFunction id="33" functionArity="1" visible="True" parameters="number" name="Percent Display"><Calculation>Let(
+[
+n=number;
+n=Filter ( n; "1234567890");
+n=If(Length (n )=1;"0" &amp; n;n);
+n=If(Length (n )=3;"1";"." &amp; n)
+];
+n
+)</Calculation></CustomFunction><CustomFunction id="3" functionArity="1" visible="True" parameters="Number" name="PhoneMask"><Calculation>//PhoneMask
+//Number
+Let( [TempNum= Filter(number; "0123456789");
+//remove leading 1
+Num = If(Left(tempnum;1) = 1; Middle(tempnum;2;99); tempnum);
+      
+Phone = If(Length (num)=7; Left(num;3) &amp; "-" &amp;  Middle(num;4;4);
+             "("&amp; Left(num;3) &amp;
+             ") "&amp; Middle(num;4;3) &amp;
+              "-"&amp; Middle(num;7;4) &amp;
+// if it exceeds a length assume it is an extension 
+               If(Length(num)&gt; 10; " x"&amp;Middle(num;11;99);""))];
+
+If(Length ( Num ) = 8 or Length ( Num ) = 9 or Length ( Num )  &lt;  7; 
+           // if number is to short less than 10 digits display it in red as error
+      TextColor ( phone ; RGB ( 255 ; 0 ; 0 ) ); 
+           // remove color format
+      TextColorRemove ( phone )))</Calculation></CustomFunction><CustomFunction id="41" functionArity="3" visible="True" parameters="array;key;pos" name="phpArrayValue"><Calculation>Let(
+[
+pos = 1+pos;
+text= array;
+field =key;
+
+
+x = MiddleValues (  text ; pos ; 1 );
+x = Supertrim ( x )
+];
+Case( PatternCount ( x ; field); x; phpArrayValue(text; field; pos) )
+)</Calculation></CustomFunction><CustomFunction id="104" functionArity="6" visible="True" parameters="Search;Search_list;Sub_categories;Category_filter;Header;Sub_categories_list" name="Portal_Power"><Calculation>//Portal power 
+// Features: Search, Category Drop Down (Relationship required), Folders 
+
+// Search = Field used to perform Searches
+//Search List = List (Fields that will be searched on child or grandchild side)
+//Sub_categories = child record categorie used under headers/folders 
+//Sub_categories_list = List of the sub categories
+//Cateogry Filter = Field or drop down used to narrow down on a different category criteria 
+// Header = 1 or 0 if the Record is a header (ie: Flag_header = 1 or 0 )
+
+//Category Filer Require setting up a rather tricky relationship see Launcher File 
+//Catogories to Hide requires scripts to accompany this Custom Function 
+
+//3 Search Critera should be able to be swapped for "" if uneccesary 
+
+Let ( [
+
+~p_search = 
+                   Let ( [ 
+                             ~search = Search; 
+                             ~target = Search_list ;
+                             ~test = If ( PatternCount ( ~target ; ~search ) &gt; 0 ; 1 ; 0) ] ;
+                   If ( not IsEmpty ( ~search ) ;~test ; 1 ) )  ; 
+
+~categories_list = ValueListItems ( Get (FileName) ; Sub_categories_list ) ;
+~categories_to_hide = Substitute (  ~categories_list ; List (Sub_categories) ; "" ) ;
+
+
+$$categories_to_hide =  
+Case ( not IsEmpty ( Category_filter ) ; ~categories_to_hide &amp; ¶ &amp; $$categories_to_hide ; $$categories_to_hide ) ;
+
+~p_categories = 
+PatternCount ( $$categories_to_hide ; Sub_categories) = 0 ;
+
+
+~filter_test = If ( ~p_categories + ~p_search &gt; 1 ; 1 ; 0 ) 
+
+
+] ;
+
+//Hide Show Calc
+Case ( 
+Header = 1 ; 1 ;
+~filter_test ;
+1
+
+)
+ )</Calculation></CustomFunction><CustomFunction id="152" functionArity="5" visible="True" parameters="Search;Min_input;Max_Input;Reference;Date_Field" name="Portal_Range_Filter"><Calculation>// Portal Range Filter Number and Date 
+
+Let ( [ 
+~Input = Search ; 
+~Position = Position ( ~Input ;"..." ; 0 ; 1 ) ; 
+~Right_value = 
+Middle ( ~Input ; ~Position + 3 ; Right ( ~Input ;
+Length ( ~Input ) - 
+Length ( Left ( ~Input ; ~Position  + 2 ) ) ) ) ;
+
+~Trigger = PatternCount ( ~Input; "..." ) ;
+
+~start = 
+Case ( 
+
+//Oldest Record Based Assumes Min_Input
+IsEmpty ( ~Input ) ; Min_input; 
+
+//Trigger Condition
+~Trigger ; Left ( ~Input ; ~Position - 1 ) ; 
+
+// Single Option 
+~Input) ;
+ 
+~end = 
+// Sales Portal Max_Input
+
+Case ( 
+
+// Newest Record Uses Last Close Date 
+IsEmpty ( ~Input ) ; Max_input ; 
+
+//Trigger Condition
+~Trigger ; ~Right_value  ; 
+
+// Single Option
+~Input ) ;
+
+
+~result = Case ( 
+ Date_Field = 1 ; 
+ GetAsDate ( ~start)  ≤ Reference and GetAsDate ( ~end )  ≥ Reference ;
+ GetAsNumber ( ~start)  ≤ Reference and GetAsNumber ( ~end )  ≥ Reference ) 
+
+] ; 
+
+~result
+
+
+)</Calculation></CustomFunction><CustomFunction id="102" functionArity="2" visible="True" parameters="Search;Target" name="Portal_Search_List"><Calculation>// Multiple Targets cane be used with the List Function 
+// Search is on the parent side often a global 
+//Targets can be children or grand children of the parent 
+
+Let ( [ 
+
+~search = Search; 
+~target = Target ;
+~test = If ( PatternCount ( ~target ; ~search ) &gt; 0 ; 1 ; 0)
+
+] 
+; If ( not IsEmpty ( ~search ) ;~test ; 1 ) )</Calculation></CustomFunction><CustomFunction id="120" functionArity="5" visible="True" parameters="searchField;field1;field2;field3;exclusionExpression" name="PortalFilter"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+Let	( 
+	[
+	searchString = searchField ; 		// text entered into the search field
+	field1 = field1 ; 				// 1rst field searched in
+	field2 = field2 ; 				// 2nd field searched in
+	field3 = field3 ;  				// multiple fields can be added following the same pattern
+
+	exclusion = exclusionExpression ; 	// Exclusion won't show up in the filter result.
+
+	text = List ( field1 ; field2 ; field3 ) 	// creates a list of values [fast to search in]
+	] ; 
+	
+		If	( IsEmpty ( exclusion ) ; 1 ; exclusion )	// if nothing in exclusionExpression ignore exclusion
+	and 	If 	( 
+			IsEmpty ( searchString ) ; 1  ;	// if nothing in the search field show all
+			PatternCount ( text ; searchString )	//  shows only what matches what in search field
+			)
+	
+	)</Calculation></CustomFunction><CustomFunction id="121" functionArity="3" visible="True" parameters="percentage;divisor;fill" name="ProgressBarPercentage"><Calculation>If 	( 	
+	Round ( Extend ( percentage ) / divisor ; 1 ) ≥ Get ( CalculationRepetitionNumber ) ;
+	Extend ( fill ) ; 
+	"" 
+	)
+
+
+//	Divisor = 100 / Number of Repetitions</Calculation></CustomFunction><CustomFunction id="122" functionArity="2" visible="True" parameters="start;end" name="Range"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Returns a range of numbers between two numbers.
+
+
+*************************************************************************************************/
+
+
+If	(
+	start ≤ end ; start &amp; "¶" &amp; Range ( start + 1 ; end ) // Tail Recursive
+	)</Calculation></CustomFunction><CustomFunction id="19" functionArity="1" visible="True" parameters="Text" name="RemoveDuplicates"><Calculation>//RemoveDuplicates
+//Text
+Let ( [
+
+TheValue = LeftValues ( Text ; 1 ) ;
+TheCount = ValueCount ( Text ) ;
+NewText = Replace ( Substitute ( "¶" &amp; Text &amp; "¶" ; [ "¶" ; "¶|" ] ; [ "|" &amp; TheValue ; "" ] ; [ "|" ; "" ] ) ; 1 ; 1 ; "" )
+
+] ;
+
+     Case ( TheCount &gt; 0 ;
+
+          TheValue &amp; RemoveDuplicates ( Replace ( NewText ; Length ( NewText ) ; 1 ; "" ) )
+
+     )
+
+)</Calculation></CustomFunction><CustomFunction id="48" functionArity="2" visible="True" parameters="text;repeatCount" name="Repeat"><Calculation>// Suggested by Nils Waldherr:
+Substitute ( 10 ^ repeatCount - 1 ; 9 ; text )
+
+
+// The recursive way...
+// Case ( repeatCount &gt; 0 ; text &amp; Repeat ( text ; repeatCount - 1 ) ) </Calculation></CustomFunction><CustomFunction id="107" functionArity="0" visible="True" parameters="" name="Round_Time"/><CustomFunction id="2" functionArity="0" visible="True" parameters="" name="scBaseUrl"><Calculation>"http://IP_Address or DNS_Name/SuperContainer/Files"</Calculation></CustomFunction><CustomFunction id="148" functionArity="1" visible="True" parameters="scriptNameToParse" name="ScriptOptionalParameterList"><Calculation>/**
+ * =====================================
+ * ScriptOptionalParameterList ( scriptNameToParse )
+ *
+ * RETURNS:
+ *		A return-delimited list of optional script parameters according to the
+ *		script name and the FileMakerStandards.org convention for listing
+ *		parameters in script names.
+ *
+ * PARAMETERS:
+ *		scriptNameToParse: A script name. Defaults to Get ( ScriptName ) when
+ *		left empty.
+ *
+ * DEPENDENCIES: none
+ *
+ * HISTORY:
+ *		MODIFIED on 2013-06-29 by Jeremy Bante &lt;http://scr.im/jbante&gt; to append
+ *		a trailing return to non-empty results to support direct concatenation
+ *		with other lists.
+ *		CREATED on 2012-12-07 by Jeremy Bante &lt;http://scr.im/jbante&gt;.
+ *
+ * REFERENCES:
+ *		http://filemakerstandards.org/display/cs/Script+naming
+ * =====================================
+ */
+
+Case (
+	/* Step 0, set-up */
+	not $~parse.step ;
+		Let ( [
+			scriptNameToParse =
+				If ( IsEmpty ( scriptNameToParse ) ;
+					Get ( ScriptName ) ;
+					/* Else */ scriptNameToParse
+				);
+			~length = Length ( scriptNameToParse ) ;
+			~start = Position ( scriptNameToParse ; "{" ; ~length ; -1 ) + 1 ;
+			~endOptional = Position ( scriptNameToParse ; "}" ; ~start ; 1 ) ;
+			~endOptional =
+				If ( ~endOptional = 0 ; ~length ; /* Else */ ~endOptional ) ;
+			~endRequired = Position ( scriptNameToParse ; ")" ; ~start ; 1 ) ;
+			~endRequired =
+				If ( ~endRequired = 0 ; ~length ; /* Else */ ~endRequired ) ;
+			~end = Min ( ~endOptional ; ~endRequired ) ;
+			parameters =
+				If ( ~start = 1 ;	// opening "{" not found
+					"" ;
+				/* Else */
+					Middle ( scriptNameToParse ; ~start ; ~end - ~start )
+				) ;
+			parameters = Substitute ( parameters ; ";" ; ¶ ) ;
+			$~parse.parameterCount = ValueCount ( parameters ) ;
+
+			$~parse.step = If ( IsEmpty ( parameters ) ; 2 ; /* Else */ 1 )
+		] ;
+			ScriptOptionalParameterList ( parameters )
+		) ;
+
+	/* Step 1, trim whitespace */
+	$~parse.step = 1 ;
+		Let ( [
+			$~parse.i = $~parse.i + 1 ;
+			parameter = Trim ( GetValue ( scriptNameToParse ; $~parse.i ) ) ;
+			$~parse.result = List ( $~parse.result ; parameter ) ;
+			$~parse.step =
+				If ( $~parse.i &lt; $~parse.parameterCount ;
+					$~parse.step ;
+					/* Else */ $~parse.step + 1
+				)
+		] ;
+			ScriptOptionalParameterList ( scriptNameToParse )
+		) ;
+
+	/* Step 2, clean-up and return result */
+	$~parse.step = 2 ;
+		Let ( [
+			~result =
+				If ( not IsEmpty ( $~parse.result ) ;
+					$~parse.result &amp; ¶
+				) ;
+
+			// purge variables
+			$~parse.i = "" ;
+			$~parse.parameterCount = "" ;
+			$~parse.result = "" ;
+			$~parse.step = ""
+		] ;
+			~result
+		)
+)</Calculation></CustomFunction><CustomFunction id="149" functionArity="1" visible="True" parameters="scriptNameToParse" name="ScriptRequiredParameterList"><Calculation>/**
+ * =====================================
+ * ScriptRequiredParameterList ( scriptNameToParse )
+ *
+ * RETURNS:
+ *		A return-delimited list of required script parameters according to the
+ *		script name and the FileMakerStandards.org convention for listing
+ *		parameters in script names.
+ *
+ * PARAMETERS:
+ *		scriptNameToParse: A script name. Defaults to Get ( ScriptName ) when
+ *		left empty.
+ *
+ * DEPENDENCIES: none
+ *
+ * HISTORY:
+ *		MODIFIED on 2013-06-29 by Jeremy Bante &lt;http://scr.im/jbante&gt; to append
+ *		a trailing return to non-empty results to support direct concatenation
+ *		with other lists.
+ *		CREATED on 2012-12-07 by Jeremy Bante &lt;http://scr.im/jbante&gt;.
+ *
+ * REFERENCES:
+ *		http://filemakerstandards.org/display/cs/Script+naming
+ * =====================================
+ */
+
+Case (
+	/* Step 0, set-up */
+	not $~parse.step ;
+		Let ( [
+			scriptNameToParse =
+				If ( IsEmpty ( scriptNameToParse ) ;
+					Get ( ScriptName ) ;
+					/* Else */ scriptNameToParse
+				) ;
+			~length = Length ( scriptNameToParse ) ;
+			~start = Position ( scriptNameToParse ; "(" ; ~length ; -1 ) + 1 ;
+			~endOptional = Position ( scriptNameToParse ; "{" ; ~start ; 1 ) ;
+			~endOptional =
+				If ( ~endOptional = 0 ; ~length ; /* Else */ ~endOptional ) ;
+			~endRequired = Position ( scriptNameToParse ; ")" ; ~start ; 1 ) ;
+			~endRequired =
+				If ( ~endRequired = 0 ; ~length ; /* Else */ ~endRequired ) ;
+			~end = Min ( ~endOptional ; ~endRequired ) ;
+			parameters =
+				If ( ~start = 1 ;	// opening "(" not found
+					"" ;
+				/* Else */
+					Middle ( scriptNameToParse ; ~start ; ~end - ~start )
+				) ;
+			parameters = Substitute ( parameters ; ";" ; ¶ ) ;
+			$~parse.parameterCount = ValueCount ( parameters ) ;
+
+			$~parse.step = If ( IsEmpty ( parameters ) ; 2 ; /* Else */ 1 )
+		];
+			ScriptRequiredParameterList ( parameters )
+		) ;
+
+	/* Step 1, trim whitespace */
+	$~parse.step = 1 ;
+		Let ( [
+			$~parse.i = $~parse.i + 1 ;
+			parameter = Trim ( GetValue ( scriptNameToParse ; $~parse.i ) ) ;
+			$~parse.result = List ( $~parse.result ; parameter ) ;
+			$~parse.step =
+				If ( $~parse.i &lt; $~parse.parameterCount ;
+					$~parse.step ;
+					/* Else */ $~parse.step + 1
+				)
+		] ;
+			ScriptRequiredParameterList ( scriptNameToParse )
+		) ;
+
+	/* Step 2, clean-up and return result */
+	$~parse.step = 2 ;
+		Let ( [
+			~result =
+				If ( not IsEmpty ( $~parse.result ) ;
+					$~parse.result &amp; ¶
+				) ;
+
+			// purge variables
+			$~parse.i = "" ;
+			$~parse.parameterCount = "" ;
+			$~parse.result = "" ;
+			$~parse.step = ""
+		] ;
+			~result
+		)
+)</Calculation></CustomFunction><CustomFunction id="37" functionArity="3" visible="True" parameters="name;dynamic;value" name="SetLocalVariable"><Calculation>Evaluate("Let( $" &amp; name &amp; dynamic &amp; " = \"" &amp; value &amp; "\" ; \"\" )" )</Calculation></CustomFunction><CustomFunction id="49" functionArity="2" visible="True" parameters="textList;skipPrefixes" name="SortableList"><Calculation>// SortableList ( textList ; skipPrefixes )
+
+// Function to return the list in the order supplied 
+// but in unicode sortable format[1]. Excludes any item 
+// that begins with one of the values in skipPrefixes
+
+// Jonathan Fletcher 9/30/13
+
+// Requires the following CFs:
+//     CustomList[2], any character repeat function
+
+
+
+Let ( [
+	$textList = textList ;
+	$tl = Case ( IsEmpty ( $textList ) ; LayoutNames ( Get ( FileName ) ) ; $textList ) ;
+	$skipPrefixes = skipPrefixes ;
+	$sp = Case ( IsEmpty ( $skipPrefixes ) ; "_" ; $skipPrefixes ) ;
+	$start = 1 ;
+	$end = ValueCount ( $tl ) ;
+	~result = CustomList ( 
+				$start ;
+				$end ;
+				"Case ( 
+					isempty ( 
+						Filter ( 
+							Left ( 
+								GetValue ( $tl ; [n] ) ; 
+								1 
+							) ; 
+							$sp 
+						) 
+					) ; 
+					Repeat ( Char ( 65279 ) ; [n] ) &amp; 
+						GetValue ( $tl ; [n] ) 
+				)" 
+			)
+
+] ;
+	~result
+)
+
+
+
+/* 
+[1] A hearty "attaboy!" to Marcelo Piñeyro of Soliant for coming up with the idea of 
+using the BOM for sorting in FileMaker: 
+"http://www.soliantconsulting.com/blog/2012/09/extending-filemaker-pro’s-value-list-sort-capabilities-using-char-function"
+
+[2]"CustomList" is the fine work of Agnes Barouh:
+http://www.briandunning.com/cf/868
+http://www.tictac.fr/CoinFileMaker/PageCustomList.html
+
+Char ( 65279 ) = The "Byte Order Mark," a non-breakable zero-width character that is Unicode sortable 
+*/
+
+
+/* 
+customlist ( 
+	1 ; 
+	valuecount ( layoutnames ( get ( filename ) ) ) ; 
+	"Case ( 
+		isempty ( 
+			filter ( 
+				Left ( 
+					GetValue ( 
+						layoutnames ( get ( filename ) ) ; 
+						[n] 
+					) ; 
+					1 
+				) ; 
+				char ( 95 ) 
+			) 
+		) ; 
+		Repeat ( Char ( 65279 ) ; [n] ) &amp; 
+			GetValue ( layoutnames ( get ( filename ) ) ; [n] ) 
+		)
+	"
+)
+*/</Calculation></CustomFunction><CustomFunction id="82" functionArity="1" visible="True" parameters="_Date" name="SQLDate_to_FMPDate"><Calculation>//SQLDate_to_FMPDate
+
+Let ( [ y = Left ( _Date ; 4 ) ; 
+m = Middle ( _Date ; 6 ; 2 ) ; 
+d = Middle ( _Date ; 9 ; 2 ) ] ; 
+Date ( m ; d ; y ) )</Calculation></CustomFunction><CustomFunction id="86" functionArity="1" visible="True" parameters="text" name="SqlInsertNull"><Calculation>Case( not IsEmpty(text);"'"&amp;text&amp;"'";"NULL")</Calculation></CustomFunction><CustomFunction id="16" functionArity="1" visible="True" parameters="number" name="SSN_Number"><Calculation>// remove any non-number
+
+//Formats Social Security numbers in the format xxx-xx-xxxx. 
+
+// Results displays in red if improper number of numerical digits.
+
+Let([
+NumOnly= Filter(number; "0123456789");
+    
+SSNumb = Left(NumOnly;3) &amp;"-"
+             &amp; Middle(NumOnly;4;2) &amp;"-"  
+             &amp; Middle(NumOnly;6;99) 
+];
+
+//Set clolor to red if invalid number of digits.
+
+If(Length ( NumOnly )  ≠  9 ; 
+      TextColor ( SSNumb ; RGB ( 221 ; 0 ; 0 ) ); 
+      TextColorRemove ( SSNumb )
+))</Calculation></CustomFunction><CustomFunction id="105" functionArity="1" visible="True" parameters="StateAbbrev" name="State_Abbrev"><Calculation>Case ( StateAbbrev= "Alabama" ; "AL" ;
+
+StateAbbrev=  "Alaska" ;"AK" ;
+
+StateAbbrev=  "Arizona" ;"AZ" ;
+
+StateAbbrev= "Arkansas" ; "AR" ; 
+
+StateAbbrev= "California" ;  "CA" ;
+
+StateAbbrev= "Colorado" ;  "CO" ;
+
+StateAbbrev= "Connecticut" ;  "CT" ;
+
+StateAbbrev= "Delaware" ;  "DE" ;
+
+StateAbbrev= "Florida" ; "FL" ;
+
+StateAbbrev= "Georgia" ;  "GA" ;
+
+StateAbbrev= "Hawaii" ;  "HI" ;
+
+StateAbbrev= "Idaho" ;  "ID" ;
+
+StateAbbrev= "Illinois" ;  "IL" ;
+
+StateAbbrev= "Indiana" ;  "IN" ;
+
+StateAbbrev= "Iowa" ;  "IA" ;
+
+StateAbbrev= "Kansas" ;  "KS" ;
+
+StateAbbrev= "Kentucky" ;  "KY" ;
+
+StateAbbrev= "Louisiana" ;  "LA" ;
+
+StateAbbrev= "Maine" ;  "ME" ;
+
+StateAbbrev= "Maryland" ;  "MD" ;
+
+StateAbbrev= "Massachusetts" ;  "MA" ;
+
+StateAbbrev= "Michigan" ;  "MI" ;
+
+StateAbbrev= "Minnesota" ;  "MN" ;
+
+StateAbbrev= "Mississippi" ;  "MS" ;
+
+StateAbbrev= "Missouri" ;  "MO" ;
+
+StateAbbrev= "Montana" ;  "MT" ;
+
+StateAbbrev= "Nebraska" ;  "NE" ;
+
+StateAbbrev= "Nevada" ;  "NV" ;
+
+StateAbbrev= "New Hampshire" ;  "NH" ;
+
+StateAbbrev= "New Jersey" ;  "NJ" ;
+
+StateAbbrev= "New Mexico" ;  "NM" ;
+
+StateAbbrev= "New York" ;  "NY" ;
+
+StateAbbrev= "North Carolina" ;  "NC" ;
+
+StateAbbrev= "North Dakota" ;  "ND" ;
+
+StateAbbrev= "Ohio" ;  "OH" ;
+
+StateAbbrev= "Oklahoma" ; "OK" ;
+
+StateAbbrev= "Oregon" ;  "OR" ;
+
+StateAbbrev= "Pennsylvania" ;  "PA" ;
+
+StateAbbrev= "Rhode Island" ; "RI" ;
+
+StateAbbrev= "South Carolina" ;  "SC" ;
+
+StateAbbrev= "South Dakota" ;  "SD" ;
+
+StateAbbrev= "Tennessee" ; "TN" ;
+
+StateAbbrev= "Texas" ;  "TX" ;
+
+StateAbbrev= "Utah" ;  "UT" ;
+
+StateAbbrev= "Vermont" ; "VT" ;
+
+StateAbbrev= "Virginia" ;  "VA" ;
+
+StateAbbrev= "Washington" ;  "WA" ;
+
+StateAbbrev= "West Virginia" ; "WV" ;
+
+StateAbbrev= "Wisconsin" ;  "WI" ;
+
+StateAbbrev="Wyoming" ; "WY" ;
+
+StateAbbrev="Alberta" ; "AB" ;
+
+StateAbbrev="British Columbia" ; "BC" ;
+
+StateAbbrev="Manitoba" ; "MB" ;
+
+StateAbbrev="New Brunswick" ; "WY" ;
+
+StateAbbrev="Newfoundland and Labrador" ; "NL" ;
+
+StateAbbrev="Nova Scotia" ; "NS" ;
+
+StateAbbrev="Northwest Territories" ; "NT" ;
+
+StateAbbrev="Nunavut" ; "NU" ;
+
+StateAbbrev="Ontario" ; "ON" ;
+
+StateAbbrev="Prince Edward Island" ; "PE" ;
+
+StateAbbrev="Quebec" ; "QC" ;
+
+StateAbbrev="Saskatchewan" ; "SK" ;
+
+StateAbbrev="District of Columbia" ; "DC" ;
+
+ StateAbbrev)</Calculation></CustomFunction><CustomFunction id="80" functionArity="1" visible="True" parameters="lst" name="SUMLIST"><Calculation>// Martin Spanjaard 19-12-2007
+// Sums the numbers in a list
+// Simplified version of the customfunction "TotalList (theList)" of Geoff Wells.
+// Is functioning without a problem for the last three years.
+//SUMLIST ( lst )
+
+Case (
+  ValueCount ( lst ) &gt; 0
+  ;   
+      GetAsNumber ( ( LeftValues ( lst ; 1 ) ) )  
+        +  
+      SUMLIST ( RightValues ( lst ; ValueCount( lst ) - 1 ) )
+)</Calculation></CustomFunction><CustomFunction id="1" functionArity="1" visible="True" parameters="text" name="Supertrim"><Calculation>//Supertrim
+//text
+/*
+CUSTOM FUNCTION: Supertrim ( text )
+© 2004 Debi Fuchs of Aptworks Consulting, debi@aptworks.com
+
+Speedily (and with no recursion) remove leading and trailing white space (including spacing, tabs and returns) from a text string.
+
+NOTE: Similar to TrimAll, except that it also removes tabs and returns (in addition to spaces), and it does not touch any spacing WITHIN the string. 
+
+EXAMPLE:
+  Supertrim("  John  Smith¶") // --&gt; "John  Smith¶"
+
+LAST MODIFIED: 20-AUG-2008 by Debi Fuchs of Aptworks Consulting
+*/
+
+
+Let(
+  [
+    // Determine value of original string with ALL whitespace removed.  
+    t2 = Substitute( text; [ " "; "" ]; [ " "; "" ]; [ "	"; "" ]; [ "¶"; "" ] );
+    
+    // Determine position of first non-ws character in original string.
+    first_char = Position( text; Left( t2; 1 ); 0; 1 );
+    
+    // Determine position of last non-ww character in original string.
+    last_char = Position( text; Right( t2; 1 ); Length( text ); -1 )
+  ];
+  
+  // If any non-whitespace characters exist return appropriate
+  // middle portion of original text.
+  
+  Case( first_char; Middle( text; first_char; last_char - first_char + 1 ) )
+)</Calculation></CustomFunction><CustomFunction id="123" functionArity="2" visible="True" parameters="startDate;endDate" name="Timeframe"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Returns a list of dates between two dates.
+
+
+*************************************************************************************************/
+
+If	( 
+	startDate ≤ endDate ; startDate &amp; ¶ &amp; Timeframe ( startDate + 1 ; endDate  )  
+	)</Calculation></CustomFunction><CustomFunction id="42" functionArity="1" visible="True" parameters="PHPCode" name="TrimPHPTags"><Calculation>//TrimPHPTags
+//PHPCode
+Supertrim( Substitute( PHPCode; [ "&lt;?php"; "" ]; [ "?&gt;"; "" ] ) )</Calculation></CustomFunction><CustomFunction id="97" functionArity="2" visible="True" parameters="Value_List;field" name="Value_Counter"><Calculation>//Counts through a value list and restarts at end
+
+
+Let ( [
+~List = ValueListItems ( Get ( FileName ) ; Value_List) ; 
+~Current = field ;
+~Position = ValueCount ( Left( ¶ &amp; ~List &amp; ¶ ; Position ( ¶ &amp; ~List ; ¶ &amp;  ~Current ; 1 ; 1 ) ) ) ;
+~First = GetValue ( ~List; 1 ) ; 
+~Last =  GetValue ( ~List; ValueCount (~List) )
+] ;
+Case ( 
+~current = ~last ; ~First ; 
+GetValue ( ~List ; ~Position+1 )
+ ))
+
+//Value List needs to be "Text" name of value list
+//field is the field that will store current value</Calculation></CustomFunction><CustomFunction id="150" functionArity="1" visible="True" parameters="nameList" name="VerifyVariablesNotEmpty"><Calculation>/**
+ * =====================================
+ * VerifyVariablesNotEmpty ( nameList )
+ *
+ * RETURNS:
+ *		True (1) if a locally scoped $variable matching each value in nameList
+ *		is not empty; False (0) otherwise.
+ *
+ * PARAMETERS:
+ *		nameList: A return-limited list of names to check. Names do not need to
+ *		include $ prefixes.
+ *
+ * DEPENDENCIES: none
+ *
+ * NOTES:
+ *		Names containing "$" or "$$" prefixes will be treated as identical to
+ *		names not beginning with those prefixes — this function only checks for
+ *		local $variables.
+ *
+ * HISTORY:
+ *		MODIFIED on 2013-07-10 by Jeremy Bante &lt;http://scr.im/jbante&gt; to correct
+ *		a bug with support for trailing returns.
+ *		MODIFIED on 2013-07-05 by Jeremy Bante &lt;http://scr.im/jbante&gt; to support
+ *		one trailing return in the nameList parameter.
+ *		CREATED on 2012-12-07 by Jeremy Bante &lt;http://scr.im/jbante&gt;.
+ * =====================================
+ */
+
+If ( IsEmpty ( nameList ) ;
+	True ;
+/* Else */
+	Let ( [
+		~start = Get ( UUID ) ;
+		~end = Get ( UUID ) ;
+		nameList =	// normalize nameList so all values begin with "$"
+			Substitute (
+				~start &amp; ¶ &amp; nameList &amp; ~end ;
+				[ ¶ &amp; ~end ; "" ] ;
+				[ ~end ; "" ] ;
+				[ "¶$$" ; "¶" ] ;
+				[ "¶$" ; "¶" ] ;
+				[ "¶" ; "¶$" ] ;
+				[ ~start &amp; ¶ ; "" ]
+			) ;
+		~testExpression =
+			"not IsEmpty ( "
+			&amp; Substitute ( nameList ; ¶ ; " )¶and not IsEmpty ( " )
+			&amp; " ) "
+	] ;
+		IsValidExpression ( ~testExpression )
+		and Evaluate ( ~testExpression )
+	)
+)</Calculation></CustomFunction><CustomFunction id="7" functionArity="2" visible="True" parameters="aField;aPortal" name="VisiblePortalRows"><Calculation>/*
+VisiblePortalRows ( objName ; portalName )
+
+Fabrice Nordmann, BH&amp;A
+v.1, apr 2007
+
+fabrice@bh-a.com
+
+objName : the name of an object within the portal row
+portalName : the name of the portal layout object
+
+returns the visible row numbers as a list.
+
+Based on a crazy Agnès Barouh idea and an insane solution by Alexandre Vial
+*/
+
+
+Let([
+   $$cf_counter = Case ( $$cf_counter &lt; 1 ; 1 ; $$cf_counter + 1 )
+ ; $portalTop = GetLayoutObjectAttribute ( aPortal ; "top" ) + 1
+ ; $portalBottom = GetLayoutObjectAttribute ( aPortal ; "bottom" ) -1
+];
+
+
+Case ( $$cf_counter = 1 ; Let ([ $$cf_firstRow = "" ; $$cf_lastRow = "" ]; "" ))
+&amp;
+Case ( IsEmpty ( $$cf_lastRow )
+; Case (
+     GetAsNumber ( GetLayoutObjectAttribute ( aField ; "top" ; 1 ; $$cf_counter )) &gt;= $portalbottom
+   ; Let ( $$cf_lastRow = $$cf_counter - 1 ; "" )
+   ; GetAsNumber ( GetLayoutObjectAttribute ( aField ; "bottom" ; 1 ; $$cf_counter )) &gt;= $portalTop
+   ; Let ( $$cf_firstRow = Case ( not IsEmpty ( $$cf_firstRow ) ; $$cf_firstRow &amp; ¶ ) &amp; $$cf_counter ; "" )
+   )
+&amp; VisiblePortalRows ( aField ; aPortal )
+; $$cf_firstRow &amp; Let ([ $$cf_firstRow = "" ; $$cf_lastRow = "" ; $$cf_counter = "" ]; "" )
+))</Calculation></CustomFunction><CustomFunction id="23" functionArity="4" visible="True" parameters="TheDate;StartingDay;StartMonth;StartDay" name="WeekofFiscalYear"><Calculation>Let(
+   [
+      d = Date(StartMonth;StartDay;Year(TheDate)) ;
+      dp = Date(StartMonth;StartDay;Year(TheDate)-1) ;
+      s = d + Mod(StartingDay-DayOfWeek( d )+3;7)-3 ;
+      sp = dp + Mod(StartingDay-DayOfWeek( dp )+3;7)-3 ;
+      FY_Start = Case( TheDate &gt;= s ; s ; sp )
+   ] ;
+   Int( (TheDate - FY_Start)/7) + 1
+)</Calculation></CustomFunction><CustomFunction id="10" functionArity="2" visible="True" parameters="s;e" name="WeekRange"><Calculation>Case ( s &lt; e ; 
+GetAsText(s) &amp; "¶" &amp; WeekRange ( s+7; e);
+If(Mod((s - e);7) = 0; GetAsText(e);""))</Calculation></CustomFunction><CustomFunction id="36" functionArity="0" visible="True" parameters="" name="WindowInfo"><Calculation>Let(
+[
+$$window_height = Get ( WindowHeight );
+$$window_width = Get (WindowWidth);
+$$window_top = Get(WindowTop);
+$$window_left = Get(WindowLeft)
+];
+""
+)</Calculation></CustomFunction><CustomFunction id="127" functionArity="3" visible="True" parameters="dbNames;wdNames;excludeCurrentWindow" name="WindowNamesAll"><Calculation>/*
+WindowNamesAll ( dbNames ; wdNames ; excludeCurrentWindow )
+dbNames: Name of the Database you want to get the open windows name of.
+To get all open windows opened by FileMaker use the design function "DatabaseNames"
+wdnames: Set to "" (null) This is used for recursion to return the list of window names.
+excludeCurrentWindow: Set to 1 to exclude the window calling this custom function from the list, otherwise 0.
+This function will return all the name of all open windows for each database provided.
+Recursive: dbNames 
+*/
+Let (
+    [
+    DBcount = ValueCount( dbNames);
+    ReturnedWindowNames = wdNames;
+    ExcldCurtWindow = excludeCurrentWindow;
+    CurtWindowName = Get(WindowName);
+    thisValue= GetValue( dbNames; 1);
+    wnames =WindowNames( thisValue );
+    result = List(ReturnedWindowNames; wnames);
+    dblist = Substitute ( dbNames ; [thisValue &amp; "¶";""];[thisValue;""] )
+    ];
+    Case( 
+        DBcount &lt; 2 ; If(ExcldCurtWindow=1;Substitute ( result ; [CurtWindowName &amp; "¶";""];[CurtWindowName;""] ); result);
+        WindowNamesAll( dblist; result; ExcldCurtWindow)
+        )
+)</Calculation></CustomFunction><CustomFunction id="124" functionArity="2" visible="True" parameters="word;numberOfChars" name="WordBits"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+
+Case	(
+	Length ( word ) = 0 ; "" ; // If field empty
+	numberOfChars ≤ Length ( word ) ; Middle ( word ; 1 ; numberOfChars ) &amp; "¶" &amp; WordBits ( word; numberOfChars + 1 ) ; // Explode word
+	WordBits ( Right ( word; Length ( word ) - 1  ) ; 1 ) // Tail Recursive
+	)</Calculation></CustomFunction><CustomFunction id="125" functionArity="2" visible="True" parameters="text;positionStart" name="WordCode"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Returns a list of ASCII codes correspondant to each charachter of a string
+
+*************************************************************************************************/
+
+
+Case	(
+	Length ( text ) = 0 ; "" ; // If field empty
+	positionStart ≤ Length ( text ) ; Code ( Middle ( text ; positionStart ; 1 ) ) &amp; "¶" &amp; WordCode ( text ; positionStart + 1 ) // Tail Recursive
+	)</Calculation></CustomFunction><CustomFunction id="126" functionArity="7" visible="True" parameters="startDate;endDate;fontSize;separator;red;green;blue" name="YearMonthYear"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Returns how many Years, Months and Days between two dates.
+
+
+*************************************************************************************************/
+
+Let	( 
+	[ 
+	number = endDate - startDate ; 
+	color = RGB ( red ; green ; blue ) ; // Color
+
+	year = number / 365 ; 
+	month = number / 30.41 ; 
+	day = number / 24 ; 
+
+	years365 = Int ( month / 12 ) ; 
+	months365 = Int ( Mod ( month ; 12 ) ) ; 
+	days365 = Int ( Mod ( number ; 30.41 ) ) ; 
+
+	months = Int ( number / 30 ) ; 
+	days = Int ( Mod ( number ; 30.41 ) ) ; 
+
+	years365Label = If ( years365 &gt; 1 ; " years¶" ; " year¶" ) ; 
+	days365Label = If ( days365 &gt; 1 ; " days" ; " day" ) ; 
+
+	daysLabel = If ( days &gt; 1 ; " days" ; " day" ) ; 
+
+	text = 
+		If ( number ≥ 365 ; 
+
+		TextSize ( TextColor ( years365; color ) ; fontSize ) &amp; years365Label &amp; 
+		TextSize ( TextColor ( months365; color ) ; fontSize ) &amp; " months¶" &amp; 
+		TextSize ( TextColor ( days365; color ) ; fontSize ) &amp; days365Label ; 
+
+	
+		TextSize ( TextColor ( months ; color ) ; fontSize ) &amp; " months¶" &amp; 
+		TextSize ( TextColor ( days ; color ) ; fontSize ) &amp; daysLabel
+		)
+	] ; 
+
+
+	Substitute ( text ; ¶ ; separator )
+
+	)</Calculation></CustomFunction><CustomFunction id="12" functionArity="2" visible="True" parameters="s;e" name="YearRange"><Calculation>Case ( s&lt; e ; 
+GetAsText(s) &amp; "¶" &amp; YearRange ( Date ( Month ( s ) ; Day ( s ) ; Year ( s )+1 ); e);
+If(Year( s ) = Year ( e );GetAsText(e);"")
+)</Calculation></CustomFunction><CustomFunction id="162" functionArity="5" visible="True" parameters="Target_Field;Tag;Row_1;Last_Row_Class;Target_Tag_or_Class" name="HTML_Last_Row_Border"><Calculation>/*
+Allows Formatting of the Right border of an HTML Document 
+First Row is assumed to be a hard coded label 
+Set Tag example: &lt;td&gt; or &lt;th&gt; 
+Last Row Class is the Class that will be used by the last row
+
+Target Tag or Class Shoudl = Target or T (If targeting a Tag) ; otherwise the end a Class will be target to add Class
+
+By: Kristian Olsen 
+12/7/18
+
+*/
+
+Let ( [
+$$c = If ( IsEmpty ( $$Rows) ; 1 ; $$c+1)  ; 
+~c = $$c ; 
+~target_tag = If ( PatternCount ( Target_Tag_or_Class ; "t" ) ; 1 ; 0 ) ; 
+~tag = Tag ; 
+~close_tag = Substitute ( ~tag ; "&lt;" ; "&lt;/" );
+~open_tag = Substitute ( ~tag ; "&gt;" ; " " ); 
+~target_field = Target_Field ; 
+~Row_1 = ~open_tag &amp;  Row_1 &amp; " " &amp; ~close_tag &amp;¶ ; 
+~Last_Row = Count ( ~target_field); 
+~row =  GetNthRecord ( ~target_field ; ~c );
+~sub = If ( ~target_tag = 1 ; Substitute ( ~row ; ~tag   ; ~open_tag  &amp; "class='" &amp; Last_Row_Class&amp; "'&gt;" ) ; Substitute ( ~row ; "'&gt;"   ; " " &amp;  Last_Row_Class&amp; "'&gt;" ));  
+~row_format =  Case ( ~c = ~Last_Row ; ~sub ; ~row ); 
+$$Rows = If ( IsEmpty ( $$Rows) ; ~row_format ;  $$Rows &amp;¶&amp; ~row_format );
+
+~result = 
+"&lt;tr&gt;¶" &amp;
+~row_1 &amp;
+$$Rows
+&amp;"¶&lt;/tr&gt;¶¶"
+
+];
+
+Case ( 
+~c ≥ 49999 ; "ERROR" ; 
+~c ≥ ~Last_Row ; 
+Let ([$$c = "" ; $$Rows = "" ];~result ) ;
+ HTML_Last_Row_Border ( Target_Field ; Tag ; Row_1 ; Last_Row_Class ; Target_Tag_or_Class) 
+	 )
+
+ )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

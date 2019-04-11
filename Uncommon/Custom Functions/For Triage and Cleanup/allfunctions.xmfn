@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[Acronym( text )
+RandomKey( characters ; size )
+calfirstofwk( dt )
+FYQ( Start;theDate )
+AbrivState( StateAbbrev )
+CenterWindow in Window vert horiz( dimension )
+Color( Text )
+CombineValues( list1;list2 )
+MonthEnd( StartDate;Months )
+DayNametoDayOfWeek( theDayName )
+CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
+DeduplicateList( input;output )
+fnPhone( text )
+GetMap( webViewerName;zoom;address1;address2;city;state;postalCode;country )
+GetWorkDays( StartDate;DueDate )
+GoogleMapJS( Title;Longitude;Latitude;Zoom;Type;Markers )
+GoogleMapMarkerJS( Latitude;Longitude;Title;Message;Icon;Counter )
+ListValuesMap( Field;recmax;lat;lng )
+MapAddressWeb( address1;address2;city;state;postalCode;country )
+numberFormat( Number;DecimalPrecision;ThousandSeparator )
+ParseParameters( origText;whichParam )
+ProgressBarNumber( number;numberOfRepetitions;fill )
+DateQuarterBegin( theDate )
+DateQuarterEnd( theDate )
+ProgressBarPercentage( percentage;divisor;fill )
+roundfifty( number )
+roundhundred( number )
+CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
+fmpurl( user;pass;host;file;script;param;variables )
+Sumlist( numlist )
+SummaryList( startpos;listtosum )
+SuperLog( LogField;FieldsToLog )
+Supertrim( text )
+TrimSpaceCR( text )
+UltraLog( LogField;ModTime;FieldsToLog )
+Unformat( text )
+WindowInfo(  )
+WordBits( word;numberOfCharacters )
+XMLExtract( XML;Attribute;Instance )
+AbsolutePaddingZeroes( number;digits )
+GetFileExtension( docFileName )
+GetFileName_WithExtension( pathFMFile )
+GetFileName_WithoutExtension( fileName_ )
+GetFileNameOnly( path )
+GetPathFolder( fullPath )
+LeftMatch( Text;Match )
+Path_AppendSlash( pathFMFolder )
+PathFMToPlugin( Path )
+PathPluginToFM( Path )
+PathTo_Applications(  )
+PathTo_Desktop(  )
+PathTo_SystemFolder(  )
+Platform(  )
+PlatformIsMac(  )
+PlatformIsWin(  )
+TrimStart( text;characters )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="124" functionArity="1" visible="True" parameters="text" name="Acronym"><Calculation>Upper(Left(text; 1)) &amp; 
+If(WordCount(text) &gt; 1; Acronym(RightWords(text; WordCount(text) - 1)))</Calculation></CustomFunction><CustomFunction id="1" functionArity="2" parameters="characters ; size" name="RandomKey"><Calculation>Let ( [
+
+L = Length ( characters ) ;
+N = Int ( L * Random ) + 1 ;
+a = Middle ( characters ; N ; 1 ) 
+
+] ;
+
+If ( size &gt; 0 ;
+
+
+a &amp; 
+RandomKey ( characters ; size - 1 )
+
+))
+
+
+
+/*
+
+Create a random key with a character set and length of choice.
+
+Characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" or any other characters you prefer.
+
+Karsten Risseeuw, kursiv-software.com
+June 30th, 2016
+
+*/</Calculation></CustomFunction><CustomFunction id="4" functionArity="1" visible="True" parameters="dt" name="calfirstofwk"><Calculation>dt - DayOfWeek ( dt ) + 1</Calculation></CustomFunction><CustomFunction id="58" functionArity="2" visible="True" parameters="Start;theDate" name="FYQ"><Calculation>/* FYQ ( Start ; theDate ) */
+
+/*Custom Function by Matt Wills (http://www.VirtualVermont.com/FMP)*/
+
+Let ( [
+Mo = Right ( "0" &amp; Month ( theDate ) ; 2 ) ;
+Months = "01 02 03 04 05 06 07 08 09 10 11 12" ;
+Months = "  " &amp; MiddleWords ( Months ; Start ; 12 ) &amp; " " &amp; LeftWords ( Months ; Start -1 ) ] ;
+
+Choose ( Position ( Months ; Mo ; 1 ; 1 ) / 3 ; ""; "1" ; "1" ; "1" ; "2" ; "2" ; "2" ; "3" ; "3" ; "3" ; "4" ; "4" ; "4" )  &amp; 
+
+"Q" &amp; Right ( If ( Start = 1 ; Year ( theDate ) ; Year ( theDate ) + 1 ) ; 2 )
+
+)</Calculation></CustomFunction><CustomFunction id="117" functionArity="1" visible="True" parameters="StateAbbrev" name="AbrivState"><Calculation>Case ( StateAbbrev= "Alabama" ; "AL" ;
+
+StateAbbrev=  "Alaska" ;"AK" ;
+
+StateAbbrev=  "Arizona" ;"AZ" ;
+
+StateAbbrev= "Arkansas" ; "AR" ; 
+
+StateAbbrev= "California" ;  "CA" ;
+
+StateAbbrev= "Colorado" ;  "CO" ;
+
+StateAbbrev= "Connecticut" ;  "CT" ;
+
+StateAbbrev= "Delaware" ;  "DE" ;
+
+StateAbbrev= "Florida" ; "FL" ;
+
+StateAbbrev= "Georgia" ;  "GA" ;
+
+StateAbbrev= "Hawaii" ;  "HI" ;
+
+StateAbbrev= "Idaho" ;  "ID" ;
+
+StateAbbrev= "Illinois" ;  "IL" ;
+
+StateAbbrev= "Indiana" ;  "IN" ;
+
+StateAbbrev= "Iowa" ;  "IA" ;
+
+StateAbbrev= "Kansas" ;  "KS" ;
+
+StateAbbrev= "Kentucky" ;  "KY" ;
+
+StateAbbrev= "Louisiana" ;  "LA" ;
+
+StateAbbrev= "Maine" ;  "ME" ;
+
+StateAbbrev= "Maryland" ;  "MD" ;
+
+StateAbbrev= "Massachusetts" ;  "MA" ;
+
+StateAbbrev= "Michigan" ;  "MI" ;
+
+StateAbbrev= "Minnesota" ;  "MN" ;
+
+StateAbbrev= "Mississippi" ;  "MS" ;
+
+StateAbbrev= "Missouri" ;  "MO" ;
+
+StateAbbrev= "Montana" ;  "MT" ;
+
+StateAbbrev= "Nebraska" ;  "NE" ;
+
+StateAbbrev= "Nevada" ;  "NV" ;
+
+StateAbbrev= "New Hampshire" ;  "NH" ;
+
+StateAbbrev= "New Jersey" ;  "NJ" ;
+
+StateAbbrev= "New Mexico" ;  "NM" ;
+
+StateAbbrev= "New York" ;  "NY" ;
+
+StateAbbrev= "North Carolina" ;  "NC" ;
+
+StateAbbrev= "North Dakota" ;  "ND" ;
+
+StateAbbrev= "Ohio" ;  "OH" ;
+
+StateAbbrev= "Oklahoma" ; "OK" ;
+
+StateAbbrev= "Oregon" ;  "OR" ;
+
+StateAbbrev= "Pennsylvania" ;  "PA" ;
+
+StateAbbrev= "Rhode Island" ; "RI" ;
+
+StateAbbrev= "South Carolina" ;  "SC" ;
+
+StateAbbrev= "South Dakota" ;  "SD" ;
+
+StateAbbrev= "Tennessee" ; "TN" ;
+
+StateAbbrev= "Texas" ;  "TX" ;
+
+StateAbbrev= "Utah" ;  "UT" ;
+
+StateAbbrev= "Vermont" ; "VT" ;
+
+StateAbbrev= "Virginia" ;  "VA" ;
+
+StateAbbrev= "Washington" ;  "WA" ;
+
+StateAbbrev= "West Virginia" ; "WV" ;
+
+StateAbbrev= "Wisconsin" ;  "WI" ;
+
+StateAbbrev="Wyoming" ; "WY" ;
+
+StateAbbrev="Alberta" ; "AB" ;
+
+StateAbbrev="British Columbia" ; "BC" ;
+
+StateAbbrev="Manitoba" ; "MB" ;
+
+StateAbbrev="New Brunswick" ; "WY" ;
+
+StateAbbrev="Newfoundland and Labrador" ; "NL" ;
+
+StateAbbrev="Nova Scotia" ; "NS" ;
+
+StateAbbrev="Northwest Territories" ; "NT" ;
+
+StateAbbrev="Nunavut" ; "NU" ;
+
+StateAbbrev="Ontario" ; "ON" ;
+
+StateAbbrev="Prince Edward Island" ; "PE" ;
+
+StateAbbrev="Quebec" ; "QC" ;
+
+StateAbbrev="Saskatchewan" ; "SK" ;
+
+StateAbbrev="District of Columbia" ; "DC" ;
+
+ StateAbbrev)</Calculation></CustomFunction><CustomFunction id="21" functionArity="1" visible="True" parameters="dimension" name="CenterWindow in Window vert horiz"><Calculation>//USE CUSTOM FUNCTION "WINDOW INFO" WITH IS
+//CenterWindow in Window vert horiz
+Let(
+[
+_vertical = PatternCount ( dimension ; "vert" );
+_horizontal = PatternCount ( dimension ; "horiz" )
+
+];
+
+Case( _vertical;
+             (($$window_height - Get ( WindowHeight ))/2) + $$window_top;
+          _horizontal;
+              (($$window_width - Get ( WindowWidth ))/2) + $$window_left
+    )
+)</Calculation></CustomFunction><CustomFunction id="23" functionArity="1" visible="True" parameters="Text" name="Color"><Calculation>If ( Left ( Text ; 1 ) = "#" ; 
+ // Handle web color
+ Let(
+  [ char = Right (Text ; 1 ) ; 
+  len = Length ( Text ) ] ; 
+ 
+  ( Position ( "0123456789ABCDEF" ; char ; 1 ; 1 ) - 1 ) + If ( len &gt; 2 ; 16 * Color ( Left (Text ; len - 1 ) ) )
+ ) ; 
+
+ // Handle named color
+ Case (
+  Text = "AliceBlue" ; 15792383 ; 
+  Text = "AntiqueWhite" ; 16444375 ; 
+  Text = "Aqua" ; 65535 ; 
+  Text = "Aquamarine" ; 8388564 ; 
+  Text = "Azure" ; 15794175 ; 
+  Text = "Beige" ; 16119260 ; 
+  Text = "Bisque" ; 16770244 ; 
+  Text = "Black" ; 0 ; 
+  Text = "BlanchedAlmond" ; 16772045 ; 
+  Text = "Blue" ; 255 ; 
+  Text = "BlueViolet" ; 9055202 ; 
+  Text = "Brown" ; 10824234 ; 
+  Text = "BurlyWood" ; 14596231 ; 
+  Text = "CadetBlue" ; 6266528 ; 
+  Text = "Chartreuse" ; 8388352 ; 
+  Text = "Chocolate" ; 13789470 ; 
+  Text = "Coral" ; 16744272 ; 
+  Text = "CornflowerBlue" ; 6591981 ; 
+  Text = "Cornsilk" ; 16775388 ; 
+  Text = "Crimson" ; 14423100 ; 
+  Text = "Cyan" ; 65535 ; 
+  Text = "DarkBlue" ; 139 ; 
+  Text = "DarkCyan" ; 35723 ; 
+  Text = "DarkGoldenRod" ; 12092939 ; 
+  Text = "DarkGray" ; 11119017 ; 
+  Text = "DarkGreen" ; 25600 ; 
+  Text = "DarkKhaki" ; 12433259 ; 
+  Text = "DarkMagenta" ; 9109643 ; 
+  Text = "DarkOliveGreen" ; 5597999 ; 
+  Text = "Darkorange" ; 16747520 ; 
+  Text = "DarkOrchid" ; 10040012 ; 
+  Text = "DarkRed" ; 9109504 ; 
+  Text = "DarkSalmon" ; 15308410 ; 
+  Text = "DarkSeaGreen" ; 9419919 ; 
+  Text = "DarkSlateBlue" ; 4734347 ; 
+  Text = "DarkSlateGray" ; 3100495 ; 
+  Text = "DarkTurquoise" ; 52945 ; 
+  Text = "DarkViolet" ; 9699539 ; 
+  Text = "DeepPink" ; 16716947 ; 
+  Text = "DeepSkyBlue" ; 49151 ; 
+  Text = "DimGray" ; 6908265 ; 
+  Text = "DodgerBlue" ; 2003199 ; 
+  Text = "Feldspar" ; 13734517 ; 
+  Text = "FireBrick" ; 11674146 ; 
+  Text = "FloralWhite" ; 16775920 ; 
+  Text = "ForestGreen" ; 2263842 ; 
+  Text = "Fuchsia" ; 16711935 ; 
+  Text = "Gainsboro" ; 14474460 ; 
+  Text = "GhostWhite" ; 16316671 ; 
+  Text = "Gold" ; 16766720 ; 
+  Text = "GoldenRod" ; 14329120 ; 
+  Text = "Gray" ; 8421504 ; 
+  Text = "Green" ; 32768 ; 
+  Text = "GreenYellow" ; 11403055 ; 
+  Text = "HoneyDew" ; 15794160 ; 
+  Text = "HotPink" ; 16738740 ; 
+  Text = "IndianRed" ; 13458524 ; 
+  Text = "Indigo" ; 4915330 ; 
+  Text = "Ivory" ; 16777200 ; 
+  Text = "Khaki" ; 15787660 ; 
+  Text = "Lavender" ; 15132410 ; 
+  Text = "LavenderBlush" ; 16773365 ; 
+  Text = "LawnGreen" ; 8190976 ; 
+  Text = "LemonChiffon" ; 16775885 ; 
+  Text = "LightBlue" ; 11393254 ; 
+  Text = "LightCoral" ; 15761536 ; 
+  Text = "LightCyan" ; 14745599 ; 
+  Text = "LightGoldenRodYellow" ; 16448210 ; 
+  Text = "LightGrey" ; 13882323 ; 
+  Text = "LightGreen" ; 9498256 ; 
+  Text = "LightPink" ; 16758465 ; 
+  Text = "LightSalmon" ; 16752762 ; 
+  Text = "LightSeaGreen" ; 2142890 ; 
+  Text = "LightSkyBlue" ; 8900346 ; 
+  Text = "LightSlateBlue" ; 8679679 ; 
+  Text = "LightSlateGray" ; 7833753 ; 
+  Text = "LightSteelBlue" ; 11584734 ; 
+  Text = "LightYellow" ; 16777184 ; 
+  Text = "Lime" ; 65280 ; 
+  Text = "LimeGreen" ; 3329330 ; 
+  Text = "Linen" ; 16445670 ; 
+  Text = "Magenta" ; 16711935 ; 
+  Text = "Maroon" ; 8388608 ; 
+  Text = "MediumAquaMarine" ; 6737322 ; 
+  Text = "MediumBlue" ; 205 ; 
+  Text = "MediumOrchid" ; 12211667 ; 
+  Text = "MediumPurple" ; 9662680 ; 
+  Text = "MediumSeaGreen" ; 3978097 ; 
+  Text = "MediumSlateBlue" ; 8087790 ; 
+  Text = "MediumSpringGreen" ; 64154 ; 
+  Text = "MediumTurquoise" ; 4772300 ; 
+  Text = "MediumVioletRed" ; 13047173 ; 
+  Text = "MidnightBlue" ; 1644912 ; 
+  Text = "MintCream" ; 16121850 ; 
+  Text = "MistyRose" ; 16770273 ; 
+  Text = "Moccasin" ; 16770229 ; 
+  Text = "NavajoWhite" ; 16768685 ; 
+  Text = "Navy" ; 128 ; 
+  Text = "OldLace" ; 16643558 ; 
+  Text = "Olive" ; 8421376 ; 
+  Text = "OliveDrab" ; 7048739 ; 
+  Text = "Orange" ; 16753920 ; 
+  Text = "OrangeRed" ; 16729344 ; 
+  Text = "Orchid" ; 14315734 ; 
+  Text = "PaleGoldenRod" ; 15657130 ; 
+  Text = "PaleGreen" ; 10025880 ; 
+  Text = "PaleTurquoise" ; 11529966 ; 
+  Text = "PaleVioletRed" ; 14184595 ; 
+  Text = "PapayaWhip" ; 16773077 ; 
+  Text = "PeachPuff" ; 16767673 ; 
+  Text = "Peru" ; 13468991 ; 
+  Text = "Pink" ; 16761035 ; 
+  Text = "Plum" ; 14524637 ; 
+  Text = "PowderBlue" ; 11591910 ; 
+  Text = "Purple" ; 8388736 ; 
+  Text = "Red" ; 16711680 ; 
+  Text = "RosyBrown" ; 12357519 ; 
+  Text = "RoyalBlue" ; 4286945 ; 
+  Text = "SaddleBrown" ; 9127187 ; 
+  Text = "Salmon" ; 16416882 ; 
+  Text = "SandyBrown" ; 16032864 ; 
+  Text = "SeaGreen" ; 3050327 ; 
+  Text = "SeaShell" ; 16774638 ; 
+  Text = "Sienna" ; 10506797 ; 
+  Text = "Silver" ; 12632256 ; 
+  Text = "SkyBlue" ; 8900331 ; 
+  Text = "SlateBlue" ; 6970061 ; 
+  Text = "SlateGray" ; 7372944 ; 
+  Text = "Snow" ; 16775930 ; 
+  Text = "SpringGreen" ; 65407 ; 
+  Text = "SteelBlue" ; 4620980 ; 
+  Text = "Tan" ; 13808780 ; 
+  Text = "Teal" ; 32896 ; 
+  Text = "Thistle" ; 14204888 ; 
+  Text = "Tomato" ; 16737095 ; 
+  Text = "Turquoise" ; 4251856 ; 
+  Text = "Violet" ; 15631086 ; 
+  Text = "VioletRed" ; 13639824 ; 
+  Text = "Wheat" ; 16113331 ; 
+  Text = "White" ; 16777215 ; 
+  Text = "WhiteSmoke" ; 16119285 ; 
+  Text = "Yellow" ; 16776960 ; 
+  Text = "YellowGreen" ; 10145074 ; 
+  0
+ )
+)</Calculation></CustomFunction><CustomFunction id="45" functionArity="2" visible="True" parameters="list1;list2" name="CombineValues"><Calculation>If ( ( ValueCount ( list1 ) = 0 ) or ( ValueCount ( list2 ) = 0 ) ; 
+    ""
+;
+    "['" &amp; GetValue( list1 ; 1 ) &amp; "'," &amp; GetValue( list2 ; 1 ) &amp; "],¶" &amp; 
+
+    CombineValues ( 
+        RightValues ( list1 ; ValueCount ( list1 ) - 1 ) 
+    ; 
+        RightValues ( list2 ; ValueCount ( list2 ) - 1 ) 
+    )
+)</Calculation></CustomFunction><CustomFunction id="70" functionArity="2" visible="True" parameters="StartDate;Months" name="MonthEnd"><Calculation>/*
+
+MonthEnd ( StartDate ; Months )
+Purpose:    Returns the date of the last day of the month the specified number of months from the StartDate.
+Author:    Josh Ormond
+
+*/
+
+Date ( Month ( StartDate ) + ( Months + 1 ) ; 0 ; Year ( StartDate ) )
+
+// ===================================
+/*
+
+This function is published on BrianDunning.com to check for updates and provide feedback and bug reports please visit:
+http://www.briandunning.com/filemaker-custom-functions/detail.php?fn_id=1305
+
+
+Function: MonthEnd( StartDate; Months )
+Author: Josh Ormond
+Last updated: 18 May 2011
+Version: 1.1
+
+*/
+// ===================================</Calculation></CustomFunction><CustomFunction id="28" functionArity="1" visible="True" parameters="theDayName" name="DayNametoDayOfWeek"><Calculation>//Used for Time Sheet Calculations
+Let([
+day = Date ( 12 ; 31 ; 2000 )
+];
+Substitute (theDayName; [DayName ( day ) ; 1];
+                                          [DayName ( day + 1 ) ; 2];
+                                          [DayName ( day + 2 ) ; 3]; 
+                                          [DayName ( day + 3 ) ; 4]; 
+                                          [DayName ( day + 4 ) ; 5]; 
+                                          [DayName ( day + 5 ) ; 6]; 
+                                          [DayName ( day + 6 ) ; 7]
+)
+)</Calculation></CustomFunction><CustomFunction id="54" functionArity="6" visible="True" parameters="Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative" name="CurrencyAsText"><Calculation>// Currency (Amount, CurrencyCode, Lead, Trail, ShowDecimal, RedNegative )
+//
+// This custom function takes the following parameters:
+//
+// Amount - The currency amount to display
+// CurrencyCode - (Optional) The currency code i.e. US, AU, GBP
+// Lead - The leading currency symbol i.e. $
+// Trail - The trailing currency symbol i.e. $
+// ShowDecimal - Rounding ... the number of decimals
+// RedNegative - 1 or 0, shows negative values in red.
+//
+// Tony Tanevski, Hi-Voltage
+// http://www.hi-voltage.com.au
+
+
+
+Let ( 
+
+[
+    xNeg = Case(Amount &lt; 0; 1);
+    xAmt = Abs(Round ( Amount ; Case(ShowDecimal; 2; 0) )) ;
+    xInt = Int ( xAmt ) ;
+    xLen = Length ( xInt ) ;
+    xDec = If ( xAmt &lt;&gt; xInt ; Left ( xAmt - xInt &amp; "000" ; 3 ) ; ".00" );
+
+    xFormat = CurrencyCode &amp; Case(CurrencyCode &lt;&gt; ""; " ") &amp; Case(xNeg; "-") &amp; Lead &amp;
+                       Case (
+                           xLen=9 ; Left(xInt;3) &amp;","&amp; Middle(xInt;4;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=8 ; Left(xInt;2) &amp;","&amp; Middle(xInt;3;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=7 ; Left(xInt;1) &amp;","&amp; Middle(xInt;2;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=6 ; Left(xInt;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=5 ; Left(xInt;2) &amp;","&amp; Right(xInt;3) ;
+                           xLen=4 ; Left(xInt;1) &amp;","&amp; Right(xInt;3) ;
+                           xInt 
+                       ) &amp; Case(ShowDecimal; xDec) &amp; Trail
+
+] ;
+
+    Case(RedNegative and Amount &lt; 0; TextColor ( xFormat ; RGB ( 150 ; 0 ; 0 ) ); xFormat)
+
+
+)</Calculation></CustomFunction><CustomFunction id="46" functionArity="2" visible="True" parameters="input;output" name="DeduplicateList"><Calculation>Let ( 
+
+[
+
+this = GetValue ( input ; 1 ) ;
+input = Case ( 
+  Length ( this ) &gt; 0 ;
+  Right ( input ; Length ( input ) - Length ( this ) - 1 ) ;
+  input
+) ;
+output = Case ( 
+  IsEmpty ( output ) ;
+  this ;
+  PatternCount ( ¶ &amp; output &amp; ¶ ; ¶ &amp; this &amp; ¶ ) = 0 ;
+  output &amp; ¶ &amp; this ;
+  output
+) ;
+result = Case ( 
+  Length ( input ) &gt; 0 ;
+  DeduplicateList ( input ; output ) ;
+  output
+)
+
+]
+
+;
+
+result
+
+)</Calculation></CustomFunction><CustomFunction id="11" functionArity="1" visible="True" parameters="text" name="fnPhone"><Calculation>// fnPhone(text)
+// depending on phone # length, will format accordingly
+// Timothy Trimble, www.timothytrimble.info
+
+Let (pnum = Substitute( text; [ " "; "" ]; [ "("; ""]; [ ")"; ""]; [ "-"; ""]; [ "."; ""]; [ "x"; ""] ) ;
+Case (Length(pnum) = 7 ; Left(pnum;3) &amp; "-" &amp; Right(pnum;4) ;
+   Length(pnum) = 10 ; "(" &amp; Left(pnum;3) &amp; ") " &amp; Middle(pnum; 4;3) &amp; "-" &amp; Right(pnum;4) ;
+   (Length(pnum) = 11 and Left(pnum;1) = "1") ; "1+(" &amp; Middle(pnum;2;3) &amp; ") " &amp; Middle(pnum;5;3) &amp; "-" &amp; Right(pnum;4) ;
+   (Length(pnum) &gt; 11 and Left(pnum;1) = "1") ; "1+(" &amp; Middle(pnum;2;3) &amp; ") " &amp; Middle(pnum;5;3) &amp; "-" &amp; Middle(pnum;8;4) &amp; " x" &amp; Right(pnum;(Length(pnum)-11)) ;
+   Length(pnum) &gt; 10; "(" &amp; Left(pnum;3) &amp; ")" &amp; Middle(pnum;4;3) &amp; "-" &amp; Middle(pnum;7;4) &amp; " x" &amp; Right(pnum;(Length(pnum)-10)) ;
+   pnum ) 
+)</Calculation></CustomFunction><CustomFunction id="30" functionArity="8" visible="True" parameters="webViewerName;zoom;address1;address2;city;state;postalCode;country" name="GetMap"><Calculation>Let 	( 
+	[
+	address = 	List 	(
+					address1 ; 
+					address2 ; 
+					city ; 
+					state ; 
+					postalCode ; 
+					country 
+					) ; 
+
+	URL = 		Substitute ( address ; ¶ ; "+" ) ; 
+	size = 		GetLayoutObjectAttribute ( webViewerName ; "width" ) &amp; "x" &amp; GetLayoutObjectAttribute ( webViewerName ; "height" ) ;
+	zoom =		Case (
+					not IsEmpty ( address1 &amp; address2 ) ; 14 ; 
+					PatternCount ( address ; city ) ; 7 ; 
+					PatternCount ( address ; state ) ; 4 ; 
+					PatternCount ( address ; country ) ; 3 
+					)
+	] ;
+
+	"http://maps.google.com/maps/api/staticmap?center=" 
+			&amp; URL &amp; 
+				"&amp;zoom=" &amp; zoom &amp;
+					"&amp;markers=" 
+						&amp; URL &amp; 
+							"&amp;size=" 
+								&amp; size &amp; 
+									"&amp;maptype=roadmap" &amp; 
+										"&amp;sensor=false"
+	)</Calculation></CustomFunction><CustomFunction id="35" functionArity="2" visible="True" parameters="StartDate;DueDate" name="GetWorkDays"><Calculation>Int ( ( DueDate - StartDate ) / 7 ) * 5 
+
++ 
+
+Case ( 
+DayOfWeek ( DueDate ) &lt; DayOfWeek ( StartDate ) ; 
+Min ( 5 ; DayOfWeek ( DueDate ) - 1 ) + Max ( 0 ; 6 - DayOfWeek ( StartDate ) ) ;
+
+DayOfWeek ( StartDate ) &lt; 7 ; 
+Min ( 6 ; DayOfWeek ( DueDate ) ) - DayOfWeek ( StartDate ) ; 
+
+0 
+) + 1</Calculation></CustomFunction><CustomFunction id="13" functionArity="6" visible="True" parameters="Title;Longitude;Latitude;Zoom;Type;Markers" name="GoogleMapJS"><Calculation>// GoogleMapJS ( Title, Longitude; Latitude; Zoom; Type, Markers )
+Let ([
+  Title = Substitute ( Title ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
+];
+"data:text/html," &amp; "
+&lt;!DOCTYPE html&gt;¶
+&lt;html&gt;¶
+  &lt;head&gt;¶
+    &lt;meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\"&gt;¶
+    &lt;meta charset=\"utf-8\"&gt;¶
+    &lt;title&gt;" &amp; Title &amp; "&lt;/title&gt;¶
+&lt;link href=\"http://code.google.com/apis/maps/documentation/javascript/examples/default.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;¶
+    &lt;script src=\"https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false\"&gt;&lt;/script&gt;¶
+    &lt;script&gt;¶
+      function initialize() {¶
+        var myLatlng = new google.maps.LatLng(" &amp; Latitude &amp; "," &amp; Longitude &amp; ");¶
+        var mapOptions = {¶
+          zoom: " &amp; Zoom &amp; ",¶
+          center: myLatlng,¶
+          mapTypeId: google.maps.MapTypeId." &amp; If ( IsEmpty ( Type ); "ROADMAP" ; Type ) &amp; "¶
+        }¶
+¶
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);¶" &amp;
+Markers
+&amp;"      }¶
+¶
+    &lt;/script&gt;¶
+  &lt;/head&gt;¶
+  &lt;body onload=\"initialize()\"&gt;¶
+    &lt;div id=\"map-canvas\"&gt;&lt;/div&gt;¶
+  &lt;/body&gt;¶
+&lt;/html&gt;¶
+")</Calculation></CustomFunction><CustomFunction id="12" functionArity="6" visible="True" parameters="Latitude;Longitude;Title;Message;Icon;Counter" name="GoogleMapMarkerJS"><Calculation>// GoogleMapMarkerJS ( Latitude ; Longitude ; Title ; Message ; Icon ; Counter )
+Let ([
+  Title = Substitute ( Title ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
+; Message = Substitute ( Message ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
+];
+"
+    var myLatlng" &amp; Counter &amp; " = new google.maps.LatLng( " &amp; Latitude &amp; " , " &amp; Longitude &amp; " );¶
+¶
+    var contentString" &amp; Counter &amp; " = '&lt;div id=\"content\"&gt;'+¶
+        '&lt;div id=\"siteNotice\"&gt;'+¶
+        '&lt;/div&gt;'+¶
+        '&lt;h3 id=\"firstHeading\" class=\"firstHeading\"&gt;" &amp; Title &amp; "&lt;/h3&gt;'+¶
+        '&lt;div id=\"bodyContent\"&gt;'+¶
+        '&lt;p&gt;" &amp; Substitute ( Message ; "¶" ; "&lt;br /&gt;" ) &amp; "&lt;/p&gt;' +¶
+        '&lt;/div&gt;'+¶
+        '&lt;/div&gt;';¶
+¶
+    var infowindow" &amp; Counter &amp; " = new google.maps.InfoWindow({¶
+        content: contentString" &amp; Counter &amp; "¶
+    });¶
+¶
+" &amp; If ( not IsEmpty ( Icon ) ; "    var image = '" &amp; Icon &amp; "';¶" ) &amp; "
+¶
+    var marker" &amp; Counter &amp; " = new google.maps.Marker({¶
+        position: myLatlng" &amp; Counter &amp; ",¶
+        map: map,¶
+        title: '" &amp; Title &amp; "',¶
+" &amp; If ( not IsEmpty ( Icon ) ; "        icon: image¶ " ) &amp; "
+    });¶
+    google.maps.event.addDomListener(marker" &amp; Counter &amp; ", 'click', function() {¶
+      infowindow" &amp; Counter &amp; ".open(map,marker" &amp; Counter &amp; ");¶
+    });¶
+")</Calculation></CustomFunction><CustomFunction id="19" functionArity="4" visible="True" parameters="Field;recmax;lat;lng" name="ListValuesMap"><Calculation>Let (
+[
+
+
+
+$$ListValues_max_count= Case(
+						Get ( FoundCount ) &lt; recmax;
+						Get ( FoundCount );
+
+						recmax &lt; 1;
+						Get ( FoundCount );
+
+						recmax
+							);
+
+$$ListValues_total_count = Case (
+							IsEmpty ( $$ListValues_total_count ) ; 
+							$$ListValues_max_count ;
+				
+							$$ListValues_total_count 
+							) ;
+
+$$ListValues_current_count = Case ( 
+							IsEmpty ( $$ListValues_current_count ) ;
+							1 ; 
+		
+							$$ListValues_current_count + 1 
+							) ;
+
+latc = GetNthRecord ( lat ; $$ListValues_current_count );
+
+lngc = GetNthRecord ( lng ; $$ListValues_current_count );
+
+name = GetNthRecord ( Field ; $$ListValues_current_count );
+
+$$ListValues_value =
+	Case (
+		not IsEmpty ( latc ) and not IsEmpty ( lngc );	
+	
+		Case (
+			ValueCount ( $$ListValues_value );		
+			$$ListValues_value &amp; "¶"
+			) &amp; name;
+
+		 $$ListValues_value
+	);
+
+$$ListValues_total_count= If( not IsEmpty ( latc ) and not IsEmpty ( lngc );$$ListValues_total_count;$$ListValues_total_count+1)
+
+] ;
+
+
+Case (
+// If $$ListValues_current_count is not reach to $$ListValues_total_count, call this function recursively.
+
+$$ListValues_current_count  &lt; $$ListValues_total_count;
+ListValuesMap ( Field;$$ListValues_max_count; lat; lng ) ;
+
+// Otherwise, clean up $$variable and return result.
+Let (
+[
+result = $$ListValues_value;
+$$ListValues_max_count ="";
+$$ListValues_total_count = "" ;
+$$ListValues_current_count = "" ;
+$$ListValues_value = ""
+] ;
+result
+) // Let
+) // Case
+
+) // Let</Calculation></CustomFunction><CustomFunction id="29" functionArity="6" visible="True" parameters="address1;address2;city;state;postalCode;country" name="MapAddressWeb"><Calculation>"http://local.google.com/maps?" &amp; "q=" 
+	&amp; 
+		If ( not IsEmpty ( address1 ) ; address1 ; "" )  &amp;  
+		If ( not IsEmpty ( address2 ) ; ", " &amp; address2 ; "" )  &amp; 
+		If ( not IsEmpty ( city ) ; ", " &amp; city ; "" )  &amp;  
+		If ( not IsEmpty ( state ) ; ", " &amp; state ; "" )  &amp;  
+		If ( not IsEmpty ( postalCode ) 	; ", " &amp; postalCode ; "" )  &amp; 
+		If ( not IsEmpty ( country ) ; ", " &amp;  country ; "" )</Calculation></CustomFunction><CustomFunction id="47" functionArity="3" visible="True" parameters="Number;DecimalPrecision;ThousandSeparator" name="numberFormat"><Calculation>// NumberFormat ( Number ; DecimalPrecision ; ThousandSeparator ) v3.1
+
+               /*
+              to format numbers
+               */
+// NumberFormat is not recursive
+//---------------------------------- Exemple
+/*
+NumberFormat ( "1021001,00125" ; 3 ; "." ) &gt; Result : 1.021.001,001
+NumberFormat ( "69584" ; 2 ; " " ) &gt; Result : 69 584,00
+*/
+//----------------------------------
+// @ Agnès -Octobre 2008- BugReport barouh.agnes@wanadoo.fr
+//----------------------------------
+
+Let ([
+      n = Number;  
+      p = DecimalPrecision;
+      Sep = ThousandSeparator ;
+      Nbr = Abs ( Round ( n; p ) )
+];
+Case ( not IsEmpty ( n ) ;
+      Case ( GetAsNumber ( n ) &lt; 0; "-" ) &amp;
+      Substitute ( NumToJText ( Int ( Nbr ); 1; 0 ); ","; Sep ) &amp;
+      Choose ( p ≤ 0; Filter ( 1/2; ".," ) &amp;
+      Middle ( Nbr - Int ( Nbr ) &amp; Substitute ( ( 10 ^ p ) - 1; 9; 0 ); 2; p ) )
+)
+)</Calculation></CustomFunction><CustomFunction id="36" functionArity="2" visible="True" parameters="origText;whichParam" name="ParseParameters"><Calculation>// ParseParameters ( OrigText; whichParam)
+//
+// Extract the nth parameter based on "|" separators.
+//
+// Parameters:
+// origText = script parameter ( "parameterOne|second parameter as long as it may be")
+// whichParam = which script parameter to retrieve, as delineated by "|"
+//
+
+
+
+Let ( [
+
+start = Case (whichParam = 1; 0; Position ( OrigText ; "|" ; 1 ; whichParam - 1 ) ) ;
+end = Case (whichParam  ≤ PatternCount ( OrigText ; "|" ); Position ( OrigText ; "|" ; 1 ; whichParam ) - 1; Length(OrigText))
+] ; 
+
+Middle ( OrigText ; start + 1 ; end - start )
+
+)</Calculation></CustomFunction><CustomFunction id="33" functionArity="3" visible="True" parameters="number;numberOfRepetitions;fill" name="ProgressBarNumber"><Calculation>If (
+Round ( Extend ( number ) * numberOfRepetitions ; 1 ) ≥ Get ( CalculationRepetitionNumber ) ;
+Extend ( fill ) ; 
+"" 
+)</Calculation></CustomFunction><CustomFunction id="55" functionArity="1" visible="True" parameters="theDate" name="DateQuarterBegin"><Calculation>//NAME: DateQuarterBegin
+//PURPOSE: Pass any date and get the quarter start date based on input date.
+//PARAMETER: theDate
+//INCLUDES OTHER CUSTOM FUNCTIONS: No
+//AUTHOR: Chiyoko Yoshida chiyofm@gmail.com
+//EXAMPLE INPUT: 7/15/2010 
+//EXPECTED OUTPUT: 7/1/2010
+
+Let ([
+
+$d = theDate;
+$m = Month($d);
+$y = Year($d)
+
+];
+
+If ( $m &gt; 9 ; Date (10;1;$y);
+If ( $m &gt; 6 ; Date (7;1;$y);
+If ($m &gt; 3 ; Date (4;1;$y);
+Date(1;1;$y)
+)))
+
+)</Calculation></CustomFunction><CustomFunction id="56" functionArity="1" visible="True" parameters="theDate" name="DateQuarterEnd"><Calculation>//NAME: DateQuarterEnd
+//PURPOSE: Pass any date and return the quarter END date based on the input date.
+//PARAMETER: theDate
+//INCLUDES OTHER CUSTOM FUNCTIONS: No
+//CREATED BY: Chiyoko Yoshida chiyofm@gmail.com
+//EXAMPLE INPUT: 7/15/2010 
+//EXPECTED OUTPUT: 9/30/2010
+
+Let ([
+
+$d = theDate;
+$m = Month($d);
+$y = Year($d)
+
+];
+
+If ( $m &gt; 9 ; Date (12;31;$y);
+If ( $m &gt; 6 ; Date (9;30;$y);
+If ($m &gt; 3 ; Date (6;30;$y);
+Date(3;31;$y)
+)))
+
+)</Calculation></CustomFunction><CustomFunction id="34" functionArity="3" visible="True" parameters="percentage;divisor;fill" name="ProgressBarPercentage"><Calculation>If (
+Round ( Extend ( percentage ) / divisor ; 1 ) ≥ Get ( CalculationRepetitionNumber ) ;
+Extend ( fill ) ; 
+"" 
+)
+
+
+//	Divisor = 100 / Number of Repetitions</Calculation></CustomFunction><CustomFunction id="48" functionArity="1" visible="True" parameters="number" name="roundfifty"><Calculation>Let (
+		[	~round =  Case(
+			Right (number;2) ≥1 and Right ( number ;2) ≤49 
+		;		50 
+		;	Right ( number ;2) ≥51 and Right ( number ;2) ≤99
+		;		100
+		;	number )
+		;	~sf = number
+		;	~l = Left ( number ;Length (number) -2)]
+		; Case ( ~round = 50
+			;GetAsNumber (~l &amp; ~round)
+			;~round = 100
+			;GetAsNumber(~l &amp; "00") +100
+			;	~round ))</Calculation></CustomFunction><CustomFunction id="49" functionArity="1" visible="True" parameters="number" name="roundhundred"><Calculation>Ceiling ( number  * 10^-2 ) * 10^2</Calculation></CustomFunction><CustomFunction id="53" functionArity="6" visible="True" parameters="Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative" name="CurrencyAsText"><Calculation>// Currency (Amount, CurrencyCode, Lead, Trail, ShowDecimal, RedNegative )
+//
+// This custom function takes the following parameters:
+//
+// Amount - The currency amount to display
+// CurrencyCode - (Optional) The currency code i.e. US, AU, GBP
+// Lead - The leading currency symbol i.e. $
+// Trail - The trailing currency symbol i.e. $
+// ShowDecimal - Rounding ... the number of decimals
+// RedNegative - 1 or 0, shows negative values in red.
+//
+// Tony Tanevski, Hi-Voltage
+// http://www.hi-voltage.com.au
+
+
+
+Let ( 
+
+[
+    xNeg = Case(Amount &lt; 0; 1);
+    xAmt = Abs(Round ( Amount ; Case(ShowDecimal; 2; 0) )) ;
+    xInt = Int ( xAmt ) ;
+    xLen = Length ( xInt ) ;
+    xDec = If ( xAmt &lt;&gt; xInt ; Left ( xAmt - xInt &amp; "000" ; 3 ) ; ".00" );
+
+    xFormat = CurrencyCode &amp; Case(CurrencyCode &lt;&gt; ""; " ") &amp; Case(xNeg; "-") &amp; Lead &amp;
+                       Case (
+                           xLen=9 ; Left(xInt;3) &amp;","&amp; Middle(xInt;4;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=8 ; Left(xInt;2) &amp;","&amp; Middle(xInt;3;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=7 ; Left(xInt;1) &amp;","&amp; Middle(xInt;2;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=6 ; Left(xInt;3) &amp;","&amp; Right(xInt;3) ;
+                           xLen=5 ; Left(xInt;2) &amp;","&amp; Right(xInt;3) ;
+                           xLen=4 ; Left(xInt;1) &amp;","&amp; Right(xInt;3) ;
+                           xInt 
+                       ) &amp; Case(ShowDecimal; xDec) &amp; Trail
+
+] ;
+
+    Case(RedNegative and Amount &lt; 0; TextColor ( xFormat ; RGB ( 150 ; 0 ; 0 ) ); xFormat)
+
+
+)</Calculation></CustomFunction><CustomFunction id="118" functionArity="7" visible="True" parameters="user;pass;host;file;script;param;variables" name="fmpurl"><Calculation>/***************************************************************************************************
+ * fmpurl ( user ; pass ; host ; file ; script ; param ; variables )
+ *
+ * RETURNS:
+ *	url formatted for the current platform
+ *
+ * PARAMETERS:
+ *	user = (optional) account name to use when opening file
+ *	pass = (optional, unless user is not empty) password for user
+ *	host = (required) IP address, DNS name,
+ *			"~" or "local" or "documents",
+ *			"$" or "open",
+ *			"HostURL" (extract domain name from Get ( FilePath ))
+ *	file = (required) name of database file
+ *	script = (optional, unless param is not empty) script name to run
+ *	param = (optional) parameter to send to script
+ *	variables = (optional) encoded variable string: $var=value&amp;$var2=value%20with%20spaces
+ *		encode like this:
+ *			"$var=" &amp; GetAsURLEncoded ( "value" )
+ *			&amp; "&amp;$var2=" &amp; GetAsURLEncoded ( "value with spaces" )
+ *
+ * HISTORY:
+ *	2017-JUL-31 Daniel Smith dan@filemaker.consulting
+ *		- bug fix in testing system version: it incorrectly detected iOS 10 as &lt; 9
+ *		- don't URLEncoded user/pass
+ *		- updated documentation to reflect that variable name does not need to be URLEncoded
+ *	2016-MAR-31 Daniel Smith dan@filemaker.consulting
+ *		- refactor to use Let instead of Case for main logic flow
+ *		- error if variables but no script
+ *		- return multi-line error message, listing all the errors
+ *		- add support for HostURL value as host parameter
+ *	2016-JAN-12 Daniel Smith dansmith65@gmail.com
+ * 		- don't URL encode file name
+ *	2016-JAN-08 Daniel Smith dansmith65@gmail.com
+ *		- created
+ *
+ * REFERENCE:
+ *	http://www.modularfilemaker.org/module/fmpurl/
+ *	https://github.com/dansmith65/FileMaker-fmpurl
+ **************************************************************************************************/
+
+Let ( [
+	url = "fmp://" ;
+
+	/* USER AND PASS */
+	errorMessage =
+		If ( IsEmpty ( user ) and not IsEmpty ( pass ) ;
+			"ERROR: user must not be empty if pass is provided"
+		) ;
+	url = url &amp;
+		If ( not IsEmpty ( user ) ;
+			user
+		)
+		&amp; If ( not IsEmpty ( user ) and not IsEmpty ( pass ) ;
+			":" &amp; pass
+		)
+		&amp; If ( not IsEmpty ( user ) or not IsEmpty ( pass ) ;
+			"@"
+		) ;
+
+
+	/* HOST */
+	errorMessage = List ( errorMessage ; 
+		If ( IsEmpty ( host ) ;
+			"ERROR: host must not be empty"
+		)
+	) ;
+	segment =
+		Case (
+			host = "~" or host = "local" or host = "documents" ;
+			If ( Get ( SystemPlatform ) = 3 /* iOS */ and GetAsNumber ( Get ( SystemVersion ) ) &lt; 9 ;
+				"%7e" ; /* due to http://thefmkb.com/11358 */
+				"~"
+			) ;
+
+			host = "$" or host = "open" ;
+			If ( Get ( SystemPlatform ) = 3 /* iOS */ and GetAsNumber ( Get ( SystemVersion ) ) &lt; 9 ;
+				"%24" ; /* due to http://thefmkb.com/11358 */
+				"$"
+			) ;
+
+			host = "HostURL" ;
+			Let ( [
+				filePath = Get ( FilePath ) ;
+				start = Position ( filePath ; "/" ;1 ; 1 ) ;
+				start = If ( start ; start + 1 ; start ) ;
+				end = If ( start ;
+					Position ( filePath ; "/" ; start ; 1 ) - 1 
+				)
+			] ;
+				If ( start and Left ( filePath ; 7 ) = "fmnet:/" ;
+					Middle ( filePath ; start ; end - start + 1 ) ;
+					"ERROR: HostURL could not be extracted"
+				)
+			) ;
+
+			/* else, use host param as-is */
+			host
+		) ;
+	errorMessage = List ( errorMessage ; 
+		If ( Left ( segment ; 5 ) = "ERROR" ;
+			segment
+		)
+	) ;
+	segment = segment &amp; If ( Right ( segment ; 1 ) ≠ "/" ; "/" ) ;
+	url = url &amp; segment ;
+
+
+	/* FILE */
+	errorMessage = List ( errorMessage ; 
+		If ( IsEmpty ( file ) ;
+			"ERROR: file must not be empty"
+		)
+	) ;
+	url = url &amp; file ;
+
+
+	/* SCRIPT */
+	errorMessage = List ( errorMessage ; 
+		If ( IsEmpty ( script ) and not IsEmpty ( param ) ;
+			"ERROR: script must not be empty if param is provided"
+		)
+	) ;
+	errorMessage = List ( errorMessage ; 
+		If ( IsEmpty ( script ) and not IsEmpty ( variables ) ;
+			"ERROR: script must not be empty if variables is provided"
+		)
+	) ;
+	url = url &amp;
+		If ( not IsEmpty ( script ) ;
+			"?script=" &amp; GetAsURLEncoded ( script )
+			
+			/* PARAM*/
+			&amp; If ( not IsEmpty ( param ) ;
+				"&amp;param=" &amp; GetAsURLEncoded ( param )
+			)
+
+			/* VARIABLES */
+			&amp; If ( not IsEmpty ( variables ) ;
+				If ( Left ( variables ; 1 ) ≠ "&amp;" ; "&amp;" )
+				&amp; variables
+			)
+		)
+] ;
+
+	If ( not IsEmpty ( errorMessage ) ; errorMessage ; url )
+
+)</Calculation></CustomFunction><CustomFunction id="50" functionArity="1" visible="True" parameters="numlist" name="Sumlist"><Calculation>Case(
+	ValueCount( numlist )&gt;0
+;	
+	GetAsNumber((LeftValues ( numlist ;1)))=Sumlist(RightValues(numlist;ValueCount ( numlist)-1)
+
+
+))</Calculation></CustomFunction><CustomFunction id="52" functionArity="2" visible="True" parameters="startpos;listtosum" name="SummaryList"><Calculation>Let ( [
+	~count = startpos + 1;
+	~type = GetValue (listtosum ; ~count);
+	~sum = PatternCount (List ( listtosum )  ; ~type ) 
+	] ;
+	~type &amp; " - " &amp; ~sum &amp; ¶  &amp; SummaryList ( ~count;listtosum)
+)</Calculation></CustomFunction><CustomFunction id="9" functionArity="2" visible="True" parameters="LogField;FieldsToLog" name="SuperLog"><Calculation>
+    //  SYNTAX:  SuperLog ( LogField; FieldsToLog )
+    //  © 2006, NightWing Enterprises, Melbourne, Australia
+    //  www.nightwing.com.au/FileMaker
+    //  Audit Log Function by Ray Cologon - v1.7
+
+Let([
+Trg = FieldsToLog;
+Lval = Length(LogField);
+Scpt = Get(ScriptName);
+Rpt = Get(ActiveRepetitionNumber);
+Rflg = If(Rpt &gt; 1; "[" &amp; Rpt &amp; "]") ;
+Fnm = Get(ActiveFieldName) &amp; Rflg;
+Pref = Position(LogField; "	" &amp; Fnm &amp; "	"; 1; 1);
+Pst = Position(LogField; "	-»	"; Pref; 1) + 4;
+Pnd = Position(LogField &amp; ¶; ¶; Pref; 1);
+Pval = If(Pref; Middle(LogField; Pst; Pnd - Pst); "[---]");
+Tval = Get(CurrentHostTimestamp);
+Fval = GetField(Fnm);
+Sval = Substitute(Fval; ¶; "‡");
+Nval = If(Length(Fval); Sval; "[null]")];
+If(Length(Fnm) and Length(Scpt) = 0;
+GetAsDate(Tval) &amp; "	" &amp;
+GetAsTime(Tval) &amp; "	" &amp;
+Get(UserName) &amp; "	" &amp;
+Fnm &amp; "	" &amp; Pval &amp; "	-»	" &amp; Nval &amp; Left(¶; Lval) &amp; LogField; LogField)
+)</Calculation></CustomFunction><CustomFunction id="51" functionArity="1" visible="True" parameters="text" name="Supertrim"><Calculation>//Supertrim
+//text
+/*
+CUSTOM FUNCTION: Supertrim ( text )
+© 2004 Debi Fuchs of Aptworks Consulting, debi@aptworks.com
+
+Speedily (and with no recursion) remove leading and trailing white space (including spacing, tabs and returns) from a text string.
+
+NOTE: Similar to TrimAll, except that it also removes tabs and returns (in addition to spaces), and it does not touch any spacing WITHIN the string. 
+
+EXAMPLE:
+  Supertrim("  John  Smith¶") // --&gt; "John  Smith¶"
+
+LAST MODIFIED: 20-AUG-2008 by Debi Fuchs of Aptworks Consulting
+*/
+
+
+Let(
+  [
+    // Determine value of original string with ALL whitespace removed.  
+    t2 = Substitute( text; [ " "; "" ]; [ " "; "" ]; [ "	"; "" ]; [ "¶"; "" ] );
+    
+    // Determine position of first non-ws character in original string.
+    first_char = Position( text; Left( t2; 1 ); 0; 1 );
+    
+    // Determine position of last non-ww character in original string.
+    last_char = Position( text; Right( t2; 1 ); Length( text ); -1 )
+  ];
+  
+  // If any non-whitespace characters exist return appropriate
+  // middle portion of original text.
+  
+  Case( first_char; Middle( text; first_char; last_char - first_char + 1 ) )
+)</Calculation></CustomFunction><CustomFunction id="37" functionArity="1" visible="True" parameters="text" name="TrimSpaceCR"><Calculation>//remove any leading and trailing " " or "¶"
+
+//as an extension of Trim(text)
+
+
+
+Let([
+
+
+
+Text = Trim ( Text );
+
+Text = If ( Left ( Text ; 1 ) = "¶" ; Right ( Text ; Length ( text ) - 1 ) ; Text );
+
+Text = If ( Right ( Text ; 1 ) = "¶" ; Left ( Text ; Length ( text ) - 1 ) ; Text );
+
+Text = Trim ( Text );
+
+
+
+r = Right ( Text ; 1 ) = "¶" or Left ( Text ; 1 ) = "¶"   ];
+
+
+
+
+
+If ( r ; TrimSpaceCR (Text) ; Text )   //recursion!
+
+             )
+
+
+
+// ===================================
+
+/*
+
+
+
+    This function is published on FileMaker Custom Functions
+
+    to check for updates and provide feedback and bug reports
+
+    please visit http://www.fmfunctions.com/fid/237
+
+
+
+    Prototype: TrimSpaceCR( text )
+
+    Function Author: konrad (http://www.fmfunctions.com/mid/224)
+
+    Last updated: 12 December 2009
+
+    Version: 1
+
+
+
+*/
+
+// ===================================</Calculation></CustomFunction><CustomFunction id="10" functionArity="3" visible="True" parameters="LogField;ModTime;FieldsToLog" name="UltraLog"><Calculation>
+     //  SYNTAX:     UltraLog ( LogField; ModTime; FieldsToLog )
+    //   ORIGIN:      http://www.nightwing.com.au/FileMaker
+   //    NOTES:       Transactional (IWP Compatible) Audit Log Function.
+  //     VERSION:   1.0v4
+ //      © 2009 Ray Cologon, NightWing Enterprises, Melbourne, Australia
+
+Case(ValueCount(FieldsToLog) and not $ClearLogPermit;
+Let([
+Fnm = GetValue(FieldsToLog; 1);
+Pref = Position(LogField; "	" &amp; Fnm &amp; "	"; 1; 1);
+Pst = Position(LogField; "	-»	"; Pref; 1) + 4;
+Pnd = Position(LogField &amp; ¶; ¶; Pref; 1);
+Pval = If(Pref; Middle(LogField; Pst; Pnd - Pst); "[---]");
+Fval = GetField(Fnm);
+Sval = Substitute(Fval; ¶; "‡");
+Nval = If(Length(Fval); Sval; "[null]");
+vInit = Pref = 0 and IsEmpty(Fval);
+Prep = Exact($ClearLogPermit; "0");
+MTm = Get(CurrentHostTimestamp)];
+If(not Exact(Pval; Nval) and not vInit;
+TextStyleAdd(TextColor(
+GetAsDate(MTm) &amp; "	" &amp; GetAsTime(MTm) &amp; "	" &amp;
+If(Prep; "[Log Prep]"; Get(AccountName)) &amp; "	" &amp;
+Fnm &amp; "	" &amp; Pval &amp; "	-»	" &amp; Nval &amp; ¶; Prep*11776947); Prep*Italic)) &amp;
+UltraLog(LogField; ModTime; RightValues(FieldsToLog; ValueCount(FieldsToLog) - 1))
+);
+LogField
+)</Calculation></CustomFunction><CustomFunction id="24" functionArity="1" visible="True" parameters="text" name="Unformat"><Calculation>Evaluate ( Quote ( text ) )</Calculation></CustomFunction><CustomFunction id="22" functionArity="0" visible="True" parameters="" name="WindowInfo"><Calculation>Let(
+[
+$$window_height = Get ( WindowHeight );
+$$window_width = Get (WindowWidth);
+$$window_top = Get(WindowTop);
+$$window_left = Get(WindowLeft)
+];
+""
+)</Calculation></CustomFunction><CustomFunction id="32" functionArity="2" visible="True" parameters="word;numberOfCharacters" name="WordBits"><Calculation>Case (
+Length ( word ) = 0;"";
+numberOfCharacters ≤ Length ( word ) ;
+   Middle ( word ; 1 ; numberOfCharacters ) &amp; "¶" &amp; WordBits( word; numberOfCharacters + 1 );
+
+WordBits( Right (word; Length ( word )- 1 );1 )
+)</Calculation></CustomFunction><CustomFunction id="14" functionArity="3" visible="True" parameters="XML;Attribute;Instance" name="XMLExtract"><Calculation>Let ( [ 
+XML_Length = Length ( XML ) ; 
+Attribute_Length = Length ( Attribute ) ; 
+Get_Instance = If ( IsEmpty ( Instance ) ; 1 ; Instance ) 
+]; 
+Case(
+IsEmpty ( XML ) or IsEmpty ( attribute ) or PatternCount ( xml ; "&lt;" &amp; attribute &amp; "&gt;" ) = 0 ; "" ;
+Middle ( XML ; Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + attribute_length + 2 ; 
+xml_length - ( xml_length - Position ( XML ; "&lt;/" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) ) - ( Position ( XML ; "&lt;" &amp; attribute &amp; "&gt;" ; 1 ; Get_Instance ) + Attribute_Length + 2 ) )
+) )</Calculation></CustomFunction><CustomFunction id="116" functionArity="2" visible="True" parameters="number;digits" name="AbsolutePaddingZeroes"><Calculation>//AbsolutePaddingZeroes
+//nubmber
+//digits
+
+Right( "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" &amp; number; digits )</Calculation></CustomFunction><CustomFunction id="8" functionArity="1" visible="True" parameters="docFileName" name="GetFileExtension"><Calculation>Let ( [ 
+DotCount = PatternCount ( docFileName ; "." ) ; 
+LastDot = Position (docFileName ; "." ; 1 ; DotCount )
+] ; 
+
+Case ( DotCount = 0 ; "" ; Right ( docFileName ; Length ( docFileName ) - LastDot ) ) 
+)//Let</Calculation></CustomFunction><CustomFunction id="125" functionArity="1" visible="True" parameters="pathFMFile" name="GetFileName_WithExtension"><Calculation>Let ( [ 
+
+Separator ="/" ; 
+SeparatorCount = PatternCount ( pathFMFile ; Separator ) ; 
+LastSeparator = Position ( pathFMFile ; Separator ; 1 ; SeparatorCount ) ] ; 
+
+Case ( SeparatorCount = 0 ; "" ; Right ( pathFMFile ; Length ( pathFMFile ) - LastSeparator ) ) 
+
+)//Let</Calculation></CustomFunction><CustomFunction id="126" functionArity="1" visible="True" parameters="fileName_" name="GetFileName_WithoutExtension"><Calculation>Let ( 
+	[ 
+		DotCount = PatternCount ( fileName_ ; "." ) ; 
+		LastDot = Position ( fileName_ ; "." ; Length ( fileName_ ) ; -1 ) ; 
+		LastSlash = Position ( fileName_ ; "/" ; Length ( fileName_ ) ; -1 ) ; 
+		result = Case ( DotCount = 0 ; fileName_ ; Left ( fileName_ ; LastDot - 1 ) ) 
+	] ; 
+	If ( LastSlash &gt; 0 ; Middle ( result ; LastSlash + 1 ; Length ( result ) ) ; result )
+)//Let
+</Calculation></CustomFunction><CustomFunction id="127" functionArity="1" visible="True" parameters="path" name="GetFileNameOnly"><Calculation>Left ( Right ( path ; Length ( path ) - Position ( path ; "/" ; 1 ; PatternCount ( path ; "/" ) ) ) ; Position ( path ; "." ; 1 ; PatternCount ( path ; "." ) ) - 1 )</Calculation></CustomFunction><CustomFunction id="128" functionArity="1" visible="True" parameters="fullPath" name="GetPathFolder"><Calculation>Let ( [ 
+slash = Case ( PlatformIsMac ; "/" ; PlatformIsWin ; "\\" ) ; 
+SlashCount = PatternCount ( fullPath ; slash ) ; 
+LastSlash = Position ( fullPath ; slash ; 1 ; SlashCount )
+] ; 
+
+Case ( SlashCount = 0 ; "" ; Left ( fullPath ; LastSlash ) ) 
+)//Let</Calculation></CustomFunction><CustomFunction id="129" functionArity="2" visible="True" parameters="Text;Match" name="LeftMatch"><Calculation>Left ( Text ; Length ( Match ) ) = Match</Calculation></CustomFunction><CustomFunction id="130" functionArity="1" visible="True" parameters="pathFMFolder" name="Path_AppendSlash"><Calculation>Case ( 
+
+pathFMFolder = "" ; "" ; 
+Right ( pathFMFolder ; 1 ) = "/" ; pathFMFolder ; 
+pathFMFolder &amp; "/"
+
+)</Calculation></CustomFunction><CustomFunction id="131" functionArity="1" visible="True" parameters="Path" name="PathFMToPlugin"><Calculation>Case ( path = "" ; "" ; 
+
+Let ( [ 
+
+slash = "/" ; 
+backslash = "\\" ; 
+start = "file:" ; 
+startlong = "file" &amp; Lower ( Platform ) &amp; ":" ; 
+sys = Get ( SystemDrive ) ; 
+sLen = Length ( sys ) ; 
+volumes = "/Volumes" ; 
+
+trimPath = Case ( 
+LeftMatch ( path ; start &amp; slash ) ; TrimStart ( path ; Length ( start ) ) ; 
+LeftMatch ( path ; startlong &amp; slash ) ; TrimStart ( path ; Length ( startlong ) ) ; 
+path 
+) ; 
+
+isSystem = LeftMatch ( trimPath ; sys ) ; 
+systemPath = TrimStart ( trimPath ; sLen - 1 ) ; 
+
+isExternal = LeftMatch ( trimPath ; volumes ) ; 
+
+Mac = Case ( 
+isSystem ; systemPath ; 
+isExternal ; trimPath ; 
+volumes &amp; trimPath ) ; 
+
+isNetworkPath = LeftMatch ( trimPath ; slash &amp; slash ) ; 
+networkPath = Substitute ( trimPath ; slash ; backslash ) ; 
+
+localPath = TrimStart ( networkPath ; 1 ) ; 
+
+Win = Case ( isNetworkPath ; networkPath ; localPath ) ] ; 
+
+Case ( PlatformIsMac ;  Mac ; PlatformIsWin ; Win ) ) )</Calculation></CustomFunction><CustomFunction id="2" functionArity="1" visible="True" parameters="Path" name="PathPluginToFM"><Calculation>Let ( [ 
+
+sys = Get ( SystemDrive ) ; 
+sys = Left ( sys ; Length ( sys ) - 1 ) ; 
+volume = "/Volumes" ; 
+vLen = Length ( volume ) ; 
+pLen = Length ( Path ) ; 
+
+isExternal = ( Left ( Path ; vLen ) = volume ) ;
+
+externalPath = Right ( Path ; pLen - vLen ) ; 
+
+mac = Case ( isExternal ; externalPath ; sys &amp; Path ) ; 
+win = Case ( Left ( Path ; 2 ) ≠ "\\\\" ; "/" ) &amp; Substitute ( Path ; "\\" ; "/" ) ] ; 
+
+"file" &amp; Lower ( Platform ) &amp; ":" &amp; Case ( PlatformIsMac ;  mac ; PlatformIsWin ; win )
+
+)</Calculation></CustomFunction><CustomFunction id="15" functionArity="0" visible="True" parameters="" name="PathTo_Applications"><Calculation>Let ( [ 
+
+appPath = Get ( FileMakerPath ) ; 
+count = PatternCount ( appPath ; "/" ) ; 
+pos = Position ( appPath ; "/" ; 1 ; count - 1 ) ] ; 
+"file" &amp; Lower ( Platform ) &amp; ":" &amp; Left ( appPath ; pos ) 
+
+)</Calculation></CustomFunction><CustomFunction id="16" functionArity="0" visible="True" parameters="" name="PathTo_Desktop"><Calculation>"file" &amp; Lower ( Platform ) &amp; ":" &amp; Get ( DesktopPath )</Calculation></CustomFunction><CustomFunction id="132" functionArity="0" visible="True" parameters="" name="PathTo_SystemFolder"><Calculation>"file" &amp; Lower ( Platform ) &amp; ":" &amp; Get ( SystemDrive )</Calculation></CustomFunction><CustomFunction id="133" functionArity="0" visible="True" parameters="" name="Platform"><Calculation>Case ( 
+
+Abs ( Get ( SystemPlatform ) ) = 1 ; "Mac" ; 
+Abs ( Get ( SystemPlatform ) ) = 2 ; "Win" ; 
+
+)</Calculation></CustomFunction><CustomFunction id="5" functionArity="0" visible="True" parameters="" name="PlatformIsMac"><Calculation>Abs ( Get ( SystemPlatform ) ) = 1</Calculation></CustomFunction><CustomFunction id="6" functionArity="0" visible="True" parameters="" name="PlatformIsWin"><Calculation>Abs ( Get ( SystemPlatform ) ) = 2</Calculation></CustomFunction><CustomFunction id="7" functionArity="2" visible="True" parameters="text;characters" name="TrimStart"><Calculation>Right ( text ; Length ( text ) - characters )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
