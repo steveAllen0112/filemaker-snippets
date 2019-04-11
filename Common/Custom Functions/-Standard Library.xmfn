@@ -28,9 +28,11 @@ PositionValues( text;searchValue;start;occurrence )
 screen.isSmall(  )
 ToggleValue( lst;value )
 user.hasFullAccess(  )
+Win.get( id;path )
 Win.ID( WindowTitle )
 Win.Name( WindowID )
 Win.NewName( WindowNameOld;WindowNameNew )
+Win.set( id;path;value;type )
 xmlGet( _xml;_tag )
 xmlReplaceNodeValue( xml;tag;newValue )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="28" functionArity="2" visible="True" parameters="name;value" name="#"><Calculation>/**
  * =====================================
@@ -466,58 +468,33 @@ ValueCount ( Left ( text ; (Position ( adjustedText ; "¶" &amp; searchValue &am
 	ValueCount ( FilterValues ( lst ; value ) )
 ;		DeleteValue ( lst ; value )
 ;	List ( lst ; value )
-)</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction><CustomFunction id="24" functionArity="1" visible="True" parameters="WindowTitle" name="Win.ID"><Calculation>Bin2Dec (
-	Substitute (
-		Filter ( Get(WindowName) ; Char ( 8203 ) &amp; Char ( 65279 ) ) 
-  ; [ Char ( 8203 ) ; 0 ] ; [ Char ( 65279 ) ; 1 ]
+)</Calculation></CustomFunction><CustomFunction id="51" functionArity="0" visible="True" parameters="" name="user.hasFullAccess"><Calculation>Get ( AccountPrivilegeSetName ) = "[Full Access]"</Calculation></CustomFunction><CustomFunction id="59" functionArity="2" visible="True" parameters="id;path" name="Win.get"><Calculation>gc.get ( "ui.windows.tracked[" &amp; Case ( IsEmpty ( id ) ; Win.ID ( "" ) ; id ) &amp; "].config" &amp; Case ( Length ( path ) ; "." ) &amp; path )</Calculation></CustomFunction><CustomFunction id="6" functionArity="1" visible="True" parameters="WindowTitle" name="Win.ID"><Calculation>Bin2Dec (
+	Substitute ( Filter ( Case ( IsEmpty ( WindowTitle ) ; Get ( WindowName ) ; WindowTitle ) ; Char ( 8203 ) &amp; Char ( 65279 ) ) 
+ 	; [ Char ( 8203 ) ; 0 ]
+	; [ Char ( 65279 ) ; 1 ]
 	)
-)
-
-
-
-/* OLD METHOD
-Let([
-~winNameID = If( IsEmpty( WindowTitle ) ; Get(WindowName) ; WindowTitle ) ;
-~winID = Filter ( ~winNameID ;  Char ( 8203 ) &amp; Char ( 65279 ) ) ;
-~idBin = Substitute ( ~winID 
-; [ Char ( 8203 ) ; 0 ]  
-; [ Char ( 65279 ) ; 1 ]
-) ;
-~id = Bin2Dec( ~idbin )
-
-];
-
-~id
-)
-*/</Calculation></CustomFunction><CustomFunction id="26" functionArity="1" visible="True" parameters="WindowID" name="Win.Name"><Calculation>Let([
-
-~winName = JSONGetElement ( $$WINDOW.JSON ; "[" &amp; WindowID &amp; "].name" ) ;
-~id = Substitute ( Dec2Bin ( WindowID  ) 
- ; [ 0 ; Char ( 8203 ) ]
- ; [ 1 ; Char ( 65279 ) ]
- )
-
+)</Calculation></CustomFunction><CustomFunction id="7" functionArity="1" visible="True" parameters="WindowID" name="Win.Name"><Calculation>Let([b=""
+;	~winName	= gc.get ( "ui.windows.tracked[" &amp; WindowID &amp; "].name" )
+;	~id		= Substitute ( Dec2Bin ( WindowID  ) 
+				; [ 0 ; Char ( 8203 ) ]
+				; [ 1 ; Char ( 65279 ) ]
+				)
 ];
 ~winName &amp; ~id
-)</Calculation></CustomFunction><CustomFunction id="25" functionArity="2" visible="True" parameters="WindowNameOld;WindowNameNew" name="Win.NewName"><Calculation>/*
-This is designed for use with the Set Window Title script step to ensure that the $$WINDOW.JSON is updated correctly and that each window keeps it's unique invisible binary id
+)</Calculation></CustomFunction><CustomFunction id="8" functionArity="2" visible="True" parameters="WindowNameOld;WindowNameNew" name="Win.NewName"><Calculation>/*
+This is designed for use with the Set Window Title script step to ensure that the the Global Config is updated correctly and that each window keeps it's unique invisible binary id
 */
 
-Let([
-~nameID = If( IsEmpty( WindowNameOld ) ; Get(WindowName) ; WindowNameOld ) ;
-~windowID = Win.ID( ~nameID ) ;
-~id = Filter ( ~NameID ;  Char ( 8203 ) &amp; Char ( 65279 ) ) ;
-~newName = Substitute ( WindowNameNew ; ~id ;"" ) ;
-~newNameID =  ~newName &amp; ~id ;
-
-$$WINDOW.JSON = JSONFormatElements ( 
-JSONSetElement ( $$WINDOW.JSON 
-; [ "[" &amp; ~windowID &amp; "].name" ; ~NewName ; JSONString ] 
-))
-
+Let([b=""
+;	~nameID	= Case ( IsEmpty ( WindowNameOld ) ; Get ( WindowName ) ; WindowNameOld )
+;	~windowID	= Win.ID ( ~nameID )
+;	~id		= Filter ( ~NameID ;  Char ( 8203 ) &amp; Char ( 65279 ) )
+;	~newName	= Substitute ( WindowNameNew ; ~id ; "" )
+;	~newNameID	= ~newName &amp; ~id
+;	set		= gc.set ( "ui.windows.tracked[" &amp; ~windowID &amp; "].name" ; ~NewName ; JSONString )
 ];
 ~NewNameID
-)</Calculation></CustomFunction><CustomFunction id="56" functionArity="2" visible="True" parameters="_xml;_tag" name="xmlGet"><Calculation>/* 
+)</Calculation></CustomFunction><CustomFunction id="60" functionArity="4" visible="True" parameters="id;path;value;type" name="Win.set"><Calculation>gc.set ( "ui.windows.tracked[" &amp; Case ( IsEmpty ( id ) ; Win.ID ( "" ) ; id ) &amp; "].config" &amp; Case ( Length ( path ) ; "." ) &amp; path ; value ; type )</Calculation></CustomFunction><CustomFunction id="56" functionArity="2" visible="True" parameters="_xml;_tag" name="xmlGet"><Calculation>/* 
 xmlGet ( _xml ; _tag )
 
 by Fabrice Nordmann, BH&amp;A
