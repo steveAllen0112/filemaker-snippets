@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[Add32( x;y )
+BitwiseAND( x;y )
+BitwiseNOT( x )
+BitwiseOR( x;y )
+BitwiseROL( x;bits )
+BitwiseSHL( x;bits )
+BitwiseSHR( x;bits )
+BitwiseXOR( x;y )
+Bytes(  )
+ByteSizeContainer( container )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="55" functionArity="2" visible="True" parameters="x;y" name="Add32"><Calculation>// Add32 ( x; y )
+//
+// Add two integers, wrapping at 2^32.
+//
+// Parameters:
+// x = 32-bit integer operand #1
+// y = 32-bit integer operand #2
+//
+// Return Value:
+// 32-bit result of sum of operand #1 and operand #2
+//
+Mod( x + y; 2 ^ 32 )</Calculation></CustomFunction><CustomFunction id="57" functionArity="2" visible="True" parameters="x;y" name="BitwiseAND"><Calculation>// BitwiseAND ( x; y )
+//
+// Performs the logical AND on each pair of corresponding bits within two values.
+//
+// Parameters:
+// x = Integer operand #1
+// y = Integer operand #2
+//
+// Return Value:
+// Result of bitwise AND operation.
+//
+If(
+ x = 0 or y = 0;
+ 0;
+ BitwiseAND( Int( x / 2 ); Int( y / 2 ) ) * 2 + If( Mod( x; 2 ) and Mod( y; 2 ); 1; 0 )
+)</Calculation></CustomFunction><CustomFunction id="58" functionArity="1" visible="True" parameters="x" name="BitwiseNOT"><Calculation>// BitwiseNOT ( x )
+//
+// Performs logical negation on each bit within a 32-bit value.
+//
+// Parameters:
+// x = 32-bit integer operand
+//
+// Return Value:
+// 32-bit result of bitwise negation operation.
+//
+BitwiseXOR( x; 2^32 - 1 )</Calculation></CustomFunction><CustomFunction id="59" functionArity="2" visible="True" parameters="x;y" name="BitwiseOR"><Calculation>// BitwiseOR ( x; y )
+//
+// Performs the logical OR on each pair of corresponding bits within two values.
+//
+// Parameters:
+// x = Integer operand #1
+// y = Integer operand #2
+//
+// Return Value:
+// Result of bitwise OR operation.
+//
+If(
+ x = 0 or y = 0;
+ x + y;
+ BitwiseOR( Int( x / 2 ); Int( y / 2 ) ) * 2 + If( Mod( x; 2 ) or Mod( y; 2 ); 1; 0 )
+)</Calculation></CustomFunction><CustomFunction id="60" functionArity="2" visible="True" parameters="x;bits" name="BitwiseROL"><Calculation>// BitwiseROL ( x; bits )
+//
+// Performs circular shift left of each bit within a 32-bit value. Bits that move past the left end reappear at the right end.
+//
+// Parameters:
+// x = Integer operand to be rotated
+// bits = Number of positions to rotate value
+//
+// Return Value:
+// Result of bitwise rotation operation
+//
+Mod( BitwiseOR( BitwiseSHL( x; bits ); BitwiseSHR( x; 32 - bits ) ); 2^32 )</Calculation></CustomFunction><CustomFunction id="61" functionArity="2" visible="True" parameters="x;bits" name="BitwiseSHL"><Calculation>// BitwiseSHL ( x; bits )
+//
+// Performs logical shift left of each bit within a 32-bit value. Bits that move past the left end disappear. This operation is equivalent to multiplying by a power of 2.
+//
+// Parameters:
+// x = Integer operand to be shifted
+// bits = Number of positions to shift value
+//
+// Return Value:
+// 32-bit result of bitwise shift operation
+//
+Mod( x * 2^bits; 2^32 )</Calculation></CustomFunction><CustomFunction id="62" functionArity="2" visible="True" parameters="x;bits" name="BitwiseSHR"><Calculation>// BitwiseSHR ( x; bits )
+//
+// Performs logical shift right of each bit within a value. Bits that move past the right end disappear. This operation is equivalent to dividing by a power of 2.
+//
+// Parameters:
+// x = Integer operand to be shifted
+// bits = Number of positions to shift value
+//
+// Return Value:
+// Result of bitwise shift operation
+//
+Int( x / 2^bits )</Calculation></CustomFunction><CustomFunction id="63" functionArity="2" visible="True" parameters="x;y" name="BitwiseXOR"><Calculation>// BitwiseXOR ( x; y )
+//
+// Performs the logical exclusive OR on each pair of corresponding bits within two values.
+//
+// Parameters:
+// x = Integer operand #1
+// y = Integer operand #2
+//
+// Return Value:
+// Result of bitwise exclusive OR operation.
+//
+If(
+ x = y;
+ 0;
+ BitwiseXOR( Int( x / 2 ); Int( y / 2 ) ) * 2 + If( Mod( x; 2 ) ≠ Mod( y; 2 ); 1; 0 )
+)</Calculation></CustomFunction><CustomFunction id="110" functionArity="0" visible="True" parameters="" name="Bytes"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+	Converts Current FileMaker file size in Bytes to KB/MB/GB/TB.
+
+
+*************************************************************************************************/
+
+Let 	( 
+	[ 
+	fileSize = Get ( FileSize ) ; 
+
+	kiloByte = Round ( fileSize / 1024 ; 2 ) &amp; " KB" ; 
+	megaByte = Round ( fileSize / 1048576 ; 2 ) &amp; " MB" ; 
+	gigaByte = Round ( filesize / 1073741824 ; 2 ) &amp; " GB" ; 
+	teraByte = Round ( filesize / 1099511627776 ; 2 ) &amp; " TB"
+	] ; 
+
+	
+	Case	( 
+		fileSize &lt; 1024 ; fileSize ; 
+		fileSize &lt; 1048576 ; kiloByte ; 
+		filesize &lt; 1073741824 ; megaByte ; 
+		filesize &lt; 1099511627776 ; gigaByte ; 
+		teraByte
+		) 
+			
+
+	)</Calculation></CustomFunction><CustomFunction id="111" functionArity="1" visible="True" parameters="container" name="ByteSizeContainer"><Calculation>/*************************************************************************************************
+
+	Created by Nick Hunter 
+
+
+*************************************************************************************************/
+
+
+Let 	( 
+	[ 
+	fileSize = GetContainerAttribute ( container ; "filesize" ) ; 
+
+	kiloByte = Round ( fileSize / 1024 ; 2 ) &amp; " KB" ; 
+	megaByte = Round ( fileSize / 1048576 ; 2 ) &amp; " MB" ; 
+	gigaByte = Round ( filesize / 1073741824 ; 2 ) &amp; " GB" ; 
+	teraByte = Round ( filesize / 1099511627776 ; 2 ) &amp; " TB"
+	] ; 
+
+	
+	Case	( 
+		fileSize &lt; 1024 ; fileSize ; 
+		fileSize &lt; 1048576 ; kiloByte ; 
+		filesize &lt; 1073741824 ; megaByte ; 
+		filesize &lt; 1099511627776 ; gigaByte ; 
+		teraByte
+		) 
+			
+
+	)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
