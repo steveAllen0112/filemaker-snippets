@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[BACKSPACE(  )
+ENTER(  )
+ESC(  )
+RETURN(  )
+TAB(  )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="15" functionArity="0" visible="True" parameters="" name="BACKSPACE"><Calculation>Char ( 8 )</Calculation></CustomFunction><CustomFunction id="13" functionArity="0" visible="True" parameters="" name="ENTER"><Calculation>Char ( 10 )</Calculation></CustomFunction><CustomFunction id="10" functionArity="0" visible="True" parameters="" name="ESC"><Calculation>Char ( 27 )</Calculation></CustomFunction><CustomFunction id="11" functionArity="0" visible="True" parameters="" name="RETURN"><Calculation>Char ( 13 )</Calculation></CustomFunction><CustomFunction id="9" functionArity="0" visible="True" parameters="" name="TAB"><Calculation>Char ( 9 )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
