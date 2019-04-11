@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[Bold Green( text )
+Bold Green Dark( text )
+Bold Purple( text )
+Bold Red( text )
+Color( Text )
+Unformat( text )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="3" functionArity="1" visible="True" parameters="text" name="Bold Green"><Calculation>TextStyleAdd ( 
+
+TextColor ( text ; RGB ( 5 ; 189; 1 ) )
+
+ ; Bold )</Calculation></CustomFunction><CustomFunction id="25" functionArity="1" visible="True" parameters="text" name="Bold Green Dark"><Calculation>TextStyleAdd ( 
+
+TextColor ( text ; RGB ( 31 ; 128; 48 ) )
+
+ ; Bold )</Calculation></CustomFunction><CustomFunction id="27" functionArity="1" visible="True" parameters="text" name="Bold Purple"><Calculation>TextStyleAdd ( 
+
+TextColor ( text ; RGB ( 204 ; 51; 255 ) )
+
+ ; Bold )</Calculation></CustomFunction><CustomFunction id="26" functionArity="1" visible="True" parameters="text" name="Bold Red"><Calculation>TextStyleAdd ( 
+
+TextColor ( text ; RGB ( 204 ; 0; 0 ) )
+
+ ; Bold )</Calculation></CustomFunction><CustomFunction id="23" functionArity="1" visible="True" parameters="Text" name="Color"><Calculation>If ( Left ( Text ; 1 ) = "#" ; 
+ // Handle web color
+ Let(
+  [ char = Right (Text ; 1 ) ; 
+  len = Length ( Text ) ] ; 
+ 
+  ( Position ( "0123456789ABCDEF" ; char ; 1 ; 1 ) - 1 ) + If ( len &gt; 2 ; 16 * Color ( Left (Text ; len - 1 ) ) )
+ ) ; 
+
+ // Handle named color
+ Case (
+  Text = "AliceBlue" ; 15792383 ; 
+  Text = "AntiqueWhite" ; 16444375 ; 
+  Text = "Aqua" ; 65535 ; 
+  Text = "Aquamarine" ; 8388564 ; 
+  Text = "Azure" ; 15794175 ; 
+  Text = "Beige" ; 16119260 ; 
+  Text = "Bisque" ; 16770244 ; 
+  Text = "Black" ; 0 ; 
+  Text = "BlanchedAlmond" ; 16772045 ; 
+  Text = "Blue" ; 255 ; 
+  Text = "BlueViolet" ; 9055202 ; 
+  Text = "Brown" ; 10824234 ; 
+  Text = "BurlyWood" ; 14596231 ; 
+  Text = "CadetBlue" ; 6266528 ; 
+  Text = "Chartreuse" ; 8388352 ; 
+  Text = "Chocolate" ; 13789470 ; 
+  Text = "Coral" ; 16744272 ; 
+  Text = "CornflowerBlue" ; 6591981 ; 
+  Text = "Cornsilk" ; 16775388 ; 
+  Text = "Crimson" ; 14423100 ; 
+  Text = "Cyan" ; 65535 ; 
+  Text = "DarkBlue" ; 139 ; 
+  Text = "DarkCyan" ; 35723 ; 
+  Text = "DarkGoldenRod" ; 12092939 ; 
+  Text = "DarkGray" ; 11119017 ; 
+  Text = "DarkGreen" ; 25600 ; 
+  Text = "DarkKhaki" ; 12433259 ; 
+  Text = "DarkMagenta" ; 9109643 ; 
+  Text = "DarkOliveGreen" ; 5597999 ; 
+  Text = "Darkorange" ; 16747520 ; 
+  Text = "DarkOrchid" ; 10040012 ; 
+  Text = "DarkRed" ; 9109504 ; 
+  Text = "DarkSalmon" ; 15308410 ; 
+  Text = "DarkSeaGreen" ; 9419919 ; 
+  Text = "DarkSlateBlue" ; 4734347 ; 
+  Text = "DarkSlateGray" ; 3100495 ; 
+  Text = "DarkTurquoise" ; 52945 ; 
+  Text = "DarkViolet" ; 9699539 ; 
+  Text = "DeepPink" ; 16716947 ; 
+  Text = "DeepSkyBlue" ; 49151 ; 
+  Text = "DimGray" ; 6908265 ; 
+  Text = "DodgerBlue" ; 2003199 ; 
+  Text = "Feldspar" ; 13734517 ; 
+  Text = "FireBrick" ; 11674146 ; 
+  Text = "FloralWhite" ; 16775920 ; 
+  Text = "ForestGreen" ; 2263842 ; 
+  Text = "Fuchsia" ; 16711935 ; 
+  Text = "Gainsboro" ; 14474460 ; 
+  Text = "GhostWhite" ; 16316671 ; 
+  Text = "Gold" ; 16766720 ; 
+  Text = "GoldenRod" ; 14329120 ; 
+  Text = "Gray" ; 8421504 ; 
+  Text = "Green" ; 32768 ; 
+  Text = "GreenYellow" ; 11403055 ; 
+  Text = "HoneyDew" ; 15794160 ; 
+  Text = "HotPink" ; 16738740 ; 
+  Text = "IndianRed" ; 13458524 ; 
+  Text = "Indigo" ; 4915330 ; 
+  Text = "Ivory" ; 16777200 ; 
+  Text = "Khaki" ; 15787660 ; 
+  Text = "Lavender" ; 15132410 ; 
+  Text = "LavenderBlush" ; 16773365 ; 
+  Text = "LawnGreen" ; 8190976 ; 
+  Text = "LemonChiffon" ; 16775885 ; 
+  Text = "LightBlue" ; 11393254 ; 
+  Text = "LightCoral" ; 15761536 ; 
+  Text = "LightCyan" ; 14745599 ; 
+  Text = "LightGoldenRodYellow" ; 16448210 ; 
+  Text = "LightGrey" ; 13882323 ; 
+  Text = "LightGreen" ; 9498256 ; 
+  Text = "LightPink" ; 16758465 ; 
+  Text = "LightSalmon" ; 16752762 ; 
+  Text = "LightSeaGreen" ; 2142890 ; 
+  Text = "LightSkyBlue" ; 8900346 ; 
+  Text = "LightSlateBlue" ; 8679679 ; 
+  Text = "LightSlateGray" ; 7833753 ; 
+  Text = "LightSteelBlue" ; 11584734 ; 
+  Text = "LightYellow" ; 16777184 ; 
+  Text = "Lime" ; 65280 ; 
+  Text = "LimeGreen" ; 3329330 ; 
+  Text = "Linen" ; 16445670 ; 
+  Text = "Magenta" ; 16711935 ; 
+  Text = "Maroon" ; 8388608 ; 
+  Text = "MediumAquaMarine" ; 6737322 ; 
+  Text = "MediumBlue" ; 205 ; 
+  Text = "MediumOrchid" ; 12211667 ; 
+  Text = "MediumPurple" ; 9662680 ; 
+  Text = "MediumSeaGreen" ; 3978097 ; 
+  Text = "MediumSlateBlue" ; 8087790 ; 
+  Text = "MediumSpringGreen" ; 64154 ; 
+  Text = "MediumTurquoise" ; 4772300 ; 
+  Text = "MediumVioletRed" ; 13047173 ; 
+  Text = "MidnightBlue" ; 1644912 ; 
+  Text = "MintCream" ; 16121850 ; 
+  Text = "MistyRose" ; 16770273 ; 
+  Text = "Moccasin" ; 16770229 ; 
+  Text = "NavajoWhite" ; 16768685 ; 
+  Text = "Navy" ; 128 ; 
+  Text = "OldLace" ; 16643558 ; 
+  Text = "Olive" ; 8421376 ; 
+  Text = "OliveDrab" ; 7048739 ; 
+  Text = "Orange" ; 16753920 ; 
+  Text = "OrangeRed" ; 16729344 ; 
+  Text = "Orchid" ; 14315734 ; 
+  Text = "PaleGoldenRod" ; 15657130 ; 
+  Text = "PaleGreen" ; 10025880 ; 
+  Text = "PaleTurquoise" ; 11529966 ; 
+  Text = "PaleVioletRed" ; 14184595 ; 
+  Text = "PapayaWhip" ; 16773077 ; 
+  Text = "PeachPuff" ; 16767673 ; 
+  Text = "Peru" ; 13468991 ; 
+  Text = "Pink" ; 16761035 ; 
+  Text = "Plum" ; 14524637 ; 
+  Text = "PowderBlue" ; 11591910 ; 
+  Text = "Purple" ; 8388736 ; 
+  Text = "Red" ; 16711680 ; 
+  Text = "RosyBrown" ; 12357519 ; 
+  Text = "RoyalBlue" ; 4286945 ; 
+  Text = "SaddleBrown" ; 9127187 ; 
+  Text = "Salmon" ; 16416882 ; 
+  Text = "SandyBrown" ; 16032864 ; 
+  Text = "SeaGreen" ; 3050327 ; 
+  Text = "SeaShell" ; 16774638 ; 
+  Text = "Sienna" ; 10506797 ; 
+  Text = "Silver" ; 12632256 ; 
+  Text = "SkyBlue" ; 8900331 ; 
+  Text = "SlateBlue" ; 6970061 ; 
+  Text = "SlateGray" ; 7372944 ; 
+  Text = "Snow" ; 16775930 ; 
+  Text = "SpringGreen" ; 65407 ; 
+  Text = "SteelBlue" ; 4620980 ; 
+  Text = "Tan" ; 13808780 ; 
+  Text = "Teal" ; 32896 ; 
+  Text = "Thistle" ; 14204888 ; 
+  Text = "Tomato" ; 16737095 ; 
+  Text = "Turquoise" ; 4251856 ; 
+  Text = "Violet" ; 15631086 ; 
+  Text = "VioletRed" ; 13639824 ; 
+  Text = "Wheat" ; 16113331 ; 
+  Text = "White" ; 16777215 ; 
+  Text = "WhiteSmoke" ; 16119285 ; 
+  Text = "Yellow" ; 16776960 ; 
+  Text = "YellowGreen" ; 10145074 ; 
+  0
+ )
+)</Calculation></CustomFunction><CustomFunction id="24" functionArity="1" visible="True" parameters="text" name="Unformat"><Calculation>Evaluate ( Quote ( text ) )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
