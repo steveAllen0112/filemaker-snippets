@@ -5,6 +5,7 @@ DayNametoDayOfWeek( theDayName )
 FYQ( Start;theDate )
 MonthEnd( StartDate;Months )
 GetWorkDays( StartDate;DueDate )
+FMPDate_to_SQLDate( text )
 Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
 Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
 AGE( BirthDate )
@@ -124,7 +125,22 @@ DayOfWeek ( StartDate ) &lt; 7 ;
 Min ( 6 ; DayOfWeek ( DueDate ) ) - DayOfWeek ( StartDate ) ; 
 
 0 
-) + 1</Calculation></CustomFunction><CustomFunction id="168" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
+) + 1</Calculation></CustomFunction><CustomFunction id="83" functionArity="1" visible="True" parameters="text" name="FMPDate_to_SQLDate"><Calculation>
+
+Let ( [ 
+	t1 = text ; 
+	t2 = Substitute ( t1 ; "/" ; ¶ ) ;
+
+	dd = GetValue ( t2 ; 1 ) ;
+	mm = GetValue ( t2 ; 2 ) ;
+	yyyy = GetValue ( t2 ; 3 ) ;
+	sep = "-"
+
+] ; 
+
+yyyy &amp; sep &amp; mm &amp; sep &amp; dd
+
+) // Let</Calculation></CustomFunction><CustomFunction id="168" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
 
 				Find Date Range 1 Year - 1 year based on Hire Date
 Inputs: 

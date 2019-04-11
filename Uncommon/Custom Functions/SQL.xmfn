@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[FMPDate_to_SQLDate( text )
+SQLDate_to_FMPDate( _Date )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="83" functionArity="1" visible="True" parameters="text" name="FMPDate_to_SQLDate"><Calculation>
+
+Let ( [ 
+	t1 = text ; 
+	t2 = Substitute ( t1 ; "/" ; ¶ ) ;
+
+	dd = GetValue ( t2 ; 1 ) ;
+	mm = GetValue ( t2 ; 2 ) ;
+	yyyy = GetValue ( t2 ; 3 ) ;
+	sep = "-"
+
+] ; 
+
+yyyy &amp; sep &amp; mm &amp; sep &amp; dd
+
+) // Let</Calculation></CustomFunction><CustomFunction id="82" functionArity="1" visible="True" parameters="_Date" name="SQLDate_to_FMPDate"><Calculation>//SQLDate_to_FMPDate
+
+Let ( [ y = Left ( _Date ; 4 ) ; 
+m = Middle ( _Date ; 6 ; 2 ) ; 
+d = Middle ( _Date ; 9 ; 2 ) ] ; 
+Date ( m ; d ; y ) )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

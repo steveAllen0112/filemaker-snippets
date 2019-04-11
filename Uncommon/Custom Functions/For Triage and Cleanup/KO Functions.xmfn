@@ -44,7 +44,6 @@ FM_Name_ID_Layout( _Name_ID )
 FM_Name_ID_Script( _Name_ID )
 FM_Name_ID_Table( _Name_ID )
 FM_Name_ID_ValueList( _Name_ID )
-FMPDate_to_SQLDate( text )
 fnPhone( text )
 FoundList( Field;Start )
 GetAllChars( text;numberOfChars )
@@ -2057,22 +2056,7 @@ Case ( _p = GetAsNumber ( _p ) ;
     )
 
 )
-)</Calculation></CustomFunction><CustomFunction id="83" functionArity="1" visible="True" parameters="text" name="FMPDate_to_SQLDate"><Calculation>
-
-Let ( [ 
-	t1 = text ; 
-	t2 = Substitute ( t1 ; "/" ; ¶ ) ;
-
-	dd = GetValue ( t2 ; 1 ) ;
-	mm = GetValue ( t2 ; 2 ) ;
-	yyyy = GetValue ( t2 ; 3 ) ;
-	sep = "-"
-
-] ; 
-
-yyyy &amp; sep &amp; mm &amp; sep &amp; dd
-
-) // Let</Calculation></CustomFunction><CustomFunction id="90" functionArity="1" visible="True" parameters="text" name="fnPhone"><Calculation>// fnPhone(text)
+)</Calculation></CustomFunction><CustomFunction id="90" functionArity="1" visible="True" parameters="text" name="fnPhone"><Calculation>// fnPhone(text)
 // depending on phone # length, will format accordingly
 // Timothy Trimble, www.timothytrimble.info
 
