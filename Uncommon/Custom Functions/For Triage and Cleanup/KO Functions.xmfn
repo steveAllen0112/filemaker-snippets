@@ -2,14 +2,9 @@
 Add32( x;y )
 AddPrefixSuffixToList( theList;prefix;suffix )
 Time_Clock( Start;Stop;Lunch_Start;Lunch_Stop;Override;Option )
-Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
 AddRemoveListItems( theList;theValues )
-Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
-AGE( BirthDate )
-Year_Range_Hire_versus_Selected( Selected_Year;Hire_Date )
 SQLFieldName( fieldRef )
 SQLTableName( fieldRef )
-AppointmentDateRange( s;e;t )
 AsciiCode( ch )
 BitwiseAND( x;y )
 BitwiseNOT( x )
@@ -35,11 +30,7 @@ Currency( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
 Currency Format( Amount;CCode;Lead;Trail;ShowDecimal;RedNegative )
 CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
 CustomList( Start;End;Function )
-dateformatzeros( date_field )
-DateRange( StartDate;EndDate;RangeLimit )
 DeduplicateList( input;output )
-DateRangeConditWeekends( StartDate;EndDate;Weekend )
-DayRange( s;e )
 Difference( Start;Stop;Override )
 Drop_Down( field;L )
 ElapsedTime( TStampBegin;TStampEnd;Format )
@@ -51,7 +42,6 @@ ExtractData( XML;Attribute;Instance )
 FileMakerVersionNumber(  )
 FilePathToURL( FMFilePath )
 FilterValuesByExpression( theList;expression )
-FirstDayThisWeek( StartDay )
 FM_Name_ID( _Name_ID;_TLFSV;_fileName;_layoutName )
 FM_Name_ID_Field( _Name_ID )
 FM_Name_ID_Layout( _Name_ID )
@@ -105,7 +95,6 @@ MD5Hash( data )
 MergeValues( listA;listB )
 MinimizeLargeNumber( field )
 MinValue( lst;value )
-MonthRange( s;e )
 numberInwords( NumberIn;Currency;DecimalCurr )
 Parsing text with dilmiter( text;num;dilm )
 parsSQL( text;dilm;lvalue;num )
@@ -126,7 +115,6 @@ ScriptOptionalParameterList( scriptNameToParse )
 ScriptRequiredParameterList( scriptNameToParse )
 SetLocalVariable( name;dynamic;value )
 SortableList( textList;skipPrefixes )
-SQLDate_to_FMPDate( _Date )
 SqlInsertNull( text )
 SSN_Number( number )
 State_Abbrev( StateAbbrev )
@@ -137,14 +125,10 @@ TrimPHPTags( PHPCode )
 Value_Counter( Value_List;field )
 VerifyVariablesNotEmpty( nameList )
 VisiblePortalRows( aField;aPortal )
-WeekofFiscalYear( TheDate;StartingDay;StartMonth;StartDay )
-WeekRange( s;e )
 WindowInfo(  )
 WindowNamesAll( dbNames;wdNames;excludeCurrentWindow )
 WordBits( word;numberOfChars )
 WordCode( text;positionStart )
-YearMonthYear( startDate;endDate;fontSize;separator;red;green;blue )
-YearRange( s;e )
 HTML_Last_Row_Border( Target_Field;Tag;Row_1;Last_Row_Class;Target_Tag_or_Class )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="32" functionArity="2" visible="True" parameters="number;digits" name="AbsolutePaddingZeroes"><Calculation>//AbsolutePaddingZeroes
 //nubmber
 //digits
@@ -269,70 +253,7 @@ PARAMETERS
 		~option = "R" ; ~resultRounded;
 		~result
 		)
-)</Calculation></CustomFunction><CustomFunction id="168" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
-
-				Find Date Range 1 Year - 1 year based on Hire Date
-Inputs: 
-Selected Year 
-Hire Date 
-
-How it works: 
-Seleted Year is evaluated against the hire date to idenitfy if a year spanning last year to a future date is correct or a current date to a date next year. 
-
-Example (1) Previous to Current: 
-Hire Date = 2/1/2018
-Selected Year = 2018
-Current Date = 1/5/2019
-Output = 
-2/1/2018 - 2/1/2019
-
-Example (2) Current to Next: 
-Hire Date = 2/1/2018
-Selected Year = 2019
-Current Date = 3/5/2019
-Output = 
-2/1/2019 - 2/1/2020
-
-*/
-
-
-
-
-Let ( [
-/////////////////////// ------ Prep------ ///////////////////////
-
-//		Current Date Values
-~Current_date = GetAsDate ( Get ( CurrentDate ) ); 
-~current_month = Month ( ~Current_date ) ;
-~Selected_Year = Selected_Year ;
-
-//		Hire Date Values
-~hire_date = Hire_Date ;
-~hire_month = Month ( ~hire_date ) ;
-
-~hire_Month_Day = ~hire_month &amp;"/"&amp; Day ( ~hire_date ) ; 
-
-/////////////////////// ------ START------ ///////////////////////
-
-~Test = If ( GetAsDate ( ~hire_Month_Day ) &gt; ~Current_date ; 1 ; 0 ) ;
-
-$Range_date_start = GetAsDate (
-					Case ( ~test = 1 ;
-						 ~hire_Month_Day &amp; "/" &amp; (~Selected_Year -1) ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year) 
-							); 
-
-$Range_date_end = GetAsDate (
-					Case ( ~test = 1 ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year + 1) 
-							); 
-
-~result = Case ( IsValid ( $Range_date_start ) and IsValid ( $Range_date_end ) ; 1 ; 0 )  ];
-
-~result 
-//&amp;¶&amp; $Range_date_start &amp; " - " &amp; $Range_date_end
-	 )</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="theList;theValues" name="AddRemoveListItems"><Calculation>/*
+)</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="theList;theValues" name="AddRemoveListItems"><Calculation>/*
 AddRemoveListItems (theList; theValues)
 Adapted from function by: David Head, uLearnIT
 theList: standard return separated list
@@ -374,141 +295,7 @@ Case(
 LV &lt; 2 ; result; 
 AddRemoveListItems( result; moreValues)
 )
-)</Calculation></CustomFunction><CustomFunction id="169" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
-
-				Find Date Range 1 Year - 1 year based on Hire Date
-Inputs: 
-Selected Year 
-Hire Date 
-
-How it works: 
-Seleted Year is evaluated against the hire date to idenitfy if a year spanning last year to a future date is correct or a current date to a date next year. 
-
-Example (1) Previous to Current: 
-Hire Date = 2/1/2018
-Selected Year = 2018
-Current Date = 1/5/2019
-Output = 
-2/1/2018 - 2/1/2019
-
-Example (2) Current to Next: 
-Hire Date = 2/1/2018
-Selected Year = 2019
-Current Date = 3/5/2019
-Output = 
-2/1/2019 - 2/1/2020
-
-*/
-
-
-
-
-Let ( [
-/////////////////////// ------ Prep------ ///////////////////////
-
-//		Current Date Values
-~Current_date = GetAsDate ( Get ( CurrentDate ) ); 
-~current_month = Month ( ~Current_date ) ;
-~Selected_Year = Selected_Year ;
-
-//		Hire Date Values
-~hire_date = Hire_Date ;
-~hire_month = Month ( ~hire_date ) ;
-
-~hire_Month_Day = ~hire_month &amp;"/"&amp; Day ( ~hire_date ) ; 
-
-/////////////////////// ------ START------ ///////////////////////
-
-~Test = If ( GetAsDate ( ~hire_Month_Day ) &gt; ~Current_date ; 1 ; 0 ) ;
-
-$Range_date_start = GetAsDate (
-					Case ( ~test = 1 ;
-						 ~hire_Month_Day &amp; "/" &amp; (~Selected_Year -1) ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year) 
-							); 
-
-$Range_date_end = GetAsDate (
-					Case ( ~test = 1 ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year + 1) 
-							); 
-
-~result = Case ( IsValid ( $Range_date_start ) and IsValid ( $Range_date_end ) ; 1 ; 0 )  ];
-
-~result 
-//&amp;¶&amp; $Range_date_start &amp; " - " &amp; $Range_date_end
-	 )</Calculation></CustomFunction><CustomFunction id="34" functionArity="1" visible="True" parameters="BirthDate" name="AGE"><Calculation>Year (Get(CurrentDate)) - 
-Year (BirthDate) - 
-( 
-Get (CurrentDate) &lt; Date ( 
-Month (BirthDate); 
-Day (BirthDate); 
-Year (Get(CurrentDate))
-) 
-)</Calculation></CustomFunction><CustomFunction id="167" functionArity="2" visible="True" parameters="Selected_Year;Hire_Date" name="Year_Range_Hire_versus_Selected"><Calculation>/*
-
-				Find Date Range 1 Year - 1 year based on Hire Date
-Inputs: 
-Selected Year 
-Hire Date 
-
-How it works: 
-Seleted Year is evaluated against the hire date to idenitfy if a year spanning last year to a future date is correct or a current date to a date next year. 
-
-Example (1) Previous to Current: 
-Hire Date = 2/1/2018
-Selected Year = 2018
-Current Date = 1/5/2019
-Output = 
-2/1/2018 - 2/1/2019
-
-Example (2) Current to Next: 
-Hire Date = 2/1/2018
-Selected Year = 2019
-Current Date = 3/5/2019
-Output = 
-2/1/2019 - 2/1/2020
-
-*/
-
-
-
-
-Let ( [
-/////////////////////// ------ Prep------ ///////////////////////
-
-//		Current Date Values
-~Current_date = GetAsDate ( Get ( CurrentDate ) ); 
-~current_month = Month ( ~Current_date ) ;
-~Selected_Year = Selected_Year ;
-
-//		Hire Date Values
-~hire_date = Hire_Date ;
-~hire_month = Month ( ~hire_date ) ;
-
-~hire_Month_Day = ~hire_month &amp;"/"&amp; Day ( ~hire_date ) ; 
-
-/////////////////////// ------ START------ ///////////////////////
-
-~Test = If ( GetAsDate ( ~hire_Month_Day ) &gt; ~Current_date ; 1 ; 0 ) ;
-
-$Range_date_start = GetAsDate (
-					Case ( ~test = 1 ;
-						 ~hire_Month_Day &amp; "/" &amp; (~Selected_Year -1) ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year) 
-							); 
-
-$Range_date_end = GetAsDate (
-					Case ( ~test = 1 ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year ;
-						 ~hire_Month_Day &amp; "/" &amp; ~Selected_Year + 1) 
-							); 
-
-~result = Case ( IsValid ( $Range_date_start ) and IsValid ( $Range_date_end ) ; 1 ; 0 )  ];
-
-~result 
-//&amp;¶&amp; $Range_date_start &amp; " - " &amp; $Range_date_end
-	 )</Calculation></CustomFunction><CustomFunction id="165" functionArity="1" visible="True" parameters="fieldRef" name="SQLFieldName"><Calculation>/**
+)</Calculation></CustomFunction><CustomFunction id="165" functionArity="1" visible="True" parameters="fieldRef" name="SQLFieldName"><Calculation>/**
  * =====================================
  * FieldName ( fieldRef )
  *
@@ -572,28 +359,7 @@ Quote ( GetValue ( Substitute ( GetFieldName ( fieldRef ) ; "::" ; ¶ ) ; 2 ) )<
  * =====================================
  */
 
-Quote ( GetValue ( Substitute ( GetFieldName ( fieldRef ) ; "::" ; ¶ ) ; 1 ) )</Calculation></CustomFunction><CustomFunction id="14" functionArity="3" visible="True" parameters="s;e;t" name="AppointmentDateRange"><Calculation>Case(
-
-t ="Daily";
-Case ( s &lt; e ; GetAsText( s ) &amp; "¶" &amp; AppointmentDateRange (s+1; e; t) ; GetAsText ( e ) );
-
-t="Weekly";
-Case ( s &lt; e ; 
-GetAsText(s) &amp; "¶" &amp; AppointmentDateRange ( s+7;e; t);
-If(Mod((s - e);7) = 0; GetAsText(e);""));
-
-t="Monthly";
-Case ( s&lt; e ; 
-GetAsText(s) &amp; "¶" &amp; AppointmentDateRange ( Date ( Month ( s )+1 ; Day ( s ) ; Year ( s ) );e; t);
-If(Day ( s ) = Day ( e );GetAsText(e);""));
-
-t="Yearly";
-Case ( s&lt; e ; 
-GetAsText(s) &amp; "¶" &amp; AppointmentDateRange ( Date ( Month ( s ) ; Day ( s ) ; Year ( s )+1 );e; t);
-If(Year( s ) = Year ( e );GetAsText(e);""));
-
-""
-)</Calculation></CustomFunction><CustomFunction id="56" functionArity="1" visible="True" parameters="ch" name="AsciiCode"><Calculation>// AsciiCode ( ch )
+Quote ( GetValue ( Substitute ( GetFieldName ( fieldRef ) ; "::" ; ¶ ) ; 1 ) )</Calculation></CustomFunction><CustomFunction id="56" functionArity="1" visible="True" parameters="ch" name="AsciiCode"><Calculation>// AsciiCode ( ch )
 //
 // Return ASCII code for printable 7-bit characters.
 // Control and 8-bit characters are treated as ~ (0x7E).
@@ -1727,29 +1493,7 @@ Let ([ CLNum = 4 ] ; GetNthRecord ( Field ; CLNum ))"
 Interrested in the mechanism ?
 My advice then : dissect this function by escaping the 'Result' and placing one of the numerous intermediary variables available.
 Special attention should be paid to the 'First' Variable, everything starts from there !
-*/</Calculation></CustomFunction><CustomFunction id="20" functionArity="1" visible="True" parameters="date_field" name="dateformatzeros"><Calculation>//dateformatzeros
-//date_field
-Let(
-[
-d = GetAsText(date_field);
-mm = If( PatternCount ( Left(d;2) ; "/" );"0" &amp; Left(d;1);Left(d;2));
-dd = If(PatternCount ( Middle ( d ; Position ( d ; "/" ; 1 ; 1 )+1 ; 2 ) ; "/" );"0" &amp; Middle ( d ; Position ( d ; "/" ; 1 ; 1 )+1 ; 1 );Middle ( d ; Position ( d ; "/" ; 1 ; 1 )+1 ; 2 ));
-yyyy = Right(d;4)
-];
-If(IsEmpty(d);"";mm &amp; "/" &amp; dd &amp; "/" &amp; yyyy)
-)</Calculation></CustomFunction><CustomFunction id="8" functionArity="3" visible="True" parameters="StartDate;EndDate;RangeLimit" name="DateRange"><Calculation>Case( 
-
-IsEmpty ( StartDate ) or IsEmpty ( EndDate ) ; "Please fill in both fields." ;
-
-StartDate &gt; EndDate ; "Start date must be earlier than end date." ; 
-
-( EndDate - StartDate ) &gt; ( RangeLimit * 365 ) ; "Date range has exceeded the limit of " &amp; RangeLimit &amp; " years." ;
-
-Case ( EndDate &gt; StartDate ; 
-
-DateRange ( StartDate; EndDate - 1; RangeLimit) &amp; "¶" &amp; EndDate ; EndDate
-
-))</Calculation></CustomFunction><CustomFunction id="164" functionArity="2" visible="True" parameters="input;output" name="DeduplicateList"><Calculation>Let ( 
+*/</Calculation></CustomFunction><CustomFunction id="164" functionArity="2" visible="True" parameters="input;output" name="DeduplicateList"><Calculation>Let ( 
 
 [
 
@@ -1778,13 +1522,7 @@ result = Case (
 
 result
 
-)</Calculation></CustomFunction><CustomFunction id="24" functionArity="3" visible="True" parameters="StartDate;EndDate;Weekend" name="DateRangeConditWeekends"><Calculation>/*Comments to linkwitz_riley-form@yahoo.es
-Weekend values are: 0 to omit weekends or 1 to include them. */
-
-Case ( StartDate &gt; EndDate ; "EndDate must be later than StartDate" ; 
-Case ( EndDate &gt; StartDate and not IsEmpty ( StartDate ) and not IsEmpty ( EndDate ); 
-DateRangeConditWeekends ( StartDate ; EndDate - 1 ; Weekend ) ) &amp; 
-Case ( Weekend = 0 ; Case ( DayOfWeek ( EndDate ) ≠ 1 and DayOfWeek ( EndDate ) ≠ 7 ; EndDate &amp; "¶" ) ; Weekend = 1 ; EndDate &amp; "¶" ) )</Calculation></CustomFunction><CustomFunction id="9" functionArity="2" visible="True" parameters="s;e" name="DayRange"><Calculation>Case ( s &lt; e ; GetAsText( s ) &amp; "¶" &amp; DayRange (s+1 ; e ) ; GetAsText ( e ) )</Calculation></CustomFunction><CustomFunction id="108" functionArity="3" visible="True" parameters="Start;Stop;Override" name="Difference"><Calculation>Let ( [
+)</Calculation></CustomFunction><CustomFunction id="108" functionArity="3" visible="True" parameters="Start;Stop;Override" name="Difference"><Calculation>Let ( [
 ~hour =Hour ( Stop - Start)  ;
 ~minute = Minute (Stop - Start) ;
 ~end_time = (Hour ( Get (CurrentTime) - Start) + Minute (Get (CurrentTime) - Start)  /60) ;
@@ -2239,13 +1977,7 @@ right
 
 Evaluate( let )
 
-)</Calculation></CustomFunction><CustomFunction id="79" functionArity="1" visible="True" parameters="StartDay" name="FirstDayThisWeek"><Calculation>/*FirstDayThisWeek ( StartDay )
-
- FirstDayThisWeek ( StartDay )
-
-StartDay is 1 for Sunday, 2 for Monday, etc.*/
-
-Get ( CurrentDate ) - ( DayOfWeek ( Get ( CurrentDate ) ) - StartDay )</Calculation></CustomFunction><CustomFunction id="131" functionArity="4" visible="True" parameters="_Name_ID;_TLFSV;_fileName;_layoutName" name="FM_Name_ID"><Calculation>/* FM_Name_ID ( _Name_ID ; _TLFSV ; _fileName ; _layoutName )
+)</Calculation></CustomFunction><CustomFunction id="131" functionArity="4" visible="True" parameters="_Name_ID;_TLFSV;_fileName;_layoutName" name="FM_Name_ID"><Calculation>/* FM_Name_ID ( _Name_ID ; _TLFSV ; _fileName ; _layoutName )
 
 Fabrice Nordmann
 
@@ -3646,9 +3378,6 @@ If ( ValueCount ( lst ) ;
                       next &lt; current ; next ; current ) ] ; 
     If ( ValueCount ( rest ) ; MinValue ( rest ; low ) ; low )
   )
-)</Calculation></CustomFunction><CustomFunction id="11" functionArity="2" visible="True" parameters="s;e" name="MonthRange"><Calculation>Case ( s&lt; e ; 
-GetAsText(s) &amp; "¶" &amp; MonthRange ( Date ( Month ( s )+1 ; Day ( s ) ; Year ( s ) ); e);
-If(Day ( s ) = Day ( e );GetAsText(e);"")
 )</Calculation></CustomFunction><CustomFunction id="4" functionArity="3" visible="True" parameters="NumberIn;Currency;DecimalCurr" name="numberInwords"><Calculation>Case(NumberIn = 0; ""; 
 
 Let ( [
@@ -4192,12 +3921,7 @@ customlist (
 		)
 	"
 )
-*/</Calculation></CustomFunction><CustomFunction id="82" functionArity="1" visible="True" parameters="_Date" name="SQLDate_to_FMPDate"><Calculation>//SQLDate_to_FMPDate
-
-Let ( [ y = Left ( _Date ; 4 ) ; 
-m = Middle ( _Date ; 6 ; 2 ) ; 
-d = Middle ( _Date ; 9 ; 2 ) ] ; 
-Date ( m ; d ; y ) )</Calculation></CustomFunction><CustomFunction id="86" functionArity="1" visible="True" parameters="text" name="SqlInsertNull"><Calculation>Case( not IsEmpty(text);"'"&amp;text&amp;"'";"NULL")</Calculation></CustomFunction><CustomFunction id="16" functionArity="1" visible="True" parameters="number" name="SSN_Number"><Calculation>// remove any non-number
+*/</Calculation></CustomFunction><CustomFunction id="86" functionArity="1" visible="True" parameters="text" name="SqlInsertNull"><Calculation>Case( not IsEmpty(text);"'"&amp;text&amp;"'";"NULL")</Calculation></CustomFunction><CustomFunction id="16" functionArity="1" visible="True" parameters="number" name="SSN_Number"><Calculation>// remove any non-number
 
 //Formats Social Security numbers in the format xxx-xx-xxxx. 
 
@@ -4503,18 +4227,7 @@ Case ( IsEmpty ( $$cf_lastRow )
    )
 &amp; VisiblePortalRows ( aField ; aPortal )
 ; $$cf_firstRow &amp; Let ([ $$cf_firstRow = "" ; $$cf_lastRow = "" ; $$cf_counter = "" ]; "" )
-))</Calculation></CustomFunction><CustomFunction id="23" functionArity="4" visible="True" parameters="TheDate;StartingDay;StartMonth;StartDay" name="WeekofFiscalYear"><Calculation>Let(
-   [
-      d = Date(StartMonth;StartDay;Year(TheDate)) ;
-      dp = Date(StartMonth;StartDay;Year(TheDate)-1) ;
-      s = d + Mod(StartingDay-DayOfWeek( d )+3;7)-3 ;
-      sp = dp + Mod(StartingDay-DayOfWeek( dp )+3;7)-3 ;
-      FY_Start = Case( TheDate &gt;= s ; s ; sp )
-   ] ;
-   Int( (TheDate - FY_Start)/7) + 1
-)</Calculation></CustomFunction><CustomFunction id="10" functionArity="2" visible="True" parameters="s;e" name="WeekRange"><Calculation>Case ( s &lt; e ; 
-GetAsText(s) &amp; "¶" &amp; WeekRange ( s+7; e);
-If(Mod((s - e);7) = 0; GetAsText(e);""))</Calculation></CustomFunction><CustomFunction id="36" functionArity="0" visible="True" parameters="" name="WindowInfo"><Calculation>Let(
+))</Calculation></CustomFunction><CustomFunction id="36" functionArity="0" visible="True" parameters="" name="WindowInfo"><Calculation>Let(
 [
 $$window_height = Get ( WindowHeight );
 $$window_width = Get (WindowWidth);
@@ -4570,56 +4283,7 @@ Case	(
 Case	(
 	Length ( text ) = 0 ; "" ; // If field empty
 	positionStart ≤ Length ( text ) ; Code ( Middle ( text ; positionStart ; 1 ) ) &amp; "¶" &amp; WordCode ( text ; positionStart + 1 ) // Tail Recursive
-	)</Calculation></CustomFunction><CustomFunction id="126" functionArity="7" visible="True" parameters="startDate;endDate;fontSize;separator;red;green;blue" name="YearMonthYear"><Calculation>/*************************************************************************************************
-
-	Created by Nick Hunter 
-
-	Returns how many Years, Months and Days between two dates.
-
-
-*************************************************************************************************/
-
-Let	( 
-	[ 
-	number = endDate - startDate ; 
-	color = RGB ( red ; green ; blue ) ; // Color
-
-	year = number / 365 ; 
-	month = number / 30.41 ; 
-	day = number / 24 ; 
-
-	years365 = Int ( month / 12 ) ; 
-	months365 = Int ( Mod ( month ; 12 ) ) ; 
-	days365 = Int ( Mod ( number ; 30.41 ) ) ; 
-
-	months = Int ( number / 30 ) ; 
-	days = Int ( Mod ( number ; 30.41 ) ) ; 
-
-	years365Label = If ( years365 &gt; 1 ; " years¶" ; " year¶" ) ; 
-	days365Label = If ( days365 &gt; 1 ; " days" ; " day" ) ; 
-
-	daysLabel = If ( days &gt; 1 ; " days" ; " day" ) ; 
-
-	text = 
-		If ( number ≥ 365 ; 
-
-		TextSize ( TextColor ( years365; color ) ; fontSize ) &amp; years365Label &amp; 
-		TextSize ( TextColor ( months365; color ) ; fontSize ) &amp; " months¶" &amp; 
-		TextSize ( TextColor ( days365; color ) ; fontSize ) &amp; days365Label ; 
-
-	
-		TextSize ( TextColor ( months ; color ) ; fontSize ) &amp; " months¶" &amp; 
-		TextSize ( TextColor ( days ; color ) ; fontSize ) &amp; daysLabel
-		)
-	] ; 
-
-
-	Substitute ( text ; ¶ ; separator )
-
-	)</Calculation></CustomFunction><CustomFunction id="12" functionArity="2" visible="True" parameters="s;e" name="YearRange"><Calculation>Case ( s&lt; e ; 
-GetAsText(s) &amp; "¶" &amp; YearRange ( Date ( Month ( s ) ; Day ( s ) ; Year ( s )+1 ); e);
-If(Year( s ) = Year ( e );GetAsText(e);"")
-)</Calculation></CustomFunction><CustomFunction id="162" functionArity="5" visible="True" parameters="Target_Field;Tag;Row_1;Last_Row_Class;Target_Tag_or_Class" name="HTML_Last_Row_Border"><Calculation>/*
+	)</Calculation></CustomFunction><CustomFunction id="162" functionArity="5" visible="True" parameters="Target_Field;Tag;Row_1;Last_Row_Class;Target_Tag_or_Class" name="HTML_Last_Row_Border"><Calculation>/*
 Allows Formatting of the Right border of an HTML Document 
 First Row is assumed to be a hard coded label 
 Set Tag example: &lt;td&gt; or &lt;th&gt; 

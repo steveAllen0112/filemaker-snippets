@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[Acronym( text )
 RandomKey( characters ; size )
-calfirstofwk( dt )
-FYQ( Start;theDate )
 AbrivState( StateAbbrev )
 CenterWindow in Window vert horiz( dimension )
 Color( Text )
 CombineValues( list1;list2 )
-MonthEnd( StartDate;Months )
-DayNametoDayOfWeek( theDayName )
 CurrencyAsText( Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative )
 fnPhone( text )
 GetMap( webViewerName;zoom;address1;address2;city;state;postalCode;country )
-GetWorkDays( StartDate;DueDate )
 GoogleMapJS( Title;Longitude;Latitude;Zoom;Type;Markers )
 GoogleMapMarkerJS( Latitude;Longitude;Title;Message;Icon;Counter )
 ListValuesMap( Field;recmax;lat;lng )
@@ -19,8 +14,6 @@ MapAddressWeb( address1;address2;city;state;postalCode;country )
 numberFormat( Number;DecimalPrecision;ThousandSeparator )
 ParseParameters( origText;whichParam )
 ProgressBarNumber( number;numberOfRepetitions;fill )
-DateQuarterBegin( theDate )
-DateQuarterEnd( theDate )
 ProgressBarPercentage( percentage;divisor;fill )
 roundfifty( number )
 roundhundred( number )
@@ -80,20 +73,7 @@ Characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" or
 Karsten Risseeuw, kursiv-software.com
 June 30th, 2016
 
-*/</Calculation></CustomFunction><CustomFunction id="4" functionArity="1" visible="True" parameters="dt" name="calfirstofwk"><Calculation>dt - DayOfWeek ( dt ) + 1</Calculation></CustomFunction><CustomFunction id="58" functionArity="2" visible="True" parameters="Start;theDate" name="FYQ"><Calculation>/* FYQ ( Start ; theDate ) */
-
-/*Custom Function by Matt Wills (http://www.VirtualVermont.com/FMP)*/
-
-Let ( [
-Mo = Right ( "0" &amp; Month ( theDate ) ; 2 ) ;
-Months = "01 02 03 04 05 06 07 08 09 10 11 12" ;
-Months = "  " &amp; MiddleWords ( Months ; Start ; 12 ) &amp; " " &amp; LeftWords ( Months ; Start -1 ) ] ;
-
-Choose ( Position ( Months ; Mo ; 1 ; 1 ) / 3 ; ""; "1" ; "1" ; "1" ; "2" ; "2" ; "2" ; "3" ; "3" ; "3" ; "4" ; "4" ; "4" )  &amp; 
-
-"Q" &amp; Right ( If ( Start = 1 ; Year ( theDate ) ; Year ( theDate ) + 1 ) ; 2 )
-
-)</Calculation></CustomFunction><CustomFunction id="117" functionArity="1" visible="True" parameters="StateAbbrev" name="AbrivState"><Calculation>Case ( StateAbbrev= "Alabama" ; "AL" ;
+*/</Calculation></CustomFunction><CustomFunction id="117" functionArity="1" visible="True" parameters="StateAbbrev" name="AbrivState"><Calculation>Case ( StateAbbrev= "Alabama" ; "AL" ;
 
 StateAbbrev=  "Alaska" ;"AK" ;
 
@@ -399,41 +379,6 @@ Case( _vertical;
     ; 
         RightValues ( list2 ; ValueCount ( list2 ) - 1 ) 
     )
-)</Calculation></CustomFunction><CustomFunction id="70" functionArity="2" visible="True" parameters="StartDate;Months" name="MonthEnd"><Calculation>/*
-
-MonthEnd ( StartDate ; Months )
-Purpose:    Returns the date of the last day of the month the specified number of months from the StartDate.
-Author:    Josh Ormond
-
-*/
-
-Date ( Month ( StartDate ) + ( Months + 1 ) ; 0 ; Year ( StartDate ) )
-
-// ===================================
-/*
-
-This function is published on BrianDunning.com to check for updates and provide feedback and bug reports please visit:
-http://www.briandunning.com/filemaker-custom-functions/detail.php?fn_id=1305
-
-
-Function: MonthEnd( StartDate; Months )
-Author: Josh Ormond
-Last updated: 18 May 2011
-Version: 1.1
-
-*/
-// ===================================</Calculation></CustomFunction><CustomFunction id="28" functionArity="1" visible="True" parameters="theDayName" name="DayNametoDayOfWeek"><Calculation>//Used for Time Sheet Calculations
-Let([
-day = Date ( 12 ; 31 ; 2000 )
-];
-Substitute (theDayName; [DayName ( day ) ; 1];
-                                          [DayName ( day + 1 ) ; 2];
-                                          [DayName ( day + 2 ) ; 3]; 
-                                          [DayName ( day + 3 ) ; 4]; 
-                                          [DayName ( day + 4 ) ; 5]; 
-                                          [DayName ( day + 5 ) ; 6]; 
-                                          [DayName ( day + 6 ) ; 7]
-)
 )</Calculation></CustomFunction><CustomFunction id="54" functionArity="6" visible="True" parameters="Amount;CurrencyCode;Lead;Trail;ShowDecimal;RedNegative" name="CurrencyAsText"><Calculation>// Currency (Amount, CurrencyCode, Lead, Trail, ShowDecimal, RedNegative )
 //
 // This custom function takes the following parameters:
@@ -516,19 +461,7 @@ Case (Length(pnum) = 7 ; Left(pnum;3) &amp; "-" &amp; Right(pnum;4) ;
 								&amp; size &amp; 
 									"&amp;maptype=roadmap" &amp; 
 										"&amp;sensor=false"
-	)</Calculation></CustomFunction><CustomFunction id="35" functionArity="2" visible="True" parameters="StartDate;DueDate" name="GetWorkDays"><Calculation>Int ( ( DueDate - StartDate ) / 7 ) * 5 
-
-+ 
-
-Case ( 
-DayOfWeek ( DueDate ) &lt; DayOfWeek ( StartDate ) ; 
-Min ( 5 ; DayOfWeek ( DueDate ) - 1 ) + Max ( 0 ; 6 - DayOfWeek ( StartDate ) ) ;
-
-DayOfWeek ( StartDate ) &lt; 7 ; 
-Min ( 6 ; DayOfWeek ( DueDate ) ) - DayOfWeek ( StartDate ) ; 
-
-0 
-) + 1</Calculation></CustomFunction><CustomFunction id="13" functionArity="6" visible="True" parameters="Title;Longitude;Latitude;Zoom;Type;Markers" name="GoogleMapJS"><Calculation>// GoogleMapJS ( Title, Longitude; Latitude; Zoom; Type, Markers )
+	)</Calculation></CustomFunction><CustomFunction id="13" functionArity="6" visible="True" parameters="Title;Longitude;Latitude;Zoom;Type;Markers" name="GoogleMapJS"><Calculation>// GoogleMapJS ( Title, Longitude; Latitude; Zoom; Type, Markers )
 Let ([
   Title = Substitute ( Title ; ["&amp;";"&amp;amp;"]; ["'";"\'"]; ["\"";"\\\""]; ["&lt;";"&amp;lt;"]; ["&gt;";"&amp;gt;"] )
 ];
@@ -720,50 +653,6 @@ Middle ( OrigText ; start + 1 ; end - start )
 Round ( Extend ( number ) * numberOfRepetitions ; 1 ) ≥ Get ( CalculationRepetitionNumber ) ;
 Extend ( fill ) ; 
 "" 
-)</Calculation></CustomFunction><CustomFunction id="55" functionArity="1" visible="True" parameters="theDate" name="DateQuarterBegin"><Calculation>//NAME: DateQuarterBegin
-//PURPOSE: Pass any date and get the quarter start date based on input date.
-//PARAMETER: theDate
-//INCLUDES OTHER CUSTOM FUNCTIONS: No
-//AUTHOR: Chiyoko Yoshida chiyofm@gmail.com
-//EXAMPLE INPUT: 7/15/2010 
-//EXPECTED OUTPUT: 7/1/2010
-
-Let ([
-
-$d = theDate;
-$m = Month($d);
-$y = Year($d)
-
-];
-
-If ( $m &gt; 9 ; Date (10;1;$y);
-If ( $m &gt; 6 ; Date (7;1;$y);
-If ($m &gt; 3 ; Date (4;1;$y);
-Date(1;1;$y)
-)))
-
-)</Calculation></CustomFunction><CustomFunction id="56" functionArity="1" visible="True" parameters="theDate" name="DateQuarterEnd"><Calculation>//NAME: DateQuarterEnd
-//PURPOSE: Pass any date and return the quarter END date based on the input date.
-//PARAMETER: theDate
-//INCLUDES OTHER CUSTOM FUNCTIONS: No
-//CREATED BY: Chiyoko Yoshida chiyofm@gmail.com
-//EXAMPLE INPUT: 7/15/2010 
-//EXPECTED OUTPUT: 9/30/2010
-
-Let ([
-
-$d = theDate;
-$m = Month($d);
-$y = Year($d)
-
-];
-
-If ( $m &gt; 9 ; Date (12;31;$y);
-If ( $m &gt; 6 ; Date (9;30;$y);
-If ($m &gt; 3 ; Date (6;30;$y);
-Date(3;31;$y)
-)))
-
 )</Calculation></CustomFunction><CustomFunction id="34" functionArity="3" visible="True" parameters="percentage;divisor;fill" name="ProgressBarPercentage"><Calculation>If (
 Round ( Extend ( percentage ) / divisor ; 1 ) ≥ Get ( CalculationRepetitionNumber ) ;
 Extend ( fill ) ; 
