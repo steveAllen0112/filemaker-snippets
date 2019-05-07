@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[AddValue( lst;value )
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[List.AddValue( lst;value )
 CustomList( Start;End;Function )
-DeleteValue( lst;value )
+List.DeleteValue( lst;value )
 FilterValues.diff( A;B )
 FilterValues.diff.sub( A;B;i )
 PositionValues( text;searchValue;start;occurrence )
-ToggleValue( lst;value )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="30" functionArity="2" visible="True" parameters="lst;value" name="AddValue"><Calculation>Case (
+List.ToggleValue( lst;value )
+List.fillTemplate( template;lst )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="30" functionArity="2" visible="True" parameters="lst;value" name="List.AddValue"><Calculation>Case (
 not	ValueCount ( FilterValues ( lst ; value ) )
 ;	List ( lst ; value )
 )</Calculation></CustomFunction><CustomFunction id="4" functionArity="3" visible="True" parameters="Start;End;Function" name="CustomList"><Calculation>/*       Special Thanks to Ugo Di Luca - Grazie Mille, pour l'aiguillage qu'il m'a fait prendre,
@@ -148,7 +149,7 @@ Let ([ CLNum = 4 ] ; GetNthRecord ( Field ; CLNum ))"
 Interrested in the mechanism ?
 My advice then : dissect this function by escaping the 'Result' and placing one of the numerous intermediary variables available.
 Special attention should be paid to the 'First' Variable, everything starts from there !
-*/</Calculation></CustomFunction><CustomFunction id="36" functionArity="2" visible="True" parameters="lst;value" name="DeleteValue"><Calculation>Let ([
+*/</Calculation></CustomFunction><CustomFunction id="36" functionArity="2" visible="True" parameters="lst;value" name="List.DeleteValue"><Calculation>Let ([
 	sub	= Substitute (
 			"¶" &amp; lst &amp; "¶"
 		; [ "¶" &amp; value &amp; "¶" ; "¶" ]
@@ -171,8 +172,19 @@ If (
 Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) = 0 ; 0 ;
 ValueCount ( Left ( text ; (Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) - 1) + Length ( searchValue ) ) )
 )
-)</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="lst;value" name="ToggleValue"><Calculation>Case (
+)</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="lst;value" name="List.ToggleValue"><Calculation>Case (
 	ValueCount ( FilterValues ( lst ; value ) )
 ;		DeleteValue ( lst ; value )
 ;	List ( lst ; value )
+)</Calculation></CustomFunction><CustomFunction id="5" functionArity="2" visible="True" parameters="template;lst" name="List.fillTemplate"><Calculation>Let ([b=""
+
+;	prefix	= "¶; Substitute ( " &amp; Quote ( template ) &amp; " ; \"{{value}}\" ; \""
+
+;	suffix	= "\" )"
+
+;	str	= "List (\"\"" &amp; prefix &amp; Substitute ( lst ; "¶" ; suffix &amp; prefix ) &amp; suffix &amp; "¶)"
+
+;	output	= Evaluate ( str )
+];
+output
 )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
