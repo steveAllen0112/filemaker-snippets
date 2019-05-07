@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[JSON.array.appendKey( array )
 JSON.array.count( array )
-JSON.array.toList( array )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+JSON.array.toList( array )
+JSON.array.fromList( lst;type )
+JSON.array.push( arr;val;type )
+JSON.defaultTo( jsonResult;default )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
 ];
@@ -12,4 +15,43 @@ next
 	
 ];
 cnt
-))</Calculation></CustomFunction><CustomFunction id="61" functionArity="1" visible="True" parameters="array" name="JSON.array.toList"><Calculation>Case ( array = "[]" or Left ( array ; 1 ) = "?" ; "" ; JSONListValues ( array ; "" ) )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+))</Calculation></CustomFunction><CustomFunction id="61" functionArity="1" visible="True" parameters="array" name="JSON.array.toList"><Calculation>Case ( array = "[]" or Left ( array ; 1 ) = "?" ; "" ; JSONListValues ( array ; "" ) )</Calculation></CustomFunction><CustomFunction id="17" functionArity="2" visible="True" parameters="lst;type" name="JSON.array.fromList"><Calculation>Let ([b=""
+
+;	$_array	= "[]"
+
+;	template	= ";	$_array = JSON.array.push ( $_array ; " &amp; Case ( type = JSONNumber ; "{{value}}" ; Quote ( "{{value}}" ) ) &amp; " ; " &amp; type &amp; " )"
+;	values = lst
+;	pushes	= List.fillTemplate ( template ; lst )
+;	str	= List (""
+			; "Let ([b=\"\""
+			; ";	$_array = \"[]\""
+			;	pushes
+			; "];"
+			; "	$_array"
+			; ")"
+			)
+
+;	res	= Evaluate ( str )
+;	output	= $_array
+;	$_array	= ""
+
+];
+output
+)</Calculation></CustomFunction><CustomFunction id="16" functionArity="3" visible="True" parameters="arr;val;type" name="JSON.array.push"><Calculation>Let ([b=""
+/*
+;	arr	= "[]"
+;	val	= "test"
+;	type 	= JSONString
+*/
+
+;	keys	= JSONListKeys ( arr ; "" )
+;	len	= ValueCount ( keys )
+
+;	thisKey	= GetValue ( keys ; len )
+;	nextKey	= Case ( IsEmpty ( thisKey ) ; 0 ; thisKey + 1 )
+
+;	return	= JSONSetElement ( arr ; nextKey ; val ; type )
+
+];
+	return
+)</Calculation></CustomFunction><CustomFunction id="20" functionArity="2" visible="True" parameters="jsonResult;default" name="JSON.defaultTo"><Calculation>Case ( Left ( jsonResult ; 1 ) = "?" ; default ; jsonResult )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
