@@ -4,8 +4,8 @@ JSON.array.toList( array )
 JSON.array.fromList( lst;type )
 JSON.array.push( arr;val;type )
 JSON.defaultTo( jsonResult;default )
-JSON.record.getFields( context )
-JSON.record.getData( Definition )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+JSON.record.getData( Definition )
+JSON.record.getFields( context )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
 ];
@@ -56,85 +56,7 @@ output
 
 ];
 	return
-)</Calculation></CustomFunction><CustomFunction id="20" functionArity="2" visible="True" parameters="jsonResult;default" name="JSON.defaultTo"><Calculation>Case ( Left ( jsonResult ; 1 ) = "?" ; default ; jsonResult )</Calculation></CustomFunction><CustomFunction id="11" functionArity="1" visible="True" parameters="context" name="JSON.record.getFields"><Calculation>/*
- * @author Steve Allen &lt;steven.allen@rcconsulting.com&gt;
- * @purpose To 
- *
- * @param context (object)
- *   @property *required _table (string) The name of the TO that will be used to get the field data.
- *   @property *optional config (object)
- *      @property *optional include (array) If this array is present, it will limit the fields included to only those specified therein.
- *        @member *optional field (string) The name (field only, not the fully qualified name) of the field you wish to include.
- *      @property *optional exclue (array) If this array is present, it will actively prevent inclusion of those fields specified therein.
- *        @member *optional field (string) The name (field only, not the fully qualified name) of the field you wish to exclude.
- *
- * @returns (object)
- *    @property {hierarchy-parent | Field-Definition} (obj)
- *        hiearchy-parent If field names have dots in them, they will be treated as a JSON path.  e.g. name.first.  So the hierarchy parent would have the children within that hiearchy as properties under it
- *        Field-Definition At the lowest level of the naming hierarchy, the actual definition
- *          @property field (str) The full, unqualified name of the field.
- *          @property type (number) The numeric representation of the JSON type as specified by FileMaker's built in constants.
- *             (JSONNumber | JSONString )
- *          @property reps (number) The number of repetitions defined for the field.
- */
-
-Let ([b=""
-
-;	context.table	= JSON.defaultTo ( JSONGetElement ( context ; "table" ) ; "" )
-;	config.include	= JSON.defaultTo ( JSONGetElement ( context ; "config.include" ) ; "" )
-;	config.exclude	= JSON.defaultTo ( JSONGetElement ( context ; "config.exclude" ) ; "" )
-
-;	$record = "{}"
-
-;	config.include	= Case ( not IsEmpty ( config.include ) ; Substitute ( config.include
-					;[ "\"" ; "'" ]
-					;[ "[" ; "(" ]
-					;[ "]" ; ")" ]
-					)
-				)
-;	config.exclude	= Case ( not IsEmpty ( config.exclude ) ; Substitute ( config.exclude
-					;[ "\"" ; "'" ]
-					;[ "[" ; "(" ]
-					;[ "]" ; ")" ]
-					)
-				)
-
-;	flds = Substitute ( List ( ""
-		; "'	$record	= JSONSetElement ( $record'"
-		; "'			;[ \"' + FieldName + '.field\" ; \"' + FieldName + '\" ; JSONString ]'"
-		; "'			;[ \"' + FieldName + '.type\" ; ' +
-						CASE
-							WHEN FieldType LIKE 'decimal%' THEN 'JSONNumber'
-							ELSE 'JSONString'
-						END
-				+ ' ; JSONNumber ]'"
-		; "'			;[ \"' + FieldName + '.reps\" ; ' + CAST ( FieldReps AS varchar ) + ' ; JSONNumber ]'"
-		; "'			)'"
-		)
-		;[ "¶" ; ",¶" ]
-		)
-
-;	sqlStr = "
-SELECT
-	" &amp; flds &amp; "
-
-FROM FileMaker_Fields
-
-WHERE
-		TableName=?
-	AND	FieldClass='Normal'
-"
-&amp; Case ( not IsEmpty ( config.include ) ; " AND FieldName IN " &amp; config.include )
-&amp; Case ( not IsEmpty ( config.exclude ) ; " AND FieldName NOT IN " &amp; config.exclude ) 
-
-;	sqlRes = ExecuteSQL ( sqlStr ; "¶" ; ";" ; context.table )
-;	errChk = Case ( sqlRes = "?" ; "" ; "Let ([ b=\"\";" &amp; sqlRes &amp; "];$record)" )
-
-;	json = Case ( IsValidExpression ( errChk ) ; Evaluate ( errChk ) ; "" )
-
-];
-json
-)</Calculation></CustomFunction><CustomFunction id="12" functionArity="1" visible="True" parameters="Definition" name="JSON.record.getData"><Calculation>/*
+)</Calculation></CustomFunction><CustomFunction id="20" functionArity="2" visible="True" parameters="jsonResult;default" name="JSON.defaultTo"><Calculation>Case ( Left ( jsonResult ; 1 ) = "?" ; default ; jsonResult )</Calculation></CustomFunction><CustomFunction id="12" functionArity="1" visible="True" parameters="Definition" name="JSON.record.getData"><Calculation>/*
  * @author Steve Allen &lt;steven.allen@rcconsulting.com&gt;
  *    @gitHub steveAllen0112
  *
@@ -252,4 +174,82 @@ Let ([b=""
 					)
 ];
 Case ( debug ; $_log ; $_output )
+)</Calculation></CustomFunction><CustomFunction id="11" functionArity="1" visible="True" parameters="context" name="JSON.record.getFields"><Calculation>/*
+ * @author Steve Allen &lt;steven.allen@rcconsulting.com&gt;
+ * @purpose To provide a flexible method of consistently defining a data structure for a table such that other functions (e.g. `JSON.record.getData()`) can follow it and read data out of the record.
+ *
+ * @param context (object)
+ *   @property *required _table (string) The name of the TO that will be used to get the field data.
+ *   @property *optional config (object)
+ *      @property *optional include (array) If this array is present, it will limit the fields included to only those specified therein.
+ *        @member *optional field (string) The name (field only, not the fully qualified name) of the field you wish to include.
+ *      @property *optional exclue (array) If this array is present, it will actively prevent inclusion of those fields specified therein.
+ *        @member *optional field (string) The name (field only, not the fully qualified name) of the field you wish to exclude.
+ *
+ * @returns (object)
+ *    @property {hierarchy-parent | Field-Definition} (obj)
+ *        hiearchy-parent If field names have dots in them, they will be treated as a JSON path.  e.g. name.first.  So the hierarchy parent would have the children within that hiearchy as properties under it
+ *        Field-Definition At the lowest level of the naming hierarchy, the actual definition
+ *          @property field (str) The full, unqualified name of the field.
+ *          @property type (number) The numeric representation of the JSON type as specified by FileMaker's built in constants.
+ *             (JSONNumber | JSONString )
+ *          @property reps (number) The number of repetitions defined for the field.
+ */
+
+Let ([b=""
+
+;	context.table	= JSON.defaultTo ( JSONGetElement ( context ; "table" ) ; "" )
+;	config.include	= JSON.defaultTo ( JSONGetElement ( context ; "config.include" ) ; "" )
+;	config.exclude	= JSON.defaultTo ( JSONGetElement ( context ; "config.exclude" ) ; "" )
+
+;	$record = "{}"
+
+;	config.include	= Case ( not IsEmpty ( config.include ) ; Substitute ( config.include
+					;[ "\"" ; "'" ]
+					;[ "[" ; "(" ]
+					;[ "]" ; ")" ]
+					)
+				)
+;	config.exclude	= Case ( not IsEmpty ( config.exclude ) ; Substitute ( config.exclude
+					;[ "\"" ; "'" ]
+					;[ "[" ; "(" ]
+					;[ "]" ; ")" ]
+					)
+				)
+
+;	flds = Substitute ( List ( ""
+		; "'	$record	= JSONSetElement ( $record'"
+		; "'			;[ \"' + FieldName + '.field\" ; \"' + FieldName + '\" ; JSONString ]'"
+		; "'			;[ \"' + FieldName + '.type\" ; ' +
+						CASE
+							WHEN FieldType LIKE 'decimal%' THEN 'JSONNumber'
+							ELSE 'JSONString'
+						END
+				+ ' ; JSONNumber ]'"
+		; "'			;[ \"' + FieldName + '.reps\" ; ' + CAST ( FieldReps AS varchar ) + ' ; JSONNumber ]'"
+		; "'			)'"
+		)
+		;[ "¶" ; ",¶" ]
+		)
+
+;	sqlStr = "
+SELECT
+	" &amp; flds &amp; "
+
+FROM FileMaker_Fields
+
+WHERE
+		TableName=?
+	AND	FieldClass='Normal'
+"
+&amp; Case ( not IsEmpty ( config.include ) ; " AND FieldName IN " &amp; config.include )
+&amp; Case ( not IsEmpty ( config.exclude ) ; " AND FieldName NOT IN " &amp; config.exclude ) 
+
+;	sqlRes = ExecuteSQL ( sqlStr ; "¶" ; ";" ; context.table )
+;	errChk = Case ( sqlRes = "?" ; "" ; "Let ([ b=\"\";" &amp; sqlRes &amp; "];$record)" )
+
+;	json = Case ( IsValidExpression ( errChk ) ; Evaluate ( errChk ) ; "" )
+
+];
+json
 )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
