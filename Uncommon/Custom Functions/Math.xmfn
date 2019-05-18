@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[This is a set of Default custom functions]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3558547000</ClipTimeStamp><ClipAuthor><![CDATA[oscarbautista]]></ClipAuthor><clipboardAsText><![CDATA[GeometricMean( initialValue;interval;quantity )
+ProductOfArithmeticProgression( a;d;n )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="22" functionArity="3" visible="True" parameters="initialValue;interval;quantity" name="GeometricMean"><Calculation>Let ([b=""
+
+
+;	a1		= initialValue
+;	d		= interval
+;	n		= quantity
+
+;	p		= ProductOfArithmeticProgression ( a1 ; d ; n )
+
+;	gmean	= p ^ (1/n)
+
+];
+gmean
+)</Calculation></CustomFunction><CustomFunction id="21" functionArity="3" visible="True" parameters="a;d;n" name="ProductOfArithmeticProgression"><Calculation>a * Case ( n &gt; 1 ; ProductOfArithmeticProgression ( a + d ; d ; n - 1 ) ; 1 )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
