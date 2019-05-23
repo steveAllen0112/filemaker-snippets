@@ -12,4 +12,17 @@ ProductOfArithmeticProgression( a;d;n )]]></clipboardAsText><Clipboard><fmxmlsni
 
 ];
 gmean
-)</Calculation></CustomFunction><CustomFunction id="21" functionArity="3" visible="True" parameters="a;d;n" name="ProductOfArithmeticProgression"><Calculation>a * Case ( n &gt; 1 ; ProductOfArithmeticProgression ( a + d ; d ; n - 1 ) ; 1 )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+)</Calculation></CustomFunction><CustomFunction id="21" functionArity="3" visible="True" parameters="a;d;n" name="ProductOfArithmeticProgression"><Calculation>Case (0;0
+
+;	IsValidExpression ( While (i=0;0;i=0;0) )
+;		While ([b=""
+		;	i = 1
+		;	x = 1
+		]; i &lt;= n
+		;[b=""
+		;	x = x * (a + (d * (i - 1)))
+		;	i = i + 1
+		]; x
+		)
+;	a * Case ( n &gt; 1 ; ProductOfArithmeticProgression ( a + d ; d ; n - 1 ) ; 1 )
+)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
