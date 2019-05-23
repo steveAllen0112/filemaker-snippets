@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[JSON.array.appendKey( array )
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment><![CDATA[v18+ only]]></Comment><SourceWindowName></SourceWindowName><Class>XMFN</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637300875</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[JSON.array.appendKey( array )
 JSON.array.count( array )
 JSON.array.toList( array )
 JSON.array.fromList( lst;type )
 JSON.array.push( arr;val;type )
 JSON.defaultTo( jsonResult;default )
 JSON.record.getData( Definition )
-JSON.record.getFields( context )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+JSON.record.getFields( context )
+JSON.setVariables( json )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
 ];
@@ -252,4 +253,67 @@ WHERE
 
 ];
 json
-)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+)</Calculation></CustomFunction><CustomFunction id="23" functionArity="1" visible="True" parameters="json" name="JSON.setVariables"><Calculation>Case ( not IsValidExpression ( While (i=0;0;i=0;0) ) ; "?" ;
+
+While ([b=""
+/* For Testing
+;	json = JSONSetElement ( "{}"
+		;[ "test[0].hello" ; "world" ; JSONString ]
+		;[ "test[0].ping" ; "pong" ; JSONString ]
+		;[ "test[1].number" ; 1 ; JSONNumber ]
+		;[ "test[1].date" ; GetAsNumber ( Get ( CurrentDate ) ) ; JSONNumber ]
+		)
+*/
+;	path = "[]"
+;	variables = ""
+;	currentJson = json
+]; ValueCount ( JSONListKeys ( json ; "" ) )
+;[b=""
+;	jsonPath = Substitute ( JSONListValues ( path ; "" ) ; "¶" ; "." )
+
+;	currentJson = JSONGetElement ( json ; jsonPath )
+
+;	currentJson.isValue	= Left ( JSONFormatElements ( currentJson ) ; 1 ) = "?"
+;	currentJson.isArray	= (not currentJson.isValue) and Left ( currentJson ; 1 ) = "["
+;	currentJson.isObject	= (not currentJson.isValue) and Left ( currentJson ; 1 ) = "{"
+;	currentJson.isDone	= (currentJson.isArray or currentJson.isObject) and Length ( currentJson ) = 2
+
+;	variables = Case (0;0
+			;	currentJson.isValue
+			;		Let ([b=""
+					;	variable = "$" &amp; Substitute ( jsonPath ; [ "[" ; "" ] ; [ "]" ; "" ] )
+					;	evalStr	= "Let(" &amp; variable &amp; "=" &amp; Quote ( currentJson ) &amp; ";\"\")"
+					;	set = Evaluate ( evalStr )
+					];
+						List ( variables ; variable )
+					)
+			;	variables
+			)
+
+;	path	= Case (0;0
+			;	currentJson.isValue or currentJson.isDone
+			;		Let ([b=""
+					;	pathkeys = JSONListKeys ( path ; "" )
+					;	latestPathKey = GetValue ( pathkeys ; ValueCount ( pathkeys ) )
+					];
+						JSONDeleteElement ( path ; latestPathKey )
+					)
+			;	currentJson.isObject or currentJson.isArray
+			;		Let ([b=""
+					;	pathkeys = JSONListKeys ( path ; "" )
+					;	latestPathKey = GetValue ( pathkeys ; ValueCount ( pathkeys ) )
+					;	nextKey = GetValue ( JSONListKeys ( currentJson ; "" ) ; 1 )
+					;	nextKey = Case ( currentJson.isArray ; "[" &amp; nextKey &amp; "]" ; nextKey )
+					];
+						JSONSetElement ( path ; "[" &amp; latestPathKey + 1 &amp; "]" ; nextKey ; JSONString )
+					)
+			;	path
+			)
+;	json	= Case (0;0
+			;	currentJson.isValue or currentJson.isDone
+			;		JSONDeleteElement ( json ; jsonPath )
+			;	json
+			)
+];
+variables
+) )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
