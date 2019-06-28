@@ -18,7 +18,6 @@ SuperLog( LogField;FieldsToLog )
 Supertrim( text )
 TrimSpaceCR( text )
 UltraLog( LogField;ModTime;FieldsToLog )
-WindowInfo(  )
 WordBits( word;numberOfCharacters )
 XMLExtract( XML;Attribute;Instance )
 AbsolutePaddingZeroes( number;digits )
@@ -671,14 +670,6 @@ Fnm &amp; "	" &amp; Pval &amp; "	-»	" &amp; Nval &amp; ¶; Prep*11776947); Prep
 UltraLog(LogField; ModTime; RightValues(FieldsToLog; ValueCount(FieldsToLog) - 1))
 );
 LogField
-)</Calculation></CustomFunction><CustomFunction id="22" functionArity="0" visible="True" parameters="" name="WindowInfo"><Calculation>Let(
-[
-$$window_height = Get ( WindowHeight );
-$$window_width = Get (WindowWidth);
-$$window_top = Get(WindowTop);
-$$window_left = Get(WindowLeft)
-];
-""
 )</Calculation></CustomFunction><CustomFunction id="32" functionArity="2" visible="True" parameters="word;numberOfCharacters" name="WordBits"><Calculation>Case (
 Length ( word ) = 0;"";
 numberOfCharacters ≤ Length ( word ) ;
