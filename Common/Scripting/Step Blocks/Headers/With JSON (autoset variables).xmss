@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><FMClipboard><Version><![CDATA[41011080]]></Version><Comment></Comment><SourceWindowName><![CDATA[FileMaker Pro Advanced]]></SourceWindowName><Class>XMSS</Class><ClipVersion>1</ClipVersion><ClipTimeStamp>3637298247</ClipTimeStamp><ClipAuthor><![CDATA[gsbcs]]></ClipAuthor><clipboardAsText><![CDATA[#.
+# Author: Steve Allen <steven.allen@rcconsulting.com> https://github.com/user/steveAllen0112
+# Created: 
+#.
+# Purpose:
+# Params: JSON
+#    TODO: Document JSON Structure for incoming Parameters
+#. 
+# Returns: JSON
+#    TODO: Document JSON Structure(s) for outgoing Results
+#.
+#
+Set Variable [$p; Value:Get ( ScriptParameter )]
+Set Variable [$p.setVariablesList; Value:JSON.setVariables ( $p )]
+#]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><Step enable="True" id="89" name="# (comment)" clipID="154568"><Text>.</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="509392"><Text> Author: Steve Allen &lt;steven.allen@rcconsulting.com&gt; https://github.com/user/steveAllen0112</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="120427"><Text> Created: </Text></Step><Step enable="True" id="89" name="# (comment)" clipID="461990"><Text>.</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="442997"><Text> Purpose:</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="194427"><Text> Params: JSON</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="985727"><Text>    TODO: Document JSON Structure for incoming Parameters</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="283647"><Text>. </Text></Step><Step enable="True" id="89" name="# (comment)" clipID="854787"><Text> Returns: JSON</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="425951"><Text>    TODO: Document JSON Structure(s) for outgoing Results</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="285375"><Text>.</Text></Step><Step enable="True" id="89" name="# (comment)" clipID="579498"/><Step enable="True" id="141" name="Set Variable" clipID="673008"><Value><Calculation>Get ( ScriptParameter )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$p</Name></Step><Step enable="True" id="141" name="Set Variable" clipID="211735"><Value><Calculation>JSON.setVariables ( $p )</Calculation></Value><Repetition><Calculation>1</Calculation></Repetition><Name>$p.setVariablesList</Name></Step><Step enable="True" id="89" name="# (comment)" clipID="968475"/></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
