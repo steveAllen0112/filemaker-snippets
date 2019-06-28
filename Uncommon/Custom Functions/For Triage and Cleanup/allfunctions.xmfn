@@ -33,9 +33,6 @@ PathPluginToFM( Path )
 PathTo_Applications(  )
 PathTo_Desktop(  )
 PathTo_SystemFolder(  )
-Platform(  )
-PlatformIsMac(  )
-PlatformIsWin(  )
 TrimStart( text;characters )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="124" functionArity="1" visible="True" parameters="text" name="Acronym"><Calculation>Upper(Left(text; 1)) &amp; 
 If(WordCount(text) &gt; 1; Acronym(RightWords(text; WordCount(text) - 1)))</Calculation></CustomFunction><CustomFunction id="1" functionArity="2" parameters="characters ; size" name="RandomKey"><Calculation>Let ( [
 
@@ -784,9 +781,4 @@ count = PatternCount ( appPath ; "/" ) ;
 pos = Position ( appPath ; "/" ; 1 ; count - 1 ) ] ; 
 "file" &amp; Lower ( Platform ) &amp; ":" &amp; Left ( appPath ; pos ) 
 
-)</Calculation></CustomFunction><CustomFunction id="16" functionArity="0" visible="True" parameters="" name="PathTo_Desktop"><Calculation>"file" &amp; Lower ( Platform ) &amp; ":" &amp; Get ( DesktopPath )</Calculation></CustomFunction><CustomFunction id="132" functionArity="0" visible="True" parameters="" name="PathTo_SystemFolder"><Calculation>"file" &amp; Lower ( Platform ) &amp; ":" &amp; Get ( SystemDrive )</Calculation></CustomFunction><CustomFunction id="133" functionArity="0" visible="True" parameters="" name="Platform"><Calculation>Case ( 
-
-Abs ( Get ( SystemPlatform ) ) = 1 ; "Mac" ; 
-Abs ( Get ( SystemPlatform ) ) = 2 ; "Win" ; 
-
-)</Calculation></CustomFunction><CustomFunction id="5" functionArity="0" visible="True" parameters="" name="PlatformIsMac"><Calculation>Abs ( Get ( SystemPlatform ) ) = 1</Calculation></CustomFunction><CustomFunction id="6" functionArity="0" visible="True" parameters="" name="PlatformIsWin"><Calculation>Abs ( Get ( SystemPlatform ) ) = 2</Calculation></CustomFunction><CustomFunction id="7" functionArity="2" visible="True" parameters="text;characters" name="TrimStart"><Calculation>Right ( text ; Length ( text ) - characters )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+)</Calculation></CustomFunction><CustomFunction id="16" functionArity="0" visible="True" parameters="" name="PathTo_Desktop"><Calculation>"file" &amp; Lower ( Platform ) &amp; ":" &amp; Get ( DesktopPath )</Calculation></CustomFunction><CustomFunction id="132" functionArity="0" visible="True" parameters="" name="PathTo_SystemFolder"><Calculation>"file" &amp; Lower ( Platform ) &amp; ":" &amp; Get ( SystemDrive )</Calculation></CustomFunction><CustomFunction id="7" functionArity="2" visible="True" parameters="text;characters" name="TrimStart"><Calculation>Right ( text ; Length ( text ) - characters )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>

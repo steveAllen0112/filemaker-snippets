@@ -21,7 +21,10 @@ Win.ID( WindowTitle )
 Win.Name( WindowID )
 Win.NewName( WindowNameOld;WindowNameNew )
 Win.set( id;path;value;type )
-WindowInfo(  )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="37" functionArity="0" visible="True" parameters="" name="device.isAndroid"><Calculation>Get ( Device ) = 5</Calculation></CustomFunction><CustomFunction id="38" functionArity="0" visible="True" parameters="" name="device.isPad"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "iPad" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="39" functionArity="0" visible="True" parameters="" name="device.isPhone"><Calculation>	(	app.isGo
+WindowInfo(  )
+Platform(  )
+PlatformIsMac(  )
+PlatformIsWin(  )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="37" functionArity="0" visible="True" parameters="" name="device.isAndroid"><Calculation>Get ( Device ) = 5</Calculation></CustomFunction><CustomFunction id="38" functionArity="0" visible="True" parameters="" name="device.isPad"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "iPad" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="39" functionArity="0" visible="True" parameters="" name="device.isPhone"><Calculation>	(	app.isGo
 	and	not device.isPad
 	)
 or	Get ( Device ) = 4</Calculation></CustomFunction><CustomFunction id="40" functionArity="0" visible="True" parameters="" name="file.isServed"><Calculation>PatternCount ( Get ( HostApplicationVersion ) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="41" functionArity="1" visible="True" parameters="path" name="gc.get"><Calculation>Let ([b=""
@@ -73,4 +76,9 @@ $$window_top = Get(WindowTop);
 $$window_left = Get(WindowLeft)
 ];
 ""
-)</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
+)</Calculation></CustomFunction><CustomFunction id="133" functionArity="0" visible="True" parameters="" name="Platform"><Calculation>Case ( 
+
+Abs ( Get ( SystemPlatform ) ) = 1 ; "Mac" ; 
+Abs ( Get ( SystemPlatform ) ) = 2 ; "Win" ; 
+
+)</Calculation></CustomFunction><CustomFunction id="5" functionArity="0" visible="True" parameters="" name="PlatformIsMac"><Calculation>Abs ( Get ( SystemPlatform ) ) = 1</Calculation></CustomFunction><CustomFunction id="56" functionArity="0" visible="True" parameters="" name="PlatformIsWin"><Calculation>Abs ( Get ( SystemPlatform ) ) = 2</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
