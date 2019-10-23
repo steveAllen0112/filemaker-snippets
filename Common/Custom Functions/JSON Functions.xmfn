@@ -7,6 +7,7 @@ JSON.defaultTo( jsonResult;default )
 JSON.record.getData( Definition )
 JSON.record.getFields( context )
 JSON.setVariables( json )
+JSON.sortTimeBlocksIntoTimesAndCategories( JSON.blocks )
 JSON.getContiguousTimeBlocks( JSON.sortedAndCategorizedStartsAndEnds )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
@@ -317,7 +318,113 @@ While ([b=""
 			)
 ];
 variables
-) )</Calculation></CustomFunction><CustomFunction id="2" functionArity="1" visible="True" parameters="JSON.sortedAndCategorizedStartsAndEnds" name="JSON.getContiguousTimeBlocks"><Calculation>/**
+) )</Calculation></CustomFunction><CustomFunction id="3" functionArity="1" visible="True" parameters="JSON.blocks" name="JSON.sortTimeBlocksIntoTimesAndCategories"><Calculation>/**
+ * by: Steve Allen &lt;steven.allen@rcconsulting.com&gt;
+ * gh@steveAllen0112
+ *
+ * #### INPUT ####
+ * JSON Array wherein each entry is a JSON Object with at least the keys "start" and "end",
+ * each having a Time specified as a String of the format H(H):MM:SS, representing a block
+ * of time.
+ *
+ * #### Output ####
+ * JSON Object with the Times from the input as Keys,
+ * now in the form HH:MM:SS (leading 0 no longer optional for hours),
+ * and the Value of each Key either "S" or "E"
+ * indicating whether it is a Start time or an End time, respectively.
+ * In the case of overlap (any particular time specified more than once),
+ * "S" is preferred, if present, over "E"
+ *
+ * #### PURPOSE ####
+ * To provide the input for the other CF: `JSON.getContiguousTimeBlocks ( JSON.sortedAndCategorizedStartsAndEnds )`
+ *
+ * #### NOTES ####
+ * For sorting, this calculation relies on the fact that FM already sorts JSON Objects by the English-language text of the keys.
+ * So simply enforcing the left-padding of the 0 into the Hours block of the time (HH) ensures that the output will be sorted by time.
+ */
+
+Let ([b=""
+
+;	blocks = Case ( JSON.blocks = "UseBuiltInTestData" ; JSONSetElement ( "[]"
+
+			;[ 0 ; JSONSetElement ( "{}"
+				;[ "block" ; 6 ; JSONNumber ]
+				;[ "start" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 45 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 1 ; JSONSetElement ( "{}"
+				;[ "block" ; 2 ; JSONNumber ]
+				;[ "start" ; Time ( 8 ; 15 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 9 ; 30 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 2 ; JSONSetElement ( "{}"
+				;[ "block" ; 1 ; JSONNumber ]
+				;[ "start" ; Time ( 8 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 9 ; 15 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 3 ; JSONSetElement ( "{}"
+				;[ "block" ; 4 ; JSONNumber ]
+				;[ "start" ; Time ( 10 ; 30 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 30 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 4 ; JSONSetElement ( "{}"
+				;[ "block" ; 7 ; JSONNumber ]
+				;[ "start" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 12 ; 0 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 5 ; JSONSetElement ( "{}"
+				;[ "block" ; 5 ; JSONNumber ]
+				;[ "start" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 15 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 6 ; JSONSetElement ( "{}"
+				;[ "block" ; 3 ; JSONNumber ]
+				;[ "start" ; Time ( 10 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+		) ; JSON.blocks )
+
+;	blocksIndices	= JSONListKeys ( blocks ; "" )
+;	blocksData	= JSONListValues ( blocks ; "" )
+;	blocksQty	= ValueCount ( blocksIndices )
+
+;	times		= While ([b=""
+				;	block = 1
+				;	blockData = ""
+				;	start = ""
+				;	end = ""
+				;	times = "{}"
+				;	startsList = ""
+				];
+					block &lt;= blocksQty
+				;[b=""
+
+				;	blockData = GetValue ( blocksData ; block )
+				;	start	= Right ( "0" &amp; JSONGetElement ( blockData ; "start" ) ; 8 )
+				;	end	= Right ( "0" &amp; JSONGetElement ( blockData ; "end" ) ; 8 )
+
+				;	times = JSONSetElement ( times
+						;[ start ; "S" ; JSONString ]
+						)
+
+				;	startsList = List ( startsList ; start )
+
+				;	times = Case ( ValueCount ( FilterValues ( startsList ; end ) ) ; times ; JSONSetElement ( times
+						;[ end ; "E" ; JSONString ]
+						))
+
+				;	block = block + 1
+				]; times )
+];
+times
+)</Calculation></CustomFunction><CustomFunction id="2" functionArity="1" visible="True" parameters="JSON.sortedAndCategorizedStartsAndEnds" name="JSON.getContiguousTimeBlocks"><Calculation>/**
  * by Steve Allen &lt;steven.allen@rcconsulting.com&gt;
  * gh@steveAllen0112
  * 
