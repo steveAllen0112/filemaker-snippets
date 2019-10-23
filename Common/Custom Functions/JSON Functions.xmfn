@@ -8,7 +8,8 @@ JSON.record.getData( Definition )
 JSON.record.getFields( context )
 JSON.setVariables( json )
 JSON.sortTimeBlocksIntoTimesAndCategories( JSON.blocks )
-JSON.getContiguousTimeBlocks( JSON.sortedAndCategorizedStartsAndEnds )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+JSON.getContiguousTimeBlocks( JSON.sortedAndCategorizedStartsAndEnds )
+JSON.mergeTimeBlocks( JSON.timeBlocks )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
 ];
@@ -504,6 +505,172 @@ Let ([b=""
 		;[ GetAsNumber ( Time ( 11 ; 45 ; 0 ) ) ; "E" ; JSONString ]
 		;[ GetAsNumber ( Time ( 12 ; 0 ; 0 ) ) ; "E" ; JSONString ]
 		) ; JSON.sortedAndCategorizedStartsAndEnds )
+
+;	timesList = JSONListKeys ( times ; "" )
+;	typesList = JSONListValues ( times ; "" )
+;	typesString = "E" &amp; Substitute ( typesList ; "¶" ; "" ) &amp; "S"
+
+;	slotQty = PatternCount ( typesString ; "ES" ) - 1
+
+;	output = While ([b=""
+		;	slot = 1
+		;	output = "[]"
+		];
+			slot &lt;= slotQty
+		;[b=""
+		;	startPos = Position ( typesString ; "ES" ; 1 ; slot )
+		;	endPos = Position ( typesString ; "ES" ; 1 ; slot + 1 ) - 1
+
+		;	start = GetAsTime ( GetAsNumber ( GetValue ( timesList ; startPos ) ) )
+		;	end = GetAsTime ( GetAsNumber ( GetValue ( timesList ; endPos ) ) )
+
+		;	output = JSONSetElement ( output ; "[" &amp; slot - 1 &amp; "]" ; JSONSetElement ( "{}"
+			;[ "start" ; start ; JSONString ]
+			;[ "end" ; end ; JSONString ]
+			) ; JSONObject )
+
+		;	slot = slot + 1
+		];
+			output
+		)
+];
+output
+)</Calculation></CustomFunction><CustomFunction id="5" functionArity="1" visible="True" parameters="JSON.timeBlocks" name="JSON.mergeTimeBlocks"><Calculation>/**
+ * by Steve Allen &lt;steven.allen@rcconsulting.com&gt;
+ * gh@steveAllen0112
+ * 
+ * ###### INPUT #######
+ * 
+ * A JSON Array wherein each item is a JSON Object with at least
+ * the two Keys "start" and "end", having each a String Value
+ * representing time in the 24 hour, H(H):MM:SS format.
+ * 
+ * ###### OUTPUT ######
+ * 
+ * Same as INPUT, excepting that the blocks are merged where possible.
+ * into one contiguous block, and times are format "HH:MM:SS".
+ *
+ * ##### EXPLANATION ######
+ * This algorithm works by identifying the maximized block borders by the following concept, then using
+ * the border identification to locate the times associated with them.
+ *
+ * When sorted and Start-preferred, a true border is where an End is followed by a Start.
+ * This is because for any given S, if it is followed by another S, then there is an overlap,
+ * and the earlier S should be preferred, as providing a larger contiguous block.
+ *
+ * Likewise, if any given E, is followed by a further E, then the later E should be preferred
+ * for the same reason.
+ *   
+ * But SE is not a border either (necessarily) because it is simply a time block.  The only real border
+ * is when a S is not preceeded by an S, and an E is not followed by an E.  (per the above)
+ * In other words, "ES".  Not "SE", nor "SS" because the predecessor to the first "S" could be another "S".
+ * And also because the "E" might also be followed by another "E".  But with "ES", the "S" cannot possibly
+ * be preceeded by another "S", because it is known to be preceeded by an "E", and likewise the "E" cannot
+ * possibly be followed by another "E", because it is known to be followed by an "S".  So this is a true border.
+ *  
+ * To make things consistent, we add an "E" before and an "S" after the data provided, reflecting the fact that
+ * (because we are at the extreme ends), the first "S" is known to not be proceeded by another "S", and the
+ * last "E" is known not to be followed by another "E".  Adding the two to their respective opposite ends ensures
+ * that these ends are properly understood as borders also.
+ * 
+ * After this, we count the borders.  However, this would leave us with one too many, as follows.
+ * For any X number of slots, it has both a left and a right.  However, these are butted up one against the other,
+ * and the right of one forms the left of the next, and there is one border.
+ * Counting from the left, we can identify the same number of "lefts" as there are blocks.  (thus the preference for "S" over "E")
+ * Each "left" is also a "right", but that leaves us with a final "right" that is not also a "left".
+ * So to get the actual number of Blocks, we need to take the number of borders ("lefts" + "right") and subtract the last "right".  (i.e. minus 1)
+ *
+ * Next, we recognize that since we are using a single letter to represent the entry ("E" or "S"), there is naturally a
+ * one-to-one correspondence between the letter's position in the String of letters and it's Key (i.e. time's) position in
+ * the List of Times.
+ * So to find the PositionValue of the Start Time at any given border, we just need to find the Position of the border
+ * itself (i.e. the "left" border) in the String.  And to find the PositionValue of the End Time at any given border, we just need to find the Position
+ * of the _next_ border (i.e. the "right" border) in the String.  However, that is technically the Start of the next block
+ * (because of our preference for "S" over "E"), so we need to back up one position to get the End of the current block.  (i.e. minus 1)
+ *
+ * ##### SPEED #####
+ * This algorithm should be incredibly fast, because it uses a PatternCount() on a String to identify the borders,
+ * and it IGNORES everything but what's at the borders, so it only loops {# of slots} times.
+ */
+
+Let ([b=""
+;	blocks = Case ( JSON.timeBlocks = "UseBuiltInTestData" ; JSONSetElement ( "[]"
+
+			;[ 0 ; JSONSetElement ( "{}"
+				;[ "block" ; 6 ; JSONNumber ]
+				;[ "start" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 45 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 1 ; JSONSetElement ( "{}"
+				;[ "block" ; 2 ; JSONNumber ]
+				;[ "start" ; Time ( 8 ; 15 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 9 ; 30 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 2 ; JSONSetElement ( "{}"
+				;[ "block" ; 1 ; JSONNumber ]
+				;[ "start" ; Time ( 8 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 9 ; 15 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 3 ; JSONSetElement ( "{}"
+				;[ "block" ; 4 ; JSONNumber ]
+				;[ "start" ; Time ( 10 ; 30 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 30 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 4 ; JSONSetElement ( "{}"
+				;[ "block" ; 7 ; JSONNumber ]
+				;[ "start" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 12 ; 0 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 5 ; JSONSetElement ( "{}"
+				;[ "block" ; 5 ; JSONNumber ]
+				;[ "start" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 15 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+			;[ 6 ; JSONSetElement ( "{}"
+				;[ "block" ; 3 ; JSONNumber ]
+				;[ "start" ; Time ( 10 ; 0 ; 0 ) ; JSONString ]
+				;[ "end" ; Time ( 11 ; 0 ; 0 ) ; JSONString ]
+				) ; JSONObject ]
+
+		) ; JSON.timeBlocks )
+
+;	blocksIndices	= JSONListKeys ( blocks ; "" )
+;	blocksData	= JSONListValues ( blocks ; "" )
+;	blocksQty	= ValueCount ( blocksIndices )
+
+;	times		= While ([b=""
+				;	block = 1
+				;	blockData = ""
+				;	start = ""
+				;	end = ""
+				;	times = "{}"
+				;	startsList = ""
+				];
+					block &lt;= blocksQty
+				;[b=""
+
+				;	blockData = GetValue ( blocksData ; block )
+				;	start	= Right ( "0" &amp; JSONGetElement ( blockData ; "start" ) ; 8 )
+				;	end	= Right ( "0" &amp; JSONGetElement ( blockData ; "end" ) ; 8 )
+
+				;	times = JSONSetElement ( times
+						;[ start ; "S" ; JSONString ]
+						)
+
+				;	startsList = List ( startsList ; start )
+
+				;	times = Case ( ValueCount ( FilterValues ( startsList ; end ) ) ; times ; JSONSetElement ( times
+						;[ end ; "E" ; JSONString ]
+						))
+
+				;	block = block + 1
+				]; times )
 
 ;	timesList = JSONListKeys ( times ; "" )
 ;	typesList = JSONListValues ( times ; "" )
