@@ -19,6 +19,7 @@ FilterValues.diff( A;B )
 FilterValues.diff.sub( A;B;i )
 gc.get( path )
 gc.set( path;value;type )
+HideValue( Value )
 JSON.array.appendKey( array )
 JSON.array.count( array )
 JSON.array.toList( array )
@@ -406,7 +407,11 @@ FilterValues.diff.sub ( A ; B ; ValueCount ( A ) )</Calculation></CustomFunction
 ;	err	= Case ( Left ( raw ; 1) = "?" ; "" ; raw )
 ];
 err
-)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+)</Calculation></CustomFunction><CustomFunction id="42" functionArity="3" visible="True" parameters="path;value;type" name="gc.set"><Calculation>Let ( $$_globalConfig = JSONSetElement ( $$_globalConfig ; path ; value ; type ) ; "" )</Calculation></CustomFunction><CustomFunction id="62" functionArity="1" visible="True" parameters="Value" name="HideValue"><Calculation>Substitute (
+	Right ( "0000000" &amp; Dec2Bin ( Filter ( Value ; "0123456789" ) ) ; 7 )
+	; [ 0 ; Char ( 8203 ) ]
+	; [ 1 ; Char ( 65279 ) ]
+	)</Calculation></CustomFunction><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
 ];
