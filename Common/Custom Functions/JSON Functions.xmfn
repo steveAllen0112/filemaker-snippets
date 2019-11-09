@@ -317,8 +317,9 @@ While ([b=""
 			)
 ];
 variables
-) )</Calculation></CustomFunction><CustomFunction id="1" functionArity="1" visible="True" parameters="JSON.usedTimeBlocks" name="JSON.getAvailableTimeBlocks"><Calculation>Let ([b=""
+) )</Calculation></CustomFunction><CustomFunction id="43" functionArity="1" visible="True" parameters="JSON.usedTimeBlocks" name="JSON.getAvailableTimeBlocks"><Calculation>Let ([b=""
 //;	JSON.usedTimeBlocks = "UseBuiltInTestData"
+//;	JSON.usedTimeBlocks = $$blocks
 ;	blocks = Case ( JSON.usedTimeBlocks = "UseBuiltInTestData" ; JSONSetElement ( "[]"
 
 			;[ 0 ; JSONSetElement ( "{}"
@@ -364,9 +365,6 @@ variables
 				) ; JSONObject ]
  
 		) ; JSON.usedTimeBlocks )
- 
-;	dayStart    =  Time ( 0 ; 0 ; 0 )
-;	dayEnd   =  Time ( 23 ; 59 ; 59 )
 
 ;	blocksData    = JSONListValues ( blocks ; "" )
 ;	blocksQty    = ValueCount ( JSONListKeys ( blocks ; "" ) )
@@ -412,8 +410,8 @@ variables
 				;	start    = +GetValue ( blockData.split ; 1 )
 				;	end    = +GetValue ( blockData.split ; 2 )
 
-				;	previousStart = +GetValue ( SortValues ( JSONListKeys ( times ; "" ) ; -2 ) ; 1 )
-				;	previousEnd = +JSONGetElement ( times ; previousStart )
+				;	previousStart = 0+GetValue ( SortValues ( JSONListKeys ( times ; "" ) ; -2 ) ; 1 )
+				;	previousEnd = 0+JSONGetElement ( times ; previousStart )
 
 				;	overlapsPrevious = start &lt;= previousEnd
 				;	extendsPrevious = maxEnd &lt; end
@@ -439,10 +437,10 @@ variables
 				]; times )
 
 ;	dayStart	= Quote ( GetAsNumber ( Time ( 0 ; 0 ; 0 ) ) )
-;	dayEnd		= Quote ( GetAsNumber ( Time ( 24 ; 0 ; 0 ) ) )
+;	dayEnd		= Quote ( GetAsNumber ( Time ( 23 ; 59 ; 59 ) ) )
 
-;	firstStart	= Quote ( GetValue ( JSONListKeys ( usedTimes ; "" ) ; 1 ) )
-;	lastEnd		= Quote ( GetValue ( SortValues ( JSONListValues ( usedTimes ; "" ) ; -2 ) ; 1 ) )
+;	firstStart	= Quote ( 0+GetValue ( JSONListKeys ( usedTimes ; "" ) ; 1 ) )
+;	lastEnd		= Quote ( 0+GetValue ( SortValues ( JSONListValues ( usedTimes ; "" ) ; -2 ) ; 1 ) )
 
 ;	availableTimes	= Substitute ( usedTimes
 				;[ "{" &amp; firstStart &amp; ":"
