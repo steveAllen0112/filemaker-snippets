@@ -3,6 +3,7 @@ JSON.array.count( array )
 JSON.array.toList( array )
 JSON.array.fromList( lst;type )
 JSON.array.push( arr;val;type )
+JSON.array.slice( array;start;numberOfValues )
 JSON.defaultTo( jsonResult;default )
 JSON.record.getData( Definition )
 JSON.record.getFields( context )
@@ -58,6 +59,44 @@ output
 
 ];
 	return
+)</Calculation></CustomFunction><CustomFunction id="2" functionArity="3" visible="True" parameters="array;start;numberOfValues" name="JSON.array.slice"><Calculation>Let ([b=""
+
+/* Test values: Use in Data Viewer.  Comment out in Custom Function
+;	array		= JSONSetElement ( "[]"
+				;[ 0 ; List ( "this" ; Quote ( "is" ); Quote ( "the" ) ; "first" ) ; JSONString ]
+				;[ 1 ; List ( "this" ; Quote ( "is" ); Quote ( "the" ) ; "second" ) ; JSONString ]
+				;[ 2 ; List ( "this" ; Quote ( "is" ); Quote ( "the" ) ; "third" ) ; JSONString ]
+				;[ 3 ; List ( "this" ; Quote ( "is" ); Quote ( "the" ) ; "fourth" ) ; JSONString ]
+				;[ 4 ; List ( "this" ; Quote ( "is" ); Quote ( "the" ) ; "fifth" ) ; JSONString ]
+				)
+;	start		= 2
+;	numberOfValues = 3
+ */
+
+/* Function */
+;	arrayDelimiterWithQuotes	= Quote ( "," )
+;	innerReturnHolder		= "~!@"
+;	innerQuoteHolder		= "#$%"
+
+;	innerReturnsPreserved	= Substitute ( array ; "\r" ; innerReturnHolder )
+;	valuesListed		= JSONListValues ( innerReturnsPreserved ; "" )
+;	innerQuotesPreserved	= Substitute ( valuesListed ; "\"" ; innerQuoteHolder )
+
+;	valuesSliced		= MiddleValues ( innerQuotesPreserved ; start ; numberOfValues )
+;	trailingReturnDropped	= Left ( valuesSliced ; Length ( valuesSliced ) - 1 )
+
+;	restoredToJSONArray	= Case (0;0
+					;	ValueCount ( trailingReturnDropped )
+					;		Substitute ( "[\"{{entries}}\"]"
+							;[ "{{entries}}" ; trailingReturnDropped ]
+							;[ "¶" ; arrayDelimiterWithQuotes ]
+							;[ innerReturnHolder ; "\r" ]
+							;[ innerQuoteHolder ; "\\\"" ]
+							)
+					;	"[]"
+					)
+];
+restoredToJSONArray
 )</Calculation></CustomFunction><CustomFunction id="20" functionArity="2" visible="True" parameters="jsonResult;default" name="JSON.defaultTo"><Calculation>Case ( Left ( jsonResult ; 1 ) = "?" ; default ; jsonResult )</Calculation></CustomFunction><CustomFunction id="12" functionArity="1" visible="True" parameters="Definition" name="JSON.record.getData"><Calculation>/*
  * @author Steve Allen &lt;steven.allen@rcconsulting.com&gt;
  *    @gitHub steveAllen0112
