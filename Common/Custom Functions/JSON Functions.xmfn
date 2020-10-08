@@ -97,7 +97,7 @@ output
 					)
 ];
 restoredToJSONArray
-)</Calculation></CustomFunction><CustomFunction id="20" functionArity="2" visible="True" parameters="jsonResult;default" name="JSON.defaultTo"><Calculation>Case ( Left ( jsonResult ; 1 ) = "?" ; default ; jsonResult )</Calculation></CustomFunction><CustomFunction id="12" functionArity="1" visible="True" parameters="Definition" name="JSON.record.getData"><Calculation>/*
+)</Calculation></CustomFunction><CustomFunction id="20" functionArity="2" visible="True" parameters="jsonResult;default" name="JSON.defaultTo"><Calculation>Case ( IsEmpty ( jsonResult ) or Left ( jsonResult ; 1 ) = "?" ; default ; jsonResult )</Calculation></CustomFunction><CustomFunction id="12" functionArity="1" visible="True" parameters="Definition" name="JSON.record.getData"><Calculation>/*
  * @author Steve Allen &lt;steven.allen@rcconsulting.com&gt;
  *    @gitHub steveAllen0112
  *
