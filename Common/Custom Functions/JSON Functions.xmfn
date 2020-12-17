@@ -530,6 +530,7 @@ availableBlocks
 
 ;	thisLine.value = ""
 ;	thisLine.number = 0
+;	thisLine.isEmpty = True
 
 ;	lines = "[]"
 ;	fields = "{}"
@@ -562,37 +563,40 @@ availableBlocks
 		;	fields
 		)
 
-;	thisLine.value = Case (0;0
-		;	thisLine.startsNewField
-		;		Substitute ( thisLine.value ; ": " ; "¶" )
-		;	thisLine.value
-		)
-
 ;	thisField.name = Case (0;0
 		;	thisLine.startsNewField
-		;		GetValue ( thisLine.value ; 1 )
+		;		GetValue ( Substitute ( thisLine.value ; ": " ; "¶" ) ; 1 )
 		;	thisField.name
 		)
 
-;	thisField.value.line = Case ( thisLine.startsNewField ; 1 ; thisField.value.line + 1 )
-
-;	thisField.value = JSONSetElement ( Case ( thisLine.startsNewField ; "[]" ; thisField.value )
-		;	thisField.value.line - 1
-		;	Trim ( GetValue ( thisLine.value ; 1 + thisLine.startsNewField ) )
-		;	JSONString
+;	thisLine.value = Case (0;0
+		;	thisLine.startsNewField
+		;		Right ( thisLine.value ; Length ( thisLine.value ) - Length ( thisField.name ) - 2  )
+		;	thisLine.value
 		)
+
+;	thisLine.isEmpty = 	IsEmpty ( thisLine.value )
+			or	thisLine.value = "¶"
+			or	thisLine.value = " "
+
+;	thisField.value.line = Case ( thisLine.startsNewField ; 1 ; thisField.value.line + (not thisLine.isEmpty) )
+
+;	thisField.value = Case ( thisLine.isEmpty ; thisField.value ; JSONSetElement ( Case ( thisLine.startsNewField ; "[]" ; thisField.value )
+		;	thisField.value.line - 1
+		;	Trim ( thisLine.value )
+		;	JSONString
+		))
 
 ;	continue =		thisLine.number &lt;= lineCount
 			and	thisLine.firstChar &lt;&gt; Code ( "-" ) /* we aren't starting a Part */
 ];
-
-JSONSetElement ( "{}"
+/*JSONSetElement ( "{}"
 //;[ "emlText" ; emlText ; JSONString ]
 ;[ "lineCount" ; lineCount ; JSONNumber ]
 ;[ "lines" ; lines ; JSONArray ]
 ;[ "fields" ; fields ; JSONObject ]
-)
-
+)*/
+fields
 )</Calculation></CustomFunction><CustomFunction id="5" functionArity="2" visible="True" parameters="json;path" name="JSONGetValues"><Calculation>Let ([~=""
 
 ;	v = JSONListValues ( json ; path )
