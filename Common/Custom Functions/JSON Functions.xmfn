@@ -524,6 +524,8 @@ variables
 ];
 availableBlocks
 )</Calculation></CustomFunction><CustomFunction id="3" functionArity="1" visible="True" parameters="emlText" name="GetEMLFieldsAsJSON"><Calculation>While ([~=""
+;	emlText = Case ( PatternCount ( emlText ; "¶-" ) ; Left ( emlText ; Position ( emlText ; "¶-" ; 1; 1 ) - 1 ) ; emlText )
+
 ;	lineCount = ValueCount ( emlText )
 
 ;	thisLine.value = ""
