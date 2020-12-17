@@ -40,7 +40,8 @@ Win.Name( WindowID )
 Win.NewName( WindowNameOld;WindowNameNew )
 Win.set( id;path;value;type )
 xmlGet( _xml;_tag )
-xmlReplaceNodeValue( xml;tag;newValue )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="28" functionArity="2" visible="True" parameters="name;value" name="#"><Calculation>/**
+xmlReplaceNodeValue( xml;tag;newValue )
+GetOpenDataFilePath( fileID )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="28" functionArity="2" visible="True" parameters="name;value" name="#"><Calculation>/**
  * =====================================
  * # ( name ; value )
  *
@@ -581,4 +582,14 @@ Case ( Left ( _tag ; 1 ) = "=" ;
 ;	output		= Replace ( xml ; numStart ; numEnd - numStart ; newValue )
 ];
 output
+)</Calculation></CustomFunction><CustomFunction id="63" functionArity="1" visible="True" parameters="fileID" name="GetOpenDataFilePath"><Calculation>Let ([~=""
+//;	fileID = 1
+;	openFilesInfo = Get ( OpenDataFileInfo )
+;	openFilesInfo = "{\"" &amp; Substitute ( Left ( openFilesInfo ; Length ( openFilesInfo ) - 1 )
+		;[ Char ( 9 ) ; "\":\"" ]
+		;[ "¶" ; "\"," ]
+		) &amp; "\"}"
+;	output = JSONGetElement ( openFilesInfo ; fileID )
+];
+	output
 )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
