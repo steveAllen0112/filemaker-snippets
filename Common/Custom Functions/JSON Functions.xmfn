@@ -8,7 +8,9 @@ JSON.defaultTo( jsonResult;default )
 JSON.record.getData( Definition )
 JSON.record.getFields( context )
 JSON.setVariables( json )
-JSON.getAvailableTimeBlocks( JSON.usedTimeBlocks )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+JSON.getAvailableTimeBlocks( JSON.usedTimeBlocks )
+GetEMLFieldsAsJSON( emlText )
+JSONGetValues( json;path )]]></clipboardAsText><Clipboard><fmxmlsnippet type="FMObjectList"><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
 ];
@@ -521,4 +523,81 @@ variables
 
 ];
 availableBlocks
+)</Calculation></CustomFunction><CustomFunction id="3" functionArity="1" visible="True" parameters="emlText" name="GetEMLFieldsAsJSON"><Calculation>While ([~=""
+;	lineCount = ValueCount ( emlText )
+
+;	thisLine.value = ""
+;	thisLine.number = 0
+
+;	lines = "[]"
+;	fields = "{}"
+
+;	thisField.name = ""
+;	thisField.value = ""
+;	thisField.value.line = 0
+
+;	continue = True
+]; continue ;[~=""
+
+;	thisLine.number = thisLine.number + 1
+;	thisLine.value      = GetValue ( emlText ; thisLine.number )
+
+;	lines = JSONSetElement ( lines ; thisLine.number - 1 ; thisLine.value ; JSONString )
+
+;	thisLine.firstChar = Code ( Left ( thisLine.value ; 1 ) )
+
+	/* per IETF RFC 5322 2.2 */
+;	thisLine.startsNewField = 33 &lt;= thisLine.firstChar and thisLine.firstChar &lt;= 126
+
+;	fields = Case (0;0
+		;		thisLine.startsNewField
+			and	(not IsEmpty ( thisField.name ))
+			and	(not IsEmpty ( thisField.value ))
+		;		Choose ( thisField.value.line &gt; 1
+				;	JSONSetElement ( fields ; thisField.name ; JSONGetElement ( thisField.value ; 0 ) ; JSONString )
+				;	JSONSetElement ( fields ; thisField.name ; thisField.value ; JSONArray )
+				)
+		;	fields
+		)
+
+;	thisLine.value = Case (0;0
+		;	thisLine.startsNewField
+		;		Substitute ( thisLine.value ; ": " ; "¶" )
+		;	thisLine.value
+		)
+
+;	thisField.name = Case (0;0
+		;	thisLine.startsNewField
+		;		GetValue ( thisLine.value ; 1 )
+		;	thisField.name
+		)
+
+;	thisField.value.line = Case ( thisLine.startsNewField ; 1 ; thisField.value.line + 1 )
+
+;	thisField.value = JSONSetElement ( Case ( thisLine.startsNewField ; "[]" ; thisField.value )
+		;	thisField.value.line - 1
+		;	Trim ( GetValue ( thisLine.value ; 1 + thisLine.startsNewField ) )
+		;	JSONString
+		)
+
+;	continue =		thisLine.number &lt;= lineCount
+			and	thisLine.firstChar &lt;&gt; Code ( "-" ) /* we aren't starting a Part */
+];
+
+JSONSetElement ( "{}"
+//;[ "emlText" ; emlText ; JSONString ]
+;[ "lineCount" ; lineCount ; JSONNumber ]
+;[ "lines" ; lines ; JSONArray ]
+;[ "fields" ; fields ; JSONObject ]
+)
+
+)</Calculation></CustomFunction><CustomFunction id="5" functionArity="2" visible="True" parameters="json;path" name="JSONGetValues"><Calculation>Let ([~=""
+
+;	v = JSONListValues ( json ; path )
+];
+	Case (0;0
+	;	IsEmpty ( v )
+	;		JSONGetElement ( json ; path )
+	;	v
+	)
 )</Calculation></CustomFunction></fmxmlsnippet></Clipboard><Picture></Picture></FMClipboard>
