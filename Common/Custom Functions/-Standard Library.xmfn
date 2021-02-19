@@ -21,6 +21,7 @@ FilterValues.diff.sub( A;B;i )
 gc.get( path )
 gc.set( path;value;type )
 HideValue( Value )
+IsAvailable( feature )
 JSON.array.appendKey( array )
 JSON.array.count( array )
 JSON.array.toList( array )
@@ -214,13 +215,21 @@ Let ( [
 )</Calculation></CustomFunction><CustomFunction id="30" functionArity="2" visible="True" parameters="lst;value" name="AddValue"><Calculation>Case (
 not	ValueCount ( FilterValues ( lst ; value ) )
 ;	List ( lst ; value )
-)</Calculation></CustomFunction><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="23" functionArity="1" visible="True" parameters="binary" name="Bin2Dec"><Calculation>Let ( [
+)</Calculation></CustomFunction><CustomFunction id="31" functionArity="0" visible="True" parameters="" name="app.isGo"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Go" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="32" functionArity="0" visible="True" parameters="" name="app.isPro"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Pro" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="33" functionArity="0" visible="True" parameters="" name="app.isServer"><Calculation>PatternCount ( Get(ApplicationVersion) ; "Server" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="34" functionArity="0" visible="True" parameters="" name="app.isWD"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Direct" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="35" functionArity="0" visible="True" parameters="" name="app.isWPE"><Calculation>PatternCount ( Get ( ApplicationVersion ) ; "Web Publishing Engine" ) &gt; 0</Calculation></CustomFunction><CustomFunction id="64" functionArity="1" visible="True" parameters="binary" name="Bin2Dec"><Calculation>Case ( IsAvailable ( "While" ) ;
+
+While ([ i = 0 ; digitCount = Length ( binary ) ; dec = 0 ]; i &lt; digitCount ;[ i = i + 1
+;	dec = dec + (+Middle ( binary ; i ; 1 )) * (2 ^ Abs ( i - digitCount ))
+];dec)
+
+;
+	Let ( [
 		power = Length ( binary ) - 1 ;
 		bin = Left ( binary ; 1 ) ;
 		dec = If ( bin ; 2 ^ power ; 0 ) ;
 		dec2 = If ( power &gt; 0 ; Bin2Dec ( Right ( binary ; power ) ) ; 0 )
 	] ;
-	dec + dec2
+		dec + dec2
+	)
 )</Calculation></CustomFunction><CustomFunction id="4" functionArity="3" visible="True" parameters="Start;End;Function" name="CustomList"><Calculation>/*       Special Thanks to Ugo Di Luca - Grazie Mille, pour l'aiguillage qu'il m'a fait prendre,
                           Thank you for all his comments and his notice  ®  Ugo Di Luca 
 ===========================================================
@@ -362,13 +371,17 @@ Let ([ CLNum = 4 ] ; GetNthRecord ( Field ; CLNum ))"
 Interrested in the mechanism ?
 My advice then : dissect this function by escaping the 'Result' and placing one of the numerous intermediary variables available.
 Special attention should be paid to the 'First' Variable, everything starts from there !
-*/</Calculation></CustomFunction><CustomFunction id="3" functionArity="1" visible="True" parameters="decimal" name="Dec2Bin"><Calculation>If (
-	decimal ≤ 1 ;
-	decimal ;
-	Let ( [
-			Bin = Mod ( decimal ; 2 ) ;
-			Bin2 = Dec2Bin ( Floor ( decimal / 2 ) )
-		] ;
+*/</Calculation></CustomFunction><CustomFunction id="65" functionArity="1" visible="True" parameters="decimal" name="Dec2Bin"><Calculation>Case ( IsAvailable ( "While" )
+
+;	While ([ decimal = decimal ; bin = "" ] ; decimal ; [ bin = Mod ( decimal ; 2 ) &amp; bin ; decimal = Floor ( decimal / 2 ) ] ; bin )
+
+
+;	decimal &lt;= 1
+;		decimal
+;	Let ( [
+		Bin = Mod ( decimal ; 2 ) ;
+		Bin2 = Dec2Bin ( Floor ( decimal / 2 ) )
+	] ;
 		Bin2 &amp; Bin
 	)
 )</Calculation></CustomFunction><CustomFunction id="36" functionArity="2" visible="True" parameters="lst;value" name="DeleteValue"><Calculation>Let ([
@@ -413,7 +426,12 @@ err
 	Right ( "0000000" &amp; Dec2Bin ( Filter ( Value ; "0123456789" ) ) ; 7 )
 	; [ 0 ; Char ( 8203 ) ]
 	; [ 1 ; Char ( 65279 ) ]
-	)</Calculation></CustomFunction><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
+	)</Calculation></CustomFunction><CustomFunction id="66" functionArity="1" visible="True" parameters="feature" name="IsAvailable"><Calculation>Case (0;0
+
+;	Proper ( feature ) = "While"
+;		IsValidExpression ( "While([i=0];i=0;[i=i+1];i)" )
+
+)</Calculation></CustomFunction><CustomFunction id="14" functionArity="1" visible="True" parameters="array" name="JSON.array.appendKey"><Calculation>Let ([b=""
 ;	indices = JSONListKeys ( array ; "" )
 ;	next = Case ( Left ( indices ; 1 ) = "?" ; 0 ; GetAsNumber ( GetValue ( indices ; ValueCount ( indices ) ) ) + 1 )
 ];
