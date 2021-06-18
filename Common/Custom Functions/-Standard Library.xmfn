@@ -499,12 +499,13 @@ If ( not ignoreCapsLock ; ( Mod ( Int ( activeModifierKeys / 2 ) ; 2 ) xor not P
 		;		patternRemains
 		)
 	&amp; Case ( rtl ; thisChar )
-)</Calculation></CustomFunction><CustomFunction id="48" functionArity="4" visible="True" parameters="text;searchValue;start;occurrence" name="PositionValues"><Calculation>Let ( adjustedText = "¶"  &amp; text &amp; "¶" ;
+)</Calculation></CustomFunction><CustomFunction id="48" functionArity="4" visible="True" parameters="text;searchValue;start;occurrence" name="PositionValues"><Calculation>Let ([~=""
 
-If (
-Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) = 0 ; 0 ;
-ValueCount ( Left ( text ; (Position ( adjustedText ; "¶" &amp; searchValue &amp; "¶" ; start ; occurrence ) - 1) + Length ( searchValue ) ) )
-)
+;	~haystack = "¶"  &amp; text &amp; "¶"
+;	~needle = "¶"  &amp; searchValue &amp; "¶"
+;	~position= Position ( ~haystack ; ~needle ; start ; occurrence )
+];
+ValueCount ( Left ( ~haystack ; ~position ) )
 )</Calculation></CustomFunction><CustomFunction id="49" functionArity="0" visible="True" parameters="" name="screen.isSmall"><Calculation>Get ( WindowDesktopHeight ) + Get ( WindowDesktopWidth ) &lt; 1500</Calculation></CustomFunction><CustomFunction id="9" functionArity="0" visible="True" parameters="" name="TAB"><Calculation>Char ( 9 )</Calculation></CustomFunction><CustomFunction id="50" functionArity="2" visible="True" parameters="lst;value" name="ToggleValue"><Calculation>Case (
 	ValueCount ( FilterValues ( lst ; value ) )
 ;		DeleteValue ( lst ; value )
